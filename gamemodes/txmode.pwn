@@ -2,7 +2,7 @@
 //                           Trinity-Xtreme                                   //
 //                                 Freeroam Project                           //
 //                                                                            //
-//                       Trinity-Xtreme version RC1.4 gamemode by MR.ImmortaL //
+//                       Trinity-Xtreme version RC1.5 gamemode by MR.ImmortaL //
 //============================================================================//
 // Trinity-Xtreme Credits:                                                    //
 //     Developer Team: ImmortaL [PAWN+MAP+WEB+ART] | Crosscuk [MAP+ART]       //
@@ -274,7 +274,7 @@ main()
 	printf("");
 	printf("\"--------------------------------------------------\"");
 	printf("\"             #Trinity-Xtreme Freeroam             \"");
-	printf("\"         #SA-MP Oyun Modu [vALPHA][RC-1.4]        \"");
+	printf("\"         #SA-MP Oyun Modu [vALPHA][RC-1.5]        \"");
 	printf("\"          #Created by Crosscuk & ImmortaL         \"");
 	printf("\"            #since 27/01/2013 - 01:52             \"");
 	printf("\"                                                  \"");
@@ -286,7 +286,7 @@ main()
 
 public OnGameModeInit()
 {
-	SetGameModeText("Turkiye[vALPHA 1.4]");
+	SetGameModeText("Turkiye[vALPHA 1.5]");
 
 	UsePlayerPedAnims();
 	AllowInteriorWeapons(1);
@@ -956,7 +956,7 @@ public OnPlayerConnect(playerid)
     // - PM sistemi
     pInfo[playerid][Last] = -1;
     pInfo[playerid][NoPM] = 0;
-        
+
     // - EXP sistemi
    	new dosya[50], isim[24];
 	GetPlayerName(playerid, isim, sizeof(isim));
@@ -965,10 +965,10 @@ public OnPlayerConnect(playerid)
 	if(!dini_Exists(dosya)) seviye[playerid]=1, dini_Create(dosya);
 	else BilgiYukle(playerid);
 	expguncelle[playerid] = SetTimerEx("BilgiYenile", 1000, true, "d", playerid);
-	
+
     // - Ev sistemi ayarý
     OyuncuMapIconKontrol(playerid);
-    
+
     // - Araç kilit ayarý
    	Kilit[playerid] = 0;
 
@@ -1075,11 +1075,11 @@ public OnPlayerDisconnect(playerid, reason)
     // - PM sistemi
     pInfo[playerid][Last] = -1;
     pInfo[playerid][NoPM] = 0;
-    
+
 	// - EXP sistemi
 	BilgiYenile(playerid);
 	KillTimer(expguncelle[playerid]);
-	
+
 	// - Araç spawn ayarlarý
     new iVehID = GetPVarInt(playerid, "iVehID");
     if(iVehID)
@@ -1114,9 +1114,9 @@ public OnPlayerSpawn(playerid)
     TextDrawShowForPlayer(playerid,expbox);
     TextDrawShowForPlayer(playerid,expmeter[playerid]);
     ShowProgressBarForPlayer(playerid,Bar:expbar[playerid]);
-    
+
     // Exp sistemi bitiþi
-    
+
     switch(DM[playerid])
 	{
 	    case 1:
@@ -1196,7 +1196,7 @@ public OnPlayerText(playerid, text[])
 	}
 	else
 	{
-	if(IsPlayeraLAdmin(playerid) && !IsPlayerAdmin(playerid))
+	if(IsPlayeraLAdmin(playerid))
 	{
 	format(chatmessage,1024,"{C30000}[{FFFFFF}GM{C30000}]{ACDA00}%s{C30000}({FFFFFF}%i{C30000}){FFFFFF}:%s",PlayerName(playerid),playerid,text);
     SendClientMessageToAll(1,chatmessage);
@@ -1282,7 +1282,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 {
 	new cmd[256],idx,tmp[256];
 	cmd=strtok(cmdtext,idx);
-	
+
 
 	if(!strcmp("/dmcik",cmdtext,true))
 	{
@@ -1327,7 +1327,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(!strcmp(cmdtext, "/dmler", true))
 	{
-	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch","{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)\nChangelog renkleri azaltýldý.\nYeni maplar eklendi.","Seç","Kapat");
+	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch","{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)","Seç","Kapat");
 	return 1;
 	}
 
@@ -1336,7 +1336,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	ShowPlayerDialog(playerid,2001,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Stunt Zones","{FFFFFF}Bikepark Stunt - 1 (/bikestunt1)","Seç","Kapat");
 	return 1;
 	}
-	
+
 	if(!strcmp(cmdtext, "/silahlar", true))
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalý tüfekler\n{FFFFFF}~ {ACDA00}Makinalý tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayýcýlar\n{FFFFFF}~ {ACDA00}Ateþsiz silahlar","Seç","Kapat");
@@ -1708,7 +1708,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanýna ýþýnlanýldý.");
 	return 1;
 	}
-	
+
 	if(strcmp(cmdtext, "/mod1", true) == 0)
 	{
 	Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
@@ -1743,35 +1743,35 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanýna ýþýnlanýldý.");
  	return 1;
 	}
-	
+
 	if(strcmp(cmdtext,"/ap1", true) == 0)
 	{
 	Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanýna ýþýnlanýldý.");
  	return 1;
 	}
-	
+
 	if(strcmp(cmdtext,"/ap2", true) == 0)
 	{
 	Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanýna ýþýnlanýldý.");
  	return 1;
 	}
-	
+
 	if(strcmp(cmdtext,"/ap3", true) == 0)
 	{
 	Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanýna ýþýnlanýldý.");
  	return 1;
 	}
-	
+
 	if(strcmp(cmdtext,"/ap4", true) == 0)
 	{
 	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanýna ýþýnlanýldý.");
  	return 1;
 	}
-	
+
 	// - Can & Zýrh komutlarý
 	if(strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0)
     {
@@ -2327,7 +2327,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			IsPlayerInRangeOfPoint(playerid,2,327.9004,1478.2839,1084.4375) ||
 			IsPlayerInRangeOfPoint(playerid,2,2324.3735,-1148.8219,1050.7101))
 
-	
+
 						{ PlayerPos(playerid,EvBilgi[OyuncuEv[playerid]][ev_X],EvBilgi[OyuncuEv[playerid]][ev_Y],EvBilgi[OyuncuEv[playerid]][ev_Z],0,0),OyuncuEv[playerid] = -1; }
 		}
 	}
@@ -2442,7 +2442,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	
+
 	if(dialogid == 9502) // Otomatik tabancalar.
 	{
 	if(response)
@@ -2472,7 +2472,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	
+
 	if(dialogid == 9503) // Pompalý tüfekler.
 	{
 	if(response)
@@ -2502,7 +2502,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	
+
 	if(dialogid == 9504) // Makineli tüfekler.
 	{
 	if(response)
@@ -2527,7 +2527,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	
+
 	if(dialogid == 9505) // Yivli tüfekler.
 	{
 	if(response)
@@ -2552,7 +2552,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	
+
 	if(dialogid == 9506) // Patlayýcýlar.
 	{
 	if(response)
@@ -2582,7 +2582,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	
+
 	if(dialogid == 9507) // Ateþsiz silahlar.
 	{
 	if(response)
@@ -2703,7 +2703,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanýna ýþýnlanýldý.");
 	}
 	if(listitem == 14)
-	{
+ {
 	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanýna ýþýnlanýldý.");
 	}
@@ -2734,12 +2734,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	ShowPlayerDialog(playerid,1914,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.3]","{ACDA00}~ ALPHA hesaplarý silindi.\n~ Kick-Ban mesajlarý ve Giriþ-Çýkýþ mesajlarý güncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog düzenlendi.\n~ Yeni haritalar eklendi.\n~ Geliþmiþ saat sistemi eklendi.\n~ RGM-GM sistemi buglarý giderildi.\n~ Sohbet baloncuðu eklendi.\n~ Driveby engeli kaldýrýldý.","RC1.4","Kapat");
 	}
 	}
-	
+
 	if(dialogid == 1914)
 	{
 	if(response)
 	{
-	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]","{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi güncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin güncellendi. (4.4)\n~ Teleport komutlarý düzenlendi.\n~ EXP-LEVEL textdrawý yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanlarý ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menüsü eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Giriþe dans eklendi.","Kapat","");
+	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]","{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi güncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin güncellendi. (4.4)\n~ Teleport komutlarý düzenlendi.\n~ EXP-LEVEL textdrawý yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanlarý ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menüsü eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Giriþe dans eklendi.","RC1.5","Kapat");
+	}
+	}
+	
+	if(dialogid == 1915)
+	{
+	if(response)
+	{
+	ShowPlayerDialog(playerid,1916,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.5]","{ACDA00}~ ","Kapat","");
 	}
 	}
 	// - DM alaný dialoglarý

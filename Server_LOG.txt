@@ -1,0 +1,444 @@
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[19:49:50] 
+[19:49:50] Server Plugins
+[19:49:50] --------------
+[19:49:50]  Loading plugin: streamer
+[19:49:50] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[19:49:50]   Loaded.
+[19:49:50]  Loaded 1 plugins.
+
+[19:49:50] 
+[19:49:50] Filterscripts
+[19:49:50] ---------------
+[19:49:50]   Loading filterscript 'aLAdmin.amx'...
+[19:49:50] 
+--------------------------------------------
+[19:49:50]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[19:49:50]  Kodlayan: aLypSe.
+[19:49:50] --------------------------------------------
+
+[19:49:50]   Loaded 1 filterscripts.
+
+[19:49:50] Yüklendi: "Sunucu genel ayarları."
+[19:49:50] Yüklendi: "Sunucu textdrawları."
+[19:49:50] Yüklendi: "Exp-Level sistemi."
+[19:49:50] Yüklendi: "Saat sistemi."
+[19:49:50] Yüklendi: "Sunucu haritası."
+[19:49:50] Yüklendi: "Sunucu araçları."
+[19:49:50] Yüklendi: "Hız pickupları."
+[19:49:50] Yüklendi: "Ev sistemi."
+[19:49:50] Toplam "0" ev bulunmakta.
+[19:49:50] Yüklendi: "Sunucu modu."
+[19:49:50] 
+[19:49:50] "--------------------------------------------------"
+[19:49:50] "             #Trinity-Xtreme Freeroam             "
+[19:49:50] "         #SA-MP Oyun Modu [vALPHA][RC-1.4]        "
+[19:49:50] "          #Created by Crosscuk & ImmortaL         "
+[19:49:50] "            #since 27/01/2013 - 01:52             "
+[19:49:50] "                                                  "
+[19:49:50] "                 [Developer Mode]                 "
+[19:49:50] "                                                  "
+[19:49:50] "         Saat: 19:49:50 ~ Tarih: 21/5/2013         "
+[19:49:50] "--------------------------------------------------"
+[19:49:50] Number of vehicle models: 51
+[19:50:19] Incoming connection: 127.0.0.1:49170
+[19:50:19] [join] ImmortaL has joined the server (0:127.0.0.1)
+[19:51:22] [part] ImmortaL has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[19:57:53] 
+[19:57:53] Server Plugins
+[19:57:53] --------------
+[19:57:53]  Loading plugin: streamer
+[19:57:53] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[19:57:53]   Loaded.
+[19:57:53]  Loaded 1 plugins.
+
+[19:57:53] 
+[19:57:53] Filterscripts
+[19:57:53] ---------------
+[19:57:53]   Loading filterscript 'aLAdmin.amx'...
+[19:57:53] 
+--------------------------------------------
+[19:57:53]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[19:57:53]  Kodlayan: aLypSe.
+[19:57:53] --------------------------------------------
+
+[19:57:53]   Loaded 1 filterscripts.
+
+[19:57:53] Yüklendi: "Sunucu genel ayarları."
+[19:57:53] Yüklendi: "Sunucu textdrawları."
+[19:57:53] Yüklendi: "Exp-Level sistemi."
+[19:57:53] Yüklendi: "Saat sistemi."
+[19:57:53] Yüklendi: "Sunucu haritası."
+[19:57:53] Yüklendi: "Sunucu araçları."
+[19:57:53] Yüklendi: "Hız pickupları."
+[19:57:53] Yüklendi: "Ev sistemi."
+[19:57:53] Toplam "0" ev bulunmakta.
+[19:57:53] Yüklendi: "Sunucu modu."
+[19:57:53] 
+[19:57:53] "--------------------------------------------------"
+[19:57:53] "             #Trinity-Xtreme Freeroam             "
+[19:57:53] "         #SA-MP Oyun Modu [vALPHA][RC-1.4]        "
+[19:57:53] "          #Created by Crosscuk & ImmortaL         "
+[19:57:53] "            #since 27/01/2013 - 01:52             "
+[19:57:53] "                                                  "
+[19:57:53] "                 [Developer Mode]                 "
+[19:57:53] "                                                  "
+[19:57:53] "         Saat: 19:57:53 ~ Tarih: 21/5/2013         "
+[19:57:53] "--------------------------------------------------"
+[19:57:53] Number of vehicle models: 51
+[19:58:16] Incoming connection: 127.0.0.1:49172
+[19:58:16] [join] ImmortaL has joined the server (0:127.0.0.1)
+[19:59:01] [part] ImmortaL has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[20:00:21] 
+[20:00:21] Server Plugins
+[20:00:21] --------------
+[20:00:21]  Loading plugin: streamer
+[20:00:21] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[20:00:21]   Loaded.
+[20:00:21]  Loaded 1 plugins.
+
+[20:00:22] 
+[20:00:22] Filterscripts
+[20:00:22] ---------------
+[20:00:22]   Loading filterscript 'aLAdmin.amx'...
+[20:00:23] 
+--------------------------------------------
+[20:00:23]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[20:00:23]  Kodlayan: aLypSe.
+[20:00:23] --------------------------------------------
+
+[20:00:23]   Loaded 1 filterscripts.
+
+[20:00:23] Yüklendi: "Sunucu genel ayarları."
+[20:00:23] Yüklendi: "Sunucu textdrawları."
+[20:00:23] Yüklendi: "Exp-Level sistemi."
+[20:00:23] Yüklendi: "Saat sistemi."
+[20:00:23] Yüklendi: "Sunucu haritası."
+[20:00:23] Yüklendi: "Sunucu araçları."
+[20:00:23] Yüklendi: "Hız pickupları."
+[20:00:23] Yüklendi: "Ev sistemi."
+[20:00:23] Toplam "0" ev bulunmakta.
+[20:00:23] Yüklendi: "Sunucu modu."
+[20:00:23] 
+[20:00:23] "--------------------------------------------------"
+[20:00:23] "             #Trinity-Xtreme Freeroam             "
+[20:00:23] "         #SA-MP Oyun Modu [vALPHA][RC-1.4]        "
+[20:00:23] "          #Created by Crosscuk & ImmortaL         "
+[20:00:23] "            #since 27/01/2013 - 01:52             "
+[20:00:23] "                                                  "
+[20:00:23] "                 [Developer Mode]                 "
+[20:00:23] "                                                  "
+[20:00:23] "         Saat: 20:0:23 ~ Tarih: 21/5/2013         "
+[20:00:23] "--------------------------------------------------"
+[20:00:23] Number of vehicle models: 51
+[20:01:42] Incoming connection: 127.0.0.1:49173
+[20:01:42] [join] ImmortaL has joined the server (0:127.0.0.1)
+[20:07:48] [part] ImmortaL has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[18:16:12] 
+[18:16:12] Server Plugins
+[18:16:12] --------------
+[18:16:12]  Loading plugin: streamer
+[18:16:12] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:16:12]   Loaded.
+[18:16:12]  Loaded 1 plugins.
+
+[18:16:12] 
+[18:16:12] Filterscripts
+[18:16:12] ---------------
+[18:16:12]   Loading filterscript 'aLAdmin.amx'...
+[18:16:12] 
+--------------------------------------------
+[18:16:12]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[18:16:12]  Kodlayan: aLypSe.
+[18:16:12] --------------------------------------------
+
+[18:16:12]   Loaded 1 filterscripts.
+
+[18:16:12] Yüklendi: "Sunucu genel ayarları."
+[18:16:12] Yüklendi: "Sunucu textdrawları."
+[18:16:12] Yüklendi: "Exp-Level sistemi."
+[18:16:12] Yüklendi: "Saat sistemi."
+[18:16:12] Yüklendi: "Sunucu haritası."
+[18:16:12] Yüklendi: "Sunucu araçları."
+[18:16:12] Yüklendi: "Hız pickupları."
+[18:16:12] Yüklendi: "Ev sistemi."
+[18:16:12] Toplam "0" ev bulunmakta.
+[18:16:12] Yüklendi: "Sunucu modu."
+[18:16:12] 
+[18:16:12] "--------------------------------------------------"
+[18:16:12] "             #Trinity-Xtreme Freeroam             "
+[18:16:12] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[18:16:12] "          #Created by Crosscuk & ImmortaL         "
+[18:16:12] "            #since 27/01/2013 - 01:52             "
+[18:16:12] "                                                  "
+[18:16:12] "                 [Developer Mode]                 "
+[18:16:12] "                                                  "
+[18:16:12] "         Saat: 18:16:12 ~ Tarih: 22/5/2013         "
+[18:16:12] "--------------------------------------------------"
+[18:16:12] Number of vehicle models: 51
+[18:17:05] Incoming connection: 127.0.0.1:49157
+[18:17:06] [join] ImmortaL has joined the server (0:127.0.0.1)
+[18:18:51] [part] ImmortaL has left the server (0:1)
+Console input: gmx
+[18:20:29] Sunucu modu kapandı.
+[18:20:29] Saat: 18:20:29 ~ Tarih: 22/5/2013
+[18:20:29] Trinity-Xtreme / since 27/01/2013 - 01:52
+[18:20:41] Yüklendi: "Sunucu genel ayarları."
+[18:20:41] Yüklendi: "Sunucu textdrawları."
+[18:20:41] Yüklendi: "Exp-Level sistemi."
+[18:20:41] Yüklendi: "Saat sistemi."
+[18:20:41] Yüklendi: "Sunucu haritası."
+[18:20:41] Yüklendi: "Sunucu araçları."
+[18:20:41] Yüklendi: "Hız pickupları."
+[18:20:41] Yüklendi: "Ev sistemi."
+[18:20:41] Toplam "0" ev bulunmakta.
+[18:20:41] Yüklendi: "Sunucu modu."
+[18:20:41] 
+[18:20:41] "--------------------------------------------------"
+[18:20:41] "             #Trinity-Xtreme Freeroam             "
+[18:20:41] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[18:20:41] "          #Created by Crosscuk & ImmortaL         "
+[18:20:41] "            #since 27/01/2013 - 01:52             "
+[18:20:41] "                                                  "
+[18:20:41] "                 [Developer Mode]                 "
+[18:20:41] "                                                  "
+[18:20:41] "         Saat: 18:20:41 ~ Tarih: 22/5/2013         "
+[18:20:41] "--------------------------------------------------"
+[18:20:41] Number of vehicle models: 51
+[18:22:40] Incoming connection: 127.0.0.1:49158
+[18:22:40] [join] ImmortaL has joined the server (0:127.0.0.1)
+[18:22:50] [chat] [ImmortaL]: test
+[18:22:56] [chat] [ImmortaL]: gm - rcon :C
+[18:31:26] [chat] [ImmortaL]: heçşt
+[18:31:28] [part] ImmortaL has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[18:32:04] 
+[18:32:04] Server Plugins
+[18:32:04] --------------
+[18:32:04]  Loading plugin: streamer
+[18:32:04] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:32:04]   Loaded.
+[18:32:04]  Loaded 1 plugins.
+
+[18:32:04] 
+[18:32:04] Filterscripts
+[18:32:04] ---------------
+[18:32:04]   Loading filterscript 'aLAdmin.amx'...
+[18:32:04] 
+--------------------------------------------
+[18:32:04]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[18:32:04]  Kodlayan: aLypSe.
+[18:32:04] --------------------------------------------
+
+[18:32:04]   Loaded 1 filterscripts.
+
+[18:32:04] Yüklendi: "Sunucu genel ayarları."
+[18:32:04] Yüklendi: "Sunucu textdrawları."
+[18:32:04] Yüklendi: "Exp-Level sistemi."
+[18:32:04] Yüklendi: "Saat sistemi."
+[18:32:04] Yüklendi: "Sunucu haritası."
+[18:32:04] Yüklendi: "Sunucu araçları."
+[18:32:04] Yüklendi: "Hız pickupları."
+[18:32:04] Yüklendi: "Ev sistemi."
+[18:32:04] Toplam "0" ev bulunmakta.
+[18:32:04] Yüklendi: "Sunucu modu."
+[18:32:04] 
+[18:32:04] "--------------------------------------------------"
+[18:32:04] "             #Trinity-Xtreme Freeroam             "
+[18:32:04] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[18:32:04] "          #Created by Crosscuk & ImmortaL         "
+[18:32:04] "            #since 27/01/2013 - 01:52             "
+[18:32:04] "                                                  "
+[18:32:04] "                 [Developer Mode]                 "
+[18:32:04] "                                                  "
+[18:32:04] "         Saat: 18:32:4 ~ Tarih: 22/5/2013         "
+[18:32:04] "--------------------------------------------------"
+[18:32:04] Number of vehicle models: 51
+[18:32:33] Incoming connection: 127.0.0.1:49159
+[18:32:33] [join] ImmortaL has joined the server (0:127.0.0.1)
+[18:32:41] [chat] [ImmortaL]: test
+[18:32:43] [part] ImmortaL has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[18:37:21] 
+[18:37:21] Server Plugins
+[18:37:21] --------------
+[18:37:21]  Loading plugin: streamer
+[18:37:21] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:37:21]   Loaded.
+[18:37:21]  Loaded 1 plugins.
+
+[18:37:22] 
+[18:37:22] Filterscripts
+[18:37:22] ---------------
+[18:37:22]   Loading filterscript 'aLAdmin.amx'...
+[18:37:22] 
+--------------------------------------------
+[18:37:22]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[18:37:22]  Kodlayan: aLypSe.
+[18:37:22] --------------------------------------------
+
+[18:37:22]   Loaded 1 filterscripts.
+
+[18:37:22] Yüklendi: "Sunucu genel ayarları."
+[18:37:22] Yüklendi: "Sunucu textdrawları."
+[18:37:22] Yüklendi: "Exp-Level sistemi."
+[18:37:22] Yüklendi: "Saat sistemi."
+[18:37:22] Yüklendi: "Sunucu haritası."
+[18:37:22] Yüklendi: "Sunucu araçları."
+[18:37:22] Yüklendi: "Hız pickupları."
+[18:37:22] Yüklendi: "Ev sistemi."
+[18:37:22] Toplam "0" ev bulunmakta.
+[18:37:22] Yüklendi: "Sunucu modu."
+[18:37:22] 
+[18:37:22] "--------------------------------------------------"
+[18:37:22] "             #Trinity-Xtreme Freeroam             "
+[18:37:22] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[18:37:22] "          #Created by Crosscuk & ImmortaL         "
+[18:37:22] "            #since 27/01/2013 - 01:52             "
+[18:37:22] "                                                  "
+[18:37:22] "                 [Developer Mode]                 "
+[18:37:22] "                                                  "
+[18:37:22] "         Saat: 18:37:22 ~ Tarih: 22/5/2013         "
+[18:37:22] "--------------------------------------------------"
+[18:37:22] Number of vehicle models: 51
+[18:37:41] Incoming connection: 127.0.0.1:49160
+[18:37:41] [join] ImmortaL has joined the server (0:127.0.0.1)
+[18:37:52] [chat] [ImmortaL]: he
+[18:37:55] [chat] [ImmortaL]: hell
+[18:42:28] [chat] [ImmortaL]: :D
+Console input: list
+[18:42:59] RCON (In-Game): Player #0 (ImmortaL) failed login.
+[18:43:02] RCON (In-Game): Player #0 (ImmortaL) has logged in.
+[18:43:04] [chat] [ImmortaL]: hest
+[18:43:08] [chat] [ImmortaL]: vay amk
+[18:43:11] [chat] [ImmortaL]: isplayeraladmin
+[18:43:14] [chat] [ImmortaL]: hatalı
+[18:43:16] [chat] [ImmortaL]: :$
+[18:43:21] [chat] [ImmortaL]: veya dosya konumu
+[18:43:31] [part] ImmortaL has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3x, (C)2005-2013 SA-MP Team
+
+[18:45:51] 
+[18:45:51] Server Plugins
+[18:45:51] --------------
+[18:45:51]  Loading plugin: streamer
+[18:45:51] 
+
+*** Streamer Plugin v2.6.1 by Incognito loaded ***
+
+[18:45:51]   Loaded.
+[18:45:51]  Loaded 1 plugins.
+
+[18:45:51] 
+[18:45:51] Filterscripts
+[18:45:51] ---------------
+[18:45:51]   Loading filterscript 'aLAdmin.amx'...
+[18:45:51] 
+--------------------------------------------
+[18:45:51]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
+[18:45:51]  Kodlayan: aLypSe.
+[18:45:51] --------------------------------------------
+
+[18:45:51]   Loaded 1 filterscripts.
+
+[18:45:51] Yüklendi: "Sunucu genel ayarları."
+[18:45:51] Yüklendi: "Sunucu textdrawları."
+[18:45:51] Yüklendi: "Exp-Level sistemi."
+[18:45:51] Yüklendi: "Saat sistemi."
+[18:45:51] Yüklendi: "Sunucu haritası."
+[18:45:51] Yüklendi: "Sunucu araçları."
+[18:45:51] Yüklendi: "Hız pickupları."
+[18:45:51] Yüklendi: "Ev sistemi."
+[18:45:51] Toplam "0" ev bulunmakta.
+[18:45:51] Yüklendi: "Sunucu modu."
+[18:45:51] 
+[18:45:51] "--------------------------------------------------"
+[18:45:51] "             #Trinity-Xtreme Freeroam             "
+[18:45:51] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[18:45:51] "          #Created by Crosscuk & ImmortaL         "
+[18:45:51] "            #since 27/01/2013 - 01:52             "
+[18:45:51] "                                                  "
+[18:45:51] "                 [Developer Mode]                 "
+[18:45:51] "                                                  "
+[18:45:51] "         Saat: 18:45:51 ~ Tarih: 22/5/2013         "
+[18:45:51] "--------------------------------------------------"
+[18:45:51] Number of vehicle models: 51
+[18:46:22] Incoming connection: 127.0.0.1:49161
+[18:46:22] [join] ImmortaL has joined the server (0:127.0.0.1)
+[18:46:26] [part] ImmortaL has left the server (0:2)

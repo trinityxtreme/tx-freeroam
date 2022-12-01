@@ -5,56 +5,15 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[19:49:50] 
-[19:49:50] Server Plugins
-[19:49:50] --------------
-[19:49:50]  Loading plugin: streamer
-[19:49:50] 
+[14:16:18] 
+[14:16:18] Server Plugins
+[14:16:18] --------------
+[14:16:18]  Loaded 0 plugins.
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
-
-[19:49:50]   Loaded.
-[19:49:50]  Loaded 1 plugins.
-
-[19:49:50] 
-[19:49:50] Filterscripts
-[19:49:50] ---------------
-[19:49:50]   Loading filterscript 'aLAdmin.amx'...
-[19:49:50] 
---------------------------------------------
-[19:49:50]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[19:49:50]  Kodlayan: aLypSe.
-[19:49:50] --------------------------------------------
-
-[19:49:50]   Loaded 1 filterscripts.
-
-[19:49:50] Yüklendi: "Sunucu genel ayarları."
-[19:49:50] Yüklendi: "Sunucu textdrawları."
-[19:49:50] Yüklendi: "Exp-Level sistemi."
-[19:49:50] Yüklendi: "Saat sistemi."
-[19:49:50] Yüklendi: "Sunucu haritası."
-[19:49:50] Yüklendi: "Sunucu araçları."
-[19:49:50] Yüklendi: "Hız pickupları."
-[19:49:50] Yüklendi: "Ev sistemi."
-[19:49:50] Toplam "0" ev bulunmakta.
-[19:49:50] Yüklendi: "Sunucu modu."
-[19:49:50] 
-[19:49:50] "--------------------------------------------------"
-[19:49:50] "             #Trinity-Xtreme Freeroam             "
-[19:49:50] "         #SA-MP Oyun Modu [vALPHA][RC-1.4]        "
-[19:49:50] "          #Created by Crosscuk & ImmortaL         "
-[19:49:50] "            #since 27/01/2013 - 01:52             "
-[19:49:50] "                                                  "
-[19:49:50] "                 [Developer Mode]                 "
-[19:49:50] "                                                  "
-[19:49:50] "         Saat: 19:49:50 ~ Tarih: 21/5/2013         "
-[19:49:50] "--------------------------------------------------"
-[19:49:50] Number of vehicle models: 51
-[19:50:19] Incoming connection: 127.0.0.1:49170
-[19:50:19] [join] ImmortaL has joined the server (0:127.0.0.1)
-[19:51:22] [part] ImmortaL has left the server (0:1)
+[14:16:18] I couldn't load any gamemode scripts. Please verify your server.cfg
+[14:16:18] It needs a gamemode0 line at the very least.
 
 ----------
 Loaded log file: "server_log.txt".
@@ -62,56 +21,23 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[19:57:53] 
-[19:57:53] Server Plugins
-[19:57:53] --------------
-[19:57:53]  Loading plugin: streamer
-[19:57:53] 
+[14:17:20] 
+[14:17:20] Server Plugins
+[14:17:20] --------------
+[14:17:20]  Loaded 0 plugins.
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
+[14:17:20] 
+[14:17:20] Filterscripts
+[14:17:20] ---------------
+[14:17:20]   Loaded 0 filterscripts.
 
-[19:57:53]   Loaded.
-[19:57:53]  Loaded 1 plugins.
-
-[19:57:53] 
-[19:57:53] Filterscripts
-[19:57:53] ---------------
-[19:57:53]   Loading filterscript 'aLAdmin.amx'...
-[19:57:53] 
---------------------------------------------
-[19:57:53]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[19:57:53]  Kodlayan: aLypSe.
-[19:57:53] --------------------------------------------
-
-[19:57:53]   Loaded 1 filterscripts.
-
-[19:57:53] Yüklendi: "Sunucu genel ayarları."
-[19:57:53] Yüklendi: "Sunucu textdrawları."
-[19:57:53] Yüklendi: "Exp-Level sistemi."
-[19:57:53] Yüklendi: "Saat sistemi."
-[19:57:53] Yüklendi: "Sunucu haritası."
-[19:57:53] Yüklendi: "Sunucu araçları."
-[19:57:53] Yüklendi: "Hız pickupları."
-[19:57:53] Yüklendi: "Ev sistemi."
-[19:57:53] Toplam "0" ev bulunmakta.
-[19:57:53] Yüklendi: "Sunucu modu."
-[19:57:53] 
-[19:57:53] "--------------------------------------------------"
-[19:57:53] "             #Trinity-Xtreme Freeroam             "
-[19:57:53] "         #SA-MP Oyun Modu [vALPHA][RC-1.4]        "
-[19:57:53] "          #Created by Crosscuk & ImmortaL         "
-[19:57:53] "            #since 27/01/2013 - 01:52             "
-[19:57:53] "                                                  "
-[19:57:53] "                 [Developer Mode]                 "
-[19:57:53] "                                                  "
-[19:57:53] "         Saat: 19:57:53 ~ Tarih: 21/5/2013         "
-[19:57:53] "--------------------------------------------------"
-[19:57:53] Number of vehicle models: 51
-[19:58:16] Incoming connection: 127.0.0.1:49172
-[19:58:16] [join] ImmortaL has joined the server (0:127.0.0.1)
-[19:59:01] [part] ImmortaL has left the server (0:1)
+[14:17:20] Number of vehicle models: 0
+[14:17:45] [connection] incoming connection: 127.0.0.1:61723 id: 0
+[14:17:45] [join] Kleo has joined the server (0:127.0.0.1)
+[14:19:28] [part] Kleo has left the server (0:1)
+[14:20:08] --- Server Shutting Down.
 
 ----------
 Loaded log file: "server_log.txt".
@@ -119,56 +45,23 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[20:00:21] 
-[20:00:21] Server Plugins
-[20:00:21] --------------
-[20:00:21]  Loading plugin: streamer
-[20:00:21] 
+[14:35:16] 
+[14:35:16] Server Plugins
+[14:35:16] --------------
+[14:35:16]  Loaded 0 plugins.
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
+[14:35:16] 
+[14:35:16] Filterscripts
+[14:35:16] ---------------
+[14:35:16]   Loaded 0 filterscripts.
 
-[20:00:21]   Loaded.
-[20:00:21]  Loaded 1 plugins.
-
-[20:00:22] 
-[20:00:22] Filterscripts
-[20:00:22] ---------------
-[20:00:22]   Loading filterscript 'aLAdmin.amx'...
-[20:00:23] 
---------------------------------------------
-[20:00:23]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[20:00:23]  Kodlayan: aLypSe.
-[20:00:23] --------------------------------------------
-
-[20:00:23]   Loaded 1 filterscripts.
-
-[20:00:23] Yüklendi: "Sunucu genel ayarları."
-[20:00:23] Yüklendi: "Sunucu textdrawları."
-[20:00:23] Yüklendi: "Exp-Level sistemi."
-[20:00:23] Yüklendi: "Saat sistemi."
-[20:00:23] Yüklendi: "Sunucu haritası."
-[20:00:23] Yüklendi: "Sunucu araçları."
-[20:00:23] Yüklendi: "Hız pickupları."
-[20:00:23] Yüklendi: "Ev sistemi."
-[20:00:23] Toplam "0" ev bulunmakta.
-[20:00:23] Yüklendi: "Sunucu modu."
-[20:00:23] 
-[20:00:23] "--------------------------------------------------"
-[20:00:23] "             #Trinity-Xtreme Freeroam             "
-[20:00:23] "         #SA-MP Oyun Modu [vALPHA][RC-1.4]        "
-[20:00:23] "          #Created by Crosscuk & ImmortaL         "
-[20:00:23] "            #since 27/01/2013 - 01:52             "
-[20:00:23] "                                                  "
-[20:00:23] "                 [Developer Mode]                 "
-[20:00:23] "                                                  "
-[20:00:23] "         Saat: 20:0:23 ~ Tarih: 21/5/2013         "
-[20:00:23] "--------------------------------------------------"
-[20:00:23] Number of vehicle models: 51
-[20:01:42] Incoming connection: 127.0.0.1:49173
-[20:01:42] [join] ImmortaL has joined the server (0:127.0.0.1)
-[20:07:48] [part] ImmortaL has left the server (0:1)
+[14:35:16] Number of vehicle models: 0
+[14:35:38] [connection] incoming connection: 127.0.0.1:58788 id: 0
+[14:35:38] [join] Kleo has joined the server (0:127.0.0.1)
+[14:44:52] [part] Kleo has left the server (0:1)
+[14:46:14] --- Server Shutting Down.
 
 ----------
 Loaded log file: "server_log.txt".
@@ -176,88 +69,36 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[18:16:12] 
-[18:16:12] Server Plugins
-[18:16:12] --------------
-[18:16:12]  Loading plugin: streamer
-[18:16:12] 
+[14:49:20] language = ""  (string)
+[14:49:20] 
+[14:49:20] Server Plugins
+[14:49:20] --------------
+[14:49:20]  Loading plugin: streamer
+[14:49:20] 
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
 
-[18:16:12]   Loaded.
-[18:16:12]  Loaded 1 plugins.
+[14:49:20]   Loaded.
+[14:49:20]  Loaded 1 plugins.
 
-[18:16:12] 
-[18:16:12] Filterscripts
-[18:16:12] ---------------
-[18:16:12]   Loading filterscript 'aLAdmin.amx'...
-[18:16:12] 
---------------------------------------------
-[18:16:12]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[18:16:12]  Kodlayan: aLypSe.
-[18:16:12] --------------------------------------------
+[14:49:20] 
+[14:49:20] Filterscripts
+[14:49:20] ---------------
+[14:49:20]   Loaded 0 filterscripts.
 
-[18:16:12]   Loaded 1 filterscripts.
+[14:49:20] LOADED: Textdraws
+[14:49:20] LOADED: Map & cars
+[14:49:20] Number of vehicle models: 51
+[14:49:43] [connection] incoming connection: 127.0.0.1:51762 id: 0
+[14:49:43] [join] Kleo has joined the server (0:127.0.0.1)
+[14:54:18] [part] Kleo has left the server (0:1)
+[14:59:44] --- Server Shutting Down.
+[14:59:44] 
 
-[18:16:12] Yüklendi: "Sunucu genel ayarları."
-[18:16:12] Yüklendi: "Sunucu textdrawları."
-[18:16:12] Yüklendi: "Exp-Level sistemi."
-[18:16:12] Yüklendi: "Saat sistemi."
-[18:16:12] Yüklendi: "Sunucu haritası."
-[18:16:12] Yüklendi: "Sunucu araçları."
-[18:16:12] Yüklendi: "Hız pickupları."
-[18:16:12] Yüklendi: "Ev sistemi."
-[18:16:12] Toplam "0" ev bulunmakta.
-[18:16:12] Yüklendi: "Sunucu modu."
-[18:16:12] 
-[18:16:12] "--------------------------------------------------"
-[18:16:12] "             #Trinity-Xtreme Freeroam             "
-[18:16:12] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
-[18:16:12] "          #Created by Crosscuk & ImmortaL         "
-[18:16:12] "            #since 27/01/2013 - 01:52             "
-[18:16:12] "                                                  "
-[18:16:12] "                 [Developer Mode]                 "
-[18:16:12] "                                                  "
-[18:16:12] "         Saat: 18:16:12 ~ Tarih: 22/5/2013         "
-[18:16:12] "--------------------------------------------------"
-[18:16:12] Number of vehicle models: 51
-[18:17:05] Incoming connection: 127.0.0.1:49157
-[18:17:06] [join] ImmortaL has joined the server (0:127.0.0.1)
-[18:18:51] [part] ImmortaL has left the server (0:1)
-Console input: gmx
-[18:20:29] Sunucu modu kapandı.
-[18:20:29] Saat: 18:20:29 ~ Tarih: 22/5/2013
-[18:20:29] Trinity-Xtreme / since 27/01/2013 - 01:52
-[18:20:41] Yüklendi: "Sunucu genel ayarları."
-[18:20:41] Yüklendi: "Sunucu textdrawları."
-[18:20:41] Yüklendi: "Exp-Level sistemi."
-[18:20:41] Yüklendi: "Saat sistemi."
-[18:20:41] Yüklendi: "Sunucu haritası."
-[18:20:41] Yüklendi: "Sunucu araçları."
-[18:20:41] Yüklendi: "Hız pickupları."
-[18:20:41] Yüklendi: "Ev sistemi."
-[18:20:41] Toplam "0" ev bulunmakta.
-[18:20:41] Yüklendi: "Sunucu modu."
-[18:20:41] 
-[18:20:41] "--------------------------------------------------"
-[18:20:41] "             #Trinity-Xtreme Freeroam             "
-[18:20:41] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
-[18:20:41] "          #Created by Crosscuk & ImmortaL         "
-[18:20:41] "            #since 27/01/2013 - 01:52             "
-[18:20:41] "                                                  "
-[18:20:41] "                 [Developer Mode]                 "
-[18:20:41] "                                                  "
-[18:20:41] "         Saat: 18:20:41 ~ Tarih: 22/5/2013         "
-[18:20:41] "--------------------------------------------------"
-[18:20:41] Number of vehicle models: 51
-[18:22:40] Incoming connection: 127.0.0.1:49158
-[18:22:40] [join] ImmortaL has joined the server (0:127.0.0.1)
-[18:22:50] [chat] [ImmortaL]: test
-[18:22:56] [chat] [ImmortaL]: gm - rcon :C
-[18:31:26] [chat] [ImmortaL]: heçşt
-[18:31:28] [part] ImmortaL has left the server (0:1)
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
 
 ----------
 Loaded log file: "server_log.txt".
@@ -265,57 +106,154 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[18:32:04] 
-[18:32:04] Server Plugins
-[18:32:04] --------------
-[18:32:04]  Loading plugin: streamer
-[18:32:04] 
+[15:40:07] language = ""  (string)
+[15:40:07] 
+[15:40:07] Server Plugins
+[15:40:07] --------------
+[15:40:07]  Loading plugin: streamer
+[15:40:07] 
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
 
-[18:32:04]   Loaded.
-[18:32:04]  Loaded 1 plugins.
+[15:40:07]   Loaded.
+[15:40:07]  Loading plugin: sscanf
+[15:40:07] 
+[15:40:07]  ===============================
+[15:40:07] 
+[15:40:07]       sscanf plugin loaded.     
+[15:40:07] 
+[15:40:07]          Version: 2.13.2
+[15:40:07] 
+[15:40:07]    (c) 2022 Alex "Y_Less" Cole  
+[15:40:07] 
+[15:40:07]  ===============================
+[15:40:07] 
+[15:40:07]   Loaded.
+[15:40:07]  Loading plugin: crashdetect
+[15:40:07]   CrashDetect must be loaded before 'streamer.DLL'
+[15:40:07]   Failed.
+[15:40:07]  Loaded 2 plugins.
 
-[18:32:04] 
-[18:32:04] Filterscripts
-[18:32:04] ---------------
-[18:32:04]   Loading filterscript 'aLAdmin.amx'...
-[18:32:04] 
---------------------------------------------
-[18:32:04]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[18:32:04]  Kodlayan: aLypSe.
-[18:32:04] --------------------------------------------
+[15:40:07] 
+[15:40:07] Filterscripts
+[15:40:07] ---------------
+[15:40:07]   Loaded 0 filterscripts.
 
-[18:32:04]   Loaded 1 filterscripts.
+[15:40:07]  
+[15:40:07]  
+[15:40:07]          ==============================================================
+[15:40:07]          |                                                            |
+[15:40:07]          |                                                            |
+[15:40:07]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[15:40:07]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[15:40:07]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[15:40:07]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[15:40:07]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[15:40:07]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[15:40:07]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[15:40:07]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[15:40:07]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[15:40:07]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[15:40:07]          |           Y:::::Y                    S:::::S   I::::I      |
+[15:40:07]          |           Y:::::Y                    S:::::S   I::::I      |
+[15:40:07]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[15:40:07]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[15:40:07]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[15:40:07]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[15:40:07]          |                                                            |
+[15:40:07]          |                                                            |
+[15:40:07]          |                      (c) 2021 MPL v1.1                     |
+[15:40:07]          |            Alex "Y_Less" Cole and contributors.            |
+[15:40:07]          |                                                            |
+[15:40:07]          |                                                            |
+[15:40:07]          ==============================================================
+[15:40:07]  
+[15:40:07]  
+[15:40:07]  ========================================== 
+[15:40:07]  |                                        | 
+[15:40:07]  |  Missing YSI scriptfiles directories:  | 
+[15:40:07]  |                                        | 
+[15:40:07]  |      /scriptfiles/YSI/fixes/           | 
+[15:40:07]  |      /scriptfiles/YSI/temp/            | 
+[15:40:07]  |                                        | 
+[15:40:07]  ========================================== 
+[15:40:07]  |                                        | 
+[15:40:07]  |   Generating code, this may take a     | 
+[15:40:07]  |  little bit of time.  Note that this   | 
+[15:40:07]  |  code generation works best with the   | 
+[15:40:07]  |     JIT plugin, which you are not      | 
+[15:40:07]  |     currently using.  Get it here:     | 
+[15:40:07]  |                                        | 
+[15:40:07]  |       https://git.io/jit-plugin        | 
+[15:40:07]  |                                        | 
+[15:40:07]  |             Please wait...             | 
+[15:40:07]  |                                        | 
+[15:40:07]  |             Done in 34ms!              | 
+[15:40:07]  |                                        | 
+[15:40:07]  ========================================== 
+[15:40:07] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[15:40:07] *** YSI Info: Ignore this error if the FS already loaded.
+[15:40:07]  |                                        | 
+[15:40:07]  | Server:      0.3.7-R2 (Windows)        | 
+[15:40:07]  | Started:     01 Dec 2022 - 15:40:07    | 
+[15:40:07]  |                                        | 
+[15:40:07]  | Compiler:    3.10.10 (Windows)         | 
+[15:40:07]  | Includes:    0.3DL                     | 
+[15:40:07]  | Codepage:    <none>                    | 
+[15:40:07]  | Built:       01 Dec 2022 - 15:40:05    | 
+[15:40:07]  |                                        | 
+[15:40:07]  | YSI:         v5.07.3082                | 
+[15:40:07]  | Master:      -1                        | 
+[15:40:07]  |                                        | 
+[15:40:07]  | JIT:         <none>                    | 
+[15:40:07]  | Crashdetect: <none>                    | 
+[15:40:07]  |                                        | 
+[15:40:07]  ========================================== 
+[15:40:07]  
+[15:40:07]  
+[15:40:07] Y�klendi: "Sunucu genel ayarlar�."
+[15:40:07] Y�klendi: "Sunucu textdrawlar�."
+[15:40:07] Y�klendi: "Exp-Level sistemi."
+[15:40:07] Y�klendi: "Saat sistemi."
+[15:40:07] Y�klendi: "Sunucu haritas�."
+[15:40:07] Y�klendi: "Sunucu ara�lar�."
+[15:40:07] Y�klendi: "H�z pickuplar�."
+[15:40:07] Y�klendi: "Ev sistemi."
+[15:40:07] Toplam "0" ev bulunmakta.
+[15:40:07] Y�klendi: "Sunucu modu."
+[15:40:07] 
+[15:40:07] "--------------------------------------------------"
+[15:40:07] "             #Trinity-Xtreme Freeroam             "
+[15:40:07] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[15:40:07] "          #Created by Crosscuk & ImmortaL         "
+[15:40:07] "            #since 27/01/2013 - 01:52             "
+[15:40:07] "                                                  "
+[15:40:07] "                 [Developer Mode]                 "
+[15:40:07] "                                                  "
+[15:40:07] "         Saat: 15:40:7 ~ Tarih: 1/12/2022         "
+[15:40:07] "--------------------------------------------------"
+[15:40:07] Number of vehicle models: 51
+[15:40:30] [connection] incoming connection: 127.0.0.1:60735 id: 0
+[15:40:30] [join] Kleo has joined the server (0:127.0.0.1)
+[15:41:57] [death] Kleo died 54
+[15:48:19] [part] Kleo has left the server (0:1)
+[15:53:57] --- Server Shutting Down.
+[15:53:57] Sunucu modu kapand�.
+[15:53:57] Saat: 15:53:57 ~ Tarih: 1/12/2022
+[15:53:57] Trinity-Xtreme / since 27/01/2013 - 01:52
+[15:53:57] 
 
-[18:32:04] Yüklendi: "Sunucu genel ayarları."
-[18:32:04] Yüklendi: "Sunucu textdrawları."
-[18:32:04] Yüklendi: "Exp-Level sistemi."
-[18:32:04] Yüklendi: "Saat sistemi."
-[18:32:04] Yüklendi: "Sunucu haritası."
-[18:32:04] Yüklendi: "Sunucu araçları."
-[18:32:04] Yüklendi: "Hız pickupları."
-[18:32:04] Yüklendi: "Ev sistemi."
-[18:32:04] Toplam "0" ev bulunmakta.
-[18:32:04] Yüklendi: "Sunucu modu."
-[18:32:04] 
-[18:32:04] "--------------------------------------------------"
-[18:32:04] "             #Trinity-Xtreme Freeroam             "
-[18:32:04] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
-[18:32:04] "          #Created by Crosscuk & ImmortaL         "
-[18:32:04] "            #since 27/01/2013 - 01:52             "
-[18:32:04] "                                                  "
-[18:32:04] "                 [Developer Mode]                 "
-[18:32:04] "                                                  "
-[18:32:04] "         Saat: 18:32:4 ~ Tarih: 22/5/2013         "
-[18:32:04] "--------------------------------------------------"
-[18:32:04] Number of vehicle models: 51
-[18:32:33] Incoming connection: 127.0.0.1:49159
-[18:32:33] [join] ImmortaL has joined the server (0:127.0.0.1)
-[18:32:41] [chat] [ImmortaL]: test
-[18:32:43] [part] ImmortaL has left the server (0:1)
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[15:53:57] 
+[15:53:57]  ===============================
+[15:53:57] 
+[15:53:57]      sscanf plugin unloaded.    
+[15:53:57] 
+[15:53:57]  ===============================
+[15:53:57] 
 
 ----------
 Loaded log file: "server_log.txt".
@@ -323,68 +261,150 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[18:37:21] 
-[18:37:21] Server Plugins
-[18:37:21] --------------
-[18:37:21]  Loading plugin: streamer
-[18:37:21] 
+[15:54:15] language = ""  (string)
+[15:54:15] 
+[15:54:15] Server Plugins
+[15:54:15] --------------
+[15:54:15]  Loading plugin: streamer
+[15:54:15] 
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
 
-[18:37:21]   Loaded.
-[18:37:21]  Loaded 1 plugins.
+[15:54:15]   Loaded.
+[15:54:15]  Loading plugin: sscanf
+[15:54:15] 
+[15:54:15]  ===============================
+[15:54:15] 
+[15:54:15]       sscanf plugin loaded.     
+[15:54:15] 
+[15:54:15]          Version: 2.13.2
+[15:54:15] 
+[15:54:15]    (c) 2022 Alex "Y_Less" Cole  
+[15:54:15] 
+[15:54:15]  ===============================
+[15:54:15] 
+[15:54:15]   Loaded.
+[15:54:15]  Loading plugin: crashdetect
+[15:54:15]   CrashDetect must be loaded before 'streamer.DLL'
+[15:54:15]   Failed.
+[15:54:15]  Loaded 2 plugins.
 
-[18:37:22] 
-[18:37:22] Filterscripts
-[18:37:22] ---------------
-[18:37:22]   Loading filterscript 'aLAdmin.amx'...
-[18:37:22] 
---------------------------------------------
-[18:37:22]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[18:37:22]  Kodlayan: aLypSe.
-[18:37:22] --------------------------------------------
+[15:54:15] 
+[15:54:15] Filterscripts
+[15:54:15] ---------------
+[15:54:15]   Loaded 0 filterscripts.
 
-[18:37:22]   Loaded 1 filterscripts.
+[15:54:15]  
+[15:54:15]  
+[15:54:15]          ==============================================================
+[15:54:15]          |                                                            |
+[15:54:15]          |                                                            |
+[15:54:15]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[15:54:15]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[15:54:15]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[15:54:15]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[15:54:15]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[15:54:15]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[15:54:15]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[15:54:15]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[15:54:15]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[15:54:15]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[15:54:15]          |           Y:::::Y                    S:::::S   I::::I      |
+[15:54:15]          |           Y:::::Y                    S:::::S   I::::I      |
+[15:54:15]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[15:54:15]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[15:54:15]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[15:54:15]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[15:54:15]          |                                                            |
+[15:54:15]          |                                                            |
+[15:54:15]          |                      (c) 2021 MPL v1.1                     |
+[15:54:15]          |            Alex "Y_Less" Cole and contributors.            |
+[15:54:15]          |                                                            |
+[15:54:15]          |                                                            |
+[15:54:15]          ==============================================================
+[15:54:15]  
+[15:54:15]  
+[15:54:15]  ========================================== 
+[15:54:15]  |                                        | 
+[15:54:15]  |  Missing YSI scriptfiles directories:  | 
+[15:54:15]  |                                        | 
+[15:54:15]  |      /scriptfiles/YSI/fixes/           | 
+[15:54:15]  |      /scriptfiles/YSI/temp/            | 
+[15:54:15]  |                                        | 
+[15:54:15]  ========================================== 
+[15:54:15]  |                                        | 
+[15:54:15]  |   Generating code, this may take a     | 
+[15:54:15]  |  little bit of time.  Note that this   | 
+[15:54:15]  |  code generation works best with the   | 
+[15:54:15]  |     JIT plugin, which you are not      | 
+[15:54:15]  |     currently using.  Get it here:     | 
+[15:54:15]  |                                        | 
+[15:54:15]  |       https://git.io/jit-plugin        | 
+[15:54:15]  |                                        | 
+[15:54:15]  |             Please wait...             | 
+[15:54:15]  |                                        | 
+[15:54:15]  |             Done in 34ms!              | 
+[15:54:15]  |                                        | 
+[15:54:15]  ========================================== 
+[15:54:15] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[15:54:15] *** YSI Info: Ignore this error if the FS already loaded.
+[15:54:15]  |                                        | 
+[15:54:15]  | Server:      0.3.7-R2 (Windows)        | 
+[15:54:15]  | Started:     01 Dec 2022 - 15:54:15    | 
+[15:54:15]  |                                        | 
+[15:54:15]  | Compiler:    3.10.10 (Windows)         | 
+[15:54:15]  | Includes:    0.3DL                     | 
+[15:54:15]  | Codepage:    <none>                    | 
+[15:54:15]  | Built:       01 Dec 2022 - 15:40:05    | 
+[15:54:15]  |                                        | 
+[15:54:15]  | YSI:         v5.07.3082                | 
+[15:54:15]  | Master:      -1                        | 
+[15:54:15]  |                                        | 
+[15:54:15]  | JIT:         <none>                    | 
+[15:54:15]  | Crashdetect: <none>                    | 
+[15:54:15]  |                                        | 
+[15:54:15]  ========================================== 
+[15:54:15]  
+[15:54:15]  
+[15:54:15] Y�klendi: "Sunucu genel ayarlar�."
+[15:54:15] Y�klendi: "Sunucu textdrawlar�."
+[15:54:15] Y�klendi: "Exp-Level sistemi."
+[15:54:15] Y�klendi: "Saat sistemi."
+[15:54:15] Y�klendi: "Sunucu haritas�."
+[15:54:15] Y�klendi: "Sunucu ara�lar�."
+[15:54:15] Y�klendi: "H�z pickuplar�."
+[15:54:15] Y�klendi: "Ev sistemi."
+[15:54:15] Toplam "0" ev bulunmakta.
+[15:54:15] Y�klendi: "Sunucu modu."
+[15:54:15] 
+[15:54:15] "--------------------------------------------------"
+[15:54:15] "             #Trinity-Xtreme Freeroam             "
+[15:54:15] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[15:54:15] "          #Created by Crosscuk & ImmortaL         "
+[15:54:15] "            #since 27/01/2013 - 01:52             "
+[15:54:15] "                                                  "
+[15:54:15] "                 [Developer Mode]                 "
+[15:54:15] "                                                  "
+[15:54:15] "         Saat: 15:54:15 ~ Tarih: 1/12/2022         "
+[15:54:15] "--------------------------------------------------"
+[15:54:15] Number of vehicle models: 51
+[15:57:50] --- Server Shutting Down.
+[15:57:50] Sunucu modu kapand�.
+[15:57:50] Saat: 15:57:50 ~ Tarih: 1/12/2022
+[15:57:50] Trinity-Xtreme / since 27/01/2013 - 01:52
+[15:57:50] 
 
-[18:37:22] Yüklendi: "Sunucu genel ayarları."
-[18:37:22] Yüklendi: "Sunucu textdrawları."
-[18:37:22] Yüklendi: "Exp-Level sistemi."
-[18:37:22] Yüklendi: "Saat sistemi."
-[18:37:22] Yüklendi: "Sunucu haritası."
-[18:37:22] Yüklendi: "Sunucu araçları."
-[18:37:22] Yüklendi: "Hız pickupları."
-[18:37:22] Yüklendi: "Ev sistemi."
-[18:37:22] Toplam "0" ev bulunmakta.
-[18:37:22] Yüklendi: "Sunucu modu."
-[18:37:22] 
-[18:37:22] "--------------------------------------------------"
-[18:37:22] "             #Trinity-Xtreme Freeroam             "
-[18:37:22] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
-[18:37:22] "          #Created by Crosscuk & ImmortaL         "
-[18:37:22] "            #since 27/01/2013 - 01:52             "
-[18:37:22] "                                                  "
-[18:37:22] "                 [Developer Mode]                 "
-[18:37:22] "                                                  "
-[18:37:22] "         Saat: 18:37:22 ~ Tarih: 22/5/2013         "
-[18:37:22] "--------------------------------------------------"
-[18:37:22] Number of vehicle models: 51
-[18:37:41] Incoming connection: 127.0.0.1:49160
-[18:37:41] [join] ImmortaL has joined the server (0:127.0.0.1)
-[18:37:52] [chat] [ImmortaL]: he
-[18:37:55] [chat] [ImmortaL]: hell
-[18:42:28] [chat] [ImmortaL]: :D
-Console input: list
-[18:42:59] RCON (In-Game): Player #0 (ImmortaL) failed login.
-[18:43:02] RCON (In-Game): Player #0 (ImmortaL) has logged in.
-[18:43:04] [chat] [ImmortaL]: hest
-[18:43:08] [chat] [ImmortaL]: vay amk
-[18:43:11] [chat] [ImmortaL]: isplayeraladmin
-[18:43:14] [chat] [ImmortaL]: hatalı
-[18:43:16] [chat] [ImmortaL]: :$
-[18:43:21] [chat] [ImmortaL]: veya dosya konumu
-[18:43:31] [part] ImmortaL has left the server (0:1)
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[15:57:50] 
+[15:57:50]  ===============================
+[15:57:50] 
+[15:57:50]      sscanf plugin unloaded.    
+[15:57:50] 
+[15:57:50]  ===============================
+[15:57:50] 
 
 ----------
 Loaded log file: "server_log.txt".
@@ -392,53 +412,550 @@ Loaded log file: "server_log.txt".
 
 SA-MP Dedicated Server
 ----------------------
-v0.3x, (C)2005-2013 SA-MP Team
+v0.3.7-R2, (C)2005-2015 SA-MP Team
 
-[18:45:51] 
-[18:45:51] Server Plugins
-[18:45:51] --------------
-[18:45:51]  Loading plugin: streamer
-[18:45:51] 
+[15:58:03] language = ""  (string)
+[15:58:03] 
+[15:58:03] Server Plugins
+[15:58:03] --------------
+[15:58:03]  Loading plugin: streamer
+[15:58:03] 
 
-*** Streamer Plugin v2.6.1 by Incognito loaded ***
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
 
-[18:45:51]   Loaded.
-[18:45:51]  Loaded 1 plugins.
+[15:58:03]   Loaded.
+[15:58:03]  Loading plugin: sscanf
+[15:58:03] 
+[15:58:03]  ===============================
+[15:58:03] 
+[15:58:03]       sscanf plugin loaded.     
+[15:58:03] 
+[15:58:03]          Version: 2.13.2
+[15:58:03] 
+[15:58:03]    (c) 2022 Alex "Y_Less" Cole  
+[15:58:03] 
+[15:58:03]  ===============================
+[15:58:03] 
+[15:58:03]   Loaded.
+[15:58:03]  Loading plugin: crashdetect
+[15:58:03]   CrashDetect must be loaded before 'streamer.DLL'
+[15:58:03]   Failed.
+[15:58:03]  Loaded 2 plugins.
 
-[18:45:51] 
-[18:45:51] Filterscripts
-[18:45:51] ---------------
-[18:45:51]   Loading filterscript 'aLAdmin.amx'...
-[18:45:51] 
---------------------------------------------
-[18:45:51]  aLAdmin Yönetici Sistemi v1.2 ( +70 CMDs )
-[18:45:51]  Kodlayan: aLypSe.
-[18:45:51] --------------------------------------------
+[15:58:03] 
+[15:58:03] Filterscripts
+[15:58:03] ---------------
+[15:58:03]   Loaded 0 filterscripts.
 
-[18:45:51]   Loaded 1 filterscripts.
+[15:58:03]  
+[15:58:03]  
+[15:58:03]          ==============================================================
+[15:58:03]          |                                                            |
+[15:58:03]          |                                                            |
+[15:58:03]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[15:58:03]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[15:58:03]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[15:58:03]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[15:58:03]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[15:58:03]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[15:58:03]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[15:58:03]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[15:58:03]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[15:58:03]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[15:58:03]          |           Y:::::Y                    S:::::S   I::::I      |
+[15:58:03]          |           Y:::::Y                    S:::::S   I::::I      |
+[15:58:03]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[15:58:03]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[15:58:03]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[15:58:03]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[15:58:03]          |                                                            |
+[15:58:03]          |                                                            |
+[15:58:03]          |                      (c) 2021 MPL v1.1                     |
+[15:58:03]          |            Alex "Y_Less" Cole and contributors.            |
+[15:58:03]          |                                                            |
+[15:58:03]          |                                                            |
+[15:58:03]          ==============================================================
+[15:58:03]  
+[15:58:03]  
+[15:58:03]  ========================================== 
+[15:58:03]  |                                        | 
+[15:58:03]  |  Missing YSI scriptfiles directories:  | 
+[15:58:03]  |                                        | 
+[15:58:03]  |      /scriptfiles/YSI/fixes/           | 
+[15:58:03]  |      /scriptfiles/YSI/temp/            | 
+[15:58:03]  |                                        | 
+[15:58:03]  ========================================== 
+[15:58:03]  |                                        | 
+[15:58:03]  |   Generating code, this may take a     | 
+[15:58:03]  |  little bit of time.  Note that this   | 
+[15:58:03]  |  code generation works best with the   | 
+[15:58:03]  |     JIT plugin, which you are not      | 
+[15:58:03]  |     currently using.  Get it here:     | 
+[15:58:03]  |                                        | 
+[15:58:03]  |       https://git.io/jit-plugin        | 
+[15:58:03]  |                                        | 
+[15:58:03]  |             Please wait...             | 
+[15:58:03]  |                                        | 
+[15:58:03]  |             Done in 32ms!              | 
+[15:58:03]  |                                        | 
+[15:58:03]  ========================================== 
+[15:58:03] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[15:58:03] *** YSI Info: Ignore this error if the FS already loaded.
+[15:58:03]  |                                        | 
+[15:58:03]  | Server:      0.3.7-R2 (Windows)        | 
+[15:58:03]  | Started:     01 Dec 2022 - 15:58:03    | 
+[15:58:03]  |                                        | 
+[15:58:03]  | Compiler:    3.10.10 (Windows)         | 
+[15:58:03]  | Includes:    0.3DL                     | 
+[15:58:03]  | Codepage:    <none>                    | 
+[15:58:03]  | Built:       01 Dec 2022 - 15:40:05    | 
+[15:58:03]  |                                        | 
+[15:58:03]  | YSI:         v5.07.3082                | 
+[15:58:03]  | Master:      -1                        | 
+[15:58:03]  |                                        | 
+[15:58:03]  | JIT:         <none>                    | 
+[15:58:03]  | Crashdetect: <none>                    | 
+[15:58:03]  |                                        | 
+[15:58:03]  ========================================== 
+[15:58:03]  
+[15:58:03]  
+[15:58:03] Y�klendi: "Sunucu genel ayarlar�."
+[15:58:03] Y�klendi: "Sunucu textdrawlar�."
+[15:58:03] Y�klendi: "Exp-Level sistemi."
+[15:58:03] Y�klendi: "Saat sistemi."
+[15:58:03] Y�klendi: "Sunucu haritas�."
+[15:58:03] Y�klendi: "Sunucu ara�lar�."
+[15:58:03] Y�klendi: "H�z pickuplar�."
+[15:58:03] Y�klendi: "Ev sistemi."
+[15:58:03] Toplam "0" ev bulunmakta.
+[15:58:03] Y�klendi: "Sunucu modu."
+[15:58:03] 
+[15:58:03] "--------------------------------------------------"
+[15:58:03] "             #Trinity-Xtreme Freeroam             "
+[15:58:03] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[15:58:03] "          #Created by Crosscuk & ImmortaL         "
+[15:58:03] "            #since 27/01/2013 - 01:52             "
+[15:58:03] "                                                  "
+[15:58:03] "                 [Developer Mode]                 "
+[15:58:03] "                                                  "
+[15:58:03] "         Saat: 15:58:3 ~ Tarih: 1/12/2022         "
+[15:58:03] "--------------------------------------------------"
+[15:58:03] Number of vehicle models: 51
+[15:58:36] [connection] incoming connection: 127.0.0.1:55275 id: 0
+[15:58:36] [join] Kleo has joined the server (0:127.0.0.1)
+[16:06:20] [chat] [Kleo]: hello
+[16:06:23] [chat] [Kleo]: hiii
+[16:06:25] [chat] [Kleo]: wtf
+[16:06:36] sscanf error (C:\Users\Skylight\Desktop\txtreme\txmode.pwn:1247): "String/array must include a length, please add a destination size."
+[16:06:40] sscanf error (C:\Users\Skylight\Desktop\txtreme\txmode.pwn:1247): "String/array must include a length, please add a destination size."
+[16:10:19] [part] Kleo has left the server (0:1)
+[16:10:23] --- Server Shutting Down.
+[16:10:23] Sunucu modu kapand�.
+[16:10:23] Saat: 16:10:23 ~ Tarih: 1/12/2022
+[16:10:23] Trinity-Xtreme / since 27/01/2013 - 01:52
+[16:10:23] 
 
-[18:45:51] Yüklendi: "Sunucu genel ayarları."
-[18:45:51] Yüklendi: "Sunucu textdrawları."
-[18:45:51] Yüklendi: "Exp-Level sistemi."
-[18:45:51] Yüklendi: "Saat sistemi."
-[18:45:51] Yüklendi: "Sunucu haritası."
-[18:45:51] Yüklendi: "Sunucu araçları."
-[18:45:51] Yüklendi: "Hız pickupları."
-[18:45:51] Yüklendi: "Ev sistemi."
-[18:45:51] Toplam "0" ev bulunmakta.
-[18:45:51] Yüklendi: "Sunucu modu."
-[18:45:51] 
-[18:45:51] "--------------------------------------------------"
-[18:45:51] "             #Trinity-Xtreme Freeroam             "
-[18:45:51] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
-[18:45:51] "          #Created by Crosscuk & ImmortaL         "
-[18:45:51] "            #since 27/01/2013 - 01:52             "
-[18:45:51] "                                                  "
-[18:45:51] "                 [Developer Mode]                 "
-[18:45:51] "                                                  "
-[18:45:51] "         Saat: 18:45:51 ~ Tarih: 22/5/2013         "
-[18:45:51] "--------------------------------------------------"
-[18:45:51] Number of vehicle models: 51
-[18:46:22] Incoming connection: 127.0.0.1:49161
-[18:46:22] [join] ImmortaL has joined the server (0:127.0.0.1)
-[18:46:26] [part] ImmortaL has left the server (0:2)
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[16:10:23] 
+[16:10:23]  ===============================
+[16:10:23] 
+[16:10:23]      sscanf plugin unloaded.    
+[16:10:23] 
+[16:10:23]  ===============================
+[16:10:23] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[16:11:52] language = ""  (string)
+[16:11:52] 
+[16:11:52] Server Plugins
+[16:11:52] --------------
+[16:11:52]  Loading plugin: streamer
+[16:11:52] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[16:11:52]   Loaded.
+[16:11:52]  Loading plugin: sscanf
+[16:11:52] 
+[16:11:52]  ===============================
+[16:11:52] 
+[16:11:52]       sscanf plugin loaded.     
+[16:11:52] 
+[16:11:52]          Version: 2.13.2
+[16:11:52] 
+[16:11:52]    (c) 2022 Alex "Y_Less" Cole  
+[16:11:52] 
+[16:11:52]  ===============================
+[16:11:52] 
+[16:11:52]   Loaded.
+[16:11:52]  Loading plugin: crashdetect
+[16:11:52]   CrashDetect must be loaded before 'streamer.DLL'
+[16:11:52]   Failed.
+[16:11:52]  Loaded 2 plugins.
+
+[16:11:52] 
+[16:11:52] Filterscripts
+[16:11:52] ---------------
+[16:11:52]   Loaded 0 filterscripts.
+
+[16:11:52]  
+[16:11:52]  
+[16:11:52]          ==============================================================
+[16:11:52]          |                                                            |
+[16:11:52]          |                                                            |
+[16:11:52]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[16:11:52]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[16:11:52]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[16:11:52]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[16:11:52]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[16:11:52]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[16:11:52]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[16:11:52]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[16:11:52]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[16:11:52]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[16:11:52]          |           Y:::::Y                    S:::::S   I::::I      |
+[16:11:52]          |           Y:::::Y                    S:::::S   I::::I      |
+[16:11:52]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[16:11:52]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[16:11:52]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[16:11:52]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[16:11:52]          |                                                            |
+[16:11:52]          |                                                            |
+[16:11:52]          |                      (c) 2021 MPL v1.1                     |
+[16:11:52]          |            Alex "Y_Less" Cole and contributors.            |
+[16:11:52]          |                                                            |
+[16:11:52]          |                                                            |
+[16:11:52]          ==============================================================
+[16:11:52]  
+[16:11:52]  
+[16:11:52]  ========================================== 
+[16:11:52]  |                                        | 
+[16:11:52]  |  Missing YSI scriptfiles directories:  | 
+[16:11:52]  |                                        | 
+[16:11:52]  |      /scriptfiles/YSI/fixes/           | 
+[16:11:52]  |      /scriptfiles/YSI/temp/            | 
+[16:11:52]  |                                        | 
+[16:11:52]  ========================================== 
+[16:11:52]  |                                        | 
+[16:11:52]  |   Generating code, this may take a     | 
+[16:11:52]  |  little bit of time.  Note that this   | 
+[16:11:52]  |  code generation works best with the   | 
+[16:11:52]  |     JIT plugin, which you are not      | 
+[16:11:52]  |     currently using.  Get it here:     | 
+[16:11:52]  |                                        | 
+[16:11:52]  |       https://git.io/jit-plugin        | 
+[16:11:52]  |                                        | 
+[16:11:52]  |             Please wait...             | 
+[16:11:52]  |                                        | 
+[16:11:52]  |             Done in 65ms!              | 
+[16:11:52]  |                                        | 
+[16:11:52]  ========================================== 
+[16:11:52] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[16:11:52] *** YSI Info: Ignore this error if the FS already loaded.
+[16:11:52]  |                                        | 
+[16:11:52]  | Server:      0.3.7-R2 (Windows)        | 
+[16:11:52]  | Started:     01 Dec 2022 - 16:11:52    | 
+[16:11:52]  |                                        | 
+[16:11:52]  | Compiler:    3.10.10 (Windows)         | 
+[16:11:52]  | Includes:    0.3DL                     | 
+[16:11:52]  | Codepage:    <none>                    | 
+[16:11:52]  | Built:       01 Dec 2022 - 16:11:41    | 
+[16:11:52]  |                                        | 
+[16:11:52]  | YSI:         v5.07.3082                | 
+[16:11:52]  | Master:      -1                        | 
+[16:11:52]  |                                        | 
+[16:11:52]  | JIT:         <none>                    | 
+[16:11:52]  | Crashdetect: <none>                    | 
+[16:11:52]  |                                        | 
+[16:11:52]  ========================================== 
+[16:11:52]  
+[16:11:52]  
+[16:11:52] Y�klendi: "Sunucu genel ayarlar�."
+[16:11:52] Y�klendi: "Sunucu textdrawlar�."
+[16:11:52] Y�klendi: "Exp-Level sistemi."
+[16:11:52] Y�klendi: "Saat sistemi."
+[16:11:52] Y�klendi: "Sunucu haritas�."
+[16:11:52] Y�klendi: "Sunucu ara�lar�."
+[16:11:52] Y�klendi: "H�z pickuplar�."
+[16:11:52] Y�klendi: "Ev sistemi."
+[16:11:52] Toplam "0" ev bulunmakta.
+[16:11:52] � Supervivencia gamemode initializing.
+[16:11:52]   ** Server settings prepared.
+[16:11:52]   ** 301 player class loaded.
+[16:11:52]   ** MySQL connection failed!
+[16:11:52]   ** AntiDeAMX started!
+[16:11:52]   ** Objects loaded!
+[16:11:52] Y�klendi: "Sunucu modu."
+[16:11:52] 
+[16:11:52] "--------------------------------------------------"
+[16:11:52] "             #Trinity-Xtreme Freeroam             "
+[16:11:52] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[16:11:52] "          #Created by Crosscuk & ImmortaL         "
+[16:11:52] "            #since 27/01/2013 - 01:52             "
+[16:11:52] "                                                  "
+[16:11:52] "                 [Developer Mode]                 "
+[16:11:52] "                                                  "
+[16:11:52] "         Saat: 16:11:52 ~ Tarih: 1/12/2022         "
+[16:11:52] "--------------------------------------------------"
+[16:11:52] 
+---------------------------------------------------------------
+[16:11:52] � Gamemode started! [1/12/2022]
+[16:11:52] ---------------------------------------------------------------
+[16:11:52] Number of vehicle models: 51
+[16:12:15] [connection] incoming connection: 127.0.0.1:51104 id: 0
+[16:12:15] [join] Kleo has joined the server (0:127.0.0.1)
+[16:13:34] [command] Kleo entered "/campfire" command.
+[16:13:41] [command] Kleo entered "/campfire" command.
+[16:13:47] [command] Kleo entered "/firedown" command.
+[16:13:55] [command] Kleo entered "/m12" command.
+[16:14:39] [command] Kleo entered "/help" command.
+[16:14:41] [chat] [Kleo]: test
+[16:14:47] [chat] [Kleo]: bayaa g�zel
+[16:14:49] [chat] [Kleo]: aferin bana
+[16:17:50] [chat] [Kleo]: aferin bana
+[16:17:52] [command] Kleo entered "/m12" command.
+[16:17:58] [chat] [Kleo]: ups
+[16:18:01] [chat] [Kleo]: tekrar etti :DASD:A
+[16:19:46] [command] Kleo entered "/teles" command.
+[16:20:03] [command] Kleo entered "/m1" command.
+[16:20:43] [death] Kleo died 255
+[16:30:29] [command] Kleo entered "/v7" command.
+[16:30:33] [command] Kleo entered "/v8" command.
+[16:30:38] [command] Kleo entered "/v8" command.
+[16:33:23] [command] Kleo entered "/v8" command.
+[16:33:26] [command] Kleo entered "/v10" command.
+[16:34:40] [command] Kleo entered "/eat" command.
+[16:36:28] [command] Kleo entered "/m12" command.
+[16:36:37] [command] Kleo entered "/m12" command.
+[16:37:24] [command] Kleo entered "/mod1" command.
+[16:38:29] [chat] [Kleo]: olm
+[16:38:32] [chat] [Kleo]: m�kemmel yapm���m
+[16:38:34] [chat] [Kleo]: cidden harika
+[16:38:37] [chat] [Kleo]: elime eme�ime sa�l�k
+[16:47:44] [command] Kleo entered "/eat" command.
+[16:47:47] [command] Kleo entered "/eat" command.
+[16:47:47] [command] Kleo entered "/eat" command.
+[16:47:52] [command] Kleo entered "/antirad" command.
+[16:47:54] [command] Kleo entered "/help" command.
+[16:47:56] [command] Kleo entered "/cmdlist" command.
+[16:47:58] [command] Kleo entered "/commands" command.
+[16:48:19] [chat] [Kleo]: addrad
+[16:48:22] [command] Kleo entered "/addrad" command.
+[16:48:27] [command] Kleo entered "/addrad" command.
+[16:48:29] [command] Kleo entered "/addrad" command.
+[16:48:31] [command] Kleo entered "/addrad" command.
+[16:48:34] [command] Kleo entered "/addrad" command.
+[16:48:36] [command] Kleo entered "/addrad" command.
+[16:48:42] [command] Kleo entered "/addrad" command.
+[16:48:43] [command] Kleo entered "/addrad" command.
+[16:48:43] [command] Kleo entered "/addrad" command.
+[16:48:46] [command] Kleo entered "/addrad" command.
+[16:48:46] [command] Kleo entered "/addrad" command.
+[16:48:47] [command] Kleo entered "/addrad" command.
+[16:48:53] [command] Kleo entered "/radpills" command.
+[16:50:29] [command] Kleo entered "/v3" command.
+[16:50:32] [command] Kleo entered "/radpills" command.
+[16:50:33] [command] Kleo entered "/v3" command.
+[16:50:59] [command] Kleo entered "/v2" command.
+[17:20:27] [command] Kleo entered "/eat" command.
+[17:20:35] [command] Kleo entered "/addrad" command.
+[17:20:40] [command] Kleo entered "/radpill" command.
+[17:20:46] [command] Kleo entered "/radpills" command.
+[17:20:52] [command] Kleo entered "/addhunger" command.
+[17:20:58] [part] Kleo has left the server (0:1)
+[17:21:44] --- Server Shutting Down.
+[17:21:44] Sunucu modu kapand�.
+[17:21:44] Saat: 17:21:44 ~ Tarih: 1/12/2022
+[17:21:44] Trinity-Xtreme / since 27/01/2013 - 01:52
+[17:21:44]   ** MySQL connection closed!
+[17:21:44] � Supervivencia gamemode closed.
+[17:21:44] 
+
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[17:21:44] 
+[17:21:44]  ===============================
+[17:21:44] 
+[17:21:44]      sscanf plugin unloaded.    
+[17:21:44] 
+[17:21:44]  ===============================
+[17:21:44] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[18:17:02] language = ""  (string)
+[18:17:02] 
+[18:17:02] Server Plugins
+[18:17:02] --------------
+[18:17:02]  Loading plugin: streamer
+[18:17:02] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[18:17:02]   Loaded.
+[18:17:02]  Loading plugin: sscanf
+[18:17:02] 
+[18:17:02]  ===============================
+[18:17:02] 
+[18:17:02]       sscanf plugin loaded.     
+[18:17:02] 
+[18:17:02]          Version: 2.13.2
+[18:17:02] 
+[18:17:02]    (c) 2022 Alex "Y_Less" Cole  
+[18:17:02] 
+[18:17:02]  ===============================
+[18:17:02] 
+[18:17:02]   Loaded.
+[18:17:02]  Loading plugin: crashdetect
+[18:17:02]   CrashDetect must be loaded before 'streamer.DLL'
+[18:17:02]   Failed.
+[18:17:02]  Loaded 2 plugins.
+
+[18:17:02] 
+[18:17:02] Filterscripts
+[18:17:02] ---------------
+[18:17:02]   Loaded 0 filterscripts.
+
+[18:17:02]  
+[18:17:02]  
+[18:17:02]          ==============================================================
+[18:17:02]          |                                                            |
+[18:17:02]          |                                                            |
+[18:17:02]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[18:17:02]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[18:17:02]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[18:17:02]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[18:17:02]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[18:17:02]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[18:17:02]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[18:17:02]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[18:17:02]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[18:17:02]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[18:17:02]          |           Y:::::Y                    S:::::S   I::::I      |
+[18:17:02]          |           Y:::::Y                    S:::::S   I::::I      |
+[18:17:02]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[18:17:02]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[18:17:02]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[18:17:02]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[18:17:02]          |                                                            |
+[18:17:02]          |                                                            |
+[18:17:02]          |                      (c) 2021 MPL v1.1                     |
+[18:17:02]          |            Alex "Y_Less" Cole and contributors.            |
+[18:17:02]          |                                                            |
+[18:17:02]          |                                                            |
+[18:17:02]          ==============================================================
+[18:17:02]  
+[18:17:02]  
+[18:17:02]  ========================================== 
+[18:17:02]  |                                        | 
+[18:17:02]  |  Missing YSI scriptfiles directories:  | 
+[18:17:02]  |                                        | 
+[18:17:02]  |      /scriptfiles/YSI/fixes/           | 
+[18:17:02]  |      /scriptfiles/YSI/temp/            | 
+[18:17:02]  |                                        | 
+[18:17:02]  ========================================== 
+[18:17:02]  |                                        | 
+[18:17:02]  |   Generating code, this may take a     | 
+[18:17:02]  |  little bit of time.  Note that this   | 
+[18:17:02]  |  code generation works best with the   | 
+[18:17:02]  |     JIT plugin, which you are not      | 
+[18:17:02]  |     currently using.  Get it here:     | 
+[18:17:02]  |                                        | 
+[18:17:02]  |       https://git.io/jit-plugin        | 
+[18:17:02]  |                                        | 
+[18:17:02]  |             Please wait...             | 
+[18:17:02]  |                                        | 
+[18:17:02]  |             Done in 66ms!              | 
+[18:17:02]  |                                        | 
+[18:17:02]  ========================================== 
+[18:17:02] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[18:17:02] *** YSI Info: Ignore this error if the FS already loaded.
+[18:17:02]  |                                        | 
+[18:17:02]  | Server:      0.3.7-R2 (Windows)        | 
+[18:17:02]  | Started:     01 Dec 2022 - 18:17:02    | 
+[18:17:02]  |                                        | 
+[18:17:02]  | Compiler:    3.10.10 (Windows)         | 
+[18:17:02]  | Includes:    0.3DL                     | 
+[18:17:02]  | Codepage:    <none>                    | 
+[18:17:02]  | Built:       01 Dec 2022 - 18:14:54    | 
+[18:17:02]  |                                        | 
+[18:17:02]  | YSI:         v5.07.3082                | 
+[18:17:02]  | Master:      -1                        | 
+[18:17:02]  |                                        | 
+[18:17:02]  | JIT:         <none>                    | 
+[18:17:02]  | Crashdetect: <none>                    | 
+[18:17:02]  |                                        | 
+[18:17:02]  ========================================== 
+[18:17:02]  
+[18:17:02]  
+[18:17:02] Yıklendi: "Sunucu genel ayarları."
+[18:17:02] Yıklendi: "Sunucu textdrawları."
+[18:17:02] Yıklendi: "Exp-Level sistemi."
+[18:17:02] Yıklendi: "Saat sistemi."
+[18:17:02] Yıklendi: "Sunucu haritası."
+[18:17:02] Yıklendi: "Sunucu Araçları."
+[18:17:02] Yıklendi: "Hız pickupları."
+[18:17:02] Yıklendi: "Ev sistemi."
+[18:17:02] Toplam "0" ev bulunmakta.
+[18:17:02] ı Supervivencia gamemode initializing.
+[18:17:02]   ** Server settings prepared.
+[18:17:02]   ** 301 player class loaded.
+[18:17:02]   ** MySQL connection failed!
+[18:17:02]   ** AntiDeAMX started!
+[18:17:02]   ** Objects loaded!
+[18:17:02] Yıklendi: "Sunucu modu."
+[18:17:02] 
+[18:17:02] "--------------------------------------------------"
+[18:17:02] "             #Trinity-Xtreme Freeroam             "
+[18:17:02] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[18:17:02] "          #Created by Crosscuk & ImmortaL         "
+[18:17:02] "            #since 27/01/2013 - 01:52             "
+[18:17:02] "                                                  "
+[18:17:02] "                 [Developer Mode]                 "
+[18:17:02] "                                                  "
+[18:17:02] "         Saat: 18:17:2 ~ Tarih: 1/12/2022         "
+[18:17:02] "--------------------------------------------------"
+[18:17:02] 
+---------------------------------------------------------------
+[18:17:02] ı Gamemode started! [1/12/2022]
+[18:17:02] ---------------------------------------------------------------
+[18:17:02] Number of vehicle models: 51
+[18:17:26] [connection] incoming connection: 127.0.0.1:55966 id: 0
+[18:17:26] [join] Kleo has joined the server (0:127.0.0.1)
+[18:19:47] [command] Kleo entered "/stuntlar" command.
+[18:19:56] [command] Kleo entered "/m1" command.
+[18:21:09] [command] Kleo entered "/an imlist" command.
+[18:21:12] [command] Kleo entered "/animlist" command.
+[18:21:15] [command] Kleo entered "/kurallar" command.
+[18:22:46] [part] Kleo has left the server (0:1)
+[18:22:50] --- Server Shutting Down.
+[18:22:50] Sunucu modu kapandı.
+[18:22:50] Saat: 18:22:50 ~ Tarih: 1/12/2022
+[18:22:50] Trinity-Xtreme / since 27/01/2013 - 01:52
+[18:22:50]   ** MySQL connection closed!
+[18:22:50] ı Supervivencia gamemode closed.
+[18:22:50] 
+
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[18:22:50] 
+[18:22:50]  ===============================
+[18:22:50] 
+[18:22:50]      sscanf plugin unloaded.    
+[18:22:50] 
+[18:22:50]  ===============================
+[18:22:50] 

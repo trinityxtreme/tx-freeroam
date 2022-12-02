@@ -959,3 +959,160 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [18:22:50] 
 [18:22:50]  ===============================
 [18:22:50] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[22:47:58] language = ""  (string)
+[22:47:58] 
+[22:47:58] Server Plugins
+[22:47:58] --------------
+[22:47:58]  Loading plugin: streamer
+[22:47:58] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[22:47:58]   Loaded.
+[22:47:58]  Loading plugin: sscanf
+[22:47:59] 
+[22:47:59]  ===============================
+[22:47:59] 
+[22:47:59]       sscanf plugin loaded.     
+[22:47:59] 
+[22:47:59]          Version: 2.13.2
+[22:47:59] 
+[22:47:59]    (c) 2022 Alex "Y_Less" Cole  
+[22:47:59] 
+[22:47:59]  ===============================
+[22:47:59] 
+[22:47:59]   Loaded.
+[22:47:59]  Loading plugin: crashdetect
+[22:47:59]   CrashDetect must be loaded before 'streamer.DLL'
+[22:47:59]   Failed.
+[22:47:59]  Loaded 2 plugins.
+
+[22:47:59] 
+[22:47:59] Filterscripts
+[22:47:59] ---------------
+[22:47:59]   Loaded 0 filterscripts.
+
+[22:47:59]  
+[22:47:59]  
+[22:47:59]          ==============================================================
+[22:47:59]          |                                                            |
+[22:47:59]          |                                                            |
+[22:47:59]          |    YYYYYYY       YYYYYYY    SSSSSSSSSSSSSSS  IIIIIIIIII    |
+[22:47:59]          |    Y:::::Y       Y:::::Y  SS:::::::::::::::S I::::::::I    |
+[22:47:59]          |    Y:::::Y       Y:::::Y S:::::SSSSSS::::::S I::::::::I    |
+[22:47:59]          |    Y::::::Y     Y::::::Y S:::::S     SSSSSSS II::::::II    |
+[22:47:59]          |    YYY:::::Y   Y:::::YYY S:::::S               I::::I      |
+[22:47:59]          |       Y:::::Y Y:::::Y    S:::::S               I::::I      |
+[22:47:59]          |        Y:::::Y:::::Y      S::::SSSS            I::::I      |
+[22:47:59]          |         Y:::::::::Y        SS::::::SSSSS       I::::I      |
+[22:47:59]          |          Y:::::::Y           SSS::::::::SS     I::::I      |
+[22:47:59]          |           Y:::::Y               SSSSSS::::S    I::::I      |
+[22:47:59]          |           Y:::::Y                    S:::::S   I::::I      |
+[22:47:59]          |           Y:::::Y                    S:::::S   I::::I      |
+[22:47:59]          |           Y:::::Y        SSSSSSS     S:::::S II::::::II    |
+[22:47:59]          |        YYYY:::::YYYY     S::::::SSSSSS:::::S I::::::::I    |
+[22:47:59]          |        Y:::::::::::Y     S:::::::::::::::SS  I::::::::I    |
+[22:47:59]          |        YYYYYYYYYYYYY      SSSSSSSSSSSSSSS    IIIIIIIIII    |
+[22:47:59]          |                                                            |
+[22:47:59]          |                                                            |
+[22:47:59]          |                      (c) 2021 MPL v1.1                     |
+[22:47:59]          |            Alex "Y_Less" Cole and contributors.            |
+[22:47:59]          |                                                            |
+[22:47:59]          |                                                            |
+[22:47:59]          ==============================================================
+[22:47:59]  
+[22:47:59]  
+[22:47:59]  ========================================== 
+[22:47:59]  |                                        | 
+[22:47:59]  |  Missing YSI scriptfiles directories:  | 
+[22:47:59]  |                                        | 
+[22:47:59]  |      /scriptfiles/YSI/fixes/           | 
+[22:47:59]  |      /scriptfiles/YSI/temp/            | 
+[22:47:59]  |                                        | 
+[22:47:59]  ========================================== 
+[22:47:59]  |                                        | 
+[22:47:59]  |   Generating code, this may take a     | 
+[22:47:59]  |  little bit of time.  Note that this   | 
+[22:47:59]  |  code generation works best with the   | 
+[22:47:59]  |     JIT plugin, which you are not      | 
+[22:47:59]  |     currently using.  Get it here:     | 
+[22:47:59]  |                                        | 
+[22:47:59]  |       https://git.io/jit-plugin        | 
+[22:47:59]  |                                        | 
+[22:47:59]  |             Please wait...             | 
+[22:47:59]  |                                        | 
+[22:47:59]  |             Done in 65ms!              | 
+[22:47:59]  |                                        | 
+[22:47:59]  ========================================== 
+[22:47:59] *** YSI Warning: Could not load RconCommand/ClientCheckResponse fix FS.
+[22:47:59] *** YSI Info: Ignore this error if the FS already loaded.
+[22:47:59]  |                                        | 
+[22:47:59]  | Server:      0.3.7-R2 (Windows)        | 
+[22:47:59]  | Started:     01 Dec 2022 - 22:47:59    | 
+[22:47:59]  |                                        | 
+[22:47:59]  | Compiler:    3.10.10 (Windows)         | 
+[22:47:59]  | Includes:    0.3DL                     | 
+[22:47:59]  | Codepage:    <none>                    | 
+[22:47:59]  | Built:       01 Dec 2022 - 22:47:34    | 
+[22:47:59]  |                                        | 
+[22:47:59]  | YSI:         v5.07.3082                | 
+[22:47:59]  | Master:      -1                        | 
+[22:47:59]  |                                        | 
+[22:47:59]  | JIT:         <none>                    | 
+[22:47:59]  | Crashdetect: <none>                    | 
+[22:47:59]  |                                        | 
+[22:47:59]  ========================================== 
+[22:47:59]  
+[22:47:59]  
+[22:47:59] Yıklendi: "Sunucu genel ayarları."
+[22:47:59] Yıklendi: "Sunucu textdrawları."
+[22:47:59] Yıklendi: "Exp-Level sistemi."
+[22:47:59] Yıklendi: "Saat sistemi."
+[22:47:59] Yıklendi: "Sunucu haritası."
+[22:47:59] Yıklendi: "Sunucu Araçları."
+[22:47:59] Yıklendi: "Hız pickupları."
+[22:47:59] Yıklendi: "Ev sistemi."
+[22:47:59] Toplam "0" ev bulunmakta.
+[22:47:59] ı Supervivencia gamemode initializing.
+[22:47:59]   ** Server settings prepared.
+[22:47:59]   ** 301 player class loaded.
+[22:47:59]   ** MySQL connection failed!
+[22:47:59]   ** AntiDeAMX started!
+[22:47:59]   ** Objects loaded!
+[22:47:59] Yıklendi: "Sunucu modu."
+[22:47:59] 
+[22:47:59] "--------------------------------------------------"
+[22:47:59] "             #Trinity-Xtreme Freeroam             "
+[22:47:59] "         #SA-MP Oyun Modu [vALPHA][RC-1.5]        "
+[22:47:59] "          #Created by Crosscuk & ImmortaL         "
+[22:47:59] "            #since 27/01/2013 - 01:52             "
+[22:47:59] "                                                  "
+[22:47:59] "                 [Developer Mode]                 "
+[22:47:59] "                                                  "
+[22:47:59] "         Saat: 22:47:59 ~ Tarih: 1/12/2022         "
+[22:47:59] "--------------------------------------------------"
+[22:47:59] 
+---------------------------------------------------------------
+[22:47:59] ı Gamemode started! [1/12/2022]
+[22:47:59] ---------------------------------------------------------------
+[22:47:59] Number of vehicle models: 51
+[22:48:51] [connection] incoming connection: 127.0.0.1:65279 id: 0
+[22:48:51] [join] Kleo has joined the server (0:127.0.0.1)
+[22:52:46] [command] Kleo entered "/campfire" command.
+[22:52:59] [command] Kleo entered "/campfire" command.
+[22:53:13] [command] Kleo entered "/anims" command.
+[22:53:14] [command] Kleo entered "/lay" command.
+[22:53:17] [command] Kleo entered "/animlist" command.
+[22:53:20] [command] Kleo entered "/dmler" command.
+[22:53:32] [command] Kleo entered "/dmler" command.
+[22:53:38] [command] Kleo entered "/dmcik" command.
+[22:53:55] [part] Kleo has left the server (0:1)

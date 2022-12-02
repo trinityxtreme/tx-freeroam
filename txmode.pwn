@@ -14,10 +14,10 @@
 //============================================================================//
 
 // ** Library include
-#include <a_samp>         //SA-MP 0.3x orjinal kıtüphanesi.
-#include <sscanf2>         //SSCANF kütüphanesi.
-#include <streamer>       //Obje streamer kütüphanesi.
-#include <progress2>       //Progressbar kütüphanesi.
+#include <a_samp>         //SA-MP 0.3x orjinal kÄ±tÃ¼phanesi.
+#include <sscanf2>         //SSCANF kÃ¼tÃ¼phanesi.
+#include <streamer>       //Obje streamer kÃ¼tÃ¼phanesi.
+//#include <progress2>       //Progressbar kÃ¼tÃ¼phanesi.
 
 
 // ** Server settings
@@ -38,18 +38,27 @@
 #define showMessage(%0,%1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
 #define showDialog(%0,%1)  ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**","{BBBBBB}" %1, "Tamam", "")
 #define SendError(%0,%1) SendClientMessage(%0,0xF63845AA,"[!] HATA: {FFFFFF}" %1)
-#define SendInfo(%0,%1) SendClientMessage(%0,0x00A2F6AA,"[*] BİLGİ: {FFFFFF}" %1)
+#define SendInfo(%0,%1) SendClientMessage(%0,0x00A2F6AA,"[*] BÄ°LGÄ°: {FFFFFF}" %1)
 #define SendUse(%0,%1) SendClientMessage(%0,0x8C50FFAA,"[?] KULLANIM: {FFFFFF}" %1)
 
-// == (( Variable Unit )) =================================================== //
-// Textdraws:
-new Text:textdraw_server[MAX_PLAYERS];
+// ** Textdraws
+new Text:textdraw_server;
 new Text:textdraw_hungry[MAX_PLAYERS];
 new Text:textdraw_radiation[MAX_PLAYERS];
 new Text:textdraw_ping[MAX_PLAYERS];
 new Text:textdraw_key1[MAX_PLAYERS];
 new Text:textdraw_key2[MAX_PLAYERS];
 new Text:textdraw_key3[MAX_PLAYERS];
+new Text:Textdraw0;
+new Text:Textdraw1;
+new Text:Textdraw2;
+new Text:Textdraw3;
+new Text:Textdraw4;
+new Text:Textdraw5;
+new Text:Textdraw6;
+new Text:Textdraw7;
+new Text:Textdraw8;
+new Text:Textdraw9;
 
 // Player settings:
 new playerTimer[MAX_PLAYERS];
@@ -121,25 +130,21 @@ new PlayerColors[200] = {
 0xD8C762FF, 0xD8C762FF
 };
 
-
-// (( #Defineler ))===========================================================//
-
-
 // - DCMD defineleri
 #define dcmd(%1,%2,%3) if (!strcmp((%3)[1], #%1, true, (%2)) && ((((%3)[(%2) + 1] == '\0') && (dcmd_%1(playerid, ""))) || (((%3)[(%2) + 1] == ' ') && (dcmd_%1(playerid, (%3)[(%2) + 2]))))) return 1
 
 // - Ev sistemi defineleri
-#define DIALOG 8000 // Baılangıı dialog id
-#define MAX_HOUSE 100 // Toplam yaratılan ev sayısı.
-#define BASLIK "{FFFFFF}Trinity-Xtreme / {009BFF}Ev Sistemi" // Dialog,mesaj baılıkları
+#define DIALOG 8000 // BaÄ±langÄ±Ä± dialog id
+#define MAX_HOUSE 100 // Toplam yaratÄ±lan ev sayÄ±sÄ±.
+#define BASLIK "{FFFFFF}Trinity-Xtreme / {009BFF}Ev Sistemi" // Dialog,mesaj baÄ±lÄ±klarÄ±
 
-#define ACIKLAMA "Satılık Ev! (/satinal & /ev)" // Default yeni yaratılan evin aııklaması
-#define FIYAT 20000 // Default yeni yaratılan evin fiyatı
-#define KILIT 1 // Default yeni yaratılan evin kilidi ( 0: Aıık - 1: Kilitli )
-#define KASA 0 // Default yeni yaratılan evin kasasındaki para
+#define ACIKLAMA "SatÄ±lÄ±k Ev! (/satinal & /ev)" // Default yeni yaratÄ±lan evin aÄ±Ä±klamasÄ±
+#define FIYAT 20000 // Default yeni yaratÄ±lan evin fiyatÄ±
+#define KILIT 1 // Default yeni yaratÄ±lan evin kilidi ( 0: AÄ±Ä±k - 1: Kilitli )
+#define KASA 0 // Default yeni yaratÄ±lan evin kasasÄ±ndaki para
 
-#define MENU DIALOG+15 // Deıiıtirmeye gerek yok
-#define SATINAL MENU+15 // Deıiıtirmeye gerek yok
+#define MENU DIALOG+15 // DeÄ±iÄ±tirmeye gerek yok
+#define SATINAL MENU+15 // DeÄ±iÄ±tirmeye gerek yok
 
 #define BLUEH 1272 // Ellemeyin.
 #define GREENH 1273 // Ellemeyin.
@@ -150,9 +155,7 @@ new PlayerColors[200] = {
 #define PRESSED(%0) \
 	(((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
 
-// (( #Tanıtımlar ))==========================================================//
-
-// - Giriıte dans tanıtımları
+// - GiriÄ±te dans tanÄ±tÄ±mlarÄ±
 new RandAnims[6][0] = {
 {"DAN_LOOP_A"},
 {"DNCE_M_A"},
@@ -162,19 +165,7 @@ new RandAnims[6][0] = {
 {"DNCE_M_E"}
 };
 
-// - Textdraw tanıtımları
-new Text:Textdraw0;
-new Text:Textdraw1;
-new Text:Textdraw2;
-new Text:Textdraw3;
-new Text:Textdraw4;
-new Text:Textdraw5;
-new Text:Textdraw6;
-new Text:Textdraw7;
-new Text:Textdraw8;
-new Text:Textdraw9;
-
-// - PM sistemi tanıtımları
+// - PM sistemi tanÄ±tÄ±mlarÄ±
 enum PlayerInfo
 {
 	Last,
@@ -183,22 +174,25 @@ enum PlayerInfo
 
 new pInfo[MAX_PLAYERS][PlayerInfo];
 
-// - Exp sistemi tanıtımları
-new exp[MAX_PLAYERS],seviye[MAX_PLAYERS],expguncelle[MAX_PLAYERS];
-new Text:expbox; new Text:expmeter[MAX_PLAYERS]; new Bar:expbar[MAX_PLAYERS];
+// - Exp sistemi tanÄ±tÄ±mlarÄ±
+new exp[MAX_PLAYERS], seviye[MAX_PLAYERS], expguncelle[MAX_PLAYERS];
+new Text:expbox;
+new Text:expmeter[MAX_PLAYERS]; 
 
-// - Saat sistemi tanıtımları
+// new Bar:expbar[MAX_PLAYERS];
+
+// - Saat sistemi tanÄ±tÄ±mlarÄ±
 new Hour,
     Minute,
     Timer,
     Text:TimeText;
 
-// - Araç yınetim tanıtımları
+// - AraÃ§ yÄ±netim tanÄ±tÄ±mlarÄ±
 new motor,isiklar,alarm,kapilar,kaput,bagaj,objective;
 new Kilit[MAX_PLAYERS] = 0;
 new Arac[MAX_PLAYERS];
 
-// - DM sistemi tanıtımları
+// - DM sistemi tanÄ±tÄ±mlarÄ±
 new DM[MAX_PLAYERS];
 
 // - Desert Eagle Deathmatch - 1
@@ -220,64 +214,62 @@ new Float:fistdm1pos[4][6] = {
 {2146.9512,2517.0962,585.7723}
 };
 
-// - Yardım menısı tanıtımları
+// - YardÄ±m menÄ±sÄ± tanÄ±tÄ±mlarÄ±
 new dIp[][] =
 {
-	"{ACDA00}/firstperson\t\t{FFFFFF}FPS moduna giriş yaparsınız.",
-	"{ACDA00}/exitfirstperson\t{FFFFFF}FPS modundan çıkarsınız.",
-	"{ACDA00}/myversion\t\t{FFFFFF}SA-MP versiyonunuzu gösterir.",
-	"{ACDA00}/kurallar\t\t{FFFFFF}Sunucu kural menüsünü açar.",
-	"{ACDA00}/surus\t\t\t{FFFFFF}Araç iıi FPS modunu aıar/kapatır.",
-	"{ACDA00}/teles\t\t\t{FFFFFF}Teleport menısını aıar.",
+	"{ACDA00}/firstperson\t\t{FFFFFF}FPS moduna giriÅŸ yaparsÄ±nÄ±z.",
+	"{ACDA00}/exitfirstperson\t{FFFFFF}FPS modundan Ã§Ä±karsÄ±nÄ±z.",
+	"{ACDA00}/myversion\t\t{FFFFFF}SA-MP versiyonunuzu gÃ¶sterir.",
+	"{ACDA00}/kurallar\t\t{FFFFFF}Sunucu kural menÃ¼sÃ¼nÃ¼ aÃ§ar.",
+	"{ACDA00}/surus\t\t\t{FFFFFF}AraÃ§ iÄ±i FPS modunu aÄ±ar/kapatÄ±r.",
+	"{ACDA00}/teles\t\t\t{FFFFFF}Teleport menÄ±sÄ±nÄ± aÄ±ar.",
 	"{ACDA00}/m1-/m12\t\t{FFFFFF}Modifiyeli araba spawn eder.",
 	"{ACDA00}/v1-/v18\t\t{FFFFFF}Normal araba spawn eder.",
-	"{ACDA00}/changelog\t\t{FFFFFF}Gıncelleme listesini gısterir.",
-	"{ACDA00}/cevir\t\t\t{FFFFFF}Ters ıevrilen arabayı dızeltir.",
-	"{ACDA00}/31\t\t\t{FFFFFF}31 ıekme sistemini aıar/kapatır.",
-	"{ACDA00}/dmler\t\t\t{FFFFFF}Deathmatch alanı listesini gısterir.",
-	"{ACDA00}/stuntlar\t\t{FFFFFF}Stunt alanlarını gısterir.",
-	"{ACDA00}/can\t\t\t{FFFFFF}Can paketi satın alırsınız.",
-	"{ACDA00}/yelek\t\t\t{FFFFFF}Zırh paketi satın alırsınız.",
-    "{ACDA00}/ev\t\t\t{FFFFFF}Ev dızenleme menısını aıar.",
-	"{ACDA00}/yardim\t\t{FFFFFF}Oyun modu hakkında yardım verir.",
-	"\n\nBu mod {009BFF}MR.ImmortaL {FFFFFF}tarafından kodlanmııtır."
+	"{ACDA00}/changelog\t\t{FFFFFF}GÄ±ncelleme listesini gÄ±sterir.",
+	"{ACDA00}/cevir\t\t\t{FFFFFF}Ters Ä±evrilen arabayÄ± dÄ±zeltir.",
+	"{ACDA00}/31\t\t\t{FFFFFF}31 Ä±ekme sistemini aÄ±ar/kapatÄ±r.",
+	"{ACDA00}/dmler\t\t\t{FFFFFF}Deathmatch alanÄ± listesini gÄ±sterir.",
+	"{ACDA00}/stuntlar\t\t{FFFFFF}Stunt alanlarÄ±nÄ± gÄ±sterir.",
+	"{ACDA00}/can\t\t\t{FFFFFF}Can paketi satÄ±n alÄ±rsÄ±nÄ±z.",
+	"{ACDA00}/yelek\t\t\t{FFFFFF}ZÄ±rh paketi satÄ±n alÄ±rsÄ±nÄ±z.",
+    "{ACDA00}/ev\t\t\t{FFFFFF}Ev dÄ±zenleme menÄ±sÄ±nÄ± aÄ±ar.",
+	"{ACDA00}/yardim\t\t{FFFFFF}Oyun modu hakkÄ±nda yardÄ±m verir.",
+	"\n\nBu mod {009BFF}MR.ImmortaL {FFFFFF}tarafÄ±ndan kodlanmÄ±Ä±tÄ±r."
 };
 
-// - 31 sistemi tanıtımları
+// - 31 sistemi tanÄ±tÄ±mlarÄ±
 new asilantimer;
 new cekiyor[MAX_PLAYERS] = 0;
 
-// - FPS sistemi tanıtımları
+// - FPS sistemi tanÄ±tÄ±mlarÄ±
 new Surus[MAX_PLAYERS];
 new firstperson[MAX_PLAYERS];
 
-// - Araç spawn sistemi tanıtımları
+// - AraÃ§ spawn sistemi tanÄ±tÄ±mlarÄ±
 #define DIALOG_OFFSET_ID (1024)
 
-new
-        g_VehNames[][] =
-        {
-                !"{FFFFFF}Landstalker", !"{FFFFFF}Bravura", !"{FFFFFF}Buffalo", !"{FFFFFF}Linerunner", !"{FFFFFF}Pereniel", !"{FFFFFF}Sentinel", !"{FFFFFF}Dumper", !"{FFFFFF}Firetruck", !"{FFFFFF}Trashmaster", !"{FFFFFF}Stretch", !"{FFFFFF}Manana", !"{FFFFFF}Infernus",
-                !"{FFFFFF}Voodoo", !"{FFFFFF}Pony", !"{FFFFFF}Mule", !"{FFFFFF}Cheetah", !"{FFFFFF}Ambulance", !"{FFFFFF}Leviathan", !"{FFFFFF}Moonbeam", !"{FFFFFF}Esperanto", !"{FFFFFF}Taxi", !"{FFFFFF}Washington", !"{FFFFFF}Bobcat", !"{FFFFFF}Mr Whoopee", !"{FFFFFF}BF Injection",
-                !"{FFFFFF}Hunter [YASAK]", !"{FFFFFF}Premier", !"{FFFFFF}Enforcer", !"{FFFFFF}Securicar", !"{FFFFFF}Banshee", !"{FFFFFF}Predator", !"{FFFFFF}Bus", !"{FFFFFF}Rhino [YASAK]", !"{FFFFFF}Barracks", !"{FFFFFF}Hotknife", !"{FFFFFF}Trailer", !"{FFFFFF}Previon", !"{FFFFFF}Coach", !"{FFFFFF}Cabbie",
-                !"{FFFFFF}Stallion", !"{FFFFFF}Rumpo", !"{FFFFFF}RC Bandit", !"{FFFFFF}Romero", !"{FFFFFF}Packer", !"{FFFFFF}Monster", !"{FFFFFF}Admiral", !"{FFFFFF}Squalo", !"{FFFFFF}Seasparrow", !"{FFFFFF}Pizzaboy", !"{FFFFFF}Tram", !"{FFFFFF}Trailer", !"{FFFFFF}Turismo", !"{FFFFFF}Speeder",
-                !"{FFFFFF}Reefer", !"{FFFFFF}Tropic", !"{FFFFFF}Flatbed", !"{FFFFFF}Yankee", !"{FFFFFF}Caddy", !"{FFFFFF}Solair", !"{FFFFFF}Berkley's RC Van", !"{FFFFFF}Skimmer", !"{FFFFFF}PCJ-600", !"{FFFFFF}Faggio", !"{FFFFFF}Freeway", !"{FFFFFF}RC Baron", !"{FFFFFF}RC Raider",
-                !"{FFFFFF}Glendale", !"{FFFFFF}Oceanic", !"{FFFFFF}Sanchez", !"{FFFFFF}Sparrow", !"{FFFFFF}Patriot", !"{FFFFFF}Quad", !"{FFFFFF}Coastguard", !"{FFFFFF}Dinghy", !"{FFFFFF}Hermes", !"{FFFFFF}Sabre", !"{FFFFFF}Rustler", !"{FFFFFF}ZR3 50", !"{FFFFFF}Walton", !"{FFFFFF}Regina",
-                !"{FFFFFF}Comet", !"{FFFFFF}BMX", !"{FFFFFF}Burrito", !"{FFFFFF}Camper", !"{FFFFFF}Marquis", !"{FFFFFF}Baggage", !"{FFFFFF}Dozer", !"{FFFFFF}Maverick", !"{FFFFFF}News Chopper", !"{FFFFFF}Rancher", !"{FFFFFF}FBI Rancher", !"{FFFFFF}Virgo", !"{FFFFFF}Greenwood",
-                !"{FFFFFF}Jetmax", !"{FFFFFF}Hotring", !"{FFFFFF}Sandking", !"{FFFFFF}Blista Compact", !"{FFFFFF}Police Maverick", !"{FFFFFF}Boxville", !"{FFFFFF}Benson", !"{FFFFFF}Mesa", !"{FFFFFF}RC Goblin", !"{FFFFFF}Hotring Racer A", !"{FFFFFF}Hotring Racer B",
-                !"{FFFFFF}Bloodring Banger", !"{FFFFFF}Rancher", !"{FFFFFF}Super GT", !"{FFFFFF}Elegant", !"{FFFFFF}Journey", !"{FFFFFF}Bike", !"{FFFFFF}Mountain Bike", !"{FFFFFF}Beagle", !"{FFFFFF}Cropdust", !"{FFFFFF}Stunt", !"{FFFFFF}Tanker", !"{FFFFFF}RoadTrain",
-                !"{FFFFFF}Nebula", !"{FFFFFF}Majestic", !"{FFFFFF}Buccaneer", !"{FFFFFF}Shamal", !"{FFFFFF}Hydra [YASAK]", !"{FFFFFF}FCR-900", !"{FFFFFF}NRG-500", !"{FFFFFF}HPV1000", !"{FFFFFF}Cement Truck", !"{FFFFFF}Tow Truck", !"{FFFFFF}Fortune", !"{FFFFFF}Cadrona", !"{FFFFFF}FBI Truck",
-                !"{FFFFFF}Willard", !"{FFFFFF}Forklift", !"{FFFFFF}Tractor", !"{FFFFFF}Combine", !"{FFFFFF}Feltzer", !"{FFFFFF}Remington", !"{FFFFFF}Slamvan", !"{FFFFFF}Blade", !"{FFFFFF}Freight", !"{FFFFFF}Streak", !"{FFFFFF}Vortex", !"{FFFFFF}Vincent", !"{FFFFFF}Bullet", !"{FFFFFF}Clover",
-                !"{FFFFFF}Sadler", !"{FFFFFF}Firetruck", !"{FFFFFF}Hustler", !"{FFFFFF}Intruder", !"{FFFFFF}Primo", !"{FFFFFF}Cargobob", !"{FFFFFF}Tampa", !"{FFFFFF}Sunrise", !"{FFFFFF}Merit", !"{FFFFFF}Utility", !"{FFFFFF}Nevada", !"{FFFFFF}Yosemite", !"{FFFFFF}Windsor", !"{FFFFFF}Monster A",
-                !"{FFFFFF}Monster B", !"{FFFFFF}Uranus", !"{FFFFFF}Jester", !"{FFFFFF}Sultan", !"{FFFFFF}Stratum", !"{FFFFFF}Elegy", !"{FFFFFF}Raindance", !"{FFFFFF}RC Tiger", !"{FFFFFF}Flash", !"{FFFFFF}Tahoma", !"{FFFFFF}Savanna", !"{FFFFFF}Bandito", !"{FFFFFF}Freight", !"{FFFFFF}Trailer",
-                !"{FFFFFF}Kart", !"{FFFFFF}Mower", !"{FFFFFF}Duneride", !"{FFFFFF}Sweeper", !"{FFFFFF}Broadway", !"{FFFFFF}Tornado", !"{FFFFFF}AT-400", !"{FFFFFF}DFT-30", !"{FFFFFF}Huntley", !"{FFFFFF}Stafford", !"{FFFFFF}BF-400", !"{FFFFFF}Newsvan", !"{FFFFFF}Tug", !"{FFFFFF}Trailer A", !"{FFFFFF}Emperor",
-                !"{FFFFFF}Wayfarer", !"{FFFFFF}Euros", !"{FFFFFF}Hotdog", !"{FFFFFF}Club", !"{FFFFFF}Trailer B", !"{FFFFFF}Trailer C", !"{FFFFFF}Andromada", !"{FFFFFF}Dodo", !"{FFFFFF}RC Cam", !"{FFFFFF}Launch", !"{FFFFFF}Police Car (LSPD)", !"{FFFFFF}Police Car (SFPD)",
-                !"{FFFFFF}Police Car (LVPD)", !"{FFFFFF}Police Ranger", !"{FFFFFF}Picador", !"{FFFFFF}S.W.A.T. Van", !"{FFFFFF}Alpha", !"{FFFFFF}Phoenix", !"{FFFFFF}Glendale", !"{FFFFFF}Sadler", !"{FFFFFF}Luggage Trailer A", !"{FFFFFF}Luggage Trailer B",
-                !"{FFFFFF}Stair Trailer", !"{FFFFFF}Boxville", !"{FFFFFF}Farm Plow", !"{FFFFFF}Utility Trailer"
-        }
-;
+new g_VehNames[][] =
+{
+	!"{FFFFFF}Landstalker", !"{FFFFFF}Bravura", !"{FFFFFF}Buffalo", !"{FFFFFF}Linerunner", !"{FFFFFF}Pereniel", !"{FFFFFF}Sentinel", !"{FFFFFF}Dumper", !"{FFFFFF}Firetruck", !"{FFFFFF}Trashmaster", !"{FFFFFF}Stretch", !"{FFFFFF}Manana", !"{FFFFFF}Infernus",
+	!"{FFFFFF}Voodoo", !"{FFFFFF}Pony", !"{FFFFFF}Mule", !"{FFFFFF}Cheetah", !"{FFFFFF}Ambulance", !"{FFFFFF}Leviathan", !"{FFFFFF}Moonbeam", !"{FFFFFF}Esperanto", !"{FFFFFF}Taxi", !"{FFFFFF}Washington", !"{FFFFFF}Bobcat", !"{FFFFFF}Mr Whoopee", !"{FFFFFF}BF Injection",
+	!"{FFFFFF}Hunter [YASAK]", !"{FFFFFF}Premier", !"{FFFFFF}Enforcer", !"{FFFFFF}Securicar", !"{FFFFFF}Banshee", !"{FFFFFF}Predator", !"{FFFFFF}Bus", !"{FFFFFF}Rhino [YASAK]", !"{FFFFFF}Barracks", !"{FFFFFF}Hotknife", !"{FFFFFF}Trailer", !"{FFFFFF}Previon", !"{FFFFFF}Coach", !"{FFFFFF}Cabbie",
+	!"{FFFFFF}Stallion", !"{FFFFFF}Rumpo", !"{FFFFFF}RC Bandit", !"{FFFFFF}Romero", !"{FFFFFF}Packer", !"{FFFFFF}Monster", !"{FFFFFF}Admiral", !"{FFFFFF}Squalo", !"{FFFFFF}Seasparrow", !"{FFFFFF}Pizzaboy", !"{FFFFFF}Tram", !"{FFFFFF}Trailer", !"{FFFFFF}Turismo", !"{FFFFFF}Speeder",
+	!"{FFFFFF}Reefer", !"{FFFFFF}Tropic", !"{FFFFFF}Flatbed", !"{FFFFFF}Yankee", !"{FFFFFF}Caddy", !"{FFFFFF}Solair", !"{FFFFFF}Berkley's RC Van", !"{FFFFFF}Skimmer", !"{FFFFFF}PCJ-600", !"{FFFFFF}Faggio", !"{FFFFFF}Freeway", !"{FFFFFF}RC Baron", !"{FFFFFF}RC Raider",
+	!"{FFFFFF}Glendale", !"{FFFFFF}Oceanic", !"{FFFFFF}Sanchez", !"{FFFFFF}Sparrow", !"{FFFFFF}Patriot", !"{FFFFFF}Quad", !"{FFFFFF}Coastguard", !"{FFFFFF}Dinghy", !"{FFFFFF}Hermes", !"{FFFFFF}Sabre", !"{FFFFFF}Rustler", !"{FFFFFF}ZR3 50", !"{FFFFFF}Walton", !"{FFFFFF}Regina",
+	!"{FFFFFF}Comet", !"{FFFFFF}BMX", !"{FFFFFF}Burrito", !"{FFFFFF}Camper", !"{FFFFFF}Marquis", !"{FFFFFF}Baggage", !"{FFFFFF}Dozer", !"{FFFFFF}Maverick", !"{FFFFFF}News Chopper", !"{FFFFFF}Rancher", !"{FFFFFF}FBI Rancher", !"{FFFFFF}Virgo", !"{FFFFFF}Greenwood",
+	!"{FFFFFF}Jetmax", !"{FFFFFF}Hotring", !"{FFFFFF}Sandking", !"{FFFFFF}Blista Compact", !"{FFFFFF}Police Maverick", !"{FFFFFF}Boxville", !"{FFFFFF}Benson", !"{FFFFFF}Mesa", !"{FFFFFF}RC Goblin", !"{FFFFFF}Hotring Racer A", !"{FFFFFF}Hotring Racer B",
+	!"{FFFFFF}Bloodring Banger", !"{FFFFFF}Rancher", !"{FFFFFF}Super GT", !"{FFFFFF}Elegant", !"{FFFFFF}Journey", !"{FFFFFF}Bike", !"{FFFFFF}Mountain Bike", !"{FFFFFF}Beagle", !"{FFFFFF}Cropdust", !"{FFFFFF}Stunt", !"{FFFFFF}Tanker", !"{FFFFFF}RoadTrain",
+	!"{FFFFFF}Nebula", !"{FFFFFF}Majestic", !"{FFFFFF}Buccaneer", !"{FFFFFF}Shamal", !"{FFFFFF}Hydra [YASAK]", !"{FFFFFF}FCR-900", !"{FFFFFF}NRG-500", !"{FFFFFF}HPV1000", !"{FFFFFF}Cement Truck", !"{FFFFFF}Tow Truck", !"{FFFFFF}Fortune", !"{FFFFFF}Cadrona", !"{FFFFFF}FBI Truck",
+	!"{FFFFFF}Willard", !"{FFFFFF}Forklift", !"{FFFFFF}Tractor", !"{FFFFFF}Combine", !"{FFFFFF}Feltzer", !"{FFFFFF}Remington", !"{FFFFFF}Slamvan", !"{FFFFFF}Blade", !"{FFFFFF}Freight", !"{FFFFFF}Streak", !"{FFFFFF}Vortex", !"{FFFFFF}Vincent", !"{FFFFFF}Bullet", !"{FFFFFF}Clover",
+	!"{FFFFFF}Sadler", !"{FFFFFF}Firetruck", !"{FFFFFF}Hustler", !"{FFFFFF}Intruder", !"{FFFFFF}Primo", !"{FFFFFF}Cargobob", !"{FFFFFF}Tampa", !"{FFFFFF}Sunrise", !"{FFFFFF}Merit", !"{FFFFFF}Utility", !"{FFFFFF}Nevada", !"{FFFFFF}Yosemite", !"{FFFFFF}Windsor", !"{FFFFFF}Monster A",
+	!"{FFFFFF}Monster B", !"{FFFFFF}Uranus", !"{FFFFFF}Jester", !"{FFFFFF}Sultan", !"{FFFFFF}Stratum", !"{FFFFFF}Elegy", !"{FFFFFF}Raindance", !"{FFFFFF}RC Tiger", !"{FFFFFF}Flash", !"{FFFFFF}Tahoma", !"{FFFFFF}Savanna", !"{FFFFFF}Bandito", !"{FFFFFF}Freight", !"{FFFFFF}Trailer",
+	!"{FFFFFF}Kart", !"{FFFFFF}Mower", !"{FFFFFF}Duneride", !"{FFFFFF}Sweeper", !"{FFFFFF}Broadway", !"{FFFFFF}Tornado", !"{FFFFFF}AT-400", !"{FFFFFF}DFT-30", !"{FFFFFF}Huntley", !"{FFFFFF}Stafford", !"{FFFFFF}BF-400", !"{FFFFFF}Newsvan", !"{FFFFFF}Tug", !"{FFFFFF}Trailer A", !"{FFFFFF}Emperor",
+	!"{FFFFFF}Wayfarer", !"{FFFFFF}Euros", !"{FFFFFF}Hotdog", !"{FFFFFF}Club", !"{FFFFFF}Trailer B", !"{FFFFFF}Trailer C", !"{FFFFFF}Andromada", !"{FFFFFF}Dodo", !"{FFFFFF}RC Cam", !"{FFFFFF}Launch", !"{FFFFFF}Police Car (LSPD)", !"{FFFFFF}Police Car (SFPD)",
+	!"{FFFFFF}Police Car (LVPD)", !"{FFFFFF}Police Ranger", !"{FFFFFF}Picador", !"{FFFFFF}S.W.A.T. Van", !"{FFFFFF}Alpha", !"{FFFFFF}Phoenix", !"{FFFFFF}Glendale", !"{FFFFFF}Sadler", !"{FFFFFF}Luggage Trailer A", !"{FFFFFF}Luggage Trailer B",
+	!"{FFFFFF}Stair Trailer", !"{FFFFFF}Boxville", !"{FFFFFF}Farm Plow", !"{FFFFFF}Utility Trailer"
+};
 
-// - Modifiyeli Araç spawn sistemi tanıtımları
+// - Modifiyeli AraÃ§ spawn sistemi tanÄ±tÄ±mlarÄ±
 enum ModArac
 {
 pMAraba,
@@ -285,11 +277,11 @@ pMArabaID
 };
 
 new MCarPlayerInfo[MAX_PLAYERS][ModArac];
-// - Hızlandırıcı pickup tanıtımları
+// - HÄ±zlandÄ±rÄ±cÄ± pickup tanÄ±tÄ±mlarÄ±
 new hizlandirici[14];
 #define HIZ_VER 5
 
-// - Ev sistemi tanıtımları
+// - Ev sistemi tanÄ±tÄ±mlarÄ±
 enum bilgi
 {
 	evaciklama[255],
@@ -319,7 +311,7 @@ enum bilgi
 };
 
 new EvBilgi[MAX_HOUSE][bilgi],
-	Text3D:TextLabel[MAX_HOUSE],
+	//Text3D:TextLabel[MAX_HOUSE],
 	Pickup[MAX_HOUSE]=0,
 	bool:EvEditleniyor[MAX_HOUSE],
 	OyuncuEv[MAX_PLAYERS] = -1,
@@ -331,9 +323,9 @@ forward EvYukle(evid);
 forward EvYenile(evid);
 forward EvSil(evid);
 forward EvYarat(evid,Float:X,Float:Y,Float:Z);
-forward EvKaydetInt(evid,bilgii[],deger);
-forward EvKaydetStr(evid,bilgii[],deger[]);
-forward EvKaydetFloat(evid,bilgii[],Float:deger);
+forward EvKaydetInt(evid, const bilgii[],deger);
+forward EvKaydetStr(evid, const bilgii[], const deger[]);
+forward EvKaydetFloat(evid, const bilgii[],Float:deger);
 forward EvPickupYenile(evid);
 forward Kontrol(playerid);
 forward OyuncuMapIconKontrol(playerid);
@@ -343,70 +335,81 @@ forward EvYakininda(playerid);
 
 // - Random spawn
 new Float:RandomPlayerSpawns[23][3] = {
-{1958.3783,1343.1572,15.3746},
-{2199.6531,1393.3678,10.8203},
-{2483.5977,1222.0825,10.8203},
-{2637.2712,1129.2743,11.1797},
-{2000.0106,1521.1111,17.0625},
-{2024.8190,1917.9425,12.3386},
-{2261.9048,2035.9547,10.8203},
-{2262.0986,2398.6572,10.8203},
-{2244.2566,2523.7280,10.8203},
-{2335.3228,2786.4478,10.8203},
-{2150.0186,2734.2297,11.1763},
-{2158.0811,2797.5488,10.8203},
-{1969.8301,2722.8564,10.8203},
-{1652.0555,2709.4072,10.8265},
-{1564.0052,2756.9463,10.8203},
-{1271.5452,2554.0227,10.8203},
-{1441.5894,2567.9099,10.8203},
-{1480.6473,2213.5718,11.0234},
-{1400.5906,2225.6960,11.0234},
-{1598.8419,2221.5676,11.0625},
-{1318.7759,1251.3580,10.8203},
-{1558.0731,1007.8292,10.8125},
-{1705.2347,1025.6808,10.8203}
+	{1958.3783,1343.1572,15.3746},
+	{2199.6531,1393.3678,10.8203},
+	{2483.5977,1222.0825,10.8203},
+	{2637.2712,1129.2743,11.1797},
+	{2000.0106,1521.1111,17.0625},
+	{2024.8190,1917.9425,12.3386},
+	{2261.9048,2035.9547,10.8203},
+	{2262.0986,2398.6572,10.8203},
+	{2244.2566,2523.7280,10.8203},
+	{2335.3228,2786.4478,10.8203},
+	{2150.0186,2734.2297,11.1763},
+	{2158.0811,2797.5488,10.8203},
+	{1969.8301,2722.8564,10.8203},
+	{1652.0555,2709.4072,10.8265},
+	{1564.0052,2756.9463,10.8203},
+	{1271.5452,2554.0227,10.8203},
+	{1441.5894,2567.9099,10.8203},
+	{1480.6473,2213.5718,11.0234},
+	{1400.5906,2225.6960,11.0234},
+	{1598.8419,2221.5676,11.0625},
+	{1318.7759,1251.3580,10.8203},
+	{1558.0731,1007.8292,10.8125},
+	{1705.2347,1025.6808,10.8203}
 };
 
 main()
 {
-    new year,month,day;	getdate(year, month, day);
-	new hour,minute,second; gettime(hour,minute,second);
-	printf("Yıklendi: \"Sunucu modu.\"");
+    new year, month, day, hour, minute, second;
+	getdate(year, month, day);
+	gettime(hour, minute, second);
+
+	printf("YÄ±klendi: \"Sunucu modu.\"");
 	printf("");
 	printf("\"--------------------------------------------------\"");
-	printf("\"             #Trinity-Xtreme Freeroam             \"");
-	printf("\"         #SA-MP Oyun Modu [vALPHA][RC-1.5]        \"");
-	printf("\"          #Created by Crosscuk & ImmortaL         \"");
-	printf("\"            #since 27/01/2013 - 01:52             \"");
+	printf("\"                   Trinity-Xtreme                 \"");
+	printf("\"           Created by Crosscuk & ImmortaL         \"");
+	printf("\"             Since 2013-01-27 01:52				\"");
 	printf("\"                                                  \"");
-	printf("\"                 [Developer Mode]                 \"");
-	printf("\"                                                  \"");
-	printf("\"         Saat: %d:%d:%d ~ Tarih: %d/%d/%d         \"",hour,minute,second,day,month,year);
+	printf("\" ** %d-%d-%d %d:%d								\"", year, month, day, hour, minute);
 	printf("\"--------------------------------------------------\"");
 
-	printf("\n---------------------------------------------------------------");
-	printf("ı Gamemode started! [%d/%d/%d]", day, month, year);
-	printf("---------------------------------------------------------------");
 	SkyAntiDeAMX();
 }
 
 public OnGameModeInit()
 {
-	SetGameModeText("Turkiye[vALPHA 1.5]");
+	printf(" ** %s initializing.", server_modname);
 
+	// - General settings
+	SendRconCommand("rcon 0");
+
+	SetGameModeText(server_modname " " server_version);
+	new serverSettings[64];
+
+	format(serverSettings, sizeof(serverSettings), "hostname %s", server_name);
+	SendRconCommand(serverSettings);
+
+	format(serverSettings, sizeof(serverSettings), "mapname %s", server_mapname);
+	SendRconCommand(serverSettings);
+
+	SetWeather(18); // 15 for dark survival sky
 	UsePlayerPedAnims();
 	AllowInteriorWeapons(1);
-	SetWeather(18);
 	EnableStuntBonusForAll(0);
-	for(new i=0;i<299;i++)
-    {
-    AddPlayerClass(i,1958.2111,1343.5758,15.3746,274.2440,24,100,27,80,32,500);
+	ShowPlayerMarkers(2);
+	ShowNameTags(1);
+	SetNameTagDrawDistance(25.0);
+
+	for (new i=0; i<299; i++) {
+		AddPlayerClass(i,1958.2111,1343.5758,15.3746,274.2440,24,100,27,80,32,500);
     }
+	
+	printf("  ** LOADED: general settings.");
 
-    printf("Yıklendi: \"Sunucu genel ayarları.\"");
-
-    // - Textdrawlar
+    // - Textdraws
     Textdraw0 = TextDrawCreate(310.000000, 435.000000, "~r~~h~~h~ /yardim ~w~~h~~h~/teles /silahlar /stuntlar /dmler /shop /animlist /v1..18 /m1..12 ~r~~h~~h~/kurallar");
     TextDrawAlignment(Textdraw0, 2);
     TextDrawBackgroundColor(Textdraw0, 255);
@@ -500,8 +503,16 @@ public OnGameModeInit()
     TextDrawSetProportional(Textdraw9, 1);
     TextDrawSetShadow(Textdraw9, 1);
 
-    printf("Yıklendi: \"Sunucu textdrawları.\"");
-    // - Exp sistemi ayarları
+	textdraw_server = TextDrawCreate(5.000000, 435.000000, "Supervivencia Server ~b~~h~~h~v1.0.0");
+	TextDrawBackgroundColor(textdraw_server, 255);
+	TextDrawFont(textdraw_server, 2);
+	TextDrawLetterSize(textdraw_server, 0.300000, 1.000000);
+	TextDrawColor(textdraw_server, 1717987071);
+	TextDrawSetOutline(textdraw_server, 1);
+	TextDrawSetProportional(textdraw_server, 1);
+
+    printf("YÄ±klendi: \"Sunucu textdrawlarÄ±.\"");
+    // - Exp sistemi ayarlarÄ±
     expbox = TextDrawCreate(460.000000, 410.000000, "~n~");
     TextDrawBackgroundColor(expbox, 255);
     TextDrawFont(expbox, 1);
@@ -537,8 +548,8 @@ public OnGameModeInit()
 
     //expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
     }
-    printf("Yıklendi: \"Exp-Level sistemi.\"");
-    // - Saat sistemi ayarları
+    printf("YÄ±klendi: \"Exp-Level sistemi.\"");
+    // - Saat sistemi ayarlarÄ±
 
    	Hour = 06;
    	Minute = 0;
@@ -555,14 +566,14 @@ public OnGameModeInit()
    	KillTimer(Timer);
    	Timer = SetTimer("UpdateServerTime",1000,true);
 
-    printf("Yıklendi: \"Saat sistemi.\"");
+    printf("YÄ±klendi: \"Saat sistemi.\"");
     // - Sunucu Harita Objeleri
 
     
 
-    printf("Yıklendi: \"Sunucu haritası.\"");
-	printf("Yıklendi: \"Sunucu Araçları.\"");
-	// - Hızlandırma pickupları
+    printf("YÄ±klendi: \"Sunucu haritasÄ±.\"");
+	printf("YÄ±klendi: \"Sunucu AraÃ§larÄ±.\"");
+	// - HÄ±zlandÄ±rma pickuplarÄ±
 	hizlandirici[1]=CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
 	hizlandirici[2]=CreatePickup(1313,14,2066.5132,1019.7257,10.6719,0);
 	hizlandirici[3]=CreatePickup(1313,14,2066.5918,1254.1406,10.6719,0);
@@ -577,8 +588,8 @@ public OnGameModeInit()
 	hizlandirici[12]=CreatePickup(1313,14,2364.7070,433.8943,17.6082,0);
 	hizlandirici[13]=CreatePickup(1313,14,1294.1956,2598.3647,11.9492,0);
 
-	printf("Yıklendi: \"Hız pickupları.\"");
-	// - Ev sistemi ayarları
+	printf("YÄ±klendi: \"HÄ±z pickuplarÄ±.\"");
+	// - Ev sistemi ayarlarÄ±
 	SetTimer("SahipKontrol",3000,1);
 
 	AddStaticPickup(ARROW,1,235.1575,1187.2721,1080.2578,-1);
@@ -588,7 +599,7 @@ public OnGameModeInit()
 	AddStaticPickup(ARROW,1,327.9004,1478.2839,1084.4375,-1);
 	AddStaticPickup(ARROW,1,2324.3735,-1148.8219,1050.7101,-1);
 
-	printf("Yıklendi: \"Ev sistemi.\"");
+	printf("YÄ±klendi: \"Ev sistemi.\"");
 	for(new i;i<MAX_HOUSE;i++)
 	{
 	    EvBilgi[i][evsatilik] = -1;
@@ -620,26 +631,7 @@ public OnGameModeInit()
 	printf("Toplam \"%i\" ev bulunmakta.",ToplamEv);
 
 	// General:
-	printf("ı %s gamemode initializing.", server_modname);
-	SendRconCommand("rcon 0");
-
-	SetGameModeText(server_modname " " server_version);
-	new serverSettings[64];
-
-	format(serverSettings, sizeof(serverSettings), "hostname %s", server_name);
-	SendRconCommand(serverSettings);
-
-	format(serverSettings, sizeof(serverSettings), "mapname %s", server_mapname);
-	SendRconCommand(serverSettings);
-
-	SetWeather(15);
-	UsePlayerPedAnims();
-	AllowInteriorWeapons(1);
-	EnableStuntBonusForAll(0);
-	ShowPlayerMarkers(2);
-	ShowNameTags(1);
-	SetNameTagDrawDistance(25.0);
-	printf("  ** Server settings prepared.");
+	
 
 	// Class settings:
 	new skinValue = 1;
@@ -660,7 +652,7 @@ public OnGameModeInit()
  	//if(mysql_ping() > 0)
 	//    printf("  ** MySQL connection successful! [Host: %s / Database: %s]", mysql_hostname, mysql_database);
 	//else
-	    printf("  ** MySQL connection failed!");
+	printf("  ** MySQL connection failed!");
 
     SkyAntiDeAMX();
     printf("  ** AntiDeAMX started!");
@@ -684,20 +676,21 @@ public OnGameModeExit()
 	TextDrawDestroy(Textdraw7);
 	TextDrawDestroy(Textdraw8);
 	TextDrawDestroy(Textdraw9);
+	TextDrawDestroy(textdraw_server);
 	/*TextDrawDestroy(expbox);
 	TextDrawDestroy(expmeter);*/
     KillTimer(Timer);
 
     new year,month,day;	getdate(year, month, day);
 	new hour,minute,second; gettime(hour,minute,second);
-    printf("Sunucu modu kapandı.");
+    printf("Sunucu modu kapandÄ±.");
     printf("Saat: %d:%d:%d ~ Tarih: %d/%d/%d",hour,minute,second,day,month,year);
     printf("Trinity-Xtreme / since 27/01/2013 - 01:52");
 
 	//mysql_close();
 	printf("  ** MySQL connection closed!");
 
-    printf("ı %s gamemode closed.", server_modname);
+    printf("Ä± %s gamemode closed.", server_modname);
 	return 1;
 }
 
@@ -709,14 +702,16 @@ public OnPlayerRequestClass(playerid, classid)
 	SetPlayerPos(playerid, 2621.1831,1824.3500,11.0234);
 	SetPlayerCameraPos(playerid, 2616.2153,1824.3500,12.8204);
 	SetPlayerCameraLookAt(playerid, 2621.1831,1824.3500,12.0234);
-    new rand = random(sizeof(RandAnims));
-    ApplyAnimation(playerid,"DANCING",RandAnims[rand][0],4.0,1,1,1,1,1);
+    
+    
 	*/
 	CreateExplosion(1544.7887,-1675.4630,13.5591, 12, 20.0);
 	SetPlayerPos(playerid, 1544.7887,-1675.4630,13.5591);
  	SetPlayerFacingAngle(playerid,90.0);
  	SetPlayerCameraPos(playerid, 1541.5293,-1675.4012,13.5527);
  	SetPlayerCameraLookAt(playerid, 1544.7887,-1675.4630,13.5591);
+	new rand = random(sizeof(RandAnims));
+	ApplyAnimation(playerid,"DANCING",RandAnims[rand][0],4.0,1,1,1,1,1);
 	return 1;
 }
 
@@ -733,7 +728,6 @@ public OnPlayerConnect(playerid)
 	LoadTextDraws(playerid);    // Textdraws loaded.
  	PlayerAccount[playerid][pA_Hungry] = 0; // Hungry level reseted.
 	PlayerAccount[playerid][pA_Radiation] = 0;  // Radiation level reseted.
-	TextDrawShowForPlayer(playerid, textdraw_server[playerid]); // Textdraw showed.
 	playerTimer[playerid] = SetTimerEx("playerGameTimer", 2000, true, "i", playerid);   // Player General Timer started.
 
 	// Account script:
@@ -746,11 +740,11 @@ public OnPlayerConnect(playerid)
     //mysql_store_result();
     //new rows = mysql_num_rows();
     
-    if(true)
-		ShowPlayerDialog(playerid, dialog_register, DIALOG_STYLE_INPUT, "{BBBBBB}** {00B3FF}Character Register:", "{BBBBBB}Welcome to the {00B3FF}"server_modname"!\n{333333}Enter your password and play the game.", "Register", "Cancel");
-	else
-		SendClientMessage(playerid, -1, "not rows");
-	return 1;
+    //if(true)
+	ShowPlayerDialog(playerid, dialog_register, DIALOG_STYLE_INPUT, "{BBBBBB}** {00B3FF}Character Register:", "{BBBBBB}Welcome to the {00B3FF}"server_modname"!\n{333333}Enter your password and play the game.", "Register", "Cancel");
+	//else
+	SendClientMessage(playerid, -1, "not rows");
+	//return 1;
 
     GameTextForPlayer(playerid,"~b~~h~Trinity-~w~Xtreme~n~~r~~h~F~g~~h~r~b~~h~e~y~e~r~r~w~o~p~a~g~m",5000,1);
     // - PM sistemi
@@ -767,10 +761,10 @@ public OnPlayerConnect(playerid)
 	//else BilgiYukle(playerid);
 	expguncelle[playerid] = SetTimerEx("BilgiYenile", 1000, true, "d", playerid);
 
-    // - Ev sistemi ayarı
+    // - Ev sistemi ayarÄ±
     OyuncuMapIconKontrol(playerid);
 
-    // - Araç kilit ayarı
+    // - AraÃ§ kilit ayarÄ±
    	Kilit[playerid] = 0;
 
    	
@@ -787,12 +781,12 @@ public OnPlayerDisconnect(playerid, reason)
 	BilgiYenile(playerid);
 	KillTimer(expguncelle[playerid]);
 
-	// - Araç spawn ayarları
+	// - AraÃ§ spawn ayarlarÄ±
     new iVehID = GetPVarInt(playerid, "iVehID");
     if(iVehID)
     DestroyVehicle(iVehID);
 
-	// - Ev sistemi ayarları
+	// - Ev sistemi ayarlarÄ±
     OyuncuEv[playerid] = -1;
 	EvEditleniyor[GetHouseID(playerid)] = false;
 	OyuncuKontrolEv[playerid]=-255;
@@ -832,23 +826,24 @@ public OnPlayerSpawn(playerid)
 	SetPlayerRandomSpawn(playerid);
     PlayerPlaySound(playerid,1186, 0, 0, 0);
 
-    TextDrawShowForPlayer(playerid,Textdraw0);
-    TextDrawShowForPlayer(playerid,Textdraw1);
-    TextDrawShowForPlayer(playerid,Textdraw2);
-    TextDrawShowForPlayer(playerid,Textdraw3);
-    TextDrawShowForPlayer(playerid,Textdraw4);
-    TextDrawShowForPlayer(playerid,Textdraw5);
-    TextDrawShowForPlayer(playerid,Textdraw6);
-    TextDrawShowForPlayer(playerid,Textdraw7);
-    TextDrawShowForPlayer(playerid,Textdraw8);
-    TextDrawShowForPlayer(playerid,Textdraw9);
-    TextDrawShowForPlayer(playerid,TimeText);
+    TextDrawShowForPlayer(playerid, Textdraw0);
+    TextDrawShowForPlayer(playerid, Textdraw1);
+    TextDrawShowForPlayer(playerid, Textdraw2);
+    TextDrawShowForPlayer(playerid, Textdraw3);
+    TextDrawShowForPlayer(playerid, Textdraw4);
+    TextDrawShowForPlayer(playerid, Textdraw5);
+    TextDrawShowForPlayer(playerid, Textdraw6);
+    TextDrawShowForPlayer(playerid, Textdraw7);
+    TextDrawShowForPlayer(playerid, Textdraw8);
+    TextDrawShowForPlayer(playerid, Textdraw9);
+	TextDrawShowForPlayer(playerid, textdraw_server);
+    TextDrawShowForPlayer(playerid, TimeText);
     // Exp sistemi
     TextDrawShowForPlayer(playerid,expbox);
     TextDrawShowForPlayer(playerid,expmeter[playerid]);
     //ShowProgressBarForPlayer(playerid,Bar:expbar[playerid]);
 
-    // Exp sistemi bitiıi
+    // Exp sistemi bitiÄ±i
 
     switch(DM[playerid])
 	{
@@ -858,7 +853,7 @@ public OnPlayerSpawn(playerid)
         if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	    {
         GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+        SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
         }
         DM[playerid]=1;
         SetPlayerArmour(playerid,100);
@@ -869,7 +864,7 @@ public OnPlayerSpawn(playerid)
         new rand = random(sizeof(deagledm1pos));
         SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
         GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+        SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
         GivePlayerWeapon(playerid,24,99999);
         SetPlayerTeam(playerid, NO_TEAM);
 	    }
@@ -880,7 +875,7 @@ public OnPlayerSpawn(playerid)
         if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	    {
         GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+        SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
         }
         DM[playerid]=2;
         SetPlayerArmour(playerid,100);
@@ -892,7 +887,7 @@ public OnPlayerSpawn(playerid)
         new rand = random(sizeof(fistdm1pos));
         SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
         GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+        SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
         SetPlayerTeam(playerid, NO_TEAM);
 	    }
 	}
@@ -996,72 +991,72 @@ public OnPlayerText(playerid, text[])
 	*/
 }
 
-// - DCMD komutları:
-dcmd_pmkapat(playerid, params[])
+// - DCMD komutlarÄ±:
+dcmd_pmkapat(playerid, const params[])
 {
 	#pragma unused params
 	if(pInfo[playerid][NoPM] == 0)
 	{
 	    pInfo[playerid][NoPM] = 1;
-	    SendInfo(playerid,"ızel mesaj hattınızı kapattınız.");
+	    SendInfo(playerid,"Ä±zel mesaj hattÄ±nÄ±zÄ± kapattÄ±nÄ±z.");
 	}
 	else
 	{
-	    SendError(playerid,"ızel mesaj hattınız zaten kapalı.");
+	    SendError(playerid,"Ä±zel mesaj hattÄ±nÄ±z zaten kapalÄ±.");
 	}
 }
 
-dcmd_pmac(playerid, params[])
+dcmd_pmac(playerid, const params[])
 {
 	#pragma unused params
 	if(pInfo[playerid][NoPM] == 0)
 	{
-	    SendInfo(playerid,"ızel mesaj hattınız zaten aıık.");
+	    SendInfo(playerid,"Ä±zel mesaj hattÄ±nÄ±z zaten aÄ±Ä±k.");
 	}
 	else
 	{
 	    pInfo[playerid][NoPM] = 0;
-	    SendInfo(playerid,"ızel mesaj hattınızı aıtınız.");
+	    SendInfo(playerid,"Ä±zel mesaj hattÄ±nÄ±zÄ± aÄ±tÄ±nÄ±z.");
 	}
 }
 
-dcmd_pm(playerid, params[])
+dcmd_pm(playerid, const params[])
 {
 	new pID, text[128], string[128];
 	if(sscanf(params, "us", pID, text)) return SendUse(playerid,"/pm (nick/id) (mesaj)");
-	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
-	if(pID == playerid) return SendError(playerid,"Kendinize ızel mesaj gınderemezsiniz.");
-	format(string, sizeof(string), "ı HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun ızel mesaj hattı kapalı.", PlayerName(pID), pID);
+	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadÄ±.");
+	if(pID == playerid) return SendError(playerid,"Kendinize Ä±zel mesaj gÄ±nderemezsiniz.");
+	format(string, sizeof(string), "Ä± HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun Ä±zel mesaj hattÄ± kapalÄ±.", PlayerName(pID), pID);
 	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
-	format(string, sizeof(string), "ıı [PM] %s: %s", PlayerName(pID), text);
+	format(string, sizeof(string), "Ä±Ä± [PM] %s: %s", PlayerName(pID), text);
 	SendClientMessage(playerid, -1, string);
-	format(string, sizeof(string), "ıı [PM] %s: %s", PlayerName(playerid), text);
+	format(string, sizeof(string), "Ä±Ä± [PM] %s: %s", PlayerName(playerid), text);
 	SendClientMessage(pID, -1, string);
 	pInfo[pID][Last] = playerid;
 	return 1;
 }
 
-dcmd_reply(playerid, params[])
+dcmd_reply(playerid, const params[])
 {
 	new text[128], string[128];
 	if(sscanf(params, "s", text)) return SendUse(playerid,"/reply (mesaj)");
 	new pID = pInfo[playerid][Last];
-	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
-	if(pID == playerid) return SendError(playerid,"Kendinize ızel mesaj gınderemezsiniz.");
-	format(string, sizeof(string), "ı HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun ızel mesaj hattı kapalı.", PlayerName(pID), pID);
+	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadÄ±.");
+	if(pID == playerid) return SendError(playerid,"Kendinize Ä±zel mesaj gÄ±nderemezsiniz.");
+	format(string, sizeof(string), "Ä± HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun Ä±zel mesaj hattÄ± kapalÄ±.", PlayerName(pID), pID);
 	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
-	format(string, sizeof(string), "ıı [PM] %s: %s", PlayerName(pID), text);
+	format(string, sizeof(string), "Ä±Ä± [PM] %s: %s", PlayerName(pID), text);
 	SendClientMessage(playerid, -1, string);
-	format(string, sizeof(string), "ıı [PM] %s: %s", PlayerName(playerid), text);
+	format(string, sizeof(string), "Ä±Ä± [PM] %s: %s", PlayerName(playerid), text);
 	SendClientMessage(pID, -1, string);
 	pInfo[pID][Last] = playerid;
 	return 1;
 }
 
-dcmd_ms(playerid, params[]) return dcmd_pm(playerid, params);
-dcmd_m(playerid, params[]) return dcmd_pm(playerid, params);
-dcmd_r(playerid, params[]) return dcmd_reply(playerid, params);
-// - DCMD komutları bitiıi.
+dcmd_ms(playerid, const params[]) return dcmd_pm(playerid, params);
+dcmd_m(playerid, const params[]) return dcmd_pm(playerid, params);
+dcmd_r(playerid, const params[]) return dcmd_reply(playerid, params);
+// - DCMD komutlarÄ± bitiÄ±i.
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
@@ -1111,7 +1106,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(!strcmp(cmdtext, "/campfire", true))
 	{
 	    if(campFire[playerid] == true) return showMessage(playerid, "You need quench your last campfire. (/firedown)");
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateı yakamazsınız!");
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateÄ± yakamazsÄ±nÄ±z!");
 	    campFire[playerid] = true;
 
 	    new Float:fireX, Float:fireY, Float:fireZ;
@@ -1125,23 +1120,23 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(!strcmp(cmdtext, "/firedown", true))
 	{
 	    if(campFire[playerid] == false) return showMessage(playerid, "Once you need setting a campfire. (/campfire)");
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateıi sındıremezsiniz!");
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateÄ±i sÄ±ndÄ±remezsiniz!");
 
 	    new Float:fireX, Float:fireY, Float:fireZ;
 	    GetDynamicObjectPos(fireWoods[playerid], fireX, fireY, fireZ);
-	    if(!IsPlayerInRangeOfPoint(playerid, 7.0, fireX, fireY, fireZ)) return showMessage(playerid, "Kamp ateıinin yakınında deıilsiniz! [7 metre]");
+	    if(!IsPlayerInRangeOfPoint(playerid, 7.0, fireX, fireY, fireZ)) return showMessage(playerid, "Kamp ateÄ±inin yakÄ±nÄ±nda deÄ±ilsiniz! [7 metre]");
 
 		campFire[playerid] = false;
      	DestroyDynamicObject(fireWoods[playerid]);
       	DestroyDynamicObject(fireObject[playerid]);
-		showMessage(playerid, "Kamp ateıini sındırdınız!");
+		showMessage(playerid, "Kamp ateÄ±ini sÄ±ndÄ±rdÄ±nÄ±z!");
 	    return 1;
 	}
 
 	// Guitar script:
 	if(!strcmp(cmdtext, "/guitar", true))
 	{
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken gitar ıalamazsınız!");
+	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken gitar Ä±alamazsÄ±nÄ±z!");
 	    guitarSong[playerid] = true;
 
 	    new randomSongs[2][0] =
@@ -1157,38 +1152,38 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	    PlayAudioStreamForPlayer(playerid, randomSongs[music][0], pX, pY, pZ, 20.0, 1);
 	    SetPlayerAttachedObject(playerid, 0, 19317, 6, -0.434999, -0.387000, 0.180000, -58.100009, -96.599891, 24.100002, 1.000000, 1.000000, 1.000000);
 	    ApplyAnimation(playerid,"BEACH", "ParkSit_M_loop", 4.0, 1, 0, 0, 0, 0);
-	    showMessage(playerid, "Gitar çalmaya başladınız, durmak için: /guitardown");
+	    showMessage(playerid, "Gitar Ã§almaya baÅŸladÄ±nÄ±z, durmak iÃ§in: /guitardown");
 		return 1;
 	}
 
 	if(!strcmp(cmdtext, "/guitardown", true))
 	{
-	    if(guitarSong[playerid] == false) return showMessage(playerid, "Gitar çalmıyorsunuz! (/guitar)");
+	    if(guitarSong[playerid] == false) return showMessage(playerid, "Gitar Ã§almÄ±yorsunuz! (/guitar)");
 		guitarSong[playerid] = false;
 
 		TogglePlayerControllable(playerid, 1);
 		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
 		ClearAnimations(playerid);
-		showMessage(playerid, "Gitar çalmayı bıraktınız!");
+		showMessage(playerid, "Gitar Ã§almayÄ± bÄ±raktÄ±nÄ±z!");
 		return 1;
 	}
 
 
 	if(!strcmp("/dmcik",cmdtext,true))
 	{
-		if(DM[playerid] == 0) return SendError(playerid,"Zaten deathmatch alanında deıilsin!");
+		if(DM[playerid] == 0) return SendError(playerid,"Zaten deathmatch alanÄ±nda deÄ±ilsin!");
 		DM[playerid]=0;
 		SetPlayerArmour(playerid,0.0);
 		SetPlayerHealth(playerid,100.0);
 		ResetPlayerWeapons(playerid);
 		SpawnPlayer(playerid);
-		SendInfo(playerid,"Deathmatch alanından ııktınız.");
+		SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±ktÄ±nÄ±z.");
 		return 1;
 	}
 
-   	if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alanında komut kullanmak yasaktır. ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	// - DCMD komutları
+   	if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alanÄ±nda komut kullanmak yasaktÄ±r. Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
+	// - DCMD komutlarÄ±
 	dcmd(pm, 2, cmdtext);
 	dcmd(ms, 2, cmdtext);
 	dcmd(m, 1, cmdtext);
@@ -1197,40 +1192,40 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	dcmd(pmac, 4, cmdtext);
 	dcmd(pmkapat, 7, cmdtext);
 
-	// - Genel komutlar && dialog komutları
+	// - Genel komutlar && dialog komutlarÄ±
 	if(!strcmp(cmdtext, "/kurallar", true))
 	{
-	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktır.\n~~ Argo yasaktır.\n~~ ınanı & gırııe karıı hakaret yasaktır.\n~~ Yınetimi rahatsız etmek yasaktır.","Kapat","");
+	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktÄ±r.\n~~ Argo yasaktÄ±r.\n~~ Ä±nanÄ± & gÄ±rÄ±Ä±e karÄ±Ä± hakaret yasaktÄ±r.\n~~ YÄ±netimi rahatsÄ±z etmek yasaktÄ±r.","Kapat","");
     return 1;
 	}
 
 	if(!strcmp(cmdtext, "/changelog", true))
 	{
-	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyaları oluıturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles menısı eklendi.\n~ Yardım menısı eklendi.\n~ Kurallar menısı eklendi.\n~ ılk haritalar ve Araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutları eklendi.","RC1.1","Kapat");
+	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyalarÄ± oluÄ±turuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles menÄ±sÄ± eklendi.\n~ YardÄ±m menÄ±sÄ± eklendi.\n~ Kurallar menÄ±sÄ± eklendi.\n~ Ä±lk haritalar ve AraÃ§lar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 AraÃ§ spawn sistemi eklendi.\n~ /m1-/m12 AraÃ§ spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarÄ± eklendi.","RC1.1","Kapat");
     return 1;
 	}
 
 	if(!strcmp(cmdtext, "/teles", true))
 	{
-	ShowPlayerDialog(playerid,1000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Teleport","{FFFFFF}Four Dragon Casino (/4dragon)\nChilliad Mountain (/dag)\nSanta Maria Beach (/sahil)\nArea51 Zone (/area51)\nSan Fierro ChinaTown (/china)\nLos Santos Los Flores (/flores)\nModifiye Yeri 1 (/mod1)\nModifiye Yeri 2 (/mod2)\nModifiye Yeri 3 (/mod3)\nModifiye Yeri 4 (/mod4)\nModifiye Yeri 5 (/mod5)\nAirport 1 (/ap1)\nAirport 2 (/ap2)\nAirport 3 (/ap3)\nAirport 4 (/ap4)\n~ Diıer Sayfa.","Seı","Kapat");
+	ShowPlayerDialog(playerid,1000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Teleport","{FFFFFF}Four Dragon Casino (/4dragon)\nChilliad Mountain (/dag)\nSanta Maria Beach (/sahil)\nArea51 Zone (/area51)\nSan Fierro ChinaTown (/china)\nLos Santos Los Flores (/flores)\nModifiye Yeri 1 (/mod1)\nModifiye Yeri 2 (/mod2)\nModifiye Yeri 3 (/mod3)\nModifiye Yeri 4 (/mod4)\nModifiye Yeri 5 (/mod5)\nAirport 1 (/ap1)\nAirport 2 (/ap2)\nAirport 3 (/ap3)\nAirport 4 (/ap4)\n~ DiÄ±er Sayfa.","SeÄ±","Kapat");
 	return 1;
 	}
 
 	if(!strcmp(cmdtext, "/dmler", true))
 	{
-	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch","{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)","Seı","Kapat");
+	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch","{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)","SeÄ±","Kapat");
 	return 1;
 	}
 
 	if(!strcmp(cmdtext, "/stuntlar", true))
 	{
-	ShowPlayerDialog(playerid,2001,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Stunt Zones","{FFFFFF}Bikepark Stunt - 1 (/bikestunt1)","Seı","Kapat");
+	ShowPlayerDialog(playerid,2001,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Stunt Zones","{FFFFFF}Bikepark Stunt - 1 (/bikestunt1)","SeÄ±","Kapat");
 	return 1;
 	}
 
 	if(!strcmp(cmdtext, "/silahlar", true))
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
     return 1;
 	}
 
@@ -1238,7 +1233,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	    new string[2048];
 	    format(string,2048,"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",dIp[0],dIp[1],dIp[2],dIp[3],dIp[4],dIp[5],dIp[6],dIp[7],dIp[8],dIp[9],dIp[10],dIp[11],dIp[12],dIp[13],dIp[14],dIp[15],dIp[16],dIp[17]);
-	    ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}Yardım",string,"Kapat","");
+	    ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}YardÄ±m",string,"Kapat","");
 		return 1;
 	}
 
@@ -1246,128 +1241,128 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	    new string[64];
     	GetPlayerVersion(playerid, string, sizeof(string));
-    	format(string, sizeof(string), "ı BıLGı: {FFFFFF}SA-MP versiyonunuz: {00FF00}%s", string);
+    	format(string, sizeof(string), "Ä± BÄ±LGÄ±: {FFFFFF}SA-MP versiyonunuz: {00FF00}%s", string);
         SendClientMessage(playerid, 0x00A2F6AA,string);
 		return 1;
 	}
 
-	// - Araç yınetim komutları
+	// - AraÃ§ yÄ±netim komutlarÄ±
     if(strcmp(cmd, "/motorac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,VEHICLE_PARAMS_ON,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Motor açıldı, kapatmak için {00FF00}/motorkapat");
+    SendInfo(playerid,"Motor aÃ§Ä±ldÄ±, kapatmak iÃ§in {00FF00}/motorkapat");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/motorkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,VEHICLE_PARAMS_OFF,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Motor kapatıldı, tekrar aımak için {00FF00}/motorac");
+    SendInfo(playerid,"Motor kapatÄ±ldÄ±, tekrar aÄ±mak iÃ§in {00FF00}/motorac");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/farac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_ON,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Far açıldı, kapatmak için {00FF00}/farkapat");
+    SendInfo(playerid,"Far aÃ§Ä±ldÄ±, kapatmak iÃ§in {00FF00}/farkapat");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/farkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_OFF,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Far kapatıldı, tekrar aımak için {00FF00}/farac");
+    SendInfo(playerid,"Far kapatÄ±ldÄ±, tekrar aÄ±mak iÃ§in {00FF00}/farac");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/alarmac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_ON,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Alarm açıldı, kapatmak için {00FF00}/alarmkapat");
+    SendInfo(playerid,"Alarm aÃ§Ä±ldÄ±, kapatmak iÃ§in {00FF00}/alarmkapat");
     }
 	return 1;
 	}
 
     if(strcmp(cmd, "/alarmkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_OFF,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Alarm kapatıldı, tekrar almak için {00FF00}/alarmac");
+    SendInfo(playerid,"Alarm kapatÄ±ldÄ±, tekrar almak iÃ§in {00FF00}/alarmac");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/kaputac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_ON,bagaj,objective);
-    SendInfo(playerid,"Kaput açıldı, kapatmak için {00FF00}/kaputkapat");
+    SendInfo(playerid,"Kaput aÃ§Ä±ldÄ±, kapatmak iÃ§in {00FF00}/kaputkapat");
     }
 	return 1;
 	}
 
     if(strcmp(cmd, "/kaputkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_OFF,bagaj,objective);
-    SendInfo(playerid,"Kaput kapatıldı, tekrar almak için {00FF00}/kaputac");
+    SendInfo(playerid,"Kaput kapatÄ±ldÄ±, tekrar almak iÃ§in {00FF00}/kaputac");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/bagajac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_ON,objective);
-    SendInfo(playerid,"Bagaj açıldı, kapatmak için {00FF00}/bagajkapat");
+    SendInfo(playerid,"Bagaj aÃ§Ä±ldÄ±, kapatmak iÃ§in {00FF00}/bagajkapat");
     }
     return 1;
     }
 
     if(strcmp(cmd, "/bagajkapat",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ııfır koltuıunda deıilsiniz!");
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"Ä±Ä±fÄ±r koltuÄ±unda deÄ±ilsiniz!");
     new vid = GetPlayerVehicleID(playerid);
     if(vid != INVALID_VEHICLE_ID)
 	{
     GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
     SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_OFF,objective);
-    SendInfo(playerid,"Bagaj kapatıldı, tekrar almak için {00FF00}/bagajac");
+    SendInfo(playerid,"Bagaj kapatÄ±ldÄ±, tekrar almak iÃ§in {00FF00}/bagajac");
     }
     return 1;
     }
@@ -1379,7 +1374,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	    if(Kilit[playerid] != 0) return 1;
 	    Kilit[playerid] = 1;
 	    Arac[playerid] = GetPlayerVehicleID(playerid);
-	    SendInfo(playerid,"Araç kilitlendi, kilidi açmak için {00FF00}/kilitac");
+	    SendInfo(playerid,"AraÃ§ kilitlendi, kilidi aÃ§mak iÃ§in {00FF00}/kilitac");
 	    return 1;
 	}
 
@@ -1392,12 +1387,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	    {
 	        Kilit[playerid] = 0;
 
-		    SendInfo(playerid,"Kilit açıldı, aracı kilitlemek için {00FF00}/kilit");
+		    SendInfo(playerid,"Kilit aÃ§Ä±ldÄ±, aracÄ± kilitlemek iÃ§in {00FF00}/kilit");
 		}
 	    return 1;
 	}
 
-	// - Araç renk deıiıtirme komutu
+	// - AraÃ§ renk deÄ±iÄ±tirme komutu
 	if(strcmp(cmd, "/renk", true) == 0)
 	{
     if(IsPlayerInAnyVehicle(playerid))
@@ -1420,34 +1415,34 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
  	ChangeVehicleColor(GetPlayerVehicleID(playerid),color1,color2);
-    format(string,sizeof(string),"ı BıLGı: {FFFFFF}Araç rengi değiştirildi. [{009BFF}%d/%d{FFFFFF}]",color1,color2);
+    format(string,sizeof(string),"Ä± BÄ±LGÄ±: {FFFFFF}AraÃ§ rengi deÄŸiÅŸtirildi. [{009BFF}%d/%d{FFFFFF}]",color1,color2);
     SendClientMessage(playerid, 0x00A2F6AA,string);
     }
-    else SendError(playerid,"Araçta deıilsiniz.");
+    else SendError(playerid,"AraÃ§ta deÄ±ilsiniz.");
     return 1;
 	}
 
-    // - Skin deıiıtirme komutu
+    // - Skin deÄ±iÄ±tirme komutu
     if(strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
     {
 	if(cmdtext[7] != ' ' || cmdtext[8] == EOS)
 	return SendUse(playerid,"/myskin [id]");
-	if ((cmdtext[0] < 0) || (cmdtext[0] > 299)) return SendError(playerid,"Girilen deıer geıersiz!");
+	if ((cmdtext[0] < 0) || (cmdtext[0] > 299)) return SendError(playerid,"Girilen deÄ±er geÄ±ersiz!");
 	if(IsValidSkin((cmdtext[0] = strval(cmdtext[8]))))
 	SetPlayerSkin(playerid, cmdtext[0]);
 	else
-	SendError(playerid,"Girilen deıer geıersiz!");
+	SendError(playerid,"Girilen deÄ±er geÄ±ersiz!");
 	return 1;
     }
 
-	// - DM alanı komutları
+	// - DM alanÄ± komutlarÄ±
 	if(!strcmp(cmdtext, "/deagledm1",true))
 	{
 	new State = GetPlayerState(playerid);
     if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
     GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     }
     DM[playerid]=1;
     SetPlayerArmour(playerid,100);
@@ -1459,7 +1454,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
     new rand = random(sizeof(deagledm1pos));
     SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
     GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     GivePlayerWeapon(playerid,24,99999);
     SetPlayerTeam(playerid, NO_TEAM);
     return 1;
@@ -1471,7 +1466,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
     if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
     {
     GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     }
     DM[playerid]=2;
     SetPlayerArmour(playerid,100);
@@ -1483,12 +1478,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
     new rand = random(sizeof(fistdm1pos));
     SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
     GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     SetPlayerTeam(playerid, NO_TEAM);
     return 1;
     }
 
-	// - 31 sistemi komutları
+	// - 31 sistemi komutlarÄ±
     if(!strcmp("/31",cmd,true))
     {
     tmp=strtok(cmdtext,idx);
@@ -1497,7 +1492,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
     if(!strcmp("cek",tmp,true))
     {
-    if(cekiyor[playerid] == 1) return SendError(playerid,"Zaten 31 ıekmektesiniz.");
+    if(cekiyor[playerid] == 1) return SendError(playerid,"Zaten 31 Ä±ekmektesiniz.");
    	ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
    	ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
     asilantimer = SetTimerEx("asilanadamtimer", 19000,false,"i",playerid);
@@ -1507,8 +1502,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(!strcmp("birak",tmp,true))
 	{
-   	if(cekiyor[playerid] == 0) return SendError(playerid,"Zaten 31 ıekmiyorsunuz.");
-    SendInfo(playerid,"Artık 31 ıekmiyorsunuz.");
+   	if(cekiyor[playerid] == 0) return SendError(playerid,"Zaten 31 Ä±ekmiyorsunuz.");
+    SendInfo(playerid,"ArtÄ±k 31 Ä±ekmiyorsunuz.");
     ClearAnimations(playerid);
    	KillTimer(asilantimer);
     cekiyor[playerid] = 0;
@@ -1516,7 +1511,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
    	}
     return 1;
     }
-	// - Para gınderme komutu
+	// - Para gÄ±nderme komutu
 	if(!strcmp("/paraver",cmd,true))
 	{
 	    tmp=strtok(cmdtext,idx);
@@ -1527,18 +1522,18 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		if(!strlen(tmp)) return SendUse(playerid,"/paraver {00FF00}[id][miktar]");
 		new miktar=strval(tmp);
 
-		if(miktar < 0) return SendError(playerid,"Girilen miktar {FF0000}geıersiz!");
-		if(GetPlayerMoney(playerid) < miktar) return SendError(playerid,"Paranız {FF0000}yetersiz!");
+		if(miktar < 0) return SendError(playerid,"Girilen miktar {FF0000}geÄ±ersiz!");
+		if(GetPlayerMoney(playerid) < miktar) return SendError(playerid,"ParanÄ±z {FF0000}yetersiz!");
 
 		GivePlayerMoney(playerid,-miktar);
 		GivePlayerMoney(id,miktar);
 		return 1;
 	}
 
-	// - Sırıı kamerası komutu
+	// - SÄ±rÄ±Ä± kamerasÄ± komutu
     if (strcmp("/surus", cmdtext, true, 10) == 0)
     {
-    if(!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada olmalısınız!");
+    if(!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada olmalÄ±sÄ±nÄ±z!");
     if(GetPVarInt(playerid,"used") == 0)
     {
     new p = GetPlayerVehicleID(playerid);
@@ -1546,155 +1541,155 @@ public OnPlayerCommandText(playerid, cmdtext[])
     AttachPlayerObjectToVehicle(playerid,Surus[playerid],p,-0.314999, -0.195000, 0.510000, 0.000000, 0.000000, 0.000000);
     AttachCameraToPlayerObject(playerid,Surus[playerid]);
     SetPVarInt(playerid,"used",1);
-    SendInfo(playerid,"Kamerayı eski haline dındırmek için {00FF00}/surus {FFFFFF}yazınız.");
+    SendInfo(playerid,"KamerayÄ± eski haline dÄ±ndÄ±rmek iÃ§in {00FF00}/surus {FFFFFF}yazÄ±nÄ±z.");
     }
     else if(GetPVarInt(playerid,"used") == 1)
     {
     SetCameraBehindPlayer(playerid);
     DestroyPlayerObject(playerid,Surus[playerid]);
     SetPVarInt(playerid,"used",0);
-    SendInfo(playerid,"Kamera eski haline dındırıldı."); }
+    SendInfo(playerid,"Kamera eski haline dÄ±ndÄ±rÄ±ldÄ±."); }
     return 1;
     }
 
-	// - Iıınlanma komutları
+	// - IÄ±Ä±nlanma komutlarÄ±
 	if(strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0)
 	{
     Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-    SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ııınlanıldı.");
+    SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/dag", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0)
 	{
 	Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
-	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/sahil", true) == 0)
 	{
     Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
-	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/area51", true) == 0)
 	{
 	Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
-	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/china", true) == 0)
 	{
 	Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
-	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
     if(strcmp(cmdtext, "/flores", true) == 0)
 	{
 	Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
-	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/mod1", true) == 0)
 	{
 	Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 1 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 1 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext,"/mod2", true) == 0)
 	{
 	Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 2 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 2 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext,"/mod3", true) == 0)
 	{
 	Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 3 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 3 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext,"/mod4", true) == 0)
 	{
 	Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
  	return 1;
 	}
 
 	if(strcmp(cmdtext,"/mod5", true) == 0)
 	{
 	Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
  	return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap1", true) == 0)
 	{
 	Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
  	return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap2", true) == 0)
 	{
 	Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
  	return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap3", true) == 0)
 	{
 	Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
  	return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap4", true) == 0)
 	{
 	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
  	return 1;
 	}
 
-	// - Can & Zırh komutları
+	// - Can & ZÄ±rh komutlarÄ±
 	if(strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0)
     {
-    if(GetPVarInt(playerid, "SpamKoruma") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+    if(GetPVarInt(playerid, "SpamKoruma") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak iÃ§in 30 saniye bekleyiniz.");
     SetPVarInt(playerid, "SpamKoruma", GetTickCount() + 30000);
     if(GetPlayerMoney(playerid) < 750)
-    return SendError(playerid,"Paranız {FF0000}yetersiz!");
+    return SendError(playerid,"ParanÄ±z {FF0000}yetersiz!");
     SetPlayerHealth(playerid,100);
     GivePlayerMoney(playerid,-750);
-    SendInfo(playerid,"Can paketi {00FF00}baıarıyla {FFFFFF}alındı. [750$]");
+    SendInfo(playerid,"Can paketi {00FF00}baÄ±arÄ±yla {FFFFFF}alÄ±ndÄ±. [750$]");
     return 1;
     }
 
     if (strcmp(cmdtext, "/yelek", true)==0 || strcmp(cmdtext, "/zirh", true)==0)
     {
-    if(GetPVarInt(playerid, "SpamKoruma1") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+    if(GetPVarInt(playerid, "SpamKoruma1") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak iÃ§in 30 saniye bekleyiniz.");
     SetPVarInt(playerid, "SpamKoruma1", GetTickCount() + 30000);
     if(GetPlayerMoney(playerid) < 1000)
-    return SendError(playerid,"Paranız {FF0000}yetersiz!");
+    return SendError(playerid,"ParanÄ±z {FF0000}yetersiz!");
     SetPlayerArmour(playerid,100);
     GivePlayerMoney(playerid,-1000);
-    SendInfo(playerid,"Zırh paketi {00FF00}baıarıyla {FFFFFF}alındı. [1000$]");
+    SendInfo(playerid,"ZÄ±rh paketi {00FF00}baÄ±arÄ±yla {FFFFFF}alÄ±ndÄ±. [1000$]");
     return 1;
     }
 
-	// - FPS komutları
+	// - FPS komutlarÄ±
 	if (strcmp("/firstperson", cmdtext, true, 10) == 0)
 	{
 	    firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
      	AttachObjectToPlayer(firstperson[playerid],playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
 	    AttachCameraToObject(playerid, firstperson[playerid]);
-	    SendInfo(playerid,"Kamerayı eski hale dındırmek için {00FF00}/exitfirstperson {FFFFFF}yazınız.");
+	    SendInfo(playerid,"KamerayÄ± eski hale dÄ±ndÄ±rmek iÃ§in {00FF00}/exitfirstperson {FFFFFF}yazÄ±nÄ±z.");
 		return 1;
 	}
 	if (strcmp("/exitfirstperson", cmdtext, true, 10) == 0)
@@ -1704,7 +1699,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Araç ıevirme komutu
+	// - AraÃ§ Ä±evirme komutu
 	if(strcmp(cmdtext,"/cevir",true)==0)
 	{
 	if(IsPlayerInAnyVehicle(playerid))
@@ -1714,14 +1709,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	VehicleID = GetPlayerVehicleID(playerid);
 	SetVehiclePos(VehicleID,X,Y,Z);
 	SetVehicleZAngle(VehicleID,0);
-	SendInfo(playerid,"Arabanız {00FF00}baıarıyla {FFFFFF}ıevrildi.");
+	SendInfo(playerid,"ArabanÄ±z {00FF00}baÄ±arÄ±yla {FFFFFF}Ä±evrildi.");
 	} else {
-	SendError(playerid,"Arabada {FF0000}deıilsiniz!");
+	SendError(playerid,"Arabada {FF0000}deÄ±ilsiniz!");
 	}
 	return 1;
 	}
 
-	// - Araç spawn komutu
+	// - AraÃ§ spawn komutu
     if(!strcmp(cmdtext, "/v", true, 2))
         {
                 if(cmdtext[2] == EOS)
@@ -1755,7 +1750,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
                 return 0;
         }
 
-	// - Modifiyeli Araç spawn komutları
+	// - Modifiyeli AraÃ§ spawn komutlarÄ±
 	if(strcmp(cmdtext, "/m1", true)==0) // Sultan
 	{
         new Float:X,Float:Y,Float:Z,Float:Angle,LVehicleIDt;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
@@ -1880,20 +1875,20 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 	    return 1;   }
 
-	// - Ev sistemi komutları
+	// - Ev sistemi komutlarÄ±
 	if (strcmp("/evmenu", cmdtext, true, 10) == 0)
 	{
-		if(!IsPlayerAdmin(playerid)) return Mesaj(playerid,"Bu komutu kullanmak için gerekli izniniz yok!");
-		if(GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak için interior dııında olmalısınız!");
+		if(!IsPlayerAdmin(playerid)) return Mesaj(playerid,"Bu komutu kullanmak iÃ§in gerekli izniniz yok!");
+		if(GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak iÃ§in interior dÄ±Ä±Ä±nda olmalÄ±sÄ±nÄ±z!");
 		if(Kontrol(playerid))
 		{
-		    if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"ıu anda bu evi baıka bir kiıi dızenliyor...");
+		    if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"Ä±u anda bu evi baÄ±ka bir kiÄ±i dÄ±zenliyor...");
 		    EvEditleniyor[GetHouseID(playerid)] = true;
-		    ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+		    ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 		}
 		else
 		{
-		    ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seı","ıptal");
+		    ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","SeÄ±","Ä±ptal");
 		}
 		return 1;
 	}
@@ -1902,12 +1897,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	    new dosya[64];
 	    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
-		if(OyuncuEv[playerid] == -1) return Mesaj(playerid,"ıuanda evde deıilsin!");
-	    else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"ıu anda bu evi baıka bir kiıi dızenliyor...");
+		if(OyuncuEv[playerid] == -1) return Mesaj(playerid,"Ä±uanda evde deÄ±ilsin!");
+	    else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"Ä±u anda bu evi baÄ±ka bir kiÄ±i dÄ±zenliyor...");
 		else if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
-		else if(EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait deıil!");
+		else if(EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait deÄ±il!");
 		EvEditleniyor[OyuncuEv[playerid]] = true;
-		ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+		ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 		return 1;
 	}
 
@@ -1916,14 +1911,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		if(Kontrol(playerid))
 		{
 	        new evid = GetHouseID(playerid);
-		    if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lıtfen satılık ev seıiniz!");
+		    if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lÄ±tfen satÄ±lÄ±k ev seÄ±iniz!");
 	        new str[256];
-		    format(str,sizeof(str),"{00FF7F}Ev Aııklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatı: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satın almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
-			ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satın Al","ıptal");
-		} else Mesaj(playerid,"Herhangi bir evin ıstınde deıilsiniz!");
+		    format(str,sizeof(str),"{00FF7F}Ev AÄ±Ä±klamasÄ±: {c0c0c0}%s\n{00FF7F}Ev FiyatÄ±: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satÄ±n almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
+			ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"SatÄ±n Al","Ä±ptal");
+		} else Mesaj(playerid,"Herhangi bir evin Ä±stÄ±nde deÄ±ilsiniz!");
 		return 1;
 	}
-	return SendError(playerid,"Komut bulunamadı!");
+	return SendError(playerid,"Komut bulunamadÄ±!");
 }
 
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
@@ -2179,7 +2174,7 @@ public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-	// - 2 tuıu fonksiyonu
+	// - 2 tuÄ±u fonksiyonu
 	if(newkeys & KEY_LOOK_BEHIND && IsPlayerInAnyVehicle(playerid))
 	{
     	if(!IsNosVehicle(GetPlayerVehicleID(playerid))) return RepairVehicle(GetPlayerVehicleID(playerid)),PlayerPlaySound(playerid, 1133 ,0, 0, 0),GameTextForPlayer(playerid,"~b~~h~Full Tamir",500,5);
@@ -2190,7 +2185,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	}
 
 
-	// - Ev sistemi ayarları
+	// - Ev sistemi ayarlarÄ±
     if(PRESSED(16))
 	{
 		if(!IsPlayerInAnyVehicle(playerid))
@@ -2201,7 +2196,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 			    new dosya[64];
 			    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
 		        if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
-				else if(EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoıgeldiniz!"),Mesaj(playerid,"Evinizi dızenlemek veya ayarlarına girmek için '{008080}/ev{FFFFFF}' komutunu kullanınız.");
+				else if(EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoÄ±geldiniz!"),Mesaj(playerid,"Evinizi dÄ±zenlemek veya ayarlarÄ±na girmek iÃ§in '{008080}/ev{FFFFFF}' komutunu kullanÄ±nÄ±z.");
 		        else if(EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
 		        if(EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
 		        else if(EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
@@ -2237,7 +2232,7 @@ public OnPlayerUpdate(playerid)
 	format(str, sizeof(str), "EXP:%d/1000 - Level:%d/50", exp[playerid], seviye[playerid]);
 	TextDrawSetString(expmeter[playerid], str);
 	//SetProgressBarValue(Bar:expbar[playerid],exp[playerid]);
-	// - Ev sistemi ayarları
+	// - Ev sistemi ayarlarÄ±
     if(Kontrol(playerid))
 	{
 		OyuncuKontrolEv[playerid]=GetHouseID(playerid);
@@ -2268,38 +2263,38 @@ public OnVehicleStreamOut(vehicleid, forplayerid)
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	// - Silahlar menısı dialogları
+	// - Silahlar menÄ±sÄ± dialoglarÄ±
 	if(dialogid == 9500)
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PompalÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 5)
 	{
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PatlayÄ±cÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 6)
 	{
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	}
 	}
@@ -2310,26 +2305,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,22,200,"Colt .45",500);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,23,200,"Susturuculu Colt .45",700);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,24,200,"Desert Eagle",1200);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
@@ -2340,185 +2335,185 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,28,200,"Micro Uzi",1250);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,32,200,"TEC-9",1700);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,29,200,"MP-5",2300);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9503) // Pompalı tıfekler.
+	if(dialogid == 9503) // PompalÄ± tÄ±fekler.
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PompalÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,25,200,"Pump-Action Shotgun",3000);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PompalÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,26,200,"Double-Barrel Shotgun",4600);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PompalÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,27,200,"Combat Shotgun",6500);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PompalÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9504) // Makineli tıfekler.
+	if(dialogid == 9504) // Makineli tÄ±fekler.
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,31,200,"M4A1 Carbine",9500);
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,30,200,"Avtomat Kalashnikova 47",7500);
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9505) // Yivli tıfekler.
+	if(dialogid == 9505) // Yivli tÄ±fekler.
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,33,200,"Country Rifle .22",6700);
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,34,200,"Sniper Rifle",9750);
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tıfekler","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli TÄ±fekler","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9506) // Patlayıcılar.
+	if(dialogid == 9506) // PatlayÄ±cÄ±lar.
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PatlayÄ±cÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,16,1,"Grenade",600);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PatlayÄ±cÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,17,1,"Gas Grenade",250);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PatlayÄ±cÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,18,1,"Molotov",700);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} PatlayÄ±cÄ±lar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9507) // Ateısiz silahlar.
+	if(dialogid == 9507) // AteÄ±siz silahlar.
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,1,1,"Brass Knuckles",50);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,5,1,"Baseball Bat",100);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,2,1,"Golf Club",120);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 4)
 	{
 	SilahSat(playerid,4,1,"Knife",250);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 5)
 	{
 	SilahSat(playerid,41,1200,"Spray",300);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 6)
 	{
 	SilahSat(playerid,42,5500,"Fire Extinguisher",450);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateısiz Silahlar","{009BFF}SıLAH ADI\t\t\tSıLAH FıYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dın.","Seı","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} AteÄ±siz Silahlar","{009BFF}SÄ±LAH ADI\t\t\tSÄ±LAH FÄ±YATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dÄ±n.","SeÄ±","Kapat");
 	}
 	if(listitem == 7)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menısı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tıfekler\n{FFFFFF}~ {ACDA00}Makinalı tıfekler\n{FFFFFF}~ {ACDA00}Yivli tıfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateısiz silahlar","Seı","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah MenÄ±sÄ±","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}PompalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}MakinalÄ± tÄ±fekler\n{FFFFFF}~ {ACDA00}Yivli tÄ±fekler\n{FFFFFF}~ {ACDA00}PatlayÄ±cÄ±lar\n{FFFFFF}~ {ACDA00}AteÄ±siz silahlar","SeÄ±","Kapat");
 	}
 	}
 	}
-	// - Teles alanları dialogları
+	// - Teles alanlarÄ± dialoglarÄ±
 	if(dialogid == 1000)
 	{
 	if(response)
@@ -2526,87 +2521,87 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	if(listitem == 0)
 	{
     Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-    SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ııınlanıldı.");
+    SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 1)
 	{
     Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
-	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 2)
 	{
     Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
-	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 3)
 	{
     Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
-	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 4)
 	{
     Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
-	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 5)
 	{
     Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
-	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 6)
 	{
 	Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 1 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 1 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 7)
 	{
 	Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 2 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 2 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 8)
 	{
 	Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 3 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 3 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 9)
 	{
 	Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 10)
 	{
 	Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 11)
 	{
 	Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 12)
 	{
 	Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 13)
 	{
 	Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	if(listitem == 14)
  {
 	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	}
 	}
 	}
 
-	// - Changelog dialogları
+	// - Changelog dialoglarÄ±
 	if(dialogid == 1911)
 	{
 	if(response)
 	{
-	ShowPlayerDialog(playerid,1912,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.1]","{ACDA00}~ Textdrawlar dızenlendi.\n~ Teles menısı gıncellendi. {FFFFFF}(4 yeni teleport alanı){ACDA00}\n~ Admin sistemi dızenlendi.\n~ Yardım menısı dızenlendi.\n~ \"Desert Eagle Deathmatch\" alanı eklendi.\n~ ılım-ıldırme gıstergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.","RC1.2","Kapat");
+	ShowPlayerDialog(playerid,1912,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.1]","{ACDA00}~ Textdrawlar dÄ±zenlendi.\n~ Teles menÄ±sÄ± gÄ±ncellendi. {FFFFFF}(4 yeni teleport alanÄ±){ACDA00}\n~ Admin sistemi dÄ±zenlendi.\n~ YardÄ±m menÄ±sÄ± dÄ±zenlendi.\n~ \"Desert Eagle Deathmatch\" alanÄ± eklendi.\n~ Ä±lÄ±m-Ä±ldÄ±rme gÄ±stergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.","RC1.2","Kapat");
 	}
 	}
 
@@ -2614,7 +2609,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(response)
 	{
-	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]","{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanı eklendi.\n~ Eksik haritalar gıncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yınetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları dızeltildi.\n~ Gametext sıreleri dııırıldı.\n~ Giriı dızenlendi.","RC1.3","Kapat");
+	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]","{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanÄ± eklendi.\n~ Eksik haritalar gÄ±ncellendi.\n~ \"Bikepark Stunt 1\" alanÄ± eklendi.\n~ /nrg komutu eklendi.\n~ AraÃ§ yÄ±netim komutlarÄ± eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymalarÄ± dÄ±zeltildi.\n~ Gametext sÄ±releri dÄ±Ä±Ä±rÄ±ldÄ±.\n~ GiriÄ± dÄ±zenlendi.","RC1.3","Kapat");
 	}
 	}
 
@@ -2622,7 +2617,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(response)
 	{
-	ShowPlayerDialog(playerid,1914,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.3]","{ACDA00}~ ALPHA hesapları silindi.\n~ Kick-Ban mesajları ve Giriı-ııkıı mesajları gıncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog dızenlendi.\n~ Yeni haritalar eklendi.\n~ Geliımiı saat sistemi eklendi.\n~ RGM-GM sistemi bugları giderildi.\n~ Sohbet baloncuıu eklendi.\n~ Driveby engeli kaldırıldı.","RC1.4","Kapat");
+	ShowPlayerDialog(playerid,1914,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.3]","{ACDA00}~ ALPHA hesaplarÄ± silindi.\n~ Kick-Ban mesajlarÄ± ve GiriÄ±-Ä±Ä±kÄ±Ä± mesajlarÄ± gÄ±ncellendi.\n~ AraÃ§ Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog dÄ±zenlendi.\n~ Yeni haritalar eklendi.\n~ GeliÄ±miÄ± saat sistemi eklendi.\n~ RGM-GM sistemi buglarÄ± giderildi.\n~ Sohbet baloncuÄ±u eklendi.\n~ Driveby engeli kaldÄ±rÄ±ldÄ±.","RC1.4","Kapat");
 	}
 	}
 
@@ -2630,7 +2625,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(response)
 	{
-	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]","{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi gıncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin gıncellendi. (4.4)\n~ Teleport komutları dızenlendi.\n~ EXP-LEVEL textdrawı yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanları ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menısı eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Giriıe dans eklendi.","RC1.5","Kapat");
+	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]","{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi gÄ±ncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin gÄ±ncellendi. (4.4)\n~ Teleport komutlarÄ± dÄ±zenlendi.\n~ EXP-LEVEL textdrawÄ± yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanlarÄ± ve Airport'lar iÃ§in teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menÄ±sÄ± eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ GiriÄ±e dans eklendi.","RC1.5","Kapat");
 	}
 	}
 	
@@ -2641,7 +2636,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	ShowPlayerDialog(playerid,1916,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.5]","{ACDA00}~ ","Kapat","");
 	}
 	}
-	// - DM alanı dialogları
+	// - DM alanÄ± dialoglarÄ±
 	if(dialogid == 2000)
 	{
 	if(response)
@@ -2652,7 +2647,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
     GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     }
     DM[playerid]=1;
     SetPlayerArmour(playerid,100);
@@ -2663,7 +2658,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     new rand = random(sizeof(deagledm1pos));
     SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
     GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     GivePlayerWeapon(playerid,24,99999);
     SetPlayerTeam(playerid, NO_TEAM);
 	}
@@ -2673,7 +2668,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
     {
     GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     }
     DM[playerid]=2;
     SetPlayerArmour(playerid,100);
@@ -2684,25 +2679,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     new rand = random(sizeof(fistdm1pos));
     SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
     GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alanından ııkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+    SendInfo(playerid,"Deathmatch alanÄ±ndan Ä±Ä±kmak iÃ§in {00FF00}/dmcik {FFFFFF}yazÄ±nÄ±z.");
     SetPlayerTeam(playerid, NO_TEAM);
 	}
 	}
 	}
 
-	// - Stunt dialogları
+	// - Stunt dialoglarÄ±
 	if(dialogid == 2001)
 	{
 	if(response)
 	{
 	if(listitem == 0)
 	{
-	SendInfo(playerid,"{00FF00}Bikepark Stunt - 1 {FFFFFF}alanına ııınlanıldı.");
+	SendInfo(playerid,"{00FF00}Bikepark Stunt - 1 {FFFFFF}alanÄ±na Ä±Ä±Ä±nlanÄ±ldÄ±.");
 	SetPlayerPos(playerid,1165.3389,1344.6733,10.8125);
 	}
 	}
 	}
-	// Araç spawn ayarları
+	// AraÃ§ spawn ayarlarÄ±
     if(response)
     {
     new iList = GetPVarInt(playerid, "iList");
@@ -2727,7 +2722,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
     iVehID = (listitem + (iList * 12) + 400);
 
-    // - Yasak Araç ayarları
+    // - Yasak AraÃ§ ayarlarÄ±
     switch(iVehID)
     {
     case 425, 432, 520:
@@ -2751,9 +2746,9 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    if(response)
 	    {
 	        new evid = GetHouseID(playerid);
-	        if(!Kontrol(playerid)) return Mesaj(playerid,"Evi satın almak için herhangi bir evin ıstınde olmalısınız!");
-		    else if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lıtfen satılık ev seıiniz!");
-			else if(EvBilgi[evid][evfiyat] > GetPlayerMoney(playerid)) return Mesaj(playerid,"Evi almak için yeterli paranız bulunmamakta!");
+	        if(!Kontrol(playerid)) return Mesaj(playerid,"Evi satÄ±n almak iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
+		    else if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lÄ±tfen satÄ±lÄ±k ev seÄ±iniz!");
+			else if(EvBilgi[evid][evfiyat] > GetPlayerMoney(playerid)) return Mesaj(playerid,"Evi almak iÃ§in yeterli paranÄ±z bulunmamakta!");
 			EvKaydetInt(evid,"evsatilik",0);
 			EvKaydetStr(evid,"evsahip",PlayerName(playerid));
 			EvYenile(evid);
@@ -2772,88 +2767,88 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	        new evid = OyuncuEv[playerid];
 			if(listitem == 0)
 			{
-			    format(str,sizeof(str),"{00FF7F}Ev Aııklaması: {c0c0c0}%s\n\n{CD5C5C}Aııklamayı deıiıtirmek için yenisini aıaııya yazınız.",EvBilgi[evid][evaciklama]);
-				ShowPlayerDialog(playerid,MENU+1,DIALOG_STYLE_INPUT,BASLIK,str,"Deıiıtir","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Ev AÄ±Ä±klamasÄ±: {c0c0c0}%s\n\n{CD5C5C}AÄ±Ä±klamayÄ± deÄ±iÄ±tirmek iÃ§in yenisini aÄ±aÄ±Ä±ya yazÄ±nÄ±z.",EvBilgi[evid][evaciklama]);
+				ShowPlayerDialog(playerid,MENU+1,DIALOG_STYLE_INPUT,BASLIK,str,"DeÄ±iÄ±tir","Ä±ptal");
 			}
 			if(listitem == 1)
 			{
-				ShowPlayerDialog(playerid,MENU+2,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aı\n{FF4500}Kilitle","Ayarla","ıptal");
+				ShowPlayerDialog(playerid,MENU+2,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi AÄ±\n{FF4500}Kilitle","Ayarla","Ä±ptal");
 			}
 			if(listitem == 2)
 			{
-			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lıtfen gerıekleıtirilcek iılemi seıiniz.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
-				ShowPlayerDialog(playerid,MENU+3,DIALOG_STYLE_MSGBOX,BASLIK,str,"Yatır/ıek","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut ParanÄ±z: {c0c0c0}%i$\n\n{CD5C5C}LÄ±tfen gerÄ±ekleÄ±tirilcek iÄ±lemi seÄ±iniz.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
+				ShowPlayerDialog(playerid,MENU+3,DIALOG_STYLE_MSGBOX,BASLIK,str,"YatÄ±r/Ä±ek","Ä±ptal");
 			}
 			if(listitem == 3)
 			{
-				format(str,sizeof(str),"{FF4500}Depodan Silah Al\n{FF4500}Depoya Elindeki Silahı Koy");
-				ShowPlayerDialog(playerid,MENU+8,DIALOG_STYLE_LIST,BASLIK,str,"Seı","ıptal");
+				format(str,sizeof(str),"{FF4500}Depodan Silah Al\n{FF4500}Depoya Elindeki SilahÄ± Koy");
+				ShowPlayerDialog(playerid,MENU+8,DIALOG_STYLE_LIST,BASLIK,str,"SeÄ±","Ä±ptal");
 			}
 		}
 	}
 
 	if(dialogid == MENU+1)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
-			if(!strlen(inputtext)) return Mesaj(playerid,"Lıtfen geıerli bir yazı giriniz.");
+			if(!strlen(inputtext)) return Mesaj(playerid,"LÄ±tfen geÄ±erli bir yazÄ± giriniz.");
 	        new evid = OyuncuEv[playerid];
 			EvKaydetStr(evid,"evaciklama",inputtext);
 			EvYenile(evid);
-			Mesaj(playerid,"Ev aııklaması deıiıtirildi.");
-		    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			Mesaj(playerid,"Ev aÄ±Ä±klamasÄ± deÄ±iÄ±tirildi.");
+		    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 		}
 	}
 
 	if(dialogid == MENU+2)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuEv[playerid];
 			if(listitem == 0)
 			{
 			    EvKaydetInt(evid,"evkilit",0);
-			    Mesaj(playerid,"Evin kilidini aıtınız!");
+			    Mesaj(playerid,"Evin kilidini aÄ±tÄ±nÄ±z!");
 			    EvYenile(evid);
-			    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 			}
 			if(listitem == 1)
 			{
 			    EvKaydetInt(evid,"evkilit",1);
 			    Mesaj(playerid,"Evi kilitlediniz!");
 			    EvYenile(evid);
-			    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 			}
 		}
 	}
 
 	if(dialogid == MENU+3)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
-		    ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para Yatır\n{FF4500}Para ıek","Seı","ıptal");
+		    ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para YatÄ±r\n{FF4500}Para Ä±ek","SeÄ±","Ä±ptal");
 		}
 	}
 
 	if(dialogid == MENU+4)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new str[256];
 	        new evid = OyuncuEv[playerid];
 			if(listitem == 0)
 			{
-			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lıtfen kasaya yatırılcak miktarı yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
-				ShowPlayerDialog(playerid,MENU+5,DIALOG_STYLE_INPUT,BASLIK,str,"Yatır","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut ParanÄ±z: {c0c0c0}%i$\n\n{CD5C5C}LÄ±tfen kasaya yatÄ±rÄ±lcak miktarÄ± yazÄ±nÄ±z.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
+				ShowPlayerDialog(playerid,MENU+5,DIALOG_STYLE_INPUT,BASLIK,str,"YatÄ±r","Ä±ptal");
 			}
 			if(listitem == 1)
 			{
-			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lıtfen kasadan ıekilecek miktarı yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
-				ShowPlayerDialog(playerid,MENU+6,DIALOG_STYLE_INPUT,BASLIK,str,"ıek","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut ParanÄ±z: {c0c0c0}%i$\n\n{CD5C5C}LÄ±tfen kasadan Ä±ekilecek miktarÄ± yazÄ±nÄ±z.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
+				ShowPlayerDialog(playerid,MENU+6,DIALOG_STYLE_INPUT,BASLIK,str,"Ä±ek","Ä±ptal");
 			}
 
 		}
@@ -2861,39 +2856,39 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+5)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuEv[playerid];
-			if(!strlen(inputtext)) return Mesaj(playerid,"Lıtfen geıerli bir rakam giriniz.");
-			if(!strval(inputtext)) return Mesaj(playerid,"Lıtfen geıerli bir rakam giriniz.");
-			if(strval(inputtext) > GetPlayerMoney(playerid)) return Mesaj(playerid,"Yazılan miktar sizde yeteri kadar bulunmuyor.");
+			if(!strlen(inputtext)) return Mesaj(playerid,"LÄ±tfen geÄ±erli bir rakam giriniz.");
+			if(!strval(inputtext)) return Mesaj(playerid,"LÄ±tfen geÄ±erli bir rakam giriniz.");
+			if(strval(inputtext) > GetPlayerMoney(playerid)) return Mesaj(playerid,"YazÄ±lan miktar sizde yeteri kadar bulunmuyor.");
 			EvKaydetInt(evid,"evbanka",EvBilgi[evid][evbanka]+strval(inputtext));
 			GivePlayerMoney(playerid,-strval(inputtext));
 			EvYenile(evid);
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 		}
 	}
 
 	if(dialogid == MENU+6)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuEv[playerid];
-			if(!strlen(inputtext)) return Mesaj(playerid,"Lıtfen geıerli bir rakam giriniz.");
-			if(!strval(inputtext)) return Mesaj(playerid,"Lıtfen geıerli bir rakam giriniz.");
-			if(strval(inputtext) > EvBilgi[evid][evbanka]) return Mesaj(playerid,"Yazılan miktar kasanızda yeteri kadar bulunmuyor.");
+			if(!strlen(inputtext)) return Mesaj(playerid,"LÄ±tfen geÄ±erli bir rakam giriniz.");
+			if(!strval(inputtext)) return Mesaj(playerid,"LÄ±tfen geÄ±erli bir rakam giriniz.");
+			if(strval(inputtext) > EvBilgi[evid][evbanka]) return Mesaj(playerid,"YazÄ±lan miktar kasanÄ±zda yeteri kadar bulunmuyor.");
 			EvKaydetInt(evid,"evbanka",EvBilgi[evid][evbanka]-strval(inputtext));
 			GivePlayerMoney(playerid,strval(inputtext));
 			EvYenile(evid);
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 		}
 	}
 
 	if(dialogid == MENU+7)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 		}
@@ -2901,7 +2896,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+8)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuEv[playerid];
@@ -2922,7 +2917,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if(s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
 				format(str,sizeof(str),
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
-				ShowPlayerDialog(playerid,MENU+9,DIALOG_STYLE_LIST,BASLIK,str,"Seı","ıptal");
+				ShowPlayerDialog(playerid,MENU+9,DIALOG_STYLE_LIST,BASLIK,str,"SeÄ±","Ä±ptal");
 			}
 	        if(listitem == 1)
 	        {
@@ -2941,14 +2936,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if(s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
 				format(str,sizeof(str),
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
-				ShowPlayerDialog(playerid,MENU+10,DIALOG_STYLE_LIST,BASLIK,str,"Seı","ıptal");
+				ShowPlayerDialog(playerid,MENU+10,DIALOG_STYLE_LIST,BASLIK,str,"SeÄ±","Ä±ptal");
 			}
 		}
 	}
 
 	if(dialogid == MENU+9)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuEv[playerid];
@@ -3016,13 +3011,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					EvYenile(evid);
 				}
 			}
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 		}
 	}
 
 	if(dialogid == MENU+10)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuEv[playerid];
@@ -3085,7 +3080,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					EvYenile(evid);
 				}
 			}
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seı","ıptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Kilidi\n{FF4500}Ev KasasÄ±\n{FF4500}Ev Silah Deposu","SeÄ±","Ä±ptal");
 		}
 	}
 
@@ -3094,13 +3089,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	    if(!response) EvEditleniyor[GetHouseID(playerid)] = false;
 	    if(response)
 	    {
-	        if(!Kontrol(playerid)) return Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
+	        if(!Kontrol(playerid)) return Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
 	        new str[256];
 	        new evid = GetHouseID(playerid);
-			if(listitem == 0) //Ev Aııklaması
+			if(listitem == 0) //Ev AÄ±Ä±klamasÄ±
 			{
-			    format(str,sizeof(str),"{00FF7F}Ev Aııklaması: {c0c0c0}%s\n\n{CD5C5C}Aııklamayı deıiıtirmek için yenisini aıaııya yazınız.",EvBilgi[evid][evaciklama]);
-				ShowPlayerDialog(playerid,DIALOG+2,DIALOG_STYLE_INPUT,BASLIK,str,"Deıiıtir","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Ev AÄ±Ä±klamasÄ±: {c0c0c0}%s\n\n{CD5C5C}AÄ±Ä±klamayÄ± deÄ±iÄ±tirmek iÃ§in yenisini aÄ±aÄ±Ä±ya yazÄ±nÄ±z.",EvBilgi[evid][evaciklama]);
+				ShowPlayerDialog(playerid,DIALOG+2,DIALOG_STYLE_INPUT,BASLIK,str,"DeÄ±iÄ±tir","Ä±ptal");
 			}
 			if(listitem == 1) //Ev Sahibi
 			{
@@ -3109,13 +3104,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
 			    if(!strlen(EvBilgi[evid][evsahip])) sahip = "Yok";
 			    //else sahip = dini_Get(dosya,"evsahip");
-			    format(str,sizeof(str),"{00FF7F}Ev Sahibi: {c0c0c0}%s\n\n{CD5C5C}Ev sahibini deıiıtirirseniz tım ev belirlenen kiıiye devredilir.\nEıer boı bırakırsanız ev satılık olarak deıiıtirilir.",sahip);
-				ShowPlayerDialog(playerid,DIALOG+3,DIALOG_STYLE_INPUT,BASLIK,str,"Deıiıtir","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Ev Sahibi: {c0c0c0}%s\n\n{CD5C5C}Ev sahibini deÄ±iÄ±tirirseniz tÄ±m ev belirlenen kiÄ±iye devredilir.\nEÄ±er boÄ± bÄ±rakÄ±rsanÄ±z ev satÄ±lÄ±k olarak deÄ±iÄ±tirilir.",sahip);
+				ShowPlayerDialog(playerid,DIALOG+3,DIALOG_STYLE_INPUT,BASLIK,str,"DeÄ±iÄ±tir","Ä±ptal");
 			}
-			if(listitem == 2) //Ev Fiyatı
+			if(listitem == 2) //Ev FiyatÄ±
 			{
-			    format(str,sizeof(str),"{00FF7F}Ev Fiyatı: {c0c0c0}%i$\n\n{CD5C5C}Yeni ev fiyatını deıiıtirmek için yeni miktarı giriniz.",EvBilgi[evid][evfiyat]);
-				ShowPlayerDialog(playerid,DIALOG+4,DIALOG_STYLE_INPUT,BASLIK,str,"Deıiıtir","ıptal");
+			    format(str,sizeof(str),"{00FF7F}Ev FiyatÄ±: {c0c0c0}%i$\n\n{CD5C5C}Yeni ev fiyatÄ±nÄ± deÄ±iÄ±tirmek iÃ§in yeni miktarÄ± giriniz.",EvBilgi[evid][evfiyat]);
+				ShowPlayerDialog(playerid,DIALOG+4,DIALOG_STYLE_INPUT,BASLIK,str,"DeÄ±iÄ±tir","Ä±ptal");
 			}
 			if(listitem == 3) //Ev Interior
 			{
@@ -3125,16 +3120,16 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			    strcat(menu,"{FF4500}Ev 3\n");
 			    strcat(menu,"{FF4500}Ev 4\n");
 			    strcat(menu,"{FF4500}Ev 5\n");
-			    strcat(menu,"{FF4500}Unused Villası");
-				ShowPlayerDialog(playerid,DIALOG+5,DIALOG_STYLE_LIST,BASLIK,menu,"Ayarla","ıptal");
+			    strcat(menu,"{FF4500}Unused VillasÄ±");
+				ShowPlayerDialog(playerid,DIALOG+5,DIALOG_STYLE_LIST,BASLIK,menu,"Ayarla","Ä±ptal");
 			}
 			if(listitem == 4) //Ev Kilidi
 			{
-				ShowPlayerDialog(playerid,DIALOG+7,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aı\n{FF4500}Kilitle","Ayarla","ıptal");
+				ShowPlayerDialog(playerid,DIALOG+7,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi AÄ±\n{FF4500}Kilitle","Ayarla","Ä±ptal");
 			}
 			if(listitem == 5) //Ev Sil
 			{
-				ShowPlayerDialog(playerid,DIALOG+8,DIALOG_STYLE_MSGBOX,BASLIK,"{B22222}Bunu yaparsanız ev kaydı tamamen silinecektir ve geri dınııı olmayacaktır.\n{C0C0C0}Silmeyi onaylıyor musunuz ?","Onayla","ıptal");
+				ShowPlayerDialog(playerid,DIALOG+8,DIALOG_STYLE_MSGBOX,BASLIK,"{B22222}Bunu yaparsanÄ±z ev kaydÄ± tamamen silinecektir ve geri dÄ±nÄ±Ä±Ä± olmayacaktÄ±r.\n{C0C0C0}Silmeyi onaylÄ±yor musunuz ?","Onayla","Ä±ptal");
 			}
 	    }
 	}
@@ -3155,59 +3150,59 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 						break;
 					}
 				}
-				Mesaj(playerid,"Baıarıyla ev yarattınız, dızenlemek için pickup ızerinde '{008080}/evmenu{FFFFFF}' komutunu kullanınız.");
+				Mesaj(playerid,"BaÄ±arÄ±yla ev yarattÄ±nÄ±z, dÄ±zenlemek iÃ§in pickup Ä±zerinde '{008080}/evmenu{FFFFFF}' komutunu kullanÄ±nÄ±z.");
 			}
 	    }
 	}
 	if(dialogid == DIALOG+2)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
-			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lıtfen geıerli bir yazı giriniz.") ;
+			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
+			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"LÄ±tfen geÄ±erli bir yazÄ± giriniz.") ;
 			new evid = OyuncuKontrolEv[playerid];
 			EvKaydetStr(evid,"evaciklama",inputtext);
 			EvYenile(evid);
-			Mesaj(playerid,"Ev aııklaması deıiıtirildi.");
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+			Mesaj(playerid,"Ev aÄ±Ä±klamasÄ± deÄ±iÄ±tirildi.");
+            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    }
 	}
 	if(dialogid == DIALOG+3)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 	        new evid = OyuncuKontrolEv[playerid];
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
-			if(!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip",""),Mesaj(playerid,"Ev satılık olarak deıiıtirildi!");
-			else EvKaydetInt(evid,"evsatilik",0),EvKaydetStr(evid,"evsahip",inputtext),Mesaj(playerid,"Ev sahibi deıiıtirildi!");
+			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
+			if(!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip",""),Mesaj(playerid,"Ev satÄ±lÄ±k olarak deÄ±iÄ±tirildi!");
+			else EvKaydetInt(evid,"evsatilik",0),EvKaydetStr(evid,"evsahip",inputtext),Mesaj(playerid,"Ev sahibi deÄ±iÄ±tirildi!");
 			EvYenile(evid);
 			SahipKontrol();
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    }
 	}
 	if(dialogid == DIALOG+4)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
-			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lıtfen geıerli bir rakam giriniz.");
-			if(!strval(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lıtfen geıerli bir rakam giriniz.");
+			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
+			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"LÄ±tfen geÄ±erli bir rakam giriniz.");
+			if(!strval(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"LÄ±tfen geÄ±erli bir rakam giriniz.");
 			new evid = OyuncuKontrolEv[playerid];
 			EvKaydetInt(evid,"evfiyat",strval(inputtext));
-			Mesaj(playerid,"Ev fiyatı deıiıtirildi!");
+			Mesaj(playerid,"Ev fiyatÄ± deÄ±iÄ±tirildi!");
 			EvYenile(evid);
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    }
 	}
 	if(dialogid == DIALOG+5)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
+			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
 			new evid = OyuncuKontrolEv[playerid];
 			if(listitem == 0) EvKaydetInt(evid,"evint",0);
 			if(listitem == 1) EvKaydetInt(evid,"evint",1);
@@ -3217,40 +3212,40 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if(listitem == 5) EvKaydetInt(evid,"evint",5);
 
 			EvYenile(evid);
-			Mesaj(playerid,"Ev interioru deıiıtirildi!");
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+			Mesaj(playerid,"Ev interioru deÄ±iÄ±tirildi!");
+            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    }
 	}
 	if(dialogid == DIALOG+7)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
+			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
 			new evid = OyuncuKontrolEv[playerid];
 			if(listitem == 0)
 			{
 			    EvKaydetInt(evid,"evkilit",0);
-			    Mesaj(playerid,"Evin kilidini aıtınız!");
+			    Mesaj(playerid,"Evin kilidini aÄ±tÄ±nÄ±z!");
 			    EvYenile(evid);
-	            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 			}
 			if(listitem == 1)
 			{
-			    EvKaydetInt(evid,"evkilit",1);
+			    EvKaydetInt(evid, "evkilit", 1);
 			    Mesaj(playerid,"Evi kilitlediniz!");
 			    EvYenile(evid);
-	            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 			}
 	    }
 	}
 	if(dialogid == DIALOG+8)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Aııklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seı","ıptal");
+	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev AÄ±Ä±klamasÄ±\n{FF4500}Ev Sahibi\n{FF4500}Ev FiyatÄ±\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","SeÄ±","Ä±ptal");
 	    if(response)
 	    {
 			if(Kontrol(playerid)) EvSil(GetHouseID(playerid)),EvEditleniyor[GetHouseID(playerid)] = false;
-			else Mesaj(playerid,"Ev dızenlemek için herhangi bir evin ıstınde olmalısınız!");
+			else Mesaj(playerid,"Ev dÄ±zenlemek iÃ§in herhangi bir evin Ä±stÄ±nde olmalÄ±sÄ±nÄ±z!");
 	    }
 	}
 	return 1;
@@ -3261,7 +3256,7 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 	return 1;
 }
 
-//(( #Diıer ))================================================================//
+//(( #DiÄ±er ))================================================================//
 // - strtok
 strtok(const string[], &index)
 {
@@ -3283,19 +3278,19 @@ strtok(const string[], &index)
 }
 
 // - Silah sistemi
-stock SilahSat(playerid,silahid,silahammo,silahisim[],ucret)
+stock SilahSat(playerid,silahid,silahammo,const silahisim[],ucret)
 {
     if(GetPlayerMoney(playerid) < ucret) return SendError(playerid,"Para yetersiz!");
     GivePlayerWeapon(playerid,silahid,silahammo);
     GivePlayerMoney(playerid,-ucret);
     new string[512];
-    format(string,512,"ı BıLGı: {ACDA00}%s {FFFFFF}isimli silahı {ACDA00}%d$ {FFFFFF}ıdeyerek aldınız.",silahisim,ucret);
+    format(string,512,"Ä± BÄ±LGÄ±: {ACDA00}%s {FFFFFF}isimli silahÄ± {ACDA00}%d$ {FFFFFF}Ä±deyerek aldÄ±nÄ±z.",silahisim,ucret);
     SendClientMessageToAll(0x00A2F6AA,string);
     return 1;
 }
 
 // - Teleport sistemi
-stock Teleport(playerid,Float:tX,Float:tY,Float:tZ,Int,World,isim[],command[],arabali,objeyukle)
+stock Teleport(playerid,Float:tX,Float:tY,Float:tZ,Int,World, const isim[], const command[],arabali,objeyukle)
 {
     if(objeyukle == 1)
  	{
@@ -3321,7 +3316,7 @@ stock Teleport(playerid,Float:tX,Float:tY,Float:tZ,Int,World,isim[],command[],ar
  	}
 
 	new string[512];
-	format(string,512,"ı BıLGı: {FFFFFF}%s rumuzlu oyuncu {ACDA00}%s {FFFFFF}bılgesine ııınlandı. {ACDA00}(%s)",PlayerName(playerid),isim,command);
+	format(string,512,"Ä± BÄ±LGÄ±: {FFFFFF}%s rumuzlu oyuncu {ACDA00}%s {FFFFFF}bÄ±lgesine Ä±Ä±Ä±nlandÄ±. {ACDA00}(%s)",PlayerName(playerid),isim,command);
 	SendClientMessageToAll(0x00A2F6AA,string);
 }
 
@@ -3343,16 +3338,19 @@ public ObjeYukleTamam(playerid)
 // - EXP sistemi
 stock BilgiYenile(playerid)
 {
+	printf("%i", playerid);
 	// do nothing
 }
 
 stock BilgiYukle(playerid)
 {
+	printf("%i", playerid);
 	// do nothing
 }
 
 stock ExpVer(playerid)
 {
+	printf("%i", playerid);
 	// do nothing
 }
 
@@ -3504,14 +3502,14 @@ public UpdateServerTime()
 	return 1;
 }
 
-// - 31 ıekme sistemi
+// - 31 Ä±ekme sistemi
 forward asilanadamtimer(playerid);
 public asilanadamtimer(playerid)
 {
 	if(cekiyor[playerid] == 1)
 	{
     GivePlayerMoney(playerid,31);
-    SendInfo(playerid,"31'den para aldınız! {FF0000}(31$)");
+    SendInfo(playerid,"31'den para aldÄ±nÄ±z! {FF0000}(31$)");
     }
     return 1;
 }
@@ -3525,8 +3523,8 @@ public SetPlayerRandomSpawn(playerid)
 	return 1;
 }
 
-// - IsNumeric ıeysi
-stock IsNumeric(string[])
+// - IsNumeric Ä±eysi
+stock IsNumeric(const string[])
 {
    for(new i, j = strlen(string); i < j; ++i)
    {
@@ -3538,7 +3536,7 @@ stock IsNumeric(string[])
    return 1;
 }
 
-// - Nos alabilecek Araçlar
+// - Nos alabilecek AraÃ§lar
 IsNosVehicle(vehicleid)
 {
     #define NO_NOS_VEHICLES 29
@@ -3560,7 +3558,7 @@ IsNosVehicle(vehicleid)
 	return true;
 }
 
-// - Ev sistemi public & fonksiyonları
+// - Ev sistemi public & fonksiyonlarÄ±
 public OyuncuMapIconKontrol(playerid)
 {
 	/*
@@ -3617,7 +3615,7 @@ public EvYukle(evid)
 		EvBilgi[evid][silahslot5x] = dini_Int(dosya,"silahslot5x");
 		EvBilgi[evid][silahslot6x] = dini_Int(dosya,"silahslot6x");
 
-		if(EvBilgi[evid][evkilit] == 0) durum = "Aıık";
+		if(EvBilgi[evid][evkilit] == 0) durum = "AÄ±Ä±k";
 		else if(EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
 
 		TextLabel[evid] = Create3DTextLabel("...",0xFFFFFFFF,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],30,0);
@@ -3630,13 +3628,13 @@ public EvYukle(evid)
 		}
 		else if(EvBilgi[evid][evsatilik] == 1)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satılık\n{00FF7F}Ev Fiyatı: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
+		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}SatÄ±lÄ±k\n{00FF7F}Ev FiyatÄ±: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 			Pickup[evid] = CreatePickup(GREENH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 		}
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
 
-		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Yıklendi.",evid,EvBilgi[evid][evfiyat],durum);
+		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // YÄ±klendi.",evid,EvBilgi[evid][evfiyat],durum);
         ToplamEv++;
     }
 	*/
@@ -3675,7 +3673,7 @@ public EvYenile(evid)
 		EvBilgi[evid][silahslot5x] = dini_Int(dosya,"silahslot5x");
 		EvBilgi[evid][silahslot6x] = dini_Int(dosya,"silahslot6x");
 
-		if(EvBilgi[evid][evkilit] == 0) durum = "Aıık";
+		if(EvBilgi[evid][evkilit] == 0) durum = "AÄ±Ä±k";
 		else if(EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
 
 		if(EvBilgi[evid][evsatilik] == 0)
@@ -3685,7 +3683,7 @@ public EvYenile(evid)
 		}
 		else if(EvBilgi[evid][evsatilik] == 1)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satılık\n{00FF7F}Ev Fiyatı: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
+		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}SatÄ±lÄ±k\n{00FF7F}Ev FiyatÄ±: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 		}
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
@@ -3758,7 +3756,7 @@ public EvYarat(evid,Float:X,Float:Y,Float:Z)
 		EvBilgi[evid][silahslot5x] = dini_Int(dosya,"silahslot5x");
 		EvBilgi[evid][silahslot6x] = dini_Int(dosya,"silahslot6x");
 
-		if(EvBilgi[evid][evkilit] == 0) durum = "Aıık";
+		if(EvBilgi[evid][evkilit] == 0) durum = "AÄ±Ä±k";
 		else if(EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
 
 		TextLabel[evid] = Create3DTextLabel("...",0xFFFFFFFF,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],30,0);
@@ -3772,7 +3770,7 @@ public EvYarat(evid,Float:X,Float:Y,Float:Z)
 		}
 		else if(EvBilgi[evid][evsatilik] == 1)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satılık\n{00FF7F}Ev Fiyatı: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
+		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}SatÄ±lÄ±k\n{00FF7F}Ev FiyatÄ±: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 			Pickup[evid] = CreatePickup(GREENH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 			for(new a;a<MAX_PLAYERS;a++) if(IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],GREENMAP,0);
@@ -3780,7 +3778,7 @@ public EvYarat(evid,Float:X,Float:Y,Float:Z)
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
 
 		printf("");
-		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Oluıturuldu.",evid,EvBilgi[evid][evfiyat],durum);
+		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // OluÄ±turuldu.",evid,EvBilgi[evid][evfiyat],durum);
 
         ToplamEv++;
 	}
@@ -3849,7 +3847,7 @@ public EvSil(evid)
 	return 1;
 }
 
-public EvKaydetInt(evid,bilgii[],deger)
+public EvKaydetInt(evid, const bilgii[], deger)
 {
     new dosya[64];
     format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
@@ -3857,7 +3855,7 @@ public EvKaydetInt(evid,bilgii[],deger)
 	return 1;
 }
 
-public EvKaydetStr(evid,bilgii[],deger[])
+public EvKaydetStr(evid, const bilgii[], const deger[])
 {
     new dosya[64];
     format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
@@ -3865,7 +3863,7 @@ public EvKaydetStr(evid,bilgii[],deger[])
 	return 1;
 }
 
-public EvKaydetFloat(evid,bilgii[],Float:deger)
+public EvKaydetFloat(evid, const bilgii[], Float:deger)
 {
     new dosya[64];
     format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
@@ -3922,20 +3920,21 @@ public PlayerPos(playerid,Float:X,Float:Y,Float:Z,interior,world)
 	return 1;
 }
 
-stock Mesaj(playerid,yazi[],{Float,_}:...)
+stock Mesaj(playerid, const yazi[],{Float,_}:...)
 {
 	new str[256];
 	new
         iArgs = numargs()
     ;
     while(--iArgs) {
-		format(str,sizeof(str),"{FF4500}ı EV: {FFFFFF}%s",yazi,iArgs);
+		format(str,sizeof(str),"{FF4500}Ä± EV: {FFFFFF}%s",yazi,iArgs);
 		SendClientMessage(playerid,-1,str);
     }
 	return -1;
 }
 
 // - Oyuncu idi fonksiyonu
+/*
 GetPlayerID(const PlayerName[])
 {
  	new pName[MAX_PLAYER_NAME];
@@ -3953,8 +3952,9 @@ GetPlayerID(const PlayerName[])
 	}
 	return -1;
 }
+*/
 
-// - Oyuncu adı fonksiyonu
+// - Oyuncu adÄ± fonksiyonu
 stock PlayerName(playerid)
 {
 	new pname[MAX_PLAYER_NAME];
@@ -3962,7 +3962,7 @@ stock PlayerName(playerid)
 	return pname;
 }
 
-// - Silah adları
+// - Silah adlarÄ±
 stock WeaponName(weaponid)
 {
 	new wname[32];
@@ -4120,15 +4120,7 @@ stock AccountReset(playerid)
 
 stock LoadTextDraws(playerid)
 {
-    textdraw_server[playerid] = TextDrawCreate(5.000000, 435.000000, "Supervivencia Server ~b~~h~~h~v1.0.0");
-	TextDrawBackgroundColor(textdraw_server[playerid], 255);
-	TextDrawFont(textdraw_server[playerid], 2);
-	TextDrawLetterSize(textdraw_server[playerid], 0.300000, 1.000000);
-	TextDrawColor(textdraw_server[playerid], 1717987071);
-	TextDrawSetOutline(textdraw_server[playerid], 1);
-	TextDrawSetProportional(textdraw_server[playerid], 1);
-
-	textdraw_hungry[playerid] = TextDrawCreate(635.000000, 425.000000, "HUNGRY: ~g~~h~LOW");
+	textdraw_hungry[playerid] = TextDrawCreate(635.000000, 425.000000, "HUNGER: ~g~~h~LOW");
 	TextDrawAlignment(textdraw_hungry[playerid], 3);
 	TextDrawBackgroundColor(textdraw_hungry[playerid], 255);
 	TextDrawFont(textdraw_hungry[playerid], 2);
@@ -4185,7 +4177,6 @@ stock LoadTextDraws(playerid)
 
 stock UnloadTextDraws(playerid)
 {
-    TextDrawDestroy(textdraw_server[playerid]);
 	TextDrawDestroy(textdraw_hungry[playerid]);
 	TextDrawDestroy(textdraw_radiation[playerid]);
 	TextDrawDestroy(textdraw_ping[playerid]);
@@ -4196,30 +4187,6 @@ stock UnloadTextDraws(playerid)
 
 // ========================================================================== //
 
-SkyAntiDeAMX()
-{
-    new AMX;
-    #emit load.pri AMX
-    #emit stor.pri AMX
-
-	new AMXX;
-    #emit load.pri AMXX
-    #emit stor.pri AMXX
-
-    new AMXXX;
-    #emit LOAD.S.alt AMXXX
-    #emit STOR.S.alt AMXXX
-
-    new AMXXXX[][] =
-    {
-        "Unarmed (Fist)",
-        "Brass K"
-    };
-    #pragma unused AMXXXX
-
-}
-// EOL | End of Line {08/02/2014 - NA/NA/2014}
-
 stock LoadObjects()
 {
 	// Genel Objeler
@@ -4229,7 +4196,7 @@ stock LoadObjects()
     CreateObject(18769,2003.52,1007.75,37.49,0.00,0.00,0.00);
     CreateObject(18720,2620.87,1821.17,17.72,0.00,0.00,0.00);
 
-	//4 Mayıs 2013 - Crosscuk Petrol Damıtma Sahası Edit
+	//4 MayÄ±s 2013 - Crosscuk Petrol DamÄ±tma SahasÄ± Edit
 	CreateDynamicObject(18763,410.99,1432.73,6.45,0.00,0.00,135.00);
 	CreateDynamicObject(18763,407.29,1428.01,6.57,0.00,0.00,0.00);
 	CreateDynamicObject(18741,286.16,1373.64,7.98,0.00,0.00,0.00);
@@ -4280,7 +4247,7 @@ stock LoadObjects()
 	CreateDynamicObject(1492,137.51,1375.16,9.65,0.00,0.00,990.00);
 
 
-    // RequestClass Alanı
+    // RequestClass AlanÄ±
     CreateObject(18783,2625.20,1824.18,7.62,0.00,0.00,0.00);
     CreateObject(18783,2634.38,1824.18,10.12,810.00,270.00,360.00);
 
@@ -4335,7 +4302,7 @@ stock LoadObjects()
 	CreateDynamicObject(18779,1118.13,1338.01,19.72,0.00,0.00,0.00);
     CreateDynamicObject(18790,1052.97,1343.98,57.75,0.00,60.00,0.00);
 
-    // Ebenin amı
+    // Ebenin amÄ±
     CreateDynamicObject(19494,2105.84,1292.90,798.96,0.00,0.00,0.00);
     CreateDynamicObject(19325,2111.45,1293.34,798.31,0.00,0.00,0.00);
     CreateDynamicObject(19325,2103.86,1296.18,797.21,0.00,0.00,0.00);
@@ -4373,7 +4340,7 @@ stock LoadObjects()
    	CreateDynamicObject(2099,-1628.4000200,-2242.5000000,30.5000000,0.0000000,0.0000000,272.0000000); //object(med_hi_fi_1) (1)
    	CreateDynamicObject(2819,-1629.5000000,-2245.1999500,30.5000000,0.0000000,0.0000000,0.0000000); //object(gb_bedclothes01) (1)
 
-    // Kıy ıete Mekanı - 11/04/2013
+    // KÄ±y Ä±ete MekanÄ± - 11/04/2013
     AddStaticVehicleEx(518,1566.0999800,30.9000000,24.0000000,95.0000000,-1,-1,15); //Buccaneer
     AddStaticVehicleEx(463,1562.8000500,25.3000000,23.8000000,0.0000000,159,157,15); //Freeway
     AddStaticVehicleEx(463,1563.0000000,22.4000000,23.8000000,0.0000000,159,157,15); //Freeway
@@ -4407,7 +4374,7 @@ stock LoadObjects()
     CreateDynamicObject(1362,1566.4000200,17.5000000,23.8000000,0.0000000,0.0000000,0.0000000); //object(cj_firebin) (1)
     CreateDynamicObject(3461,1566.4000200,17.5000000,22.6000000,0.0000000,0.0000000,0.0000000); //object(tikitorch01_lvs) (1)
 
-   	// - LVDM arabaları
+   	// - LVDM arabalarÄ±
 	AddStaticVehicle(451,2040.0520,1319.2799,10.3779,183.2439,16,16);
 	AddStaticVehicle(429,2040.5247,1359.2783,10.3516,177.1306,13,13);
 	AddStaticVehicle(421,2110.4102,1398.3672,10.7552,359.5964,13,13);
@@ -7068,7 +7035,7 @@ stock DeleteObjects(playerid)
 	RemoveBuildingForPlayer(playerid, 9682, -2554.7031, 616.3203, 13.4688, 0.25);
 	RemoveBuildingForPlayer(playerid, 4523, -1592.7813, 622.7813, 42.9688, 0.25);
 
-	// - Petrol damıtma alanı objeleri
+	// - Petrol damÄ±tma alanÄ± objeleri
    	RemoveBuildingForPlayer(playerid, 3682, 247.9297, 1461.8594, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3682, 192.2734, 1456.1250, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3682, 199.7578, 1397.8828, 33.4141, 0.25);
@@ -7163,4 +7130,27 @@ stock DeleteObjects(playerid)
 	RemoveBuildingForPlayer(playerid, 16087, 358.6797, 1430.4531, 11.6172, 0.25);
 	RemoveBuildingForPlayer(playerid, 16088, 368.4297, 1431.0938, 5.2734, 0.25);
 	RemoveBuildingForPlayer(playerid, 16092, 394.1563, 1431.0938, 5.2734, 0.25);
+}
+
+SkyAntiDeAMX()
+{
+    new AMX;
+    #emit load.pri AMX
+    #emit stor.pri AMX
+
+	new AMXX;
+    #emit load.pri AMXX
+    #emit stor.pri AMXX
+
+    new AMXXX;
+    #emit LOAD.S.alt AMXXX
+    #emit STOR.S.alt AMXXX
+
+    new AMXXXX[][] =
+    {
+        "Unarmed (Fist)",
+        "Brass K"
+    };
+    #pragma unused AMXXXX
+
 }

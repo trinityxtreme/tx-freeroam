@@ -1,5 +1,5 @@
 site: ""
-user: gguilt
+user: naphteine
 repo: trinity-xtreme
 entry: txmode.pwn
 output: gamemodes/txmode.amx

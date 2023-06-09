@@ -1116,3 +1116,278 @@ v0.3.7-R2, (C)2005-2015 SA-MP Team
 [22:53:32] [command] Kleo entered "/dmler" command.
 [22:53:38] [command] Kleo entered "/dmcik" command.
 [22:53:55] [part] Kleo has left the server (0:1)
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[12:55:34] language = ""  (string)
+[12:55:34] 
+[12:55:34] Server Plugins
+[12:55:34] --------------
+[12:55:34]  Loading plugin: streamer
+[12:55:34] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[12:55:34]   Loaded.
+[12:55:34]  Loading plugin: sscanf
+[12:55:34] 
+[12:55:34]  ===============================
+[12:55:34] 
+[12:55:34]       sscanf plugin loaded.     
+[12:55:34] 
+[12:55:34]          Version: 2.13.2
+[12:55:34] 
+[12:55:34]    (c) 2022 Alex "Y_Less" Cole  
+[12:55:34] 
+[12:55:34]  ===============================
+[12:55:34] 
+[12:55:34]   Loaded.
+[12:55:34]  Loading plugin: crashdetect
+[12:55:34]   CrashDetect must be loaded before 'streamer.DLL'
+[12:55:34]   Failed.
+[12:55:34]  Loaded 2 plugins.
+
+[12:55:35] 
+[12:55:35] Filterscripts
+[12:55:35] ---------------
+[12:55:35]   Loaded 0 filterscripts.
+
+[12:55:35]  ** Supervivencia initializing.
+[12:55:35]   ** LOADED: general settings.
+[12:55:35] YÄ±klendi: "Sunucu textdrawlarÄ±."
+[12:55:35] YÄ±klendi: "Exp-Level sistemi."
+[12:55:35] YÄ±klendi: "Saat sistemi."
+[12:55:35] YÄ±klendi: "Sunucu haritasÄ±."
+[12:55:35] YÄ±klendi: "Sunucu AraÃ§larÄ±."
+[12:55:35] YÄ±klendi: "HÄ±z pickuplarÄ±."
+[12:55:35] YÄ±klendi: "Ev sistemi."
+[12:55:35] Toplam "0" ev bulunmakta.
+[12:55:35]   ** 301 player class loaded.
+[12:55:35]   ** MySQL connection failed!
+[12:55:35]   ** AntiDeAMX started!
+[12:55:35]   ** Objects loaded!
+[12:55:35] LOADED: Server mode
+[12:55:35] 
+[12:55:35] "--------------------------------------------------"
+[12:55:35] "                   Trinity-Xtreme                 "
+[12:55:35] "           Created by Crosscuk & ImmortaL         "
+[12:55:35] "               Since 2013-01-27 01:52             "
+[12:55:35] "                                                  "
+[12:55:35] " ** 2023-6-9 12:55                                "
+[12:55:35] "--------------------------------------------------"
+[12:55:35] Number of vehicle models: 51
+[12:56:37] [connection] incoming connection: 127.0.0.1:50153 id: 0
+[12:56:37] [join] Kleo has joined the server (0:127.0.0.1)
+[12:57:57] [command] Kleo entered "/dms" command.
+[12:58:07] [command] Kleo entered "/v1" command.
+[12:59:08] [command] Kleo entered "/4d" command.
+[12:59:54] [command] Kleo entered "/cevir" command.
+[13:01:17] [command] Kleo entered "/m2" command.
+[13:01:32] [command] Kleo entered "/m3" command.
+[13:01:47] [command] Kleo entered "/v2" command.
+[13:01:59] [command] Kleo entered "/dag" command.
+[13:02:58] 0
+[13:02:58] [part] Kleo has left the server (0:1)
+[13:03:18] --- Server Shutting Down.
+[13:03:18] Sunucu modu kapandÄ±.
+[13:03:18] Saat: 13:3:18 ~ Tarih: 9/6/2023
+[13:03:18] Trinity-Xtreme / since 27/01/2013 - 01:52
+[13:03:18]   ** MySQL connection closed!
+[13:03:18] Ä± Supervivencia gamemode closed.
+[13:03:18] 
+
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[13:03:18] 
+[13:03:18]  ===============================
+[13:03:18] 
+[13:03:18]      sscanf plugin unloaded.    
+[13:03:18] 
+[13:03:18]  ===============================
+[13:03:18] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[13:06:34] language = ""  (string)
+[13:06:34] 
+[13:06:34] Server Plugins
+[13:06:34] --------------
+[13:06:34]  Loading plugin: streamer
+[13:06:34] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[13:06:34]   Loaded.
+[13:06:34]  Loading plugin: sscanf
+[13:06:34] 
+[13:06:34]  ===============================
+[13:06:34] 
+[13:06:34]       sscanf plugin loaded.     
+[13:06:34] 
+[13:06:34]          Version: 2.13.2
+[13:06:34] 
+[13:06:34]    (c) 2022 Alex "Y_Less" Cole  
+[13:06:34] 
+[13:06:34]  ===============================
+[13:06:34] 
+[13:06:34]   Loaded.
+[13:06:34]  Loading plugin: crashdetect
+[13:06:34]   CrashDetect must be loaded before 'streamer.DLL'
+[13:06:34]   Failed.
+[13:06:34]  Loaded 2 plugins.
+
+[13:06:34] 
+[13:06:34] Filterscripts
+[13:06:34] ---------------
+[13:06:34]   Loaded 0 filterscripts.
+
+[13:06:34]  ** Xtreme initializing.
+[13:06:34]   ** LOADED: general settings.
+[13:06:34] Yçklendi: "Sunucu textdrawlarç."
+[13:06:34] Yüklendi: "Exp-Level sistemi."
+[13:06:34] Yüklendi: "Saat sistemi."
+[13:06:34] Yüklendi: "Sunucu haritası."
+[13:06:34] Yüklendi: "Sunucu araçları."
+[13:06:34] Yüklendi: "Hız pickupları."
+[13:06:34] Yüklendi: "Ev sistemi."
+[13:06:34] Toplam "0" ev bulunmakta.
+[13:06:34]   ** 301 player class loaded.
+[13:06:34]   ** MySQL connection failed!
+[13:06:34]   ** AntiDeAMX started!
+[13:06:34]   ** Objects loaded!
+[13:06:34] Yüklendi: "Sunucu modu."
+[13:06:34] 
+[13:06:34] "--------------------------------------------------"
+[13:06:34] "                   Trinity-Xtreme                 "
+[13:06:34] "           Created by Crosscuk & ImmortaL         "
+[13:06:34] "             Since 2013-01-27 01:52				"
+[13:06:34] "                                                  "
+[13:06:34] " ** 2023-6-9 13:6								"
+[13:06:34] "--------------------------------------------------"
+[13:06:34] Number of vehicle models: 51
+[13:07:48] [connection] incoming connection: 127.0.0.1:62809 id: 0
+[13:07:48] [join] Kleo has joined the server (0:127.0.0.1)
+[13:08:18] [command] Kleo entered "/v17" command.
+[13:08:21] [command] Kleo entered "/v17" command.
+[13:09:55] [command] Kleo entered "/m12" command.
+[13:10:39] [command] Kleo entered "/m11" command.
+[13:10:46] [command] Kleo entered "/stuntlar" command.
+[13:10:52] [command] Kleo entered "/m11" command.
+[13:11:25] [command] Kleo entered "/4d" command.
+[13:11:30] [command] Kleo entered "/cevir" command.
+[13:11:56] [command] Kleo entered "/cevir" command.
+[13:13:31] [command] Kleo entered "/dag" command.
+[13:13:34] [command] Kleo entered "/cevir" command.
+[13:14:37] 0
+[13:14:37] [part] Kleo has left the server (0:1)
+[14:37:44] --- Server Shutting Down.
+[14:37:44] Sunucu modu kapandı.
+[14:37:44] Saat: 14:37:44 ~ Tarih: 9/6/2023
+[14:37:44] Trinity-Xtreme / since 27/01/2013 - 01:52
+[14:37:44]   ** MySQL connection closed!
+[14:37:44] ç Xtreme gamemode closed.
+[14:37:44] 
+
+*** Streamer Plugin v2.9.5 by Incognito unloaded ***
+
+[14:37:44] 
+[14:37:44]  ===============================
+[14:37:44] 
+[14:37:44]      sscanf plugin unloaded.    
+[14:37:44] 
+[14:37:44]  ===============================
+[14:37:44] 
+
+----------
+Loaded log file: "server_log.txt".
+----------
+
+SA-MP Dedicated Server
+----------------------
+v0.3.7-R2, (C)2005-2015 SA-MP Team
+
+[14:43:31] language = ""  (string)
+[14:43:31] 
+[14:43:31] Server Plugins
+[14:43:31] --------------
+[14:43:31]  Loading plugin: streamer
+[14:43:31] 
+
+*** Streamer Plugin v2.9.5 by Incognito loaded ***
+
+[14:43:31]   Loaded.
+[14:43:31]  Loading plugin: sscanf
+[14:43:31] 
+[14:43:31]  ===============================
+[14:43:31] 
+[14:43:31]       sscanf plugin loaded.     
+[14:43:31] 
+[14:43:31]          Version: 2.13.2
+[14:43:31] 
+[14:43:31]    (c) 2022 Alex "Y_Less" Cole  
+[14:43:31] 
+[14:43:31]  ===============================
+[14:43:31] 
+[14:43:31]   Loaded.
+[14:43:31]  Loading plugin: crashdetect
+[14:43:31]   CrashDetect must be loaded before 'streamer.DLL'
+[14:43:31]   Failed.
+[14:43:31]  Loaded 2 plugins.
+
+[14:43:31] 
+[14:43:31] Filterscripts
+[14:43:31] ---------------
+[14:43:31]   Loaded 0 filterscripts.
+
+[14:43:31]  ** Xtreme initializing.
+[14:43:31]   ** LOADED: general settings.
+[14:43:31] Yüklendi: "Sunucu textdrawlarç."
+[14:43:31] Yüklendi: "Exp-Level sistemi."
+[14:43:31] Yüklendi: "Saat sistemi."
+[14:43:31] Yüklendi: "Sunucu haritası."
+[14:43:31] Yüklendi: "Sunucu araçları."
+[14:43:31] Yüklendi: "Hız pickupları."
+[14:43:31] Yüklendi: "Ev sistemi."
+[14:43:31] Toplam "0" ev bulunmakta.
+[14:43:31]   ** 301 player class loaded.
+[14:43:31]   ** MySQL connection failed!
+[14:43:31]   ** AntiDeAMX started!
+[14:43:31]   ** Objects loaded!
+[14:43:31] Yüklendi: "Sunucu modu."
+[14:43:31] 
+[14:43:31] "--------------------------------------------------"
+[14:43:31] "                   Trinity-Xtreme                 "
+[14:43:31] "           Created by Crosscuk & ImmortaL         "
+[14:43:31] "             Since 2013-01-27 01:52				"
+[14:43:31] "                                                  "
+[14:43:31] " ** 2023-6-9 14:43								"
+[14:43:31] "--------------------------------------------------"
+[14:43:31] Number of vehicle models: 51
+[14:45:39] [connection] incoming connection: 127.0.0.1:51228 id: 0
+[14:45:39] [join] Kleo has joined the server (0:127.0.0.1)
+[14:45:59] [command] Kleo entered "/v5" command.
+[14:48:16] [command] Kleo entered "/v3" command.
+[14:49:11] [command] Kleo entered "/v2" command.
+[14:49:42] [command] Kleo entered "/v1" command.
+[14:49:48] [command] Kleo entered "/v1" command.
+[14:50:49] [command] Kleo entered "/fps" command.
+[14:50:52] [command] Kleo entered "/fpsgir" command.
+[14:50:54] [command] Kleo entered "/help" command.
+[14:51:01] [command] Kleo entered "/4d" command.
+[14:51:54] [command] Kleo entered "/dag" command.
+[14:51:56] [chat] [Kleo]: cevir
+[14:51:58] [command] Kleo entered "/cevir" command.
+[14:52:11] 0
+[14:52:11] [part] Kleo has left the server (0:1)

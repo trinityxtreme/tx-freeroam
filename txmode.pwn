@@ -98,29 +98,29 @@ new bool:guitarSong[MAX_PLAYERS] = false;
 
 // Player colors:
 new PlayerColors[200] = {
-0xFF8C13FF, 0xC715FFFF, 0x20B2AAFF, 0xDC143CFF, 0x6495EDFF, 0xf0e68cFF, 0x778899FF, 0xFF1493FF, 0xF4A460FF,
-0xEE82EEFF, 0xFFD720FF, 0x8b4513FF, 0x4949A0FF, 0x148b8bFF, 0x14ff7fFF, 0x556b2fFF, 0x0FD9FAFF, 0x10DC29FF,
-0x534081FF, 0x0495CDFF, 0xEF6CE8FF, 0xBD34DAFF, 0x247C1BFF, 0x0C8E5DFF, 0x635B03FF, 0xCB7ED3FF, 0x65ADEBFF,
-0x5C1ACCFF, 0xF2F853FF, 0x11F891FF, 0x7B39AAFF, 0x53EB10FF, 0x54137DFF, 0x275222FF, 0xF09F5BFF, 0x3D0A4FFF,
-0x22F767FF, 0xD63034FF, 0x9A6980FF, 0xDFB935FF, 0x3793FAFF, 0x90239DFF, 0xE9AB2FFF, 0xAF2FF3FF, 0x057F94FF,
-0xB98519FF, 0x388EEAFF, 0x028151FF, 0xA55043FF, 0x0DE018FF, 0x93AB1CFF, 0x95BAF0FF, 0x369976FF, 0x18F71FFF,
-0x4B8987FF, 0x491B9EFF, 0x829DC7FF, 0xBCE635FF, 0xCEA6DFFF, 0x20D4ADFF, 0x2D74FDFF, 0x3C1C0DFF, 0x12D6D4FF,
-0x48C000FF, 0x2A51E2FF, 0xE3AC12FF, 0xFC42A8FF, 0x2FC827FF, 0x1A30BFFF, 0xB740C2FF, 0x42ACF5FF, 0x2FD9DEFF,
-0xFAFB71FF, 0x05D1CDFF, 0xC471BDFF, 0x94436EFF, 0xC1F7ECFF, 0xCE79EEFF, 0xBD1EF2FF, 0x93B7E4FF, 0x3214AAFF,
-0x184D3BFF, 0xAE4B99FF, 0x7E49D7FF, 0x4C436EFF, 0xFA24CCFF, 0xCE76BEFF, 0xA04E0AFF, 0x9F945CFF, 0xDCDE3DFF,
-0x10C9C5FF, 0x70524DFF, 0x0BE472FF, 0x8A2CD7FF, 0x6152C2FF, 0xCF72A9FF, 0xE59338FF, 0xEEDC2DFF, 0xD8C762FF,
-0xD8C762FF, 0xFF8C13FF, 0xC715FFFF, 0x20B2AAFF, 0xDC143CFF, 0x6495EDFF, 0xf0e68cFF, 0x778899FF, 0xFF1493FF,
-0xF4A460FF, 0xEE82EEFF, 0xFFD720FF, 0x8b4513FF, 0x4949A0FF, 0x148b8bFF, 0x14ff7fFF, 0x556b2fFF, 0x0FD9FAFF,
-0x10DC29FF, 0x534081FF, 0x0495CDFF, 0xEF6CE8FF, 0xBD34DAFF, 0x247C1BFF, 0x0C8E5DFF, 0x635B03FF, 0xCB7ED3FF,
-0x65ADEBFF, 0x5C1ACCFF, 0xF2F853FF, 0x11F891FF, 0x7B39AAFF, 0x53EB10FF, 0x54137DFF, 0x275222FF, 0xF09F5BFF,
-0x3D0A4FFF, 0x22F767FF, 0xD63034FF, 0x9A6980FF, 0xDFB935FF, 0x3793FAFF, 0x90239DFF, 0xE9AB2FFF, 0xAF2FF3FF,
-0x057F94FF, 0xB98519FF, 0x388EEAFF, 0x028151FF, 0xA55043FF, 0x0DE018FF, 0x93AB1CFF, 0x95BAF0FF, 0x369976FF,
-0x18F71FFF, 0x4B8987FF, 0x491B9EFF, 0x829DC7FF, 0xBCE635FF, 0xCEA6DFFF, 0x20D4ADFF, 0x2D74FDFF, 0x3C1C0DFF,
-0x12D6D4FF, 0x48C000FF, 0x2A51E2FF, 0xE3AC12FF, 0xFC42A8FF, 0x2FC827FF, 0x1A30BFFF, 0xB740C2FF, 0x42ACF5FF,
-0x2FD9DEFF, 0xFAFB71FF, 0x05D1CDFF, 0xC471BDFF, 0x94436EFF, 0xC1F7ECFF, 0xCE79EEFF, 0xBD1EF2FF, 0x93B7E4FF,
-0x3214AAFF, 0x184D3BFF, 0xAE4B99FF, 0x7E49D7FF, 0x4C436EFF, 0xFA24CCFF, 0xCE76BEFF, 0xA04E0AFF, 0x9F945CFF,
-0xDCDE3DFF, 0x10C9C5FF, 0x70524DFF, 0x0BE472FF, 0x8A2CD7FF, 0x6152C2FF, 0xCF72A9FF, 0xE59338FF, 0xEEDC2DFF,
-0xD8C762FF, 0xD8C762FF
+	0xFF8C13FF, 0xC715FFFF, 0x20B2AAFF, 0xDC143CFF, 0x6495EDFF, 0xf0e68cFF, 0x778899FF, 0xFF1493FF, 0xF4A460FF,
+	0xEE82EEFF, 0xFFD720FF, 0x8b4513FF, 0x4949A0FF, 0x148b8bFF, 0x14ff7fFF, 0x556b2fFF, 0x0FD9FAFF, 0x10DC29FF,
+	0x534081FF, 0x0495CDFF, 0xEF6CE8FF, 0xBD34DAFF, 0x247C1BFF, 0x0C8E5DFF, 0x635B03FF, 0xCB7ED3FF, 0x65ADEBFF,
+	0x5C1ACCFF, 0xF2F853FF, 0x11F891FF, 0x7B39AAFF, 0x53EB10FF, 0x54137DFF, 0x275222FF, 0xF09F5BFF, 0x3D0A4FFF,
+	0x22F767FF, 0xD63034FF, 0x9A6980FF, 0xDFB935FF, 0x3793FAFF, 0x90239DFF, 0xE9AB2FFF, 0xAF2FF3FF, 0x057F94FF,
+	0xB98519FF, 0x388EEAFF, 0x028151FF, 0xA55043FF, 0x0DE018FF, 0x93AB1CFF, 0x95BAF0FF, 0x369976FF, 0x18F71FFF,
+	0x4B8987FF, 0x491B9EFF, 0x829DC7FF, 0xBCE635FF, 0xCEA6DFFF, 0x20D4ADFF, 0x2D74FDFF, 0x3C1C0DFF, 0x12D6D4FF,
+	0x48C000FF, 0x2A51E2FF, 0xE3AC12FF, 0xFC42A8FF, 0x2FC827FF, 0x1A30BFFF, 0xB740C2FF, 0x42ACF5FF, 0x2FD9DEFF,
+	0xFAFB71FF, 0x05D1CDFF, 0xC471BDFF, 0x94436EFF, 0xC1F7ECFF, 0xCE79EEFF, 0xBD1EF2FF, 0x93B7E4FF, 0x3214AAFF,
+	0x184D3BFF, 0xAE4B99FF, 0x7E49D7FF, 0x4C436EFF, 0xFA24CCFF, 0xCE76BEFF, 0xA04E0AFF, 0x9F945CFF, 0xDCDE3DFF,
+	0x10C9C5FF, 0x70524DFF, 0x0BE472FF, 0x8A2CD7FF, 0x6152C2FF, 0xCF72A9FF, 0xE59338FF, 0xEEDC2DFF, 0xD8C762FF,
+	0xD8C762FF, 0xFF8C13FF, 0xC715FFFF, 0x20B2AAFF, 0xDC143CFF, 0x6495EDFF, 0xf0e68cFF, 0x778899FF, 0xFF1493FF,
+	0xF4A460FF, 0xEE82EEFF, 0xFFD720FF, 0x8b4513FF, 0x4949A0FF, 0x148b8bFF, 0x14ff7fFF, 0x556b2fFF, 0x0FD9FAFF,
+	0x10DC29FF, 0x534081FF, 0x0495CDFF, 0xEF6CE8FF, 0xBD34DAFF, 0x247C1BFF, 0x0C8E5DFF, 0x635B03FF, 0xCB7ED3FF,
+	0x65ADEBFF, 0x5C1ACCFF, 0xF2F853FF, 0x11F891FF, 0x7B39AAFF, 0x53EB10FF, 0x54137DFF, 0x275222FF, 0xF09F5BFF,
+	0x3D0A4FFF, 0x22F767FF, 0xD63034FF, 0x9A6980FF, 0xDFB935FF, 0x3793FAFF, 0x90239DFF, 0xE9AB2FFF, 0xAF2FF3FF,
+	0x057F94FF, 0xB98519FF, 0x388EEAFF, 0x028151FF, 0xA55043FF, 0x0DE018FF, 0x93AB1CFF, 0x95BAF0FF, 0x369976FF,
+	0x18F71FFF, 0x4B8987FF, 0x491B9EFF, 0x829DC7FF, 0xBCE635FF, 0xCEA6DFFF, 0x20D4ADFF, 0x2D74FDFF, 0x3C1C0DFF,
+	0x12D6D4FF, 0x48C000FF, 0x2A51E2FF, 0xE3AC12FF, 0xFC42A8FF, 0x2FC827FF, 0x1A30BFFF, 0xB740C2FF, 0x42ACF5FF,
+	0x2FD9DEFF, 0xFAFB71FF, 0x05D1CDFF, 0xC471BDFF, 0x94436EFF, 0xC1F7ECFF, 0xCE79EEFF, 0xBD1EF2FF, 0x93B7E4FF,
+	0x3214AAFF, 0x184D3BFF, 0xAE4B99FF, 0x7E49D7FF, 0x4C436EFF, 0xFA24CCFF, 0xCE76BEFF, 0xA04E0AFF, 0x9F945CFF,
+	0xDCDE3DFF, 0x10C9C5FF, 0x70524DFF, 0x0BE472FF, 0x8A2CD7FF, 0x6152C2FF, 0xCF72A9FF, 0xE59338FF, 0xEEDC2DFF,
+	0xD8C762FF, 0xD8C762FF
 };
 
 // - DCMD defineleri
@@ -149,13 +149,13 @@ new PlayerColors[200] = {
 	(((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
 
 // - Girişte dans tanıtımları
-new RandAnims[6][0] = {
-{"DAN_LOOP_A"},
-{"DNCE_M_A"},
-{"DNCE_M_B"},
-{"DNCE_M_C"},
-{"DNCE_M_D"},
-{"DNCE_M_E"}
+new RandAnims[6][] = {
+	"DAN_LOOP_A",
+	"DNCE_M_A",
+	"DNCE_M_B",
+	"DNCE_M_C",
+	"DNCE_M_D",
+	"DNCE_M_E"
 };
 
 // - PM sistemi tanıtımları
@@ -190,21 +190,21 @@ new DM[MAX_PLAYERS];
 
 // - Desert Eagle Deathmatch - 1
 new Float:deagledm1pos[7][6] = {
-{2441.3003,1809.5614,16.3222},
-{2434.2029,1793.4486,16.3222},
-{2421.7632,1791.1007,16.3222},
-{2431.6787,1790.4875,16.3222},
-{2423.8142,1820.0522,16.3222},
-{2423.8674,1832.9325,16.3222},
-{2407.1179,1812.8815,16.3222}
+	{2441.3003,1809.5614,16.3222},
+	{2434.2029,1793.4486,16.3222},
+	{2421.7632,1791.1007,16.3222},
+	{2431.6787,1790.4875,16.3222},
+	{2423.8142,1820.0522,16.3222},
+	{2423.8674,1832.9325,16.3222},
+	{2407.1179,1812.8815,16.3222}
 };
 
 // - Fist Deathmatch - 1
 new Float:fistdm1pos[4][6] = {
-{2192.8518,2516.2422,585.7723},
-{2193.9260,2562.2336,585.7723},
-{2147.8921,2563.0903,585.7723},
-{2146.9512,2517.0962,585.7723}
+	{2192.8518,2516.2422,585.7723},
+	{2193.9260,2562.2336,585.7723},
+	{2147.8921,2563.0903,585.7723},
+	{2146.9512,2517.0962,585.7723}
 };
 
 // - Yardım menüsü tanıtımları
@@ -262,19 +262,19 @@ new g_VehNames[][] =
 	!"{FFFFFF}Stair Trailer", !"{FFFFFF}Boxville", !"{FFFFFF}Farm Plow", !"{FFFFFF}Utility Trailer"
 };
 
-// - Modifiyeli Araç spawn sistemi tançtçmlarç
+// - Modifiyeli Araç spawn sistemi tanıtımları
 enum ModArac
 {
-pMAraba,
-pMArabaID
+	pMAraba,
+	pMArabaID
 };
 
 new MCarPlayerInfo[MAX_PLAYERS][ModArac];
-// - hızlandçrçcç pickup tançtçmlarç
+// - Hızlandırıcı pickup tanıtımları
 new hizlandirici[14];
 #define HIZ_VER 5
 
-// - Ev sistemi tançtçmlarç
+// - Ev sistemi tanıtımları
 enum bilgi
 {
 	evaciklama[255],
@@ -504,7 +504,7 @@ public OnGameModeInit()
 	TextDrawSetOutline(textdraw_server, 1);
 	TextDrawSetProportional(textdraw_server, 1);
 
-    printf("Yçklendi: \"Sunucu textdrawlarç.\"");
+    printf("Yüklendi: \"Sunucu textdrawlarç.\"");
     // - Exp sistemi ayarlarç
     expbox = TextDrawCreate(460.000000, 410.000000, "~n~");
     TextDrawBackgroundColor(expbox, 255);
@@ -542,7 +542,7 @@ public OnGameModeInit()
     //expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
     }
     printf("Yüklendi: \"Exp-Level sistemi.\"");
-    // - Saat sistemi ayarlarç
+    // - Saat sistemi ayarları
 
    	Hour = 06;
    	Minute = 0;
@@ -567,19 +567,19 @@ public OnGameModeInit()
     printf("Yüklendi: \"Sunucu haritası.\"");
 	printf("Yüklendi: \"Sunucu araçları.\"");
 	// - Hızlandırma pickupları
-	hizlandirici[1]=CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
-	hizlandirici[2]=CreatePickup(1313,14,2066.5132,1019.7257,10.6719,0);
-	hizlandirici[3]=CreatePickup(1313,14,2066.5918,1254.1406,10.6719,0);
-	hizlandirici[4]=CreatePickup(1313,14,2048.8401,1284.9427,10.6719,0);
-	hizlandirici[5]=CreatePickup(1313,14,2121.1084,1847.6072,10.6719,0);
-	hizlandirici[6]=CreatePickup(1313,14,2146.4421,1874.5963,10.6719,0);
-	hizlandirici[7]=CreatePickup(1313,14,2128.2676,2219.6204,10.6719,0);
-	hizlandirici[8]=CreatePickup(1313,14,2229.9316,2555.6431,10.8203,0);
-	hizlandirici[9]=CreatePickup(1313,14,1964.1276,2593.7170,10.8126,0);
-	hizlandirici[10]=CreatePickup(1313,14,-2084.9065,-1967.6328,378.5436,0);
-	hizlandirici[11]=CreatePickup(1313,14,2048.4058,815.1559,8.4697,0);
-	hizlandirici[12]=CreatePickup(1313,14,2364.7070,433.8943,17.6082,0);
-	hizlandirici[13]=CreatePickup(1313,14,1294.1956,2598.3647,11.9492,0);
+	hizlandirici[1] = CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
+	hizlandirici[2] = CreatePickup(1313,14,2066.5132,1019.7257,10.6719,0);
+	hizlandirici[3] = CreatePickup(1313,14,2066.5918,1254.1406,10.6719,0);
+	hizlandirici[4] = CreatePickup(1313,14,2048.8401,1284.9427,10.6719,0);
+	hizlandirici[5] = CreatePickup(1313,14,2121.1084,1847.6072,10.6719,0);
+	hizlandirici[6] = CreatePickup(1313,14,2146.4421,1874.5963,10.6719,0);
+	hizlandirici[7] = CreatePickup(1313,14,2128.2676,2219.6204,10.6719,0);
+	hizlandirici[8] = CreatePickup(1313,14,2229.9316,2555.6431,10.8203,0);
+	hizlandirici[9] = CreatePickup(1313,14,1964.1276,2593.7170,10.8126,0);
+	hizlandirici[10] = CreatePickup(1313,14,-2084.9065,-1967.6328,378.5436,0);
+	hizlandirici[11] = CreatePickup(1313,14,2048.4058,815.1559,8.4697,0);
+	hizlandirici[12] = CreatePickup(1313,14,2364.7070,433.8943,17.6082,0);
+	hizlandirici[13] = CreatePickup(1313,14,1294.1956,2598.3647,11.9492,0);
 
 	printf("Yüklendi: \"Hız pickupları.\"");
 	// - Ev sistemi ayarları
@@ -2280,31 +2280,31 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 5)
 	{
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 6)
 	{
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	}
 	}
@@ -2315,22 +2315,22 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,22,200,"Colt .45",500);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,23,200,"Susturuculu Colt .45",700);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,24,200,"Desert Eagle",1200);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 4)
 	{
@@ -2345,26 +2345,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,28,200,"Micro Uzi",1250);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,32,200,"TEC-9",1700);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,29,200,"MP-5",2300);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2375,22 +2375,22 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,25,200,"Pump-Action Shotgun",3000);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,26,200,"Double-Barrel Shotgun",4600);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,27,200,"Combat Shotgun",6500);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 4)
 	{
@@ -2405,17 +2405,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,31,200,"M4A1 Carbine",9500);
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,30,200,"Avtomat Kalashnikova 47",7500);
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
@@ -2430,17 +2430,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,33,200,"Country Rifle .22",6700);
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,34,200,"Sniper Rifle",9750);
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
@@ -2455,22 +2455,22 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,16,1,"Grenade",600);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,17,1,"Gas Grenade",250);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,18,1,"Molotov",700);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 4)
 	{
@@ -2485,37 +2485,37 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 1)
 	{
 	SilahSat(playerid,1,1,"Brass Knuckles",50);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 2)
 	{
 	SilahSat(playerid,5,1,"Baseball Bat",100);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 3)
 	{
 	SilahSat(playerid,2,1,"Golf Club",120);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 4)
 	{
 	SilahSat(playerid,4,1,"Knife",250);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 5)
 	{
 	SilahSat(playerid,41,1200,"Spray",300);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 6)
 	{
 	SilahSat(playerid,42,5500,"Fire Extinguisher",450);
-	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}sıLAH ADI\t\t\tsıLAH FçYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dçn.","Seç","Kapat");
 	}
 	if(listitem == 7)
 	{
@@ -3644,7 +3644,7 @@ public EvYukle(evid)
 		}
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
 
-		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Yçklendi.",evid,EvBilgi[evid][evfiyat],durum);
+		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Yüklendi.",evid,EvBilgi[evid][evfiyat],durum);
         ToplamEv++;
     }
 	*/

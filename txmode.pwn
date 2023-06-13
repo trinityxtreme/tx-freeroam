@@ -72,7 +72,7 @@ enum pAccount
 	pA_Score,
 	pA_Money,
 	
- 	pA_Radiation,
+	 pA_Radiation,
 	pA_Hungry,
 	pA_Comfort,
 
@@ -81,7 +81,7 @@ enum pAccount
 	Float:pA_Z,
 	pA_Interior,
 
-    pA_IP,
+	pA_IP,
 	pA_Online,
 	pA_LastOnline,
 	
@@ -176,9 +176,9 @@ new Text:expmeter[MAX_PLAYERS];
 
 // - Saat sistemi tanıtımları
 new Hour,
-    Minute,
-    Timer,
-    Text:TimeText;
+	Minute,
+	Timer,
+	Text:TimeText;
 
 // - Araç yönetim tanıtımları
 new motor,isiklar,alarm,kapilar,kaput,bagaj,objective;
@@ -225,7 +225,7 @@ new dIp[][] =
 	"{ACDA00}/stuntlar\t\t{FFFFFF}Stunt alanlarını gösterir.",
 	"{ACDA00}/can\t\t\t{FFFFFF}Can paketi satın alırsınız.",
 	"{ACDA00}/yelek\t\t\t{FFFFFF}zırh paketi satın alırsınız.",
-    "{ACDA00}/ev\t\t\t{FFFFFF}Ev düzenleme menüsünü açar.",
+	"{ACDA00}/ev\t\t\t{FFFFFF}Ev düzenleme menüsünü açar.",
 	"{ACDA00}/yardim\t\t{FFFFFF}Oyun modu hakkında yardım verir.",
 	"\n\nBu mod {009BFF}MR.ImmortaL {FFFFFF}tarafçndan kodlanmıştır."
 };
@@ -355,7 +355,7 @@ new Float:RandomPlayerSpawns[23][3] = {
 
 main()
 {
-    new year, month, day, hour, minute, second;
+	new year, month, day, hour, minute, second;
 	getdate(year, month, day);
 	gettime(hour, minute, second);
 
@@ -398,103 +398,103 @@ public OnGameModeInit()
 
 	for (new i=0; i<299; i++) {
 		AddPlayerClass(i,1958.2111,1343.5758,15.3746,274.2440,24,100,27,80,32,500);
-    }
+	}
 	
 	printf("  ** LOADED: general settings.");
 
-    // - Textdraws
-    Textdraw0 = TextDrawCreate(310.000000, 435.000000, "~r~~h~~h~ /yardim ~w~~h~~h~/teles /silahlar /stuntlar /dmler /shop /animlist /v1..18 /m1..12 ~r~~h~~h~/kurallar");
-    TextDrawAlignment(Textdraw0, 2);
-    TextDrawBackgroundColor(Textdraw0, 255);
-    TextDrawFont(Textdraw0, 1);
-    TextDrawLetterSize(Textdraw0, 0.369998, 1.000000);
-    TextDrawColor(Textdraw0, -1);
-    TextDrawSetOutline(Textdraw0, 1);
-    TextDrawSetProportional(Textdraw0, 1);
+	// - Textdraws
+	Textdraw0 = TextDrawCreate(310.000000, 435.000000, "~r~~h~~h~ /yardim ~w~~h~~h~/teles /silahlar /stuntlar /dmler /shop /animlist /v1..18 /m1..12 ~r~~h~~h~/kurallar");
+	TextDrawAlignment(Textdraw0, 2);
+	TextDrawBackgroundColor(Textdraw0, 255);
+	TextDrawFont(Textdraw0, 1);
+	TextDrawLetterSize(Textdraw0, 0.369998, 1.000000);
+	TextDrawColor(Textdraw0, -1);
+	TextDrawSetOutline(Textdraw0, 1);
+	TextDrawSetProportional(Textdraw0, 1);
 
-    Textdraw1 = TextDrawCreate(650.000000, 435.000000, " ~n~ ~n~");
-    TextDrawBackgroundColor(Textdraw1, 255);
-    TextDrawFont(Textdraw1, 1);
-    TextDrawLetterSize(Textdraw1, 0.500000, 1.000000);
-    TextDrawColor(Textdraw1, -1);
-    TextDrawSetOutline(Textdraw1, 0);
-    TextDrawSetProportional(Textdraw1, 1);
-    TextDrawSetShadow(Textdraw1, 1);
-    TextDrawUseBox(Textdraw1, 1);
-    TextDrawBoxColor(Textdraw1, 70);
-    TextDrawTextSize(Textdraw1, -10.000000, 0.000000);
+	Textdraw1 = TextDrawCreate(650.000000, 435.000000, " ~n~ ~n~");
+	TextDrawBackgroundColor(Textdraw1, 255);
+	TextDrawFont(Textdraw1, 1);
+	TextDrawLetterSize(Textdraw1, 0.500000, 1.000000);
+	TextDrawColor(Textdraw1, -1);
+	TextDrawSetOutline(Textdraw1, 0);
+	TextDrawSetProportional(Textdraw1, 1);
+	TextDrawSetShadow(Textdraw1, 1);
+	TextDrawUseBox(Textdraw1, 1);
+	TextDrawBoxColor(Textdraw1, 70);
+	TextDrawTextSize(Textdraw1, -10.000000, 0.000000);
 
-    Textdraw2 = TextDrawCreate(638.000000, 405.000000, "xtreme");
-    TextDrawAlignment(Textdraw2, 3);
-    TextDrawBackgroundColor(Textdraw2, 255);
-    TextDrawFont(Textdraw2, 3);
-    TextDrawLetterSize(Textdraw2, 0.639998, 2.599998);
-    TextDrawColor(Textdraw2, 0x006AFFAA);
-    TextDrawSetOutline(Textdraw2, 1);
-    TextDrawSetProportional(Textdraw2, 1);
+	Textdraw2 = TextDrawCreate(638.000000, 405.000000, "xtreme");
+	TextDrawAlignment(Textdraw2, 3);
+	TextDrawBackgroundColor(Textdraw2, 255);
+	TextDrawFont(Textdraw2, 3);
+	TextDrawLetterSize(Textdraw2, 0.639998, 2.599998);
+	TextDrawColor(Textdraw2, 0x006AFFAA);
+	TextDrawSetOutline(Textdraw2, 1);
+	TextDrawSetProportional(Textdraw2, 1);
 
-    Textdraw3 = TextDrawCreate(610.000000, 387.000000, "trinity");
-    TextDrawAlignment(Textdraw3, 3);
-    TextDrawBackgroundColor(Textdraw3, 255);
-    TextDrawFont(Textdraw3, 3);
-    TextDrawLetterSize(Textdraw3, 0.639998, 2.599998);
-    TextDrawColor(Textdraw3, -6749953);
-    TextDrawSetOutline(Textdraw3, 1);
-    TextDrawSetProportional(Textdraw3, 1);
+	Textdraw3 = TextDrawCreate(610.000000, 387.000000, "trinity");
+	TextDrawAlignment(Textdraw3, 3);
+	TextDrawBackgroundColor(Textdraw3, 255);
+	TextDrawFont(Textdraw3, 3);
+	TextDrawLetterSize(Textdraw3, 0.639998, 2.599998);
+	TextDrawColor(Textdraw3, -6749953);
+	TextDrawSetOutline(Textdraw3, 1);
+	TextDrawSetProportional(Textdraw3, 1);
 
-    Textdraw4 = TextDrawCreate(656.000000, 390.000000, "[]-");
-    TextDrawBackgroundColor(Textdraw4, 255);
-    TextDrawFont(Textdraw4, 2);
-    TextDrawLetterSize(Textdraw4, -0.610000, 2.000000);
-    TextDrawColor(Textdraw4, -2096897);
-    TextDrawSetOutline(Textdraw4, 0);
-    TextDrawSetProportional(Textdraw4, 1);
-    TextDrawSetShadow(Textdraw4, 1);
+	Textdraw4 = TextDrawCreate(656.000000, 390.000000, "[]-");
+	TextDrawBackgroundColor(Textdraw4, 255);
+	TextDrawFont(Textdraw4, 2);
+	TextDrawLetterSize(Textdraw4, -0.610000, 2.000000);
+	TextDrawColor(Textdraw4, -2096897);
+	TextDrawSetOutline(Textdraw4, 0);
+	TextDrawSetProportional(Textdraw4, 1);
+	TextDrawSetShadow(Textdraw4, 1);
 
-    Textdraw5 = TextDrawCreate(507.000000, 408.000000, "[]-");
-    TextDrawBackgroundColor(Textdraw5, 255);
-    TextDrawFont(Textdraw5, 2);
-    TextDrawLetterSize(Textdraw5, 0.600000, 2.000000);
-    TextDrawColor(Textdraw5, -2096897);
-    TextDrawSetOutline(Textdraw5, 0);
-    TextDrawSetProportional(Textdraw5, 1);
-    TextDrawSetShadow(Textdraw5, 1);
+	Textdraw5 = TextDrawCreate(507.000000, 408.000000, "[]-");
+	TextDrawBackgroundColor(Textdraw5, 255);
+	TextDrawFont(Textdraw5, 2);
+	TextDrawLetterSize(Textdraw5, 0.600000, 2.000000);
+	TextDrawColor(Textdraw5, -2096897);
+	TextDrawSetOutline(Textdraw5, 0);
+	TextDrawSetProportional(Textdraw5, 1);
+	TextDrawSetShadow(Textdraw5, 1);
 
-    Textdraw6 = TextDrawCreate(84.000000, 286.000000, "-");
-    TextDrawBackgroundColor(Textdraw6, 255);
-    TextDrawFont(Textdraw6, 1);
-    TextDrawLetterSize(Textdraw6, 0.499999, 9.799999);
-    TextDrawColor(Textdraw6, 255);
-    TextDrawSetOutline(Textdraw6, 0);
-    TextDrawSetProportional(Textdraw6, 1);
-    TextDrawSetShadow(Textdraw6, 1);
+	Textdraw6 = TextDrawCreate(84.000000, 286.000000, "-");
+	TextDrawBackgroundColor(Textdraw6, 255);
+	TextDrawFont(Textdraw6, 1);
+	TextDrawLetterSize(Textdraw6, 0.499999, 9.799999);
+	TextDrawColor(Textdraw6, 255);
+	TextDrawSetOutline(Textdraw6, 0);
+	TextDrawSetProportional(Textdraw6, 1);
+	TextDrawSetShadow(Textdraw6, 1);
 
-    Textdraw7 = TextDrawCreate(83.000000, 362.000000, "-");
-    TextDrawBackgroundColor(Textdraw7, 255);
-    TextDrawFont(Textdraw7, 1);
-    TextDrawLetterSize(Textdraw7, 0.499999, 9.799999);
-    TextDrawColor(Textdraw7, 255);
-    TextDrawSetOutline(Textdraw7, 0);
-    TextDrawSetProportional(Textdraw7, 1);
-    TextDrawSetShadow(Textdraw7, 1);
+	Textdraw7 = TextDrawCreate(83.000000, 362.000000, "-");
+	TextDrawBackgroundColor(Textdraw7, 255);
+	TextDrawFont(Textdraw7, 1);
+	TextDrawLetterSize(Textdraw7, 0.499999, 9.799999);
+	TextDrawColor(Textdraw7, 255);
+	TextDrawSetOutline(Textdraw7, 0);
+	TextDrawSetProportional(Textdraw7, 1);
+	TextDrawSetShadow(Textdraw7, 1);
 
-    Textdraw8 = TextDrawCreate(28.000000, 362.000000, "-");
-    TextDrawBackgroundColor(Textdraw8, 255);
-    TextDrawFont(Textdraw8, 1);
-    TextDrawLetterSize(Textdraw8, 1.329999, 3.299993);
-    TextDrawColor(Textdraw8, 255);
-    TextDrawSetOutline(Textdraw8, 0);
-    TextDrawSetProportional(Textdraw8, 1);
-    TextDrawSetShadow(Textdraw8, 1);
+	Textdraw8 = TextDrawCreate(28.000000, 362.000000, "-");
+	TextDrawBackgroundColor(Textdraw8, 255);
+	TextDrawFont(Textdraw8, 1);
+	TextDrawLetterSize(Textdraw8, 1.329999, 3.299993);
+	TextDrawColor(Textdraw8, 255);
+	TextDrawSetOutline(Textdraw8, 0);
+	TextDrawSetProportional(Textdraw8, 1);
+	TextDrawSetShadow(Textdraw8, 1);
 
-    Textdraw9 = TextDrawCreate(126.000000, 362.000000, "-");
-    TextDrawBackgroundColor(Textdraw9, 255);
-    TextDrawFont(Textdraw9, 1);
-    TextDrawLetterSize(Textdraw9, 1.329999, 3.299993);
-    TextDrawColor(Textdraw9, 255);
-    TextDrawSetOutline(Textdraw9, 0);
-    TextDrawSetProportional(Textdraw9, 1);
-    TextDrawSetShadow(Textdraw9, 1);
+	Textdraw9 = TextDrawCreate(126.000000, 362.000000, "-");
+	TextDrawBackgroundColor(Textdraw9, 255);
+	TextDrawFont(Textdraw9, 1);
+	TextDrawLetterSize(Textdraw9, 1.329999, 3.299993);
+	TextDrawColor(Textdraw9, 255);
+	TextDrawSetOutline(Textdraw9, 0);
+	TextDrawSetProportional(Textdraw9, 1);
+	TextDrawSetShadow(Textdraw9, 1);
 
 	textdraw_server = TextDrawCreate(5.000000, 435.000000, "Supervivencia Server ~b~~h~~h~v1.0.0");
 	TextDrawBackgroundColor(textdraw_server, 255);
@@ -504,67 +504,67 @@ public OnGameModeInit()
 	TextDrawSetOutline(textdraw_server, 1);
 	TextDrawSetProportional(textdraw_server, 1);
 
-    printf("Yüklendi: \"Sunucu textdrawlarç.\"");
-    // - Exp sistemi ayarlarç
-    expbox = TextDrawCreate(460.000000, 410.000000, "~n~");
-    TextDrawBackgroundColor(expbox, 255);
-    TextDrawFont(expbox, 1);
-    TextDrawLetterSize(expbox, 0.219999, 1.299999);
-    TextDrawColor(expbox, -1);
-    TextDrawSetOutline(expbox, 0);
-    TextDrawSetProportional(expbox, 1);
-    TextDrawSetShadow(expbox, 1);
-    TextDrawUseBox(expbox, 1);
-    TextDrawBoxColor(expbox, 255);
-    TextDrawTextSize(expbox, 174.000000, 0.000000);
+	printf("Yüklendi: \"Sunucu textdrawlarç.\"");
+	// - Exp sistemi ayarlarç
+	expbox = TextDrawCreate(460.000000, 410.000000, "~n~");
+	TextDrawBackgroundColor(expbox, 255);
+	TextDrawFont(expbox, 1);
+	TextDrawLetterSize(expbox, 0.219999, 1.299999);
+	TextDrawColor(expbox, -1);
+	TextDrawSetOutline(expbox, 0);
+	TextDrawSetProportional(expbox, 1);
+	TextDrawSetShadow(expbox, 1);
+	TextDrawUseBox(expbox, 1);
+	TextDrawBoxColor(expbox, 255);
+	TextDrawTextSize(expbox, 174.000000, 0.000000);
 
-    for(new i; i<MAX_PLAYERS; i++)
+	for(new i; i<MAX_PLAYERS; i++)
 	{
 /*   expmeter[i] = TextDrawCreate(177.000000, 398.000000, " ");
-    TextDrawBackgroundColor(expmeter[i], 255);
-    TextDrawFont(expmeter[i], 1);
-    TextDrawLetterSize(expmeter[i], 0.320000, 0.899999);
-    TextDrawColor(expmeter[i], -1);
-    TextDrawSetOutline(expmeter[i], 0);
-    TextDrawSetProportional(expmeter[i], 1);
-    TextDrawSetShadow(expmeter[i], 1);*/
+	TextDrawBackgroundColor(expmeter[i], 255);
+	TextDrawFont(expmeter[i], 1);
+	TextDrawLetterSize(expmeter[i], 0.320000, 0.899999);
+	TextDrawColor(expmeter[i], -1);
+	TextDrawSetOutline(expmeter[i], 0);
+	TextDrawSetProportional(expmeter[i], 1);
+	TextDrawSetShadow(expmeter[i], 1);*/
 
-    expmeter[i] = TextDrawCreate(322.000000, 411.000000, " ");
-    TextDrawAlignment(expmeter[i], 2);
-    TextDrawBackgroundColor(expmeter[i], 255);
-    TextDrawFont(expmeter[i], 3);
-    TextDrawLetterSize(expmeter[i], 0.340000, 1.000000);
-    TextDrawColor(expmeter[i], -641287425);
-    TextDrawSetOutline(expmeter[i], 1);
-    TextDrawSetProportional(expmeter[i], 1);
+	expmeter[i] = TextDrawCreate(322.000000, 411.000000, " ");
+	TextDrawAlignment(expmeter[i], 2);
+	TextDrawBackgroundColor(expmeter[i], 255);
+	TextDrawFont(expmeter[i], 3);
+	TextDrawLetterSize(expmeter[i], 0.340000, 1.000000);
+	TextDrawColor(expmeter[i], -641287425);
+	TextDrawSetOutline(expmeter[i], 1);
+	TextDrawSetProportional(expmeter[i], 1);
 
 
-    //expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
-    }
-    printf("Yüklendi: \"Exp-Level sistemi.\"");
-    // - Saat sistemi ayarları
+	//expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
+	}
+	printf("Yüklendi: \"Exp-Level sistemi.\"");
+	// - Saat sistemi ayarları
 
-   	Hour = 06;
-   	Minute = 0;
-   	SetWorldTime(Hour);
+	   Hour = 06;
+	   Minute = 0;
+	   SetWorldTime(Hour);
 
-   	TimeText = TextDrawCreate (547.000000, 23.000000, "00:00");
-   	TextDrawBackgroundColor (TimeText, 255);
-   	TextDrawFont (TimeText, 3);
-   	TextDrawLetterSize (TimeText, 0.599999, 2.100000);
-   	TextDrawColor (TimeText, -1);
-   	TextDrawSetOutline (TimeText, 1);
-   	TextDrawSetProportional (TimeText, 1);
+	   TimeText = TextDrawCreate (547.000000, 23.000000, "00:00");
+	   TextDrawBackgroundColor (TimeText, 255);
+	   TextDrawFont (TimeText, 3);
+	   TextDrawLetterSize (TimeText, 0.599999, 2.100000);
+	   TextDrawColor (TimeText, -1);
+	   TextDrawSetOutline (TimeText, 1);
+	   TextDrawSetProportional (TimeText, 1);
 
-   	KillTimer(Timer);
-   	Timer = SetTimer("UpdateServerTime",1000,true);
+	   KillTimer(Timer);
+	   Timer = SetTimer("UpdateServerTime",1000,true);
 
-    printf("Yüklendi: \"Saat sistemi.\"");
-    // - Sunucu Harita Objeleri
+	printf("Yüklendi: \"Saat sistemi.\"");
+	// - Sunucu Harita Objeleri
 
-    
+	
 
-    printf("Yüklendi: \"Sunucu haritası.\"");
+	printf("Yüklendi: \"Sunucu haritası.\"");
 	printf("Yüklendi: \"Sunucu araçları.\"");
 	// - Hızlandırma pickupları
 	hizlandirici[1] = CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
@@ -595,7 +595,7 @@ public OnGameModeInit()
 	printf("Yüklendi: \"Ev sistemi.\"");
 	for(new i;i<MAX_HOUSE;i++)
 	{
-	    EvBilgi[i][evsatilik] = -1;
+		EvBilgi[i][evsatilik] = -1;
 		EvBilgi[i][evsahip] = -1;
 		EvBilgi[i][evaciklama] = -1;
 		EvBilgi[i][evfiyat] = -1;
@@ -631,7 +631,7 @@ public OnGameModeInit()
 	for(new i = 0; i <= 299; i++)
 	{
 		skinValue++;
- 		AddPlayerClass(i, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
+		 AddPlayerClass(i, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0);
 	}
 
 	printf("  ** %d player class loaded.", skinValue);
@@ -642,16 +642,16 @@ public OnGameModeInit()
 	//mysql_query("CREATE TABLE IF NOT EXISTS players(SQLID INT(11), Nickname VARCHAR(24), Password VARCHAR(16), AdminLevel INT(1), Killed INT(11), Death INT(11), Score INT(11), Money INT(11), Radiation INT(3), Hungry INT(3), Comfort INT(3), Last_X FLOAT, Last_Y FLOAT, Last_Z, FLOAT, Last_INT INT(3), LastIP VARCHAR(16), Online TINYINT(1), LastOnline DATE");
 	//mysql_query("CREATE TABLE IF NOT EXISTS iplog(playername VARCHAR(24), ip VARCHAR(16), connected TINYINT(1))");
 	
- 	//if(mysql_ping() > 0)
+	 //if(mysql_ping() > 0)
 	//    printf("  ** MySQL connection successful! [Host: %s / Database: %s]", mysql_hostname, mysql_database);
 	//else
 	printf("  ** MySQL connection failed!");
 
-    SkyAntiDeAMX();
-    printf("  ** AntiDeAMX started!");
+	SkyAntiDeAMX();
+	printf("  ** AntiDeAMX started!");
 
-    LoadObjects();
-    printf("  ** Objects loaded!");
+	LoadObjects();
+	printf("  ** Objects loaded!");
 
 	return 1;
 }
@@ -672,37 +672,37 @@ public OnGameModeExit()
 	TextDrawDestroy(textdraw_server);
 	/*TextDrawDestroy(expbox);
 	TextDrawDestroy(expmeter);*/
-    KillTimer(Timer);
+	KillTimer(Timer);
 
-    new year,month,day;	getdate(year, month, day);
+	new year,month,day;	getdate(year, month, day);
 	new hour,minute,second; gettime(hour,minute,second);
-    printf("Sunucu modu kapandı.");
-    printf("Saat: %d:%d:%d ~ Tarih: %d/%d/%d",hour,minute,second,day,month,year);
-    printf("Trinity-Xtreme / since 27/01/2013 - 01:52");
+	printf("Sunucu modu kapandı.");
+	printf("Saat: %d:%d:%d ~ Tarih: %d/%d/%d",hour,minute,second,day,month,year);
+	printf("Trinity-Xtreme / since 27/01/2013 - 01:52");
 
 	//mysql_close();
 	printf("  ** MySQL connection closed!");
 
-    printf("ç %s gamemode closed.", server_modname);
+	printf("ç %s gamemode closed.", server_modname);
 	return 1;
 }
 
 public OnPlayerRequestClass(playerid, classid)
 {
 	/*
-    SetPlayerFacingAngle(playerid, 90.0);
-    PlayerPlaySound(playerid,1185, 0, 0, 0);
+	SetPlayerFacingAngle(playerid, 90.0);
+	PlayerPlaySound(playerid,1185, 0, 0, 0);
 	SetPlayerPos(playerid, 2621.1831,1824.3500,11.0234);
 	SetPlayerCameraPos(playerid, 2616.2153,1824.3500,12.8204);
 	SetPlayerCameraLookAt(playerid, 2621.1831,1824.3500,12.0234);
-    
-    
+	
+	
 	*/
 	CreateExplosion(1544.7887,-1675.4630,13.5591, 12, 20.0);
 	SetPlayerPos(playerid, 1544.7887,-1675.4630,13.5591);
- 	SetPlayerFacingAngle(playerid,90.0);
- 	SetPlayerCameraPos(playerid, 1541.5293,-1675.4012,13.5527);
- 	SetPlayerCameraLookAt(playerid, 1544.7887,-1675.4630,13.5591);
+	SetPlayerFacingAngle(playerid,90.0);
+	SetPlayerCameraPos(playerid, 1541.5293,-1675.4012,13.5527);
+	SetPlayerCameraLookAt(playerid, 1544.7887,-1675.4630,13.5591);
 	new rand = random(sizeof(RandAnims));
 	ApplyAnimation(playerid,"DANCING",RandAnims[rand][0],4.0,1,1,1,1,1);
 	return 1;
@@ -719,7 +719,7 @@ public OnPlayerConnect(playerid)
 	DeleteObjects(playerid);
 
 	LoadTextDraws(playerid);    // Textdraws loaded.
- 	PlayerAccount[playerid][pA_Hungry] = 0; // Hungry level reseted.
+	PlayerAccount[playerid][pA_Hungry] = 0; // Hungry level reseted.
 	PlayerAccount[playerid][pA_Radiation] = 0;  // Radiation level reseted.
 	playerTimer[playerid] = SetTimerEx("playerGameTimer", 2000, true, "i", playerid);   // Player General Timer started.
 
@@ -728,24 +728,24 @@ public OnPlayerConnect(playerid)
 	
 	
 	//new query[256];
-    //format(query, sizeof(query), "SELECT FROM `players` WHERE user = '%s' LIMIT 1", pName(playerid)); //Formats the query, view above the code for a explanation
-    //mysql_query(query);
-    //mysql_store_result();
-    //new rows = mysql_num_rows();
-    
-    //if(true)
+	//format(query, sizeof(query), "SELECT FROM `players` WHERE user = '%s' LIMIT 1", pName(playerid)); //Formats the query, view above the code for a explanation
+	//mysql_query(query);
+	//mysql_store_result();
+	//new rows = mysql_num_rows();
+	
+	//if(true)
 	ShowPlayerDialog(playerid, dialog_register, DIALOG_STYLE_INPUT, "{BBBBBB}** {00B3FF}Character Register:", "{BBBBBB}Welcome to the {00B3FF}"server_modname"!\n{333333}Enter your password and play the game.", "Register", "Cancel");
 	//else
 	SendClientMessage(playerid, -1, "not rows");
 	//return 1;
 
-    GameTextForPlayer(playerid,"~b~~h~Trinity-~w~Xtreme~n~~r~~h~F~g~~h~r~b~~h~e~y~e~r~r~w~o~p~a~g~m",5000,1);
-    // - PM sistemi
-    pInfo[playerid][Last] = -1;
-    pInfo[playerid][NoPM] = 0;
+	GameTextForPlayer(playerid,"~b~~h~Trinity-~w~Xtreme~n~~r~~h~F~g~~h~r~b~~h~e~y~e~r~r~w~o~p~a~g~m",5000,1);
+	// - PM sistemi
+	pInfo[playerid][Last] = -1;
+	pInfo[playerid][NoPM] = 0;
 
-    // - EXP sistemi
-   	new dosya[50], isim[24];
+	// - EXP sistemi
+	   new dosya[50], isim[24];
 	GetPlayerName(playerid, isim, sizeof(isim));
 	format(dosya, sizeof(dosya), "Hesaplar/Level/%s.txt", isim);
 
@@ -754,42 +754,42 @@ public OnPlayerConnect(playerid)
 	//else BilgiYukle(playerid);
 	expguncelle[playerid] = SetTimerEx("BilgiYenile", 1000, true, "d", playerid);
 
-    // - Ev sistemi ayarç
-    OyuncuMapIconKontrol(playerid);
+	// - Ev sistemi ayarç
+	OyuncuMapIconKontrol(playerid);
 
-    // - Araç kilit ayarç
-   	Kilit[playerid] = 0;
+	// - Araç kilit ayarç
+	   Kilit[playerid] = 0;
 
-   	
+	   
 	return 1;
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
-    // - PM sistemi
-    pInfo[playerid][Last] = -1;
-    pInfo[playerid][NoPM] = 0;
+	// - PM sistemi
+	pInfo[playerid][Last] = -1;
+	pInfo[playerid][NoPM] = 0;
 
 	// - EXP sistemi
 	BilgiYenile(playerid);
 	KillTimer(expguncelle[playerid]);
 
 	// - Araç spawn ayarlarç
-    new iVehID = GetPVarInt(playerid, "iVehID");
-    if(iVehID)
-    DestroyVehicle(iVehID);
+	new iVehID = GetPVarInt(playerid, "iVehID");
+	if(iVehID)
+	DestroyVehicle(iVehID);
 
 	// - Ev sistemi ayarlarç
-    OyuncuEv[playerid] = -1;
+	OyuncuEv[playerid] = -1;
 	EvEditleniyor[GetHouseID(playerid)] = false;
 	OyuncuKontrolEv[playerid]=-255;
 
 	new exitMessage[65 + MAX_PLAYER_NAME];
 	switch(reason)
 	{
-	    case 0:format(exitMessage, sizeof(exitMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}is disconnected. [timeout]", pName(playerid));  // Error.
-	    case 1:format(exitMessage, sizeof(exitMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}is leaved server.", pName(playerid));      // Player choice.
-	    case 2:format(exitMessage, sizeof(exitMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}is kicked or banned.", pName(playerid));     // Kicked.
+		case 0:format(exitMessage, sizeof(exitMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}is disconnected. [timeout]", pName(playerid));  // Error.
+		case 1:format(exitMessage, sizeof(exitMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}is leaved server.", pName(playerid));      // Player choice.
+		case 2:format(exitMessage, sizeof(exitMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}is kicked or banned.", pName(playerid));     // Kicked.
 	}
 	SendClientMessageToAll(-1, exitMessage);
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 201);
@@ -805,7 +805,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 	if(guitarSong[playerid] == true)
 	{
-	    StopAudioStreamForPlayer(playerid);
+		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
 		ClearAnimations(playerid);
 	}
@@ -814,81 +814,81 @@ public OnPlayerDisconnect(playerid, reason)
 
 public OnPlayerSpawn(playerid)
 {
-    SetPlayerInterior(playerid,0);
-    SetPlayerVirtualWorld(playerid,0);
+	SetPlayerInterior(playerid,0);
+	SetPlayerVirtualWorld(playerid,0);
 	SetPlayerRandomSpawn(playerid);
-    PlayerPlaySound(playerid,1186, 0, 0, 0);
+	PlayerPlaySound(playerid,1186, 0, 0, 0);
 
-    TextDrawShowForPlayer(playerid, Textdraw0);
-    TextDrawShowForPlayer(playerid, Textdraw1);
-    TextDrawShowForPlayer(playerid, Textdraw2);
-    TextDrawShowForPlayer(playerid, Textdraw3);
-    TextDrawShowForPlayer(playerid, Textdraw4);
-    TextDrawShowForPlayer(playerid, Textdraw5);
-    TextDrawShowForPlayer(playerid, Textdraw6);
-    TextDrawShowForPlayer(playerid, Textdraw7);
-    TextDrawShowForPlayer(playerid, Textdraw8);
+	TextDrawShowForPlayer(playerid, Textdraw0);
+	TextDrawShowForPlayer(playerid, Textdraw1);
+	TextDrawShowForPlayer(playerid, Textdraw2);
+	TextDrawShowForPlayer(playerid, Textdraw3);
+	TextDrawShowForPlayer(playerid, Textdraw4);
+	TextDrawShowForPlayer(playerid, Textdraw5);
+	TextDrawShowForPlayer(playerid, Textdraw6);
+	TextDrawShowForPlayer(playerid, Textdraw7);
+	TextDrawShowForPlayer(playerid, Textdraw8);
 	TextDrawShowForPlayer(playerid, Textdraw9);
 	TextDrawShowForPlayer(playerid, textdraw_server);
-    TextDrawShowForPlayer(playerid, TimeText);
-    // Exp sistemi
-    TextDrawShowForPlayer(playerid,expbox);
-    TextDrawShowForPlayer(playerid,expmeter[playerid]);
-    //ShowProgressBarForPlayer(playerid,Bar:expbar[playerid]);
+	TextDrawShowForPlayer(playerid, TimeText);
+	// Exp sistemi
+	TextDrawShowForPlayer(playerid,expbox);
+	TextDrawShowForPlayer(playerid,expmeter[playerid]);
+	//ShowProgressBarForPlayer(playerid,Bar:expbar[playerid]);
 
-    // Exp sistemi bitişi
+	// Exp sistemi bitişi
 
-    switch(DM[playerid])
+	switch(DM[playerid])
 	{
-	    case 1:
-	    {
-        new State = GetPlayerState(playerid);
-        if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-	    {
-        GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-        }
-        DM[playerid]=1;
-        SetPlayerArmour(playerid,100);
-        SetPlayerHealth(playerid,100);
-        SetPlayerInterior(playerid,0);
-        SetPlayerVirtualWorld(playerid,0);
-        ResetPlayerWeapons(playerid);
-        new rand = random(sizeof(deagledm1pos));
-        SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
-        GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-        GivePlayerWeapon(playerid,24,99999);
-        SetPlayerTeam(playerid, NO_TEAM);
-	    }
+		case 1:
+		{
+		new State = GetPlayerState(playerid);
+		if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+		{
+		GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+		SendInfo(playerid,"Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+		}
+		DM[playerid]=1;
+		SetPlayerArmour(playerid,100);
+		SetPlayerHealth(playerid,100);
+		SetPlayerInterior(playerid,0);
+		SetPlayerVirtualWorld(playerid,0);
+		ResetPlayerWeapons(playerid);
+		new rand = random(sizeof(deagledm1pos));
+		SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
+		GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+		SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+		GivePlayerWeapon(playerid,24,99999);
+		SetPlayerTeam(playerid, NO_TEAM);
+		}
 
-	    case 2:
-	    {
-        new State = GetPlayerState(playerid);
-        if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-	    {
-        GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-        }
-        DM[playerid]=2;
-        SetPlayerArmour(playerid,100);
-        SetPlayerHealth(playerid,100);
-        SetPlayerSkin(playerid, 80);
-        SetPlayerInterior(playerid,1);
-        SetPlayerVirtualWorld(playerid,0);
-        ResetPlayerWeapons(playerid);
-        new rand = random(sizeof(fistdm1pos));
-        SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
-        GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-        SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-        SetPlayerTeam(playerid, NO_TEAM);
-	    }
+		case 2:
+		{
+		new State = GetPlayerState(playerid);
+		if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+		{
+		GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+		SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+		}
+		DM[playerid]=2;
+		SetPlayerArmour(playerid,100);
+		SetPlayerHealth(playerid,100);
+		SetPlayerSkin(playerid, 80);
+		SetPlayerInterior(playerid,1);
+		SetPlayerVirtualWorld(playerid,0);
+		ResetPlayerWeapons(playerid);
+		new rand = random(sizeof(fistdm1pos));
+		SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
+		GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+		SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+		SetPlayerTeam(playerid, NO_TEAM);
+		}
 	}
 
 	SetPlayerPos(playerid, -2020.6033,613.6348,36.6419);
-    showMessage(playerid, "Spawned successful!");
-    TextDrawShowForPlayer(playerid, textdraw_hungry[playerid]);
-    TextDrawShowForPlayer(playerid, textdraw_radiation[playerid]);
+	showMessage(playerid, "Spawned successful!");
+	TextDrawShowForPlayer(playerid, textdraw_hungry[playerid]);
+	TextDrawShowForPlayer(playerid, textdraw_radiation[playerid]);
 	TextDrawShowForPlayer(playerid, textdraw_ping[playerid]);
 
 	SetPlayerHealth(playerid, 100.0);
@@ -910,11 +910,11 @@ public OnPlayerSpawn(playerid)
 
 public OnPlayerDeath(playerid, killerid, reason)
 {
-    ExpVer(killerid);
-    SendDeathMessage(killerid, playerid, reason);
-    SetPlayerScore(killerid,GetPlayerScore(killerid)+1);
+	ExpVer(killerid);
+	SendDeathMessage(killerid, playerid, reason);
+	SetPlayerScore(killerid,GetPlayerScore(killerid)+1);
 	if(GetPlayerScore(playerid) > 0) return SetPlayerScore(playerid,GetPlayerScore(playerid)-1);
-    PlayerPlaySound(playerid,5206, 0, 0, 0);
+	PlayerPlaySound(playerid,5206, 0, 0, 0);
 
 	if(!(GetPlayerScore(playerid) <= 0))
 		SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
@@ -926,7 +926,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 	PlayerAccount[playerid][pA_Radiation] = 0;
 
 	TextDrawHideForPlayer(playerid, textdraw_hungry[playerid]);
-    TextDrawHideForPlayer(playerid, textdraw_radiation[playerid]);
+	TextDrawHideForPlayer(playerid, textdraw_radiation[playerid]);
 	TextDrawHideForPlayer(playerid, textdraw_ping[playerid]);
 
 	if(campFire[playerid] == true)
@@ -937,7 +937,7 @@ public OnPlayerDeath(playerid, killerid, reason)
 
 	if(guitarSong[playerid] == true)
 	{
-	    StopAudioStreamForPlayer(playerid);
+		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
 		ClearAnimations(playerid);
 	}
@@ -971,7 +971,7 @@ public OnPlayerText(playerid, text[])
 	if(IsPlayeraLAdmin(playerid))
 	{
 	format(chatmessage,1024,"{C30000}[{FFFFFF}GM{C30000}]{ACDA00}%s{C30000}({FFFFFF}%i{C30000}){FFFFFF}:%s",PlayerName(playerid),playerid,text);
-    SendClientMessageToAll(1,chatmessage);
+	SendClientMessageToAll(1,chatmessage);
 	}
 	else
 	{
@@ -979,7 +979,7 @@ public OnPlayerText(playerid, text[])
 	SendPlayerMessageToAll(playerid,chatmessage);
 	}
 	}
-    SetPlayerChatBubble(playerid,text,0xACDA00AA,100.0,5000);
+	SetPlayerChatBubble(playerid,text,0xACDA00AA,100.0,5000);
 	return 0;
 	*/
 }
@@ -990,12 +990,12 @@ dcmd_pmkapat(playerid, const params[])
 	#pragma unused params
 	if(pInfo[playerid][NoPM] == 0)
 	{
-	    pInfo[playerid][NoPM] = 1;
-	    SendInfo(playerid,"çzel mesaj hattçnızı kapattçnız.");
+		pInfo[playerid][NoPM] = 1;
+		SendInfo(playerid,"çzel mesaj hattçnızı kapattçnız.");
 	}
 	else
 	{
-	    SendError(playerid,"çzel mesaj hattçnız zaten kapalç.");
+		SendError(playerid,"çzel mesaj hattçnız zaten kapalç.");
 	}
 }
 
@@ -1004,12 +1004,12 @@ dcmd_pmac(playerid, const params[])
 	#pragma unused params
 	if(pInfo[playerid][NoPM] == 0)
 	{
-	    SendInfo(playerid,"çzel mesaj hattçnız zaten açık.");
+		SendInfo(playerid,"çzel mesaj hattçnız zaten açık.");
 	}
 	else
 	{
-	    pInfo[playerid][NoPM] = 0;
-	    SendInfo(playerid,"çzel mesaj hattçnızı açtçnız.");
+		pInfo[playerid][NoPM] = 0;
+		SendInfo(playerid,"çzel mesaj hattçnızı açtçnız.");
 	}
 }
 
@@ -1060,37 +1060,37 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	// Roleplay commands:
 	if(!strcmp(cmdtext, "/me", true, 3))
-    {
-        if(!cmdtext[3]) return showMessage(playerid, "USAGE: /me [action]");
+	{
+		if(!cmdtext[3]) return showMessage(playerid, "USAGE: /me [action]");
 
-        new text[128];
-        format(text, sizeof(text), "* %s %s", pName(playerid), cmdtext[4]);
-        SendClientMessageToAll(0xFFFF00AA, text);
-        return 1;
-    }
+		new text[128];
+		format(text, sizeof(text), "* %s %s", pName(playerid), cmdtext[4]);
+		SendClientMessageToAll(0xFFFF00AA, text);
+		return 1;
+	}
 
-   	// Debug commands:
-  	if(!strcmp(cmdtext, "/eat", true))
-    {
-        showMessage(playerid, "You're eated a {006699}burger.");
-        PlayerAccount[playerid][pA_Hungry] = 0;
-        ApplyAnimation(playerid, "FOOD", "EAT_Burger", 3.0, 0, 0, 0, 0, 0);
-        return 1;
+	   // Debug commands:
+	  if(!strcmp(cmdtext, "/eat", true))
+	{
+		showMessage(playerid, "You're eated a {006699}burger.");
+		PlayerAccount[playerid][pA_Hungry] = 0;
+		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 3.0, 0, 0, 0, 0, 0);
+		return 1;
 	}
 
 	if(!strcmp(cmdtext, "/addrad", true))
-    {
-        showMessage(playerid, "Radiation coming!");
-        PlayerAccount[playerid][pA_Radiation] += 15;
-        return 1;
+	{
+		showMessage(playerid, "Radiation coming!");
+		PlayerAccount[playerid][pA_Radiation] += 15;
+		return 1;
 	}
 
 	if(!strcmp(cmdtext, "/radpills", true))
-    {
-        showMessage(playerid, "You're used a {006699}radiation pill.");
-        PlayerAccount[playerid][pA_Radiation] = 0;
-        ApplyAnimation(playerid, "FOOD", "EAT_Burger", 3.0, 0, 0, 0, 0, 0);
-        return 1;
+	{
+		showMessage(playerid, "You're used a {006699}radiation pill.");
+		PlayerAccount[playerid][pA_Radiation] = 0;
+		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 3.0, 0, 0, 0, 0, 0);
+		return 1;
 	}
 
 // ========================================================================== //
@@ -1098,13 +1098,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	// Campfire script:
 	if(!strcmp(cmdtext, "/campfire", true))
 	{
-	    if(campFire[playerid] == true) return showMessage(playerid, "You need quench your last campfire. (/firedown)");
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateç yakamazsınız!");
-	    campFire[playerid] = true;
+		if(campFire[playerid] == true) return showMessage(playerid, "You need quench your last campfire. (/firedown)");
+		if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateç yakamazsınız!");
+		campFire[playerid] = true;
 
-	    new Float:fireX, Float:fireY, Float:fireZ;
+		new Float:fireX, Float:fireY, Float:fireZ;
 		GetPlayerPos(playerid, fireX, fireY, fireZ);
-	    fireWoods[playerid]	 = CreateDynamicObject(1463, fireX, fireY - 3.5, fireZ - 0.8, 0.000000, 0.000000, 0.000000);
+		fireWoods[playerid]	 = CreateDynamicObject(1463, fireX, fireY - 3.5, fireZ - 0.8, 0.000000, 0.000000, 0.000000);
 		fireObject[playerid] = CreateDynamicObject(18689, fireX, fireY - 3.5, fireZ - 2.5, 0.000000, 0.000000, 0.000000);
 		showMessage(playerid, "You setted a campfire. (Quench: /firedown)");
 		return 1;
@@ -1112,46 +1112,46 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(!strcmp(cmdtext, "/firedown", true))
 	{
-	    if(campFire[playerid] == false) return showMessage(playerid, "Once you need setting a campfire. (/campfire)");
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateçi sındçremezsiniz!");
+		if(campFire[playerid] == false) return showMessage(playerid, "Once you need setting a campfire. (/campfire)");
+		if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateçi sındçremezsiniz!");
 
-	    new Float:fireX, Float:fireY, Float:fireZ;
-	    GetDynamicObjectPos(fireWoods[playerid], fireX, fireY, fireZ);
-	    if(!IsPlayerInRangeOfPoint(playerid, 7.0, fireX, fireY, fireZ)) return showMessage(playerid, "Kamp ateçinin yakçnçnda deçilsiniz! [7 metre]");
+		new Float:fireX, Float:fireY, Float:fireZ;
+		GetDynamicObjectPos(fireWoods[playerid], fireX, fireY, fireZ);
+		if(!IsPlayerInRangeOfPoint(playerid, 7.0, fireX, fireY, fireZ)) return showMessage(playerid, "Kamp ateçinin yakçnçnda deçilsiniz! [7 metre]");
 
 		campFire[playerid] = false;
-     	DestroyDynamicObject(fireWoods[playerid]);
-      	DestroyDynamicObject(fireObject[playerid]);
+		 DestroyDynamicObject(fireWoods[playerid]);
+		  DestroyDynamicObject(fireObject[playerid]);
 		showMessage(playerid, "Kamp ateçini sındçrdçnız!");
-	    return 1;
+		return 1;
 	}
 
 	// Guitar script:
 	if(!strcmp(cmdtext, "/guitar", true))
 	{
-	    if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken gitar çalamazsınız!");
-	    guitarSong[playerid] = true;
+		if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken gitar çalamazsınız!");
+		guitarSong[playerid] = true;
 
-	    new randomSongs[2][0] =
-	    {
-	        {"http://k007.kiwi6.com/hotlink/x3bp0yv6hg/Guitar1.mp3"},
-	        {"http://k007.kiwi6.com/hotlink/okyiex9pxh/Guitar2.mp3"}
-	    };
-	    new music = random(sizeof(randomSongs));
-	    new Float:pX, Float:pY, Float:pZ;
-	    GetPlayerPos(playerid, pX, pY, pZ);
+		new randomSongs[2][0] =
+		{
+			{"http://k007.kiwi6.com/hotlink/x3bp0yv6hg/Guitar1.mp3"},
+			{"http://k007.kiwi6.com/hotlink/okyiex9pxh/Guitar2.mp3"}
+		};
+		new music = random(sizeof(randomSongs));
+		new Float:pX, Float:pY, Float:pZ;
+		GetPlayerPos(playerid, pX, pY, pZ);
 
-	    TogglePlayerControllable(playerid, 0);
-	    PlayAudioStreamForPlayer(playerid, randomSongs[music][0], pX, pY, pZ, 20.0, 1);
-	    SetPlayerAttachedObject(playerid, 0, 19317, 6, -0.434999, -0.387000, 0.180000, -58.100009, -96.599891, 24.100002, 1.000000, 1.000000, 1.000000);
-	    ApplyAnimation(playerid,"BEACH", "ParkSit_M_loop", 4.0, 1, 0, 0, 0, 0);
-	    showMessage(playerid, "Gitar çalmaya baÅŸladçnız, durmak için: /guitardown");
+		TogglePlayerControllable(playerid, 0);
+		PlayAudioStreamForPlayer(playerid, randomSongs[music][0], pX, pY, pZ, 20.0, 1);
+		SetPlayerAttachedObject(playerid, 0, 19317, 6, -0.434999, -0.387000, 0.180000, -58.100009, -96.599891, 24.100002, 1.000000, 1.000000, 1.000000);
+		ApplyAnimation(playerid,"BEACH", "ParkSit_M_loop", 4.0, 1, 0, 0, 0, 0);
+		showMessage(playerid, "Gitar çalmaya baÅŸladçnız, durmak için: /guitardown");
 		return 1;
 	}
 
 	if(!strcmp(cmdtext, "/guitardown", true))
 	{
-	    if(guitarSong[playerid] == false) return showMessage(playerid, "Gitar çalmçyorsunuz! (/guitar)");
+		if(guitarSong[playerid] == false) return showMessage(playerid, "Gitar çalmçyorsunuz! (/guitar)");
 		guitarSong[playerid] = false;
 
 		TogglePlayerControllable(playerid, 1);
@@ -1175,7 +1175,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-   	if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alançnda komut kullanmak yasaktçr. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	   if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alançnda komut kullanmak yasaktçr. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 	// - DCMD komutlarç
 	dcmd(pm, 2, cmdtext);
 	dcmd(ms, 2, cmdtext);
@@ -1189,13 +1189,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(!strcmp(cmdtext, "/kurallar", true))
 	{
 	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktçr.\n~~ Argo yasaktçr.\n~~ çnanç & gçrççe karçç hakaret yasaktçr.\n~~ Yçnetimi rahatsız etmek yasaktçr.","Kapat","");
-    return 1;
+	return 1;
 	}
 
 	if(!strcmp(cmdtext, "/changelog", true))
 	{
 	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyalarç oluçturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles mençsı eklendi.\n~ Yardçm mençsı eklendi.\n~ Kurallar mençsı eklendi.\n~ çlk haritalar ve Araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarç eklendi.","RC1.1","Kapat");
-    return 1;
+	return 1;
 	}
 
 	if(!strcmp(cmdtext, "/teles", true))
@@ -1219,205 +1219,205 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(!strcmp(cmdtext, "/silahlar", true))
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
-    return 1;
+	return 1;
 	}
 
 	if (strcmp("/yardim", cmdtext, true, 10) == 0)
 	{
-	    new string[2048];
-	    format(string,2048,"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",dIp[0],dIp[1],dIp[2],dIp[3],dIp[4],dIp[5],dIp[6],dIp[7],dIp[8],dIp[9],dIp[10],dIp[11],dIp[12],dIp[13],dIp[14],dIp[15],dIp[16],dIp[17]);
-	    ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}Yardçm",string,"Kapat","");
+		new string[2048];
+		format(string,2048,"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",dIp[0],dIp[1],dIp[2],dIp[3],dIp[4],dIp[5],dIp[6],dIp[7],dIp[8],dIp[9],dIp[10],dIp[11],dIp[12],dIp[13],dIp[14],dIp[15],dIp[16],dIp[17]);
+		ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}Yardçm",string,"Kapat","");
 		return 1;
 	}
 
- 	if (strcmp("/myversion", cmdtext, true, 10) == 0)
+	 if (strcmp("/myversion", cmdtext, true, 10) == 0)
 	{
-	    new string[64];
-    	GetPlayerVersion(playerid, string, sizeof(string));
-    	format(string, sizeof(string), "ç BçLGç: {FFFFFF}SA-MP versiyonunuz: {00FF00}%s", string);
-        SendClientMessage(playerid, 0x00A2F6AA,string);
+		new string[64];
+		GetPlayerVersion(playerid, string, sizeof(string));
+		format(string, sizeof(string), "ç BçLGç: {FFFFFF}SA-MP versiyonunuz: {00FF00}%s", string);
+		SendClientMessage(playerid, 0x00A2F6AA,string);
 		return 1;
 	}
 
 	// - Araç yçnetim komutlarç
-    if(strcmp(cmd, "/motorac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,VEHICLE_PARAMS_ON,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Motor aççldç, kapatmak için {00FF00}/motorkapat");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/motorkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,VEHICLE_PARAMS_OFF,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Motor kapatçldç, tekrar açmak için {00FF00}/motorac");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/farac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_ON,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Far aççldç, kapatmak için {00FF00}/farkapat");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/farkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_OFF,alarm,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Far kapatçldç, tekrar açmak için {00FF00}/farac");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/alarmac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_ON,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Alarm aççldç, kapatmak için {00FF00}/alarmkapat");
-    }
-	return 1;
-	}
-
-    if(strcmp(cmd, "/alarmkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_OFF,kapilar,kaput,bagaj,objective);
-    SendInfo(playerid,"Alarm kapatçldç, tekrar almak için {00FF00}/alarmac");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/kaputac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_ON,bagaj,objective);
-    SendInfo(playerid,"Kaput aççldç, kapatmak için {00FF00}/kaputkapat");
-    }
-	return 1;
-	}
-
-    if(strcmp(cmd, "/kaputkapat",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_OFF,bagaj,objective);
-    SendInfo(playerid,"Kaput kapatçldç, tekrar almak için {00FF00}/kaputac");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/bagajac",true) == 0) {
-    if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
-	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_ON,objective);
-    SendInfo(playerid,"Bagaj aççldç, kapatmak için {00FF00}/bagajkapat");
-    }
-    return 1;
-    }
-
-    if(strcmp(cmd, "/bagajkapat",true) == 0) {
+	if(strcmp(cmd, "/motorac",true) == 0) {
 	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
-    new vid = GetPlayerVehicleID(playerid);
-    if(vid != INVALID_VEHICLE_ID)
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
 	{
-    GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
-    SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_OFF,objective);
-    SendInfo(playerid,"Bagaj kapatçldç, tekrar almak için {00FF00}/bagajac");
-    }
-    return 1;
-    }
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,VEHICLE_PARAMS_ON,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SendInfo(playerid,"Motor aççldç, kapatmak için {00FF00}/motorkapat");
+	}
+	return 1;
+	}
 
-    if(!strcmp(cmdtext,"/kilit",true))
+	if(strcmp(cmd, "/motorkapat",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
 	{
-	    if(!IsPlayerInAnyVehicle(playerid)) return 1;
-	    if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return 1;
-	    if(Kilit[playerid] != 0) return 1;
-	    Kilit[playerid] = 1;
-	    Arac[playerid] = GetPlayerVehicleID(playerid);
-	    SendInfo(playerid,"Araç kilitlendi, kilidi açmak için {00FF00}/kilitac");
-	    return 1;
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,VEHICLE_PARAMS_OFF,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SendInfo(playerid,"Motor kapatçldç, tekrar açmak için {00FF00}/motorac");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/farac",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_ON,alarm,kapilar,kaput,bagaj,objective);
+	SendInfo(playerid,"Far aççldç, kapatmak için {00FF00}/farkapat");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/farkapat",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_OFF,alarm,kapilar,kaput,bagaj,objective);
+	SendInfo(playerid,"Far kapatçldç, tekrar açmak için {00FF00}/farac");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/alarmac",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_ON,kapilar,kaput,bagaj,objective);
+	SendInfo(playerid,"Alarm aççldç, kapatmak için {00FF00}/alarmkapat");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/alarmkapat",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_OFF,kapilar,kaput,bagaj,objective);
+	SendInfo(playerid,"Alarm kapatçldç, tekrar almak için {00FF00}/alarmac");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/kaputac",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_ON,bagaj,objective);
+	SendInfo(playerid,"Kaput aççldç, kapatmak için {00FF00}/kaputkapat");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/kaputkapat",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_OFF,bagaj,objective);
+	SendInfo(playerid,"Kaput kapatçldç, tekrar almak için {00FF00}/kaputac");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/bagajac",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_ON,objective);
+	SendInfo(playerid,"Bagaj aççldç, kapatmak için {00FF00}/bagajkapat");
+	}
+	return 1;
+	}
+
+	if(strcmp(cmd, "/bagajkapat",true) == 0) {
+	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	new vid = GetPlayerVehicleID(playerid);
+	if(vid != INVALID_VEHICLE_ID)
+	{
+	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
+	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_OFF,objective);
+	SendInfo(playerid,"Bagaj kapatçldç, tekrar almak için {00FF00}/bagajac");
+	}
+	return 1;
+	}
+
+	if(!strcmp(cmdtext,"/kilit",true))
+	{
+		if(!IsPlayerInAnyVehicle(playerid)) return 1;
+		if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return 1;
+		if(Kilit[playerid] != 0) return 1;
+		Kilit[playerid] = 1;
+		Arac[playerid] = GetPlayerVehicleID(playerid);
+		SendInfo(playerid,"Araç kilitlendi, kilidi açmak için {00FF00}/kilitac");
+		return 1;
 	}
 
 	if(!strcmp(cmdtext,"/kilitac",true))
 	{
-	    if(Kilit[playerid] != 1) return 1;
-	    new Float:X, Float:Y, Float:Z;
-	    GetVehiclePos(Arac[playerid],X,Y,Z);
-	    if(IsPlayerInRangeOfPoint(playerid,5,X,Y,Z))
-	    {
-	        Kilit[playerid] = 0;
+		if(Kilit[playerid] != 1) return 1;
+		new Float:X, Float:Y, Float:Z;
+		GetVehiclePos(Arac[playerid],X,Y,Z);
+		if(IsPlayerInRangeOfPoint(playerid,5,X,Y,Z))
+		{
+			Kilit[playerid] = 0;
 
-		    SendInfo(playerid,"Kilit aççldç, aracç kilitlemek için {00FF00}/kilit");
+			SendInfo(playerid,"Kilit aççldç, aracç kilitlemek için {00FF00}/kilit");
 		}
-	    return 1;
+		return 1;
 	}
 
 	// - Araç renk deçiçtirme komutu
 	if(strcmp(cmd, "/renk", true) == 0)
 	{
-    if(IsPlayerInAnyVehicle(playerid))
-    {
-    new color1,color2,string[128];
-    tmp=strtok(cmdtext,idx);
-    if(!strlen(tmp) || !IsNumeric(tmp))
-    {
-    SendUse(playerid,"/renk {00FF00}[0-255] [0-255]");
-    return 1;
+	if(IsPlayerInAnyVehicle(playerid))
+	{
+	new color1,color2,string[128];
+	tmp=strtok(cmdtext,idx);
+	if(!strlen(tmp) || !IsNumeric(tmp))
+	{
+	SendUse(playerid,"/renk {00FF00}[0-255] [0-255]");
+	return 1;
 	}
 	color1=strval(tmp);
-    tmp=strtok(cmdtext,idx);
-    if(!strlen(tmp) || !IsNumeric(tmp))color2=color1;
+	tmp=strtok(cmdtext,idx);
+	if(!strlen(tmp) || !IsNumeric(tmp))color2=color1;
 	else color2=strval(tmp);
 	if(color1<0 || color1>255 || color2<0 || color2>255)
 	if(!strlen(tmp) || !IsNumeric(tmp))
-    {
-    SendUse(playerid,"/renk {00FF00}[0-255] [0-255]");
+	{
+	SendUse(playerid,"/renk {00FF00}[0-255] [0-255]");
 	return 1;
 	}
- 	ChangeVehicleColor(GetPlayerVehicleID(playerid),color1,color2);
-    format(string,sizeof(string),"ç BçLGç: {FFFFFF}Araç rengi deÄŸiÅŸtirildi. [{009BFF}%d/%d{FFFFFF}]",color1,color2);
-    SendClientMessage(playerid, 0x00A2F6AA,string);
-    }
-    else SendError(playerid,"Araçta deçilsiniz.");
-    return 1;
+	 ChangeVehicleColor(GetPlayerVehicleID(playerid),color1,color2);
+	format(string,sizeof(string),"ç BçLGç: {FFFFFF}Araç rengi deÄŸiÅŸtirildi. [{009BFF}%d/%d{FFFFFF}]",color1,color2);
+	SendClientMessage(playerid, 0x00A2F6AA,string);
+	}
+	else SendError(playerid,"Araçta deçilsiniz.");
+	return 1;
 	}
 
-    // - Skin deçiçtirme komutu
-    if(strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
-    {
+	// - Skin deçiçtirme komutu
+	if(strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
+	{
 	if(cmdtext[7] != ' ' || cmdtext[8] == EOS)
 	return SendUse(playerid,"/myskin [id]");
 	if ((cmdtext[0] < 0) || (cmdtext[0] > 299)) return SendError(playerid,"Girilen deçer geçersiz!");
@@ -1426,88 +1426,88 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	else
 	SendError(playerid,"Girilen deçer geçersiz!");
 	return 1;
-    }
+	}
 
 	// - DM alanç komutlarç
 	if(!strcmp(cmdtext, "/deagledm1",true))
 	{
 	new State = GetPlayerState(playerid);
-    if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
-    GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    }
-    DM[playerid]=1;
-    SetPlayerArmour(playerid,100);
-    SetPlayerHealth(playerid,100);
-    SetPlayerSkin(playerid, 285);
-    SetPlayerInterior(playerid,0);
-    SetPlayerVirtualWorld(playerid,0);
-    ResetPlayerWeapons(playerid);
-    new rand = random(sizeof(deagledm1pos));
-    SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
-    GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    GivePlayerWeapon(playerid,24,99999);
-    SetPlayerTeam(playerid, NO_TEAM);
-    return 1;
-    }
+	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	}
+	DM[playerid]=1;
+	SetPlayerArmour(playerid,100);
+	SetPlayerHealth(playerid,100);
+	SetPlayerSkin(playerid, 285);
+	SetPlayerInterior(playerid,0);
+	SetPlayerVirtualWorld(playerid,0);
+	ResetPlayerWeapons(playerid);
+	new rand = random(sizeof(deagledm1pos));
+	SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
+	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	GivePlayerWeapon(playerid,24,99999);
+	SetPlayerTeam(playerid, NO_TEAM);
+	return 1;
+	}
 
-    if(!strcmp(cmdtext, "/fistdm1",true))
-    {
-    new State = GetPlayerState(playerid);
-    if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-    {
-    GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    }
-    DM[playerid]=2;
-    SetPlayerArmour(playerid,100);
-    SetPlayerHealth(playerid,100);
-    SetPlayerSkin(playerid, 80);
-    SetPlayerInterior(playerid,1);
-    SetPlayerVirtualWorld(playerid,0);
-    ResetPlayerWeapons(playerid);
-    new rand = random(sizeof(fistdm1pos));
-    SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
-    GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    SetPlayerTeam(playerid, NO_TEAM);
-    return 1;
-    }
+	if(!strcmp(cmdtext, "/fistdm1",true))
+	{
+	new State = GetPlayerState(playerid);
+	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	{
+	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	}
+	DM[playerid]=2;
+	SetPlayerArmour(playerid,100);
+	SetPlayerHealth(playerid,100);
+	SetPlayerSkin(playerid, 80);
+	SetPlayerInterior(playerid,1);
+	SetPlayerVirtualWorld(playerid,0);
+	ResetPlayerWeapons(playerid);
+	new rand = random(sizeof(fistdm1pos));
+	SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
+	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	SetPlayerTeam(playerid, NO_TEAM);
+	return 1;
+	}
 
 	// - 31 sistemi komutlarç
-    if(!strcmp("/31",cmd,true))
-    {
-    tmp=strtok(cmdtext,idx);
+	if(!strcmp("/31",cmd,true))
+	{
+	tmp=strtok(cmdtext,idx);
 
-    if(!strlen(tmp)) return SendUse(playerid,"/31 [cek/birak]");
+	if(!strlen(tmp)) return SendUse(playerid,"/31 [cek/birak]");
 
-    if(!strcmp("cek",tmp,true))
-    {
-    if(cekiyor[playerid] == 1) return SendError(playerid,"Zaten 31 çekmektesiniz.");
-   	ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
-   	ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
-    asilantimer = SetTimerEx("asilanadamtimer", 19000,false,"i",playerid);
-   	cekiyor[playerid] = 1;
-   	return 1;
-   	}
+	if(!strcmp("cek",tmp,true))
+	{
+	if(cekiyor[playerid] == 1) return SendError(playerid,"Zaten 31 çekmektesiniz.");
+	   ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
+	   ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
+	asilantimer = SetTimerEx("asilanadamtimer", 19000,false,"i",playerid);
+	   cekiyor[playerid] = 1;
+	   return 1;
+	   }
 
 	if(!strcmp("birak",tmp,true))
 	{
-   	if(cekiyor[playerid] == 0) return SendError(playerid,"Zaten 31 çekmiyorsunuz.");
-    SendInfo(playerid,"Artçk 31 çekmiyorsunuz.");
-    ClearAnimations(playerid);
-   	KillTimer(asilantimer);
-    cekiyor[playerid] = 0;
-    return 1;
-   	}
-    return 1;
-    }
+	   if(cekiyor[playerid] == 0) return SendError(playerid,"Zaten 31 çekmiyorsunuz.");
+	SendInfo(playerid,"Artçk 31 çekmiyorsunuz.");
+	ClearAnimations(playerid);
+	   KillTimer(asilantimer);
+	cekiyor[playerid] = 0;
+	return 1;
+	   }
+	return 1;
+	}
 	// - Para gçnderme komutu
 	if(!strcmp("/paraver",cmd,true))
 	{
-	    tmp=strtok(cmdtext,idx);
+		tmp=strtok(cmdtext,idx);
 		if(!strlen(tmp)) return SendUse(playerid,"/paraver {00FF00}[id][miktar]");
 		new id=strval(tmp);
 		if(!IsPlayerConnected(id)) return SendError(playerid,"Oyuncu oyunda {FF0000}bulunmuyor!");
@@ -1524,32 +1524,32 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - sırçç kamerası komutu
-    if (strcmp("/surus", cmdtext, true, 10) == 0)
-    {
-    if(!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada olmalısınız!");
-    if(GetPVarInt(playerid,"used") == 0)
-    {
-    new p = GetPlayerVehicleID(playerid);
-    Surus[playerid] = CreatePlayerObject(playerid,19300, 0.0000, -1282.9984, 10.1493, 0.0000, -1, -1, 100);
-    AttachPlayerObjectToVehicle(playerid,Surus[playerid],p,-0.314999, -0.195000, 0.510000, 0.000000, 0.000000, 0.000000);
-    AttachCameraToPlayerObject(playerid,Surus[playerid]);
-    SetPVarInt(playerid,"used",1);
-    SendInfo(playerid,"Kamerayç eski haline dçndçrmek için {00FF00}/surus {FFFFFF}yazınız.");
-    }
-    else if(GetPVarInt(playerid,"used") == 1)
-    {
-    SetCameraBehindPlayer(playerid);
-    DestroyPlayerObject(playerid,Surus[playerid]);
-    SetPVarInt(playerid,"used",0);
-    SendInfo(playerid,"Kamera eski haline dçndçrçldç."); }
-    return 1;
-    }
+	if (strcmp("/surus", cmdtext, true, 10) == 0)
+	{
+	if(!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada olmalısınız!");
+	if(GetPVarInt(playerid,"used") == 0)
+	{
+	new p = GetPlayerVehicleID(playerid);
+	Surus[playerid] = CreatePlayerObject(playerid,19300, 0.0000, -1282.9984, 10.1493, 0.0000, -1, -1, 100);
+	AttachPlayerObjectToVehicle(playerid,Surus[playerid],p,-0.314999, -0.195000, 0.510000, 0.000000, 0.000000, 0.000000);
+	AttachCameraToPlayerObject(playerid,Surus[playerid]);
+	SetPVarInt(playerid,"used",1);
+	SendInfo(playerid,"Kamerayç eski haline dçndçrmek için {00FF00}/surus {FFFFFF}yazınız.");
+	}
+	else if(GetPVarInt(playerid,"used") == 1)
+	{
+	SetCameraBehindPlayer(playerid);
+	DestroyPlayerObject(playerid,Surus[playerid]);
+	SetPVarInt(playerid,"used",0);
+	SendInfo(playerid,"Kamera eski haline dçndçrçldç."); }
+	return 1;
+	}
 
 	// - Iççnlanma komutlarç
 	if(strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0)
 	{
-    Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-    SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ışınlanıldı.");
+	Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
+	SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
@@ -1562,7 +1562,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/sahil", true) == 0)
 	{
-    Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
+	Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
 	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
@@ -1581,7 +1581,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-    if(strcmp(cmdtext, "/flores", true) == 0)
+	if(strcmp(cmdtext, "/flores", true) == 0)
 	{
 	Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
 	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanına ışınlanıldı.");
@@ -1613,82 +1613,82 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 	Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
 	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanına ışınlanıldı.");
- 	return 1;
+	 return 1;
 	}
 
 	if(strcmp(cmdtext,"/mod5", true) == 0)
 	{
 	Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
 	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanına ışınlanıldı.");
- 	return 1;
+	 return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap1", true) == 0)
 	{
 	Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanına ışınlanıldı.");
- 	return 1;
+	 return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap2", true) == 0)
 	{
 	Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanına ışınlanıldı.");
- 	return 1;
+	 return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap3", true) == 0)
 	{
 	Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanına ışınlanıldı.");
- 	return 1;
+	 return 1;
 	}
 
 	if(strcmp(cmdtext,"/ap4", true) == 0)
 	{
 	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
 	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanına ışınlanıldı.");
- 	return 1;
+	 return 1;
 	}
 
 	// - Can & zırh komutlarç
 	if(strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0)
-    {
-    if(GetPVarInt(playerid, "SpamKoruma") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
-    SetPVarInt(playerid, "SpamKoruma", GetTickCount() + 30000);
-    if(GetPlayerMoney(playerid) < 750)
-    return SendError(playerid,"Paranız {FF0000}yetersiz!");
-    SetPlayerHealth(playerid,100);
-    GivePlayerMoney(playerid,-750);
-    SendInfo(playerid,"Can paketi {00FF00}başarıyla {FFFFFF}alındı. [750$]");
-    return 1;
-    }
+	{
+	if(GetPVarInt(playerid, "SpamKoruma") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+	SetPVarInt(playerid, "SpamKoruma", GetTickCount() + 30000);
+	if(GetPlayerMoney(playerid) < 750)
+	return SendError(playerid,"Paranız {FF0000}yetersiz!");
+	SetPlayerHealth(playerid,100);
+	GivePlayerMoney(playerid,-750);
+	SendInfo(playerid,"Can paketi {00FF00}başarıyla {FFFFFF}alındı. [750$]");
+	return 1;
+	}
 
-    if (strcmp(cmdtext, "/yelek", true)==0 || strcmp(cmdtext, "/zirh", true)==0)
-    {
-    if(GetPVarInt(playerid, "SpamKoruma1") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
-    SetPVarInt(playerid, "SpamKoruma1", GetTickCount() + 30000);
-    if(GetPlayerMoney(playerid) < 1000)
-    return SendError(playerid,"Paranız {FF0000}yetersiz!");
-    SetPlayerArmour(playerid,100);
-    GivePlayerMoney(playerid,-1000);
-    SendInfo(playerid,"Zırh paketi {00FF00}başarıyla {FFFFFF}alındı. [1000$]");
-    return 1;
-    }
+	if (strcmp(cmdtext, "/yelek", true)==0 || strcmp(cmdtext, "/zirh", true)==0)
+	{
+	if(GetPVarInt(playerid, "SpamKoruma1") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+	SetPVarInt(playerid, "SpamKoruma1", GetTickCount() + 30000);
+	if(GetPlayerMoney(playerid) < 1000)
+	return SendError(playerid,"Paranız {FF0000}yetersiz!");
+	SetPlayerArmour(playerid,100);
+	GivePlayerMoney(playerid,-1000);
+	SendInfo(playerid,"Zırh paketi {00FF00}başarıyla {FFFFFF}alındı. [1000$]");
+	return 1;
+	}
 
 	// - FPS komutlarç
 	if (strcmp("/firstperson", cmdtext, true, 10) == 0)
 	{
-	    firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-     	AttachObjectToPlayer(firstperson[playerid],playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
-	    AttachCameraToObject(playerid, firstperson[playerid]);
-	    SendInfo(playerid,"Kamerayı eski hale döndürmek için {00FF00}/exitfirstperson {FFFFFF}yazınız.");
+		firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		 AttachObjectToPlayer(firstperson[playerid],playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
+		AttachCameraToObject(playerid, firstperson[playerid]);
+		SendInfo(playerid,"Kamerayı eski hale döndürmek için {00FF00}/exitfirstperson {FFFFFF}yazınız.");
 		return 1;
 	}
 	if (strcmp("/exitfirstperson", cmdtext, true, 10) == 0)
 	{
-	    SetCameraBehindPlayer(playerid);
-        DestroyObject(firstperson[playerid]);
+		SetCameraBehindPlayer(playerid);
+		DestroyObject(firstperson[playerid]);
 		return 1;
 	}
 
@@ -1710,179 +1710,179 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Araç spawn komutu
-    if(!strcmp(cmdtext, "/v", true, 2))
-        {
-                if(cmdtext[2] == EOS)
-                        return 0;
+	if(!strcmp(cmdtext, "/v", true, 2))
+		{
+				if(cmdtext[2] == EOS)
+						return 0;
 
-                new
-                        iList = strval(cmdtext[2]) - 1
-                ;
-                if(0 <= iList <= 17)
-                {
-                        static
-                                s_szName[24],
-                                s_szVehDialog[256]
-                        ;
-                        s_szVehDialog = "";
+				new
+						iList = strval(cmdtext[2]) - 1
+				;
+				if(0 <= iList <= 17)
+				{
+						static
+								s_szName[24],
+								s_szVehDialog[256]
+						;
+						s_szVehDialog = "";
 
-                        for(new i = (iList * 12), j = ((iList + 1) * 12); i < j; ++i)
-                        {
-                                if(i >= sizeof(g_VehNames))
-                                        break;
+						for(new i = (iList * 12), j = ((iList + 1) * 12); i < j; ++i)
+						{
+								if(i >= sizeof(g_VehNames))
+										break;
 
-                                strunpack(s_szName, g_VehNames[i]);
-                                strcat(s_szVehDialog, s_szName);
-                                strcat(s_szVehDialog, "\n");
-                        }
-                        ShowPlayerDialog(playerid, (DIALOG_OFFSET_ID + iList), DIALOG_STYLE_LIST, "Arac Listesi", s_szVehDialog, "Spawn", "Kapat");
-                        SetPVarInt(playerid, "iList", iList);
+								strunpack(s_szName, g_VehNames[i]);
+								strcat(s_szVehDialog, s_szName);
+								strcat(s_szVehDialog, "\n");
+						}
+						ShowPlayerDialog(playerid, (DIALOG_OFFSET_ID + iList), DIALOG_STYLE_LIST, "Arac Listesi", s_szVehDialog, "Spawn", "Kapat");
+						SetPVarInt(playerid, "iList", iList);
 
-                        return 1;
-                }
-                return 0;
-        }
+						return 1;
+				}
+				return 0;
+		}
 
 	// - Modifiyeli Araç spawn komutları
 	if(strcmp(cmdtext, "/m1", true)==0) // Sultan
 	{
-        new Float:X,Float:Y,Float:Z,Float:Angle,LVehicleIDt;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        LVehicleIDt = CreateVehicle(560,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,LVehicleIDt,0); AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=LVehicleIDt;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-        AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
-	    AddVehicleComponent(LVehicleIDt, 1080);	AddVehicleComponent(LVehicleIDt, 1086); AddVehicleComponent(LVehicleIDt, 1087); AddVehicleComponent(LVehicleIDt, 1010);	PlayerPlaySound(playerid,1133,0.0,0.0,0.0);	ChangeVehiclePaintjob(LVehicleIDt,1);
-	   	SetVehicleVirtualWorld(LVehicleIDt, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(LVehicleIDt, GetPlayerInterior(playerid));
+		new Float:X,Float:Y,Float:Z,Float:Angle,LVehicleIDt;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
+		LVehicleIDt = CreateVehicle(560,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,LVehicleIDt,0); AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=LVehicleIDt;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
+		AddVehicleComponent(LVehicleIDt, 1080);	AddVehicleComponent(LVehicleIDt, 1086); AddVehicleComponent(LVehicleIDt, 1087); AddVehicleComponent(LVehicleIDt, 1010);	PlayerPlaySound(playerid,1133,0.0,0.0,0.0);	ChangeVehiclePaintjob(LVehicleIDt,1);
+		   SetVehicleVirtualWorld(LVehicleIDt, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(LVehicleIDt, GetPlayerInterior(playerid));
 		return 1;	}
 	if(strcmp(cmdtext, "/m2", true)==0)	{ //Sultan
 		new Float:X,Float:Y,Float:Z,Float:Angle,LVehicleIDt;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        LVehicleIDt = CreateVehicle(560,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,LVehicleIDt,0); AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=LVehicleIDt;
-        MCarPlayerInfo[playerid][pMAraba]=1;
+		LVehicleIDt = CreateVehicle(560,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,LVehicleIDt,0); AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=LVehicleIDt;
+		MCarPlayerInfo[playerid][pMAraba]=1;
 		AddVehicleComponent(LVehicleIDt, 1080);	AddVehicleComponent(LVehicleIDt, 1086); AddVehicleComponent(LVehicleIDt, 1087); AddVehicleComponent(LVehicleIDt, 1010);	PlayerPlaySound(playerid,1133,0.0,0.0,0.0);	ChangeVehiclePaintjob(LVehicleIDt,2);
-        SetVehicleVirtualWorld(LVehicleIDt, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(LVehicleIDt, GetPlayerInterior(playerid));
-    	return 1;	}
+		SetVehicleVirtualWorld(LVehicleIDt, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(LVehicleIDt, GetPlayerInterior(playerid));
+		return 1;	}
 	if(strcmp(cmdtext, "/m3", true)==0)	{ // Jester
-        new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(559,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
+		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
+		carid = CreateVehicle(559,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
 		AddVehicleComponent(carid,1065);    AddVehicleComponent(carid,1067);    AddVehicleComponent(carid,1162); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073);	ChangeVehiclePaintjob(carid,1);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 		return 1;	}
 	if(strcmp(cmdtext, "/m4", true)==0)	{ // Flash
-     	new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(565,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
+		 new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
+		carid = CreateVehicle(565,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
 		AddVehicleComponent(carid,1046); AddVehicleComponent(carid,1049); AddVehicleComponent(carid,1053); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073); ChangeVehiclePaintjob(carid,1);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 		return 1;	}
 	if(strcmp(cmdtext, "/m5", true)==0)	{ // Uranus
-	    new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(558,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-        AddVehicleComponent(carid,1088); AddVehicleComponent(carid,1092); AddVehicleComponent(carid,1139); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073); ChangeVehiclePaintjob(carid,1);
- 	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;	}
+		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
+		carid = CreateVehicle(558,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		AddVehicleComponent(carid,1088); AddVehicleComponent(carid,1092); AddVehicleComponent(carid,1139); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073); ChangeVehiclePaintjob(carid,1);
+			SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		return 1;	}
 
-    if(strcmp(cmdtext, "/m6", true) == 0)	{ // Stratum
+	if(strcmp(cmdtext, "/m6", true) == 0)	{ // Stratum
 		new Float:X, Float:Y, Float:Z, Float:Angle, carid;
 		
 		GetPlayerPos(playerid, X, Y, Z);
 		GetPlayerFacingAngle(playerid, Angle);
 
-        carid = CreateVehicle(561,X, Y, Z, Angle, 1, -1, -1);
+		carid = CreateVehicle(561,X, Y, Z, Angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carid, 0);
-        
+		
 		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        
+		
 		MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-    	
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		
 		AddVehicleComponent(carid, 1055);
 		AddVehicleComponent(carid, 1058);
 		AddVehicleComponent(carid, 1064);
 		AddVehicleComponent(carid, 1010);
 		AddVehicleComponent(carid, 1073);
 		ChangeVehiclePaintjob(carid, 1);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid));
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid));
 		LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;
+		return 1;
 	}
-    if(strcmp(cmdtext, "/m7", true)==0)	{ // Elegy
+	if(strcmp(cmdtext, "/m7", true)==0)	{ // Elegy
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(562,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-	    AddVehicleComponent(carid,1034); AddVehicleComponent(carid,1038); AddVehicleComponent(carid,1147); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073); ChangeVehiclePaintjob(carid,1);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		carid = CreateVehicle(562,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		AddVehicleComponent(carid,1034); AddVehicleComponent(carid,1038); AddVehicleComponent(carid,1147); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073); ChangeVehiclePaintjob(carid,1);
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 		return 1;	}
 	if(strcmp(cmdtext, "/m8", true)==0)	{ // Savanna
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(567,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-	    AddVehicleComponent(carid,1102); AddVehicleComponent(carid,1129); AddVehicleComponent(carid,1133); AddVehicleComponent(carid,1186); AddVehicleComponent(carid,1188); ChangeVehiclePaintjob(carid,1); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1085); AddVehicleComponent(carid,1087); AddVehicleComponent(carid,1086);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		carid = CreateVehicle(567,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		AddVehicleComponent(carid,1102); AddVehicleComponent(carid,1129); AddVehicleComponent(carid,1133); AddVehicleComponent(carid,1186); AddVehicleComponent(carid,1188); ChangeVehiclePaintjob(carid,1); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1085); AddVehicleComponent(carid,1087); AddVehicleComponent(carid,1086);
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 		return 1;	}
 	if(strcmp(cmdtext, "/m9", true)==0)	{ // Uranus
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(558,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-   		AddVehicleComponent(carid,1092); AddVehicleComponent(carid,1166); AddVehicleComponent(carid,1165); AddVehicleComponent(carid,1090);
-	    AddVehicleComponent(carid,1094); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1087); AddVehicleComponent(carid,1163);
-	    AddVehicleComponent(carid,1091); ChangeVehiclePaintjob(carid,2);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;	}
+		carid = CreateVehicle(558,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		   AddVehicleComponent(carid,1092); AddVehicleComponent(carid,1166); AddVehicleComponent(carid,1165); AddVehicleComponent(carid,1090);
+		AddVehicleComponent(carid,1094); AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1087); AddVehicleComponent(carid,1163);
+		AddVehicleComponent(carid,1091); ChangeVehiclePaintjob(carid,2);
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		return 1;	}
 	if(strcmp(cmdtext, "/m10", true)==0)	{ // Monster
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(557,X,Y,Z,Angle,1,1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
+		carid = CreateVehicle(557,X,Y,Z,Angle,1,1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
 		AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1081);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;	}
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		return 1;	}
 	if(strcmp(cmdtext, "/m11", true)==0)	{ // Slamvan
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(535,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
+		carid = CreateVehicle(535,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
 		ChangeVehiclePaintjob(carid,1); AddVehicleComponent(carid,1109); AddVehicleComponent(carid,1115); AddVehicleComponent(carid,1117); AddVehicleComponent(carid,1073); AddVehicleComponent(carid,1010);
-	    AddVehicleComponent(carid,1087); AddVehicleComponent(carid,1114); AddVehicleComponent(carid,1081); AddVehicleComponent(carid,1119); AddVehicleComponent(carid,1121);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;	}
+		AddVehicleComponent(carid,1087); AddVehicleComponent(carid,1114); AddVehicleComponent(carid,1081); AddVehicleComponent(carid,1119); AddVehicleComponent(carid,1121);
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		return 1;	}
 	if(strcmp(cmdtext, "/m12", true)==0)	{ // Elegy
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(562,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-  		AddVehicleComponent(carid,1034); AddVehicleComponent(carid,1038); AddVehicleComponent(carid,1147);
+		carid = CreateVehicle(562,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		  AddVehicleComponent(carid,1034); AddVehicleComponent(carid,1038); AddVehicleComponent(carid,1147);
 		AddVehicleComponent(carid,1010); AddVehicleComponent(carid,1073); ChangeVehiclePaintjob(carid,0);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;   }
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		return 1;   }
 	if(strcmp(cmdtext, "/nrg", true)==0)	{ // NRG
 		new Float:X,Float:Y,Float:Z,Float:Angle,carid;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,Angle);
-        carid = CreateVehicle(522,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
-        if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-        MCarPlayerInfo[playerid][pMArabaID]=carid;
-        MCarPlayerInfo[playerid][pMAraba]=1;
-  		ChangeVehiclePaintjob(carid,0);
-	   	SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
-	    return 1;   }
+		carid = CreateVehicle(522,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,carid,0);
+		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		MCarPlayerInfo[playerid][pMArabaID]=carid;
+		MCarPlayerInfo[playerid][pMAraba]=1;
+		  ChangeVehiclePaintjob(carid,0);
+		   SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
+		return 1;   }
 
 	// - Ev sistemi komutlarç
 	if (strcmp("/evmenu", cmdtext, true, 10) == 0)
@@ -1891,23 +1891,23 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		if(GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak için interior dçççnda olmalısınız!");
 		if(Kontrol(playerid))
 		{
-		    if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
-		    EvEditleniyor[GetHouseID(playerid)] = true;
-		    ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+			if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
+			EvEditleniyor[GetHouseID(playerid)] = true;
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 		}
 		else
 		{
-		    ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
+			ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
 		}
 		return 1;
 	}
 
 	if (strcmp("/ev", cmdtext, true, 10) == 0)
 	{
-	    new dosya[64];
-	    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
+		new dosya[64];
+		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
 		if(OyuncuEv[playerid] == -1) return Mesaj(playerid,"çuanda evde deçilsin!");
-	    else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
+		else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
 		else if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
 		else if(EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait deçil!");
 		EvEditleniyor[OyuncuEv[playerid]] = true;
@@ -1919,10 +1919,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 		if(Kontrol(playerid))
 		{
-	        new evid = GetHouseID(playerid);
-		    if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lçtfen satçlçk ev seçiniz!");
-	        new str[256];
-		    format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatç: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satçn almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
+			new evid = GetHouseID(playerid);
+			if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lçtfen satçlçk ev seçiniz!");
+			new str[256];
+			format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatç: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satçn almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
 			ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satçn Al","İptal");
 		} else Mesaj(playerid,"Herhangi bir evin üstünde değilsiniz!");
 		return 1;
@@ -1932,7 +1932,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 {
-    if(vehicleid == Arac[playerid] && Kilit[playerid] == 1)
+	if(vehicleid == Arac[playerid] && Kilit[playerid] == 1)
 	{
 		ClearAnimations(playerid);
 		return 0;
@@ -2186,8 +2186,8 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	// - 2 tuşu fonksiyonu
 	if(newkeys & KEY_LOOK_BEHIND && IsPlayerInAnyVehicle(playerid))
 	{
-    	if(!IsNosVehicle(GetPlayerVehicleID(playerid))) return RepairVehicle(GetPlayerVehicleID(playerid)),PlayerPlaySound(playerid, 1133 ,0, 0, 0),GameTextForPlayer(playerid,"~b~~h~Full Tamir",500,5);
-    	
+		if(!IsNosVehicle(GetPlayerVehicleID(playerid))) return RepairVehicle(GetPlayerVehicleID(playerid)),PlayerPlaySound(playerid, 1133 ,0, 0, 0),GameTextForPlayer(playerid,"~b~~h~Full Tamir",500,5);
+		
 		AddVehicleComponent(GetPlayerVehicleID(playerid), 1010);
 		PlayerPlaySound(playerid, 1133 ,0, 0, 0);
 		RepairVehicle(GetPlayerVehicleID(playerid));
@@ -2196,27 +2196,27 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 
 	// - Ev sistemi ayarları
-    if(PRESSED(16))
+	if(PRESSED(16))
 	{
 		if(!IsPlayerInAnyVehicle(playerid))
 		{
 			new evid = GetHouseID(playerid);
-		    if(Kontrol(playerid))
-		    {
-			    new dosya[64];
-			    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
-		        if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
+			if(Kontrol(playerid))
+			{
+				new dosya[64];
+				format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
+				if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
 				else if(EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoşgeldiniz!"),Mesaj(playerid,"Evinizi düzenlemek veya ayarlarına girmek için '{008080}/ev{FFFFFF}' komutunu kullanınız.");
-		        else if(EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
-		        if(EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
-		        else if(EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
-		        else if(EvBilgi[evid][evint] == 2) PlayerPos(playerid,225.630997,1022.479980,1084.069946,7,EvBilgi[evid][evworld]);
-		        else if(EvBilgi[evid][evint] == 3) PlayerPos(playerid,295.2057,1472.9973,1080.2578,15,EvBilgi[evid][evworld]);
-		        else if(EvBilgi[evid][evint] == 4) PlayerPos(playerid,327.9004,1478.2839,1084.4375,15,EvBilgi[evid][evworld]);
-		        else if(EvBilgi[evid][evint] == 5) PlayerPos(playerid,2324.3735,-1148.8219,1050.7101,12,EvBilgi[evid][evworld]);
-		        OyuncuEv[playerid] = evid;
-		    }
-		    else if(IsPlayerInRangeOfPoint(playerid,2,235.1575,1187.2721,1080.2578) ||
+				else if(EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
+				if(EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
+				else if(EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
+				else if(EvBilgi[evid][evint] == 2) PlayerPos(playerid,225.630997,1022.479980,1084.069946,7,EvBilgi[evid][evworld]);
+				else if(EvBilgi[evid][evint] == 3) PlayerPos(playerid,295.2057,1472.9973,1080.2578,15,EvBilgi[evid][evworld]);
+				else if(EvBilgi[evid][evint] == 4) PlayerPos(playerid,327.9004,1478.2839,1084.4375,15,EvBilgi[evid][evworld]);
+				else if(EvBilgi[evid][evint] == 5) PlayerPos(playerid,2324.3735,-1148.8219,1050.7101,12,EvBilgi[evid][evworld]);
+				OyuncuEv[playerid] = evid;
+			}
+			else if(IsPlayerInRangeOfPoint(playerid,2,235.1575,1187.2721,1080.2578) ||
 			IsPlayerInRangeOfPoint(playerid,2,225.756989,1240.000000,1082.149902) ||
 			IsPlayerInRangeOfPoint(playerid,2,225.630997,1022.479980,1084.069946) ||
 			IsPlayerInRangeOfPoint(playerid,2,295.2057,1472.9973,1080.2578) ||
@@ -2243,7 +2243,7 @@ public OnPlayerUpdate(playerid)
 	TextDrawSetString(expmeter[playerid], str);
 	//SetProgressBarValue(Bar:expbar[playerid],exp[playerid]);
 	// - Ev sistemi ayarlarç
-    if(Kontrol(playerid))
+	if(Kontrol(playerid))
 	{
 		OyuncuKontrolEv[playerid]=GetHouseID(playerid);
 	}
@@ -2530,32 +2530,32 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-    Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-    SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ışınlanıldı.");
+	Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
+	SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ışınlanıldı.");
 	}
 	if(listitem == 1)
 	{
-    Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
+	Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
 	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanına ışınlanıldı.");
 	}
 	if(listitem == 2)
 	{
-    Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
+	Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
 	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanına ışınlanıldı.");
 	}
 	if(listitem == 3)
 	{
-    Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
+	Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
 	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanına ışınlanıldı.");
 	}
 	if(listitem == 4)
 	{
-    Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
+	Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
 	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanına ışınlanıldı.");
 	}
 	if(listitem == 5)
 	{
-    Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
+	Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
 	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanına ışınlanıldı.");
 	}
 	if(listitem == 6)
@@ -2653,44 +2653,44 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if(listitem == 0)
 	{
-    new State = GetPlayerState(playerid);
-    if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	new State = GetPlayerState(playerid);
+	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
-    GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    }
-    DM[playerid]=1;
-    SetPlayerArmour(playerid,100);
-    SetPlayerHealth(playerid,100);
-    SetPlayerSkin(playerid, 285);
-    SetPlayerInterior(playerid,0);
-    ResetPlayerWeapons(playerid);
-    new rand = random(sizeof(deagledm1pos));
-    SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
-    GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    GivePlayerWeapon(playerid,24,99999);
-    SetPlayerTeam(playerid, NO_TEAM);
+	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	}
+	DM[playerid]=1;
+	SetPlayerArmour(playerid,100);
+	SetPlayerHealth(playerid,100);
+	SetPlayerSkin(playerid, 285);
+	SetPlayerInterior(playerid,0);
+	ResetPlayerWeapons(playerid);
+	new rand = random(sizeof(deagledm1pos));
+	SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
+	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	GivePlayerWeapon(playerid,24,99999);
+	SetPlayerTeam(playerid, NO_TEAM);
 	}
 	if(listitem == 1)
 	{
-    new State = GetPlayerState(playerid);
-    if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-    {
-    GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    }
-    DM[playerid]=2;
-    SetPlayerArmour(playerid,100);
-    SetPlayerHealth(playerid,100);
-    SetPlayerSkin(playerid, 80);
-    SetPlayerInterior(playerid,1);
-    ResetPlayerWeapons(playerid);
-    new rand = random(sizeof(fistdm1pos));
-    SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
-    GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
-    SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-    SetPlayerTeam(playerid, NO_TEAM);
+	new State = GetPlayerState(playerid);
+	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	{
+	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	}
+	DM[playerid]=2;
+	SetPlayerArmour(playerid,100);
+	SetPlayerHealth(playerid,100);
+	SetPlayerSkin(playerid, 80);
+	SetPlayerInterior(playerid,1);
+	ResetPlayerWeapons(playerid);
+	new rand = random(sizeof(fistdm1pos));
+	SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
+	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
+	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	SetPlayerTeam(playerid, NO_TEAM);
 	}
 	}
 	}
@@ -2708,56 +2708,56 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	// Araç spawn ayarlarç
-    if(response)
-    {
-    new iList = GetPVarInt(playerid, "iList");
+	if(response)
+	{
+	new iList = GetPVarInt(playerid, "iList");
 
-    if(dialogid == (DIALOG_OFFSET_ID + iList))
-    {
-    if(0 <= listitem <= 12)
-    {
-    new Float: fPos[3];
+	if(dialogid == (DIALOG_OFFSET_ID + iList))
+	{
+	if(0 <= listitem <= 12)
+	{
+	new Float: fPos[3];
 
-    if(GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]))
-    {
-    new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
+	if(GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]))
+	{
+	new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
 
-    if(IsPlayerInAnyVehicle(playerid))
-    GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
-    else
-    GetPlayerFacingAngle(playerid, fAngle);
+	if(IsPlayerInAnyVehicle(playerid))
+	GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
+	else
+	GetPlayerFacingAngle(playerid, fAngle);
 
-    if(iVehID)
-    DestroyVehicle(iVehID);
+	if(iVehID)
+	DestroyVehicle(iVehID);
 
-    iVehID = (listitem + (iList * 12) + 400);
+	iVehID = (listitem + (iList * 12) + 400);
 
-    // - Yasak Araç ayarlarç
-    switch(iVehID)
-    {
-    case 425, 432, 520:
-    return 1;
-    }
+	// - Yasak Araç ayarlarç
+	switch(iVehID)
+	{
+	case 425, 432, 520:
+	return 1;
+	}
 
 
-    iVehID = CreateVehicle(iVehID, fPos[0], fPos[1], fPos[2], fAngle, -1, -1, 1 << 16);
-    PutPlayerInVehicle(playerid, iVehID, 0);
+	iVehID = CreateVehicle(iVehID, fPos[0], fPos[1], fPos[2], fAngle, -1, -1, 1 << 16);
+	PutPlayerInVehicle(playerid, iVehID, 0);
 
-    SetPVarInt(playerid, "iVehID", iVehID);
-    }
-    }
-    }
-    }
+	SetPVarInt(playerid, "iVehID", iVehID);
+	}
+	}
+	}
+	}
 
 	// - Ev sistemi
 	if(dialogid == SATINAL)
 	{
-	    if(!response) return 1;
-	    if(response)
-	    {
-	        new evid = GetHouseID(playerid);
-	        if(!Kontrol(playerid)) return Mesaj(playerid,"Evi satın almak için herhangi bir evin üstünde olmalısınız!");
-		    else if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık ev seçiniz!");
+		if(!response) return 1;
+		if(response)
+		{
+			new evid = GetHouseID(playerid);
+			if(!Kontrol(playerid)) return Mesaj(playerid,"Evi satın almak için herhangi bir evin üstünde olmalısınız!");
+			else if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık ev seçiniz!");
 			else if(EvBilgi[evid][evfiyat] > GetPlayerMoney(playerid)) return Mesaj(playerid,"Evi almak için yeterli paranız bulunmamakta!");
 			EvKaydetInt(evid,"evsatilik",0);
 			EvKaydetStr(evid,"evsahip",PlayerName(playerid));
@@ -2770,14 +2770,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU)
 	{
-	    if(!response) EvEditleniyor[OyuncuEv[playerid]] = false;
-	    if(response)
-	    {
-	        new str[256];
-	        new evid = OyuncuEv[playerid];
+		if(!response) EvEditleniyor[OyuncuEv[playerid]] = false;
+		if(response)
+		{
+			new str[256];
+			new evid = OyuncuEv[playerid];
 			if(listitem == 0)
 			{
-			    format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayı değiştirmek için yenisini aşağıya yazınız.",EvBilgi[evid][evaciklama]);
+				format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayı değiştirmek için yenisini aşağıya yazınız.",EvBilgi[evid][evaciklama]);
 				ShowPlayerDialog(playerid,MENU+1,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir","İptal");
 			}
 			if(listitem == 1)
@@ -2786,7 +2786,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 			if(listitem == 2)
 			{
-			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lütfen gerçekleştirilecek işlemi seçiniz.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
+				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lütfen gerçekleştirilecek işlemi seçiniz.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
 				ShowPlayerDialog(playerid,MENU+3,DIALOG_STYLE_MSGBOX,BASLIK,str,"Yatır/çek","İptal");
 			}
 			if(listitem == 3)
@@ -2799,65 +2799,65 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+1)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
 			if(!strlen(inputtext)) return Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.");
-	        new evid = OyuncuEv[playerid];
+			new evid = OyuncuEv[playerid];
 			EvKaydetStr(evid,"evaciklama",inputtext);
 			EvYenile(evid);
 			Mesaj(playerid,"Ev açıklaması değiştirildi.");
-		    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
 		}
 	}
 
 	if(dialogid == MENU+2)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuEv[playerid];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuEv[playerid];
 			if(listitem == 0)
 			{
-			    EvKaydetInt(evid,"evkilit",0);
-			    Mesaj(playerid,"Evin kilidini açtçnız!");
-			    EvYenile(evid);
-			    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+				EvKaydetInt(evid,"evkilit",0);
+				Mesaj(playerid,"Evin kilidini açtçnız!");
+				EvYenile(evid);
+				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
 			}
 			if(listitem == 1)
 			{
-			    EvKaydetInt(evid,"evkilit",1);
-			    Mesaj(playerid,"Evi kilitlediniz!");
-			    EvYenile(evid);
-			    ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+				EvKaydetInt(evid,"evkilit",1);
+				Mesaj(playerid,"Evi kilitlediniz!");
+				EvYenile(evid);
+				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
 			}
 		}
 	}
 
 	if(dialogid == MENU+3)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-		    ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para Yatçr\n{FF4500}Para çek","Seç","İptal");
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para Yatçr\n{FF4500}Para çek","Seç","İptal");
 		}
 	}
 
 	if(dialogid == MENU+4)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new str[256];
-	        new evid = OyuncuEv[playerid];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new str[256];
+			new evid = OyuncuEv[playerid];
 			if(listitem == 0)
 			{
-			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasaya yatçrçlcak miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
+				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasaya yatçrçlcak miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
 				ShowPlayerDialog(playerid,MENU+5,DIALOG_STYLE_INPUT,BASLIK,str,"Yatçr","İptal");
 			}
 			if(listitem == 1)
 			{
-			    format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasadan çekilecek miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
+				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasadan çekilecek miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
 				ShowPlayerDialog(playerid,MENU+6,DIALOG_STYLE_INPUT,BASLIK,str,"çek","İptal");
 			}
 
@@ -2866,10 +2866,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+5)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuEv[playerid];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuEv[playerid];
 			if(!strlen(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
 			if(!strval(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
 			if(strval(inputtext) > GetPlayerMoney(playerid)) return Mesaj(playerid,"Yazılan miktar sizde yeteri kadar bulunmuyor.");
@@ -2882,10 +2882,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+6)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuEv[playerid];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuEv[playerid];
 			if(!strlen(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
 			if(!strval(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
 			if(strval(inputtext) > EvBilgi[evid][evbanka]) return Mesaj(playerid,"Yazılan miktar kasanızda yeteri kadar bulunmuyor.");
@@ -2898,26 +2898,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+7)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
 		}
 	}
 
 	if(dialogid == MENU+8)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuEv[playerid];
-	        if(listitem == 0)
-	        {
-		        new s1 = EvBilgi[evid][silahslot1];
-		        new s2 = EvBilgi[evid][silahslot2];
-		        new s3 = EvBilgi[evid][silahslot3];
-		        new s4 = EvBilgi[evid][silahslot4];
-		        new s5 = EvBilgi[evid][silahslot5];
-		        new s6 = EvBilgi[evid][silahslot6];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuEv[playerid];
+			if(listitem == 0)
+			{
+				new s1 = EvBilgi[evid][silahslot1];
+				new s2 = EvBilgi[evid][silahslot2];
+				new s3 = EvBilgi[evid][silahslot3];
+				new s4 = EvBilgi[evid][silahslot4];
+				new s5 = EvBilgi[evid][silahslot5];
+				new s6 = EvBilgi[evid][silahslot6];
 				new str[512],slot1[32],slot2[32],slot3[32],slot4[32],slot5[32],slot6[32];
 				if(s1 == -1) slot1 = "Yok"; else slot1 = WeaponName(s1);
 				if(s2 == -1) slot2 = "Yok"; else slot2 = WeaponName(s2);
@@ -2929,14 +2929,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
 				ShowPlayerDialog(playerid,MENU+9,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
 			}
-	        if(listitem == 1)
-	        {
-		        new s1 = EvBilgi[evid][silahslot1];
-		        new s2 = EvBilgi[evid][silahslot2];
-		        new s3 = EvBilgi[evid][silahslot3];
-		        new s4 = EvBilgi[evid][silahslot4];
-		        new s5 = EvBilgi[evid][silahslot5];
-		        new s6 = EvBilgi[evid][silahslot6];
+			if(listitem == 1)
+			{
+				new s1 = EvBilgi[evid][silahslot1];
+				new s2 = EvBilgi[evid][silahslot2];
+				new s3 = EvBilgi[evid][silahslot3];
+				new s4 = EvBilgi[evid][silahslot4];
+				new s5 = EvBilgi[evid][silahslot5];
+				new s6 = EvBilgi[evid][silahslot6];
 				new str[512],slot1[32],slot2[32],slot3[32],slot4[32],slot5[32],slot6[32];
 				if(s1 == -1) slot1 = "Yok"; else slot1 = WeaponName(s1);
 				if(s2 == -1) slot2 = "Yok"; else slot2 = WeaponName(s2);
@@ -2953,25 +2953,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+9)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuEv[playerid];
-	        new s1 = EvBilgi[evid][silahslot1];
-	        new s2 = EvBilgi[evid][silahslot2];
-	        new s3 = EvBilgi[evid][silahslot3];
-	        new s4 = EvBilgi[evid][silahslot4];
-	        new s5 = EvBilgi[evid][silahslot5];
-	        new s6 = EvBilgi[evid][silahslot6];
-	        new s1x = EvBilgi[evid][silahslot1x];
-	        new s2x = EvBilgi[evid][silahslot2x];
-	        new s3x = EvBilgi[evid][silahslot3x];
-	        new s4x = EvBilgi[evid][silahslot4x];
-	        new s5x = EvBilgi[evid][silahslot5x];
-	        new s6x = EvBilgi[evid][silahslot6x];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuEv[playerid];
+			new s1 = EvBilgi[evid][silahslot1];
+			new s2 = EvBilgi[evid][silahslot2];
+			new s3 = EvBilgi[evid][silahslot3];
+			new s4 = EvBilgi[evid][silahslot4];
+			new s5 = EvBilgi[evid][silahslot5];
+			new s6 = EvBilgi[evid][silahslot6];
+			new s1x = EvBilgi[evid][silahslot1x];
+			new s2x = EvBilgi[evid][silahslot2x];
+			new s3x = EvBilgi[evid][silahslot3x];
+			new s4x = EvBilgi[evid][silahslot4x];
+			new s5x = EvBilgi[evid][silahslot5x];
+			new s6x = EvBilgi[evid][silahslot6x];
 
 			switch(listitem)
-	        {
+			{
 				case 0:
 				{
 					if(s1 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
@@ -3027,20 +3027,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == MENU+10)
 	{
-	    if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuEv[playerid];
-	        new s1 = EvBilgi[evid][silahslot1];
-	        new s2 = EvBilgi[evid][silahslot2];
-	        new s3 = EvBilgi[evid][silahslot3];
-	        new s4 = EvBilgi[evid][silahslot4];
-	        new s5 = EvBilgi[evid][silahslot5];
-	        new s6 = EvBilgi[evid][silahslot6];
+		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuEv[playerid];
+			new s1 = EvBilgi[evid][silahslot1];
+			new s2 = EvBilgi[evid][silahslot2];
+			new s3 = EvBilgi[evid][silahslot3];
+			new s4 = EvBilgi[evid][silahslot4];
+			new s5 = EvBilgi[evid][silahslot5];
+			new s6 = EvBilgi[evid][silahslot6];
 			if(GetPlayerWeapon(playerid) == 0) return Mesaj(playerid,"Elinizde silah yok.");
 
 			switch(listitem)
-	        {
+			{
 				case 0:
 				{
 					if(s1 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
@@ -3096,41 +3096,41 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if(dialogid == DIALOG)
 	{
-	    if(!response) EvEditleniyor[GetHouseID(playerid)] = false;
-	    if(response)
-	    {
-	        if(!Kontrol(playerid)) return Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
-	        new str[256];
-	        new evid = GetHouseID(playerid);
+		if(!response) EvEditleniyor[GetHouseID(playerid)] = false;
+		if(response)
+		{
+			if(!Kontrol(playerid)) return Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+			new str[256];
+			new evid = GetHouseID(playerid);
 			if(listitem == 0) //Ev Açıklaması
 			{
-			    format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayç deçiçtirmek için yenisini açaççya yazınız.",EvBilgi[evid][evaciklama]);
+				format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayç deçiçtirmek için yenisini açaççya yazınız.",EvBilgi[evid][evaciklama]);
 				ShowPlayerDialog(playerid,DIALOG+2,DIALOG_STYLE_INPUT,BASLIK,str,"Deçiçtir","İptal");
 			}
 			if(listitem == 1) //Ev Sahibi
 			{
-			    new sahip[255];
-			    new dosya[64];
-			    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-			    if(!strlen(EvBilgi[evid][evsahip])) sahip = "Yok";
-			    //else sahip = dini_Get(dosya,"evsahip");
-			    format(str,sizeof(str),"{00FF7F}Ev Sahibi: {c0c0c0}%s\n\n{CD5C5C}Ev sahibini deçiçtirirseniz tçm ev belirlenen kiçiye devredilir.\nEçer boç bçrakçrsanız ev satçlçk olarak deçiçtirilir.",sahip);
+				new sahip[255];
+				new dosya[64];
+				format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+				if(!strlen(EvBilgi[evid][evsahip])) sahip = "Yok";
+				//else sahip = dini_Get(dosya,"evsahip");
+				format(str,sizeof(str),"{00FF7F}Ev Sahibi: {c0c0c0}%s\n\n{CD5C5C}Ev sahibini deçiçtirirseniz tçm ev belirlenen kiçiye devredilir.\nEçer boç bçrakçrsanız ev satçlçk olarak deçiçtirilir.",sahip);
 				ShowPlayerDialog(playerid,DIALOG+3,DIALOG_STYLE_INPUT,BASLIK,str,"Deçiçtir","İptal");
 			}
 			if(listitem == 2) //Ev Fiyatç
 			{
-			    format(str,sizeof(str),"{00FF7F}Ev Fiyatç: {c0c0c0}%i$\n\n{CD5C5C}Yeni ev fiyatçnç deçiçtirmek için yeni miktarç giriniz.",EvBilgi[evid][evfiyat]);
+				format(str,sizeof(str),"{00FF7F}Ev Fiyatç: {c0c0c0}%i$\n\n{CD5C5C}Yeni ev fiyatçnç deçiçtirmek için yeni miktarç giriniz.",EvBilgi[evid][evfiyat]);
 				ShowPlayerDialog(playerid,DIALOG+4,DIALOG_STYLE_INPUT,BASLIK,str,"Deçiçtir","İptal");
 			}
 			if(listitem == 3) //Ev Interior
 			{
-			    new menu[450];
-			    strcat(menu,"{FF4500}Ev 1\n");
-			    strcat(menu,"{FF4500}Ev 2\n");
-			    strcat(menu,"{FF4500}Ev 3\n");
-			    strcat(menu,"{FF4500}Ev 4\n");
-			    strcat(menu,"{FF4500}Ev 5\n");
-			    strcat(menu,"{FF4500}Unused Villası");
+				new menu[450];
+				strcat(menu,"{FF4500}Ev 1\n");
+				strcat(menu,"{FF4500}Ev 2\n");
+				strcat(menu,"{FF4500}Ev 3\n");
+				strcat(menu,"{FF4500}Ev 4\n");
+				strcat(menu,"{FF4500}Ev 5\n");
+				strcat(menu,"{FF4500}Unused Villası");
 				ShowPlayerDialog(playerid,DIALOG+5,DIALOG_STYLE_LIST,BASLIK,menu,"Ayarla","İptal");
 			}
 			if(listitem == 4) //Ev Kilidi
@@ -3141,13 +3141,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				ShowPlayerDialog(playerid,DIALOG+8,DIALOG_STYLE_MSGBOX,BASLIK,"{B22222}Bunu yaparsanız ev kaydç tamamen silinecektir ve geri dçnççç olmayacaktçr.\n{C0C0C0}Silmeyi onaylçyor musunuz ?","Onayla","İptal");
 			}
-	    }
+		}
 	}
 	if(dialogid == DIALOG+1)
 	{
-	    if(!response) return 1;
-	    if(response)
-	    {
+		if(!response) return 1;
+		if(response)
+		{
 			if(listitem == 0)
 			{
 				new Float:X,Float:Y,Float:Z;
@@ -3162,41 +3162,41 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				Mesaj(playerid,"başarıyla ev yarattçnız, dçzenlemek için pickup çzerinde '{008080}/evmenu{FFFFFF}' komutunu kullançnız.");
 			}
-	    }
+		}
 	}
 	if(dialogid == DIALOG+2)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if(response)
+		{
 			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir yazı giriniz.") ;
 			new evid = OyuncuKontrolEv[playerid];
 			EvKaydetStr(evid,"evaciklama",inputtext);
 			EvYenile(evid);
 			Mesaj(playerid,"Ev açıklaması deçiçtirildi.");
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    }
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		}
 	}
 	if(dialogid == DIALOG+3)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    if(response)
-	    {
-	        new evid = OyuncuKontrolEv[playerid];
+		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if(response)
+		{
+			new evid = OyuncuKontrolEv[playerid];
 			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			if(!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip",""),Mesaj(playerid,"Ev satçlçk olarak deçiçtirildi!");
 			else EvKaydetInt(evid,"evsatilik",0),EvKaydetStr(evid,"evsahip",inputtext),Mesaj(playerid,"Ev sahibi deçiçtirildi!");
 			EvYenile(evid);
 			SahipKontrol();
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    }
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		}
 	}
 	if(dialogid == DIALOG+4)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if(response)
+		{
 			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
 			if(!strval(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
@@ -3204,14 +3204,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			EvKaydetInt(evid,"evfiyat",strval(inputtext));
 			Mesaj(playerid,"Ev fiyatç deçiçtirildi!");
 			EvYenile(evid);
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    }
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		}
 	}
 	if(dialogid == DIALOG+5)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if(response)
+		{
 			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			new evid = OyuncuKontrolEv[playerid];
 			if(listitem == 0) EvKaydetInt(evid,"evint",0);
@@ -3223,40 +3223,40 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 			EvYenile(evid);
 			Mesaj(playerid,"Ev interioru deçiçtirildi!");
-            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    }
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		}
 	}
 	if(dialogid == DIALOG+7)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if(response)
+		{
 			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			new evid = OyuncuKontrolEv[playerid];
 			if(listitem == 0)
 			{
-			    EvKaydetInt(evid,"evkilit",0);
-			    Mesaj(playerid,"Evin kilidini açtçnız!");
-			    EvYenile(evid);
-	            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+				EvKaydetInt(evid,"evkilit",0);
+				Mesaj(playerid,"Evin kilidini açtçnız!");
+				EvYenile(evid);
+				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 			}
 			if(listitem == 1)
 			{
-			    EvKaydetInt(evid, "evkilit", 1);
-			    Mesaj(playerid,"Evi kilitlediniz!");
-			    EvYenile(evid);
-	            ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+				EvKaydetInt(evid, "evkilit", 1);
+				Mesaj(playerid,"Evi kilitlediniz!");
+				EvYenile(evid);
+				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 			}
-	    }
+		}
 	}
 	if(dialogid == DIALOG+8)
 	{
-	    if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-	    if(response)
-	    {
+		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if(response)
+		{
 			if(Kontrol(playerid)) EvSil(GetHouseID(playerid)),EvEditleniyor[GetHouseID(playerid)] = false;
 			else Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
-	    }
+		}
 	}
 	return 1;
 }
@@ -3290,40 +3290,40 @@ strtok(const string[], &index)
 // - Silah sistemi
 stock SilahSat(playerid,silahid,silahammo,const silahisim[],ucret)
 {
-    if(GetPlayerMoney(playerid) < ucret) return SendError(playerid,"Para yetersiz!");
-    GivePlayerWeapon(playerid,silahid,silahammo);
-    GivePlayerMoney(playerid,-ucret);
-    new string[512];
-    format(string,512,"ç BçLGç: {ACDA00}%s {FFFFFF}isimli silahı {ACDA00}%d$ {FFFFFF}çdeyerek aldçnız.",silahisim,ucret);
-    SendClientMessageToAll(0x00A2F6AA,string);
-    return 1;
+	if(GetPlayerMoney(playerid) < ucret) return SendError(playerid,"Para yetersiz!");
+	GivePlayerWeapon(playerid,silahid,silahammo);
+	GivePlayerMoney(playerid,-ucret);
+	new string[512];
+	format(string,512,"ç BçLGç: {ACDA00}%s {FFFFFF}isimli silahı {ACDA00}%d$ {FFFFFF}çdeyerek aldçnız.",silahisim,ucret);
+	SendClientMessageToAll(0x00A2F6AA,string);
+	return 1;
 }
 
 // - Teleport sistemi
 stock Teleport(playerid,Float:tX,Float:tY,Float:tZ,Int,World, const isim[], const command[],arabali,objeyukle)
 {
-    if(objeyukle == 1)
- 	{
+	if(objeyukle == 1)
+	 {
 		ObjeYukle(playerid);
- 	}
+	 }
 	if(arabali == 1)
 	{
-	    if(IsPlayerInAnyVehicle(playerid))
-	    {
-	        SetVehiclePos(GetPlayerVehicleID(playerid),tX,tY,tZ);
-	        LinkVehicleToInterior(GetPlayerVehicleID(playerid),Int);
-	        SetPlayerInterior(playerid,Int);
-	        SetPlayerVirtualWorld(playerid,World);
-	    }else{
-	        SetPlayerPos(playerid,tX,tY,tZ);
-	        SetPlayerInterior(playerid,Int);
-	        SetPlayerVirtualWorld(playerid,World);
-	    }
- 	}else{
-  		SetPlayerPos(playerid,tX,tY,tZ);
-  		SetPlayerInterior(playerid,Int);
-  		SetPlayerVirtualWorld(playerid,World);
- 	}
+		if(IsPlayerInAnyVehicle(playerid))
+		{
+			SetVehiclePos(GetPlayerVehicleID(playerid),tX,tY,tZ);
+			LinkVehicleToInterior(GetPlayerVehicleID(playerid),Int);
+			SetPlayerInterior(playerid,Int);
+			SetPlayerVirtualWorld(playerid,World);
+		}else{
+			SetPlayerPos(playerid,tX,tY,tZ);
+			SetPlayerInterior(playerid,Int);
+			SetPlayerVirtualWorld(playerid,World);
+		}
+	 }else{
+		  SetPlayerPos(playerid,tX,tY,tZ);
+		  SetPlayerInterior(playerid,Int);
+		  SetPlayerVirtualWorld(playerid,World);
+	 }
 
 	new string[512];
 	format(string,512,"ç BçLGç: {FFFFFF}%s rumuzlu oyuncu {ACDA00}%s {FFFFFF}bçlgesine çççnlandç. {ACDA00}(%s)",PlayerName(playerid),isim,command);
@@ -3421,7 +3421,7 @@ stock ExpVer(playerid){
 	else if(seviye[playerid] == 7)
 	{
 	exp[playerid]=exp[playerid]+10;
-    }
+	}
 	else if(seviye[playerid] == 8)
 	{
 	exp[playerid]=exp[playerid]+8;
@@ -3504,7 +3504,7 @@ public UpdateServerTime()
 	format(string, sizeof(string), "%02d:%02d", Hour, Minute);
 	TextDrawSetString(TimeText, string);
 
-    for(new playerid = 0; playerid < MAX_PLAYERS; playerid++)
+	for(new playerid = 0; playerid < MAX_PLAYERS; playerid++)
 	{
 	if(!IsPlayerConnected(playerid)) continue;
 	SetPlayerTime(playerid, Hour, Minute);
@@ -3518,18 +3518,18 @@ public asilanadamtimer(playerid)
 {
 	if(cekiyor[playerid] == 1)
 	{
-    GivePlayerMoney(playerid,31);
-    SendInfo(playerid,"31'den para aldçnız! {FF0000}(31$)");
-    }
-    return 1;
+	GivePlayerMoney(playerid,31);
+	SendInfo(playerid,"31'den para aldçnız! {FF0000}(31$)");
+	}
+	return 1;
 }
 
 // - Random spawn publici
 forward SetPlayerRandomSpawn(playerid);
 public SetPlayerRandomSpawn(playerid)
 {
-    new rand = random(sizeof(RandomPlayerSpawns));
-    SetPlayerPos(playerid, RandomPlayerSpawns[rand][0], RandomPlayerSpawns[rand][1], RandomPlayerSpawns[rand][2]);
+	new rand = random(sizeof(RandomPlayerSpawns));
+	SetPlayerPos(playerid, RandomPlayerSpawns[rand][0], RandomPlayerSpawns[rand][1], RandomPlayerSpawns[rand][2]);
 	return 1;
 }
 
@@ -3538,10 +3538,10 @@ stock IsNumeric(const string[])
 {
    for(new i, j = strlen(string); i < j; ++i)
    {
-      if(!('0' <= string[i] <= '9'))
-      {
-         return 0;
-      }
+	  if(!('0' <= string[i] <= '9'))
+	  {
+		 return 0;
+	  }
    }
    return 1;
 }
@@ -3549,21 +3549,21 @@ stock IsNumeric(const string[])
 // - Nos alabilecek Araçlar
 IsNosVehicle(vehicleid)
 {
-    #define NO_NOS_VEHICLES 29
+	#define NO_NOS_VEHICLES 29
 
-    new InvalidNosVehicles[NO_NOS_VEHICLES] =
-    {
-   		581,523,462,521,463,522,461,448,468,586,
-   		509,481,510,472,473,493,595,484,430,453,
-   		452,446,454,590,569,537,538,570,449
-    };
+	new InvalidNosVehicles[NO_NOS_VEHICLES] =
+	{
+		   581,523,462,521,463,522,461,448,468,586,
+		   509,481,510,472,473,493,595,484,430,453,
+		   452,446,454,590,569,537,538,570,449
+	};
 
 	for(new i = 0; i < NO_NOS_VEHICLES; i++)
 	{
-	    if(GetVehicleModel(vehicleid) == InvalidNosVehicles[i])
-	    {
-	        return false;
-	    }
+		if(GetVehicleModel(vehicleid) == InvalidNosVehicles[i])
+		{
+			return false;
+		}
 	}
 	return true;
 }
@@ -3574,17 +3574,17 @@ public OyuncuMapIconKontrol(playerid)
 	/*
 	for(new i=0;i<ToplamEv;i++)
 	{
-	    new dosya[64];
-	    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",i);
-	    if(dini_Exists(dosya))
-	    {
+		new dosya[64];
+		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",i);
+		if(dini_Exists(dosya))
+		{
 			if(EvBilgi[i][evsatilik] == 0)
 			{
-		 		SetPlayerMapIcon(playerid,i,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z],REDMAP,0);
+				 SetPlayerMapIcon(playerid,i,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z],REDMAP,0);
 			}
 			else if(EvBilgi[i][evsatilik] == 1)
 			{
-                SetPlayerMapIcon(playerid,i,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z],GREENMAP,0);
+				SetPlayerMapIcon(playerid,i,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z],GREENMAP,0);
 			}
 		}
 	}
@@ -3595,12 +3595,12 @@ public OyuncuMapIconKontrol(playerid)
 public EvYukle(evid)
 {
 	/*
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    if(dini_Exists(dosya))
-    {
-        new str[256],durum[16];
-        EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	if(dini_Exists(dosya))
+	{
+		new str[256],durum[16];
+		EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
 		EvBilgi[evid][evsahip] = dini_Get(dosya,"evsahip");
 		EvBilgi[evid][evaciklama] = dini_Get(dosya,"evaciklama");
 		EvBilgi[evid][evfiyat] = dini_Int(dosya,"evfiyat");
@@ -3632,21 +3632,21 @@ public EvYukle(evid)
 
 		if(EvBilgi[evid][evsatilik] == 0)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
+			format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evsahip],durum);
 			Pickup[evid] = CreatePickup(BLUEH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 		}
 		else if(EvBilgi[evid][evsatilik] == 1)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
+			format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 			Pickup[evid] = CreatePickup(GREENH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 		}
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
 
 		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Yüklendi.",evid,EvBilgi[evid][evfiyat],durum);
-        ToplamEv++;
-    }
+		ToplamEv++;
+	}
 	*/
 	return 1;
 }
@@ -3654,12 +3654,12 @@ public EvYukle(evid)
 public EvYenile(evid)
 {
 	/*
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    if(dini_Exists(dosya))
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	if(dini_Exists(dosya))
 	{
-	    new str[256],durum[16];
-        EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
+		new str[256],durum[16];
+		EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
 		EvBilgi[evid][evsahip] = dini_Get(dosya,"evsahip");
 		EvBilgi[evid][evaciklama] = dini_Get(dosya,"evaciklama");
 		EvBilgi[evid][evfiyat] = dini_Int(dosya,"evfiyat");
@@ -3688,12 +3688,12 @@ public EvYenile(evid)
 
 		if(EvBilgi[evid][evsatilik] == 0)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
+			format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evsahip],durum);
 		}
 		else if(EvBilgi[evid][evsatilik] == 1)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
+			format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 		}
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
@@ -3709,39 +3709,39 @@ public EvYenile(evid)
 public EvYarat(evid,Float:X,Float:Y,Float:Z)
 {
 	/*
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    if(!dini_Exists(dosya))
-    {
-        new str[256],durum[16];
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	if(!dini_Exists(dosya))
+	{
+		new str[256],durum[16];
 
-        dini_Create(dosya);
-        dini_Set(dosya,"evaciklama",ACIKLAMA);
-        dini_Set(dosya,"evsahip","");
-        dini_IntSet(dosya,"evsatilik",1);
-        dini_IntSet(dosya,"evfiyat",FIYAT);
-        dini_IntSet(dosya,"evbanka",KASA);
-        dini_IntSet(dosya,"evkilit",KILIT);
-        dini_IntSet(dosya,"evint",random(14));
-        dini_IntSet(dosya,"evworld",random(999999));
-        dini_FloatSet(dosya,"ev_X",X);
-        dini_FloatSet(dosya,"ev_Y",Y);
-        dini_FloatSet(dosya,"ev_Z",Z);
-        dini_IntSet(dosya,"evvid",evid);
-        dini_IntSet(dosya,"silahslot1",-1);
-        dini_IntSet(dosya,"silahslot2",-1);
-        dini_IntSet(dosya,"silahslot3",-1);
-        dini_IntSet(dosya,"silahslot4",-1);
-        dini_IntSet(dosya,"silahslot5",-1);
-        dini_IntSet(dosya,"silahslot6",-1);
-        dini_IntSet(dosya,"silahslot1x",-1);
-        dini_IntSet(dosya,"silahslot2x",-1);
-        dini_IntSet(dosya,"silahslot3x",-1);
-        dini_IntSet(dosya,"silahslot4x",-1);
-        dini_IntSet(dosya,"silahslot5x",-1);
-        dini_IntSet(dosya,"silahslot6x",-1);
+		dini_Create(dosya);
+		dini_Set(dosya,"evaciklama",ACIKLAMA);
+		dini_Set(dosya,"evsahip","");
+		dini_IntSet(dosya,"evsatilik",1);
+		dini_IntSet(dosya,"evfiyat",FIYAT);
+		dini_IntSet(dosya,"evbanka",KASA);
+		dini_IntSet(dosya,"evkilit",KILIT);
+		dini_IntSet(dosya,"evint",random(14));
+		dini_IntSet(dosya,"evworld",random(999999));
+		dini_FloatSet(dosya,"ev_X",X);
+		dini_FloatSet(dosya,"ev_Y",Y);
+		dini_FloatSet(dosya,"ev_Z",Z);
+		dini_IntSet(dosya,"evvid",evid);
+		dini_IntSet(dosya,"silahslot1",-1);
+		dini_IntSet(dosya,"silahslot2",-1);
+		dini_IntSet(dosya,"silahslot3",-1);
+		dini_IntSet(dosya,"silahslot4",-1);
+		dini_IntSet(dosya,"silahslot5",-1);
+		dini_IntSet(dosya,"silahslot6",-1);
+		dini_IntSet(dosya,"silahslot1x",-1);
+		dini_IntSet(dosya,"silahslot2x",-1);
+		dini_IntSet(dosya,"silahslot3x",-1);
+		dini_IntSet(dosya,"silahslot4x",-1);
+		dini_IntSet(dosya,"silahslot5x",-1);
+		dini_IntSet(dosya,"silahslot6x",-1);
 
-        EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
+		EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
 		EvBilgi[evid][evsahip] = dini_Get(dosya,"evsahip");
 		EvBilgi[evid][evaciklama] = dini_Get(dosya,"evaciklama");
 		EvBilgi[evid][evfiyat] = dini_Int(dosya,"evfiyat");
@@ -3773,14 +3773,14 @@ public EvYarat(evid,Float:X,Float:Y,Float:Z)
 
 		if(EvBilgi[evid][evsatilik] == 0)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
+			format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evsahip],durum);
 			Pickup[evid] = CreatePickup(BLUEH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 			for(new a;a<MAX_PLAYERS;a++) if(IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],REDMAP,0);
 		}
 		else if(EvBilgi[evid][evsatilik] == 1)
 		{
-		    format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
+			format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 			Pickup[evid] = CreatePickup(GREENH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 			for(new a;a<MAX_PLAYERS;a++) if(IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],GREENMAP,0);
@@ -3790,7 +3790,7 @@ public EvYarat(evid,Float:X,Float:Y,Float:Z)
 		printf("");
 		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Oluçturuldu.",evid,EvBilgi[evid][evfiyat],durum);
 
-        ToplamEv++;
+		ToplamEv++;
 	}
 	*/
 	return 1;
@@ -3816,16 +3816,16 @@ public EvPickupYenile(evid)
 public EvSil(evid)
 {
 	/*
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    if(dini_Exists(dosya))
-    {
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	if(dini_Exists(dosya))
+	{
 		printf("");
 		printf("Ev ID: %i // Silindi.",evid);
-	    DestroyPickup(Pickup[evid]);
-	    Delete3DTextLabel(TextLabel[evid]);
-	    for(new b;b<MAX_PLAYERS;b++) if(IsPlayerConnected(b)) RemovePlayerMapIcon(b,evid);
-	    EvBilgi[evid][evsatilik] = -1;
+		DestroyPickup(Pickup[evid]);
+		Delete3DTextLabel(TextLabel[evid]);
+		for(new b;b<MAX_PLAYERS;b++) if(IsPlayerConnected(b)) RemovePlayerMapIcon(b,evid);
+		EvBilgi[evid][evsatilik] = -1;
 		EvBilgi[evid][evsahip] = -1;
 		EvBilgi[evid][evaciklama] = -1;
 		EvBilgi[evid][evfiyat] = -1;
@@ -3859,25 +3859,25 @@ public EvSil(evid)
 
 public EvKaydetInt(evid, const bilgii[], deger)
 {
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    //dini_IntSet(dosya,bilgii,deger);
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	//dini_IntSet(dosya,bilgii,deger);
 	return 1;
 }
 
 public EvKaydetStr(evid, const bilgii[], const deger[])
 {
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    //dini_Set(dosya,bilgii,deger);
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	//dini_Set(dosya,bilgii,deger);
 	return 1;
 }
 
 public EvKaydetFloat(evid, const bilgii[], Float:deger)
 {
-    new dosya[64];
-    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-    //dini_FloatSet(dosya,bilgii,deger);
+	new dosya[64];
+	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
+	//dini_FloatSet(dosya,bilgii,deger);
 	return 1;
 }
 
@@ -3886,16 +3886,16 @@ public SahipKontrol()
 	/*
 	for(new i;i<MAX_HOUSE;i++)
 	{
-	    EvSahipID[i] = -1;
-	    new dosya[64];
-	    format(dosya,sizeof(dosya),"/Evler/ev%i.ini",i);
-	    if(dini_Exists(dosya))
-	    {
-   	        if(IsPlayerConnected(GetPlayerID(dini_Get(dosya,"evsahip"))))
-	        {
-	            EvSahipID[i] = GetPlayerID(dini_Get(dosya,"evsahip"));
+		EvSahipID[i] = -1;
+		new dosya[64];
+		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",i);
+		if(dini_Exists(dosya))
+		{
+			   if(IsPlayerConnected(GetPlayerID(dini_Get(dosya,"evsahip"))))
+			{
+				EvSahipID[i] = GetPlayerID(dini_Get(dosya,"evsahip"));
 			}
-	    }
+		}
 	}
 	*/
 	return 1;
@@ -3905,7 +3905,7 @@ stock GetHouseID(playerid)
 {
 	for(new i=0;i<MAX_HOUSE;i++)
 	{
-	    if(IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z])) return i;
+		if(IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z])) return i;
 	}
 	return -255;
 }
@@ -3914,7 +3914,7 @@ public Kontrol(playerid)
 {
 	for(new i=0;i<MAX_HOUSE;i++)
 	{
-	    if(IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z]))
+		if(IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z]))
 		{
 			return 1;
 		}
@@ -3934,12 +3934,12 @@ stock Mesaj(playerid, const yazi[],{Float,_}:...)
 {
 	new str[256];
 	new
-        iArgs = numargs()
-    ;
-    while(--iArgs) {
+		iArgs = numargs()
+	;
+	while(--iArgs) {
 		format(str,sizeof(str),"{FF4500}ç EV: {FFFFFF}%s",yazi,iArgs);
 		SendClientMessage(playerid,-1,str);
-    }
+	}
 	return -1;
 }
 
@@ -3947,12 +3947,12 @@ stock Mesaj(playerid, const yazi[],{Float,_}:...)
 /*
 GetPlayerID(const PlayerName[])
 {
- 	new pName[MAX_PLAYER_NAME];
+	 new pName[MAX_PLAYER_NAME];
 
 	for(new i = 0; i < GetMaxPlayers(); i++)
 	{
-	    if(IsPlayerConnected(i))
-	    {
+		if(IsPlayerConnected(i))
+		{
 			GetPlayerName(i, pName, MAX_PLAYER_NAME);
 			if(strfind(pName, PlayerName, true) != -1)
 			{
@@ -3983,37 +3983,37 @@ stock WeaponName(weaponid)
 // - Yasak skinler
 stock IsValidSkin(iSkin)
 {
-    switch(iSkin)
-    {
-        case 3, 4, 5, 6, 8, 42, 53, 65, 74, 86, 91, 119, 149, 208, 273, 289:
-            return 0;
-    }
-    return 1;
+	switch(iSkin)
+	{
+		case 3, 4, 5, 6, 8, 42, 53, 65, 74, 86, 91, 119, 149, 208, 273, 289:
+			return 0;
+	}
+	return 1;
 }
 
 // - DeletePlayerWeapon Fonksiyonu
 stock DeletePlayerWeapon(playerid, weaponid)
 {
-    new
-        gWeaponData[13][2]
-    ;
+	new
+		gWeaponData[13][2]
+	;
 
-    for(new i; i != sizeof(gWeaponData); ++i)
-    {
-        GetPlayerWeaponData(playerid, i, gWeaponData[i][0], gWeaponData[i][1]);
+	for(new i; i != sizeof(gWeaponData); ++i)
+	{
+		GetPlayerWeaponData(playerid, i, gWeaponData[i][0], gWeaponData[i][1]);
 
-        gWeaponData[i][1] = gWeaponData[i][1] < 0 ? -gWeaponData[i][1] : gWeaponData[i][1];
-    }
-    ResetPlayerWeapons(playerid);
+		gWeaponData[i][1] = gWeaponData[i][1] < 0 ? -gWeaponData[i][1] : gWeaponData[i][1];
+	}
+	ResetPlayerWeapons(playerid);
 
-    for(new i; i != sizeof(gWeaponData); ++i)
-    {
-        if(gWeaponData[i][0] != weaponid)
-        {
-            GivePlayerWeapon(playerid, gWeaponData[i][0], gWeaponData[i][1]);
-        }
-    }
-    return 1;
+	for(new i; i != sizeof(gWeaponData); ++i)
+	{
+		if(gWeaponData[i][0] != weaponid)
+		{
+			GivePlayerWeapon(playerid, gWeaponData[i][0], gWeaponData[i][1]);
+		}
+	}
+	return 1;
 }
 
 
@@ -4022,8 +4022,8 @@ stock DeletePlayerWeapon(playerid, weaponid)
 forward playerGameTimer(playerid);
 public playerGameTimer(playerid)
 {
- 	if(PlayerAccount[playerid][pA_Hungry] >= 0 && PlayerAccount[playerid][pA_Hungry] < 50)
- 	{
+	 if(PlayerAccount[playerid][pA_Hungry] >= 0 && PlayerAccount[playerid][pA_Hungry] < 50)
+	 {
 		new Float: playerHealth;
 		GetPlayerHealth(playerid, playerHealth);
 		TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~g~~h~LOW");
@@ -4032,12 +4032,12 @@ public playerGameTimer(playerid)
 			SetPlayerHealth(playerid, playerHealth + 3.0);
 	}
 	else if(PlayerAccount[playerid][pA_Hungry] > 50 && PlayerAccount[playerid][pA_Hungry] < 100)
-	    TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~y~MEDIUM");
+		TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~y~MEDIUM");
 	else if(PlayerAccount[playerid][pA_Hungry] > 100)
 	{
-	    new Float: playerHealth;
-	    GetPlayerHealth(playerid, playerHealth);
-        TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~r~~h~HIGH!");
+		new Float: playerHealth;
+		GetPlayerHealth(playerid, playerHealth);
+		TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~r~~h~HIGH!");
 
 		if(playerHealth < 25)
 			SetPlayerHealth(playerid, playerHealth - 3.0);
@@ -4045,26 +4045,26 @@ public playerGameTimer(playerid)
 
 	if(PlayerAccount[playerid][pA_Radiation] == 0)
 	{
-	    TextDrawSetString(textdraw_radiation[playerid], "RADIATION: ~w~NONE");
+		TextDrawSetString(textdraw_radiation[playerid], "RADIATION: ~w~NONE");
 	}
 	else
 	{
-	    new radiationText[64];
- 		if(PlayerAccount[playerid][pA_Radiation] > 0 && PlayerAccount[playerid][pA_Radiation] < 40)
-	    	format(radiationText, sizeof(radiationText), "RADIATION: ~g~~h~%d", PlayerAccount[playerid][pA_Radiation]);
- 		else if(PlayerAccount[playerid][pA_Radiation] >= 40 && PlayerAccount[playerid][pA_Radiation] < 90)
-	    	format(radiationText, sizeof(radiationText), "RADIATION: ~y~%d", PlayerAccount[playerid][pA_Radiation]);
- 		else if(PlayerAccount[playerid][pA_Radiation] >= 90)
-	    	format(radiationText, sizeof(radiationText), "RADIATION: ~r~~h~%d", PlayerAccount[playerid][pA_Radiation]);
+		new radiationText[64];
+		 if(PlayerAccount[playerid][pA_Radiation] > 0 && PlayerAccount[playerid][pA_Radiation] < 40)
+			format(radiationText, sizeof(radiationText), "RADIATION: ~g~~h~%d", PlayerAccount[playerid][pA_Radiation]);
+		 else if(PlayerAccount[playerid][pA_Radiation] >= 40 && PlayerAccount[playerid][pA_Radiation] < 90)
+			format(radiationText, sizeof(radiationText), "RADIATION: ~y~%d", PlayerAccount[playerid][pA_Radiation]);
+		 else if(PlayerAccount[playerid][pA_Radiation] >= 90)
+			format(radiationText, sizeof(radiationText), "RADIATION: ~r~~h~%d", PlayerAccount[playerid][pA_Radiation]);
 		TextDrawSetString(textdraw_radiation[playerid], radiationText);
 	}
 
 	new pingText[64];
 	if(GetPlayerPing(playerid) >= 0 && GetPlayerPing(playerid) < 80)
 		format(pingText, sizeof(pingText), "PING: ~g~~h~%d", GetPlayerPing(playerid));
-    else if(GetPlayerPing(playerid) >= 80 && GetPlayerPing(playerid) < 200)
+	else if(GetPlayerPing(playerid) >= 80 && GetPlayerPing(playerid) < 200)
 		format(pingText, sizeof(pingText), "PING: ~y~%d", GetPlayerPing(playerid));
-    else if(GetPlayerPing(playerid) >= 200)
+	else if(GetPlayerPing(playerid) >= 200)
 		format(pingText, sizeof(pingText), "PING: ~r~~h~%d", GetPlayerPing(playerid));
 
 	TextDrawSetString(textdraw_ping[playerid], pingText);
@@ -4114,14 +4114,14 @@ stock AccountReset(playerid)
 	PlayerAccount[playerid][pA_Death]       = -1;
 	PlayerAccount[playerid][pA_Score]       = -1;
 	PlayerAccount[playerid][pA_Money]       = -1;
- 	PlayerAccount[playerid][pA_Radiation]   = -1;
+	 PlayerAccount[playerid][pA_Radiation]   = -1;
 	PlayerAccount[playerid][pA_Hungry]      = -1;
 	PlayerAccount[playerid][pA_Comfort]     = -1;
 	PlayerAccount[playerid][pA_X]           = -1;
 	PlayerAccount[playerid][pA_Y]           = -1;
 	PlayerAccount[playerid][pA_Z]           = -1;
 	PlayerAccount[playerid][pA_Interior]    = -1;
-    PlayerAccount[playerid][pA_IP]          = -1;
+	PlayerAccount[playerid][pA_IP]          = -1;
 	PlayerAccount[playerid][pA_Online]      = -1;
 	PlayerAccount[playerid][pA_LastOnline]  = -1;
 }
@@ -4200,11 +4200,11 @@ stock UnloadTextDraws(playerid)
 stock LoadObjects()
 {
 	// Genel Objeler
-    CreateObject(18761,2046.10,869.12,9.94,0.00,0.00,0.00);
-    CreateObject(18768,2003.50,1007.70,37.50,0.00,0.00,0.00);
-    CreateObject(18720,2620.90,1827.60,17.82,0.00,0.00,0.00);
-    CreateObject(18769,2003.52,1007.75,37.49,0.00,0.00,0.00);
-    CreateObject(18720,2620.87,1821.17,17.72,0.00,0.00,0.00);
+	CreateObject(18761,2046.10,869.12,9.94,0.00,0.00,0.00);
+	CreateObject(18768,2003.50,1007.70,37.50,0.00,0.00,0.00);
+	CreateObject(18720,2620.90,1827.60,17.82,0.00,0.00,0.00);
+	CreateObject(18769,2003.52,1007.75,37.49,0.00,0.00,0.00);
+	CreateObject(18720,2620.87,1821.17,17.72,0.00,0.00,0.00);
 
 	//4 Mayıs 2013 - Crosscuk Petrol Damıtma Sahası Edit
 	CreateDynamicObject(18763,410.99,1432.73,6.45,0.00,0.00,135.00);
@@ -4257,49 +4257,49 @@ stock LoadObjects()
 	CreateDynamicObject(1492,137.51,1375.16,9.65,0.00,0.00,990.00);
 
 
-    // RequestClass Alanı
-    CreateObject(18783,2625.20,1824.18,7.62,0.00,0.00,0.00);
-    CreateObject(18783,2634.38,1824.18,10.12,810.00,270.00,360.00);
+	// RequestClass Alanı
+	CreateObject(18783,2625.20,1824.18,7.62,0.00,0.00,0.00);
+	CreateObject(18783,2634.38,1824.18,10.12,810.00,270.00,360.00);
 
-    // Deagle DM
-    CreateDynamicObject(19456,2428.54,1806.78,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2423.61,1811.56,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2432.81,1792.28,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2433.33,1801.98,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2437.56,1806.99,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2442.38,1807.15,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2447.07,1802.34,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2437.50,1797.09,16.32,0.00,0.00,270.00);
-    CreateDynamicObject(19456,2427.99,1797.06,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2423.28,1801.97,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2418.85,1806.87,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2425.07,1793.39,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2420.34,1788.58,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2417.91,1793.35,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2421.23,1829.95,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2425.81,1818.59,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2416.07,1811.48,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2414.02,1798.44,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2409.31,1803.31,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2413.99,1797.41,16.32,0.00,0.00,0.00);
-    CreateDynamicObject(19456,2409.51,1818.50,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2416.53,1825.18,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(19456,2412.11,1825.18,16.32,0.00,0.00,90.00);
-    CreateDynamicObject(18666,2425.52,1818.72,16.72,0.00,0.00,270.00);
-    CreateDynamicObject(18667,2417.45,1811.64,16.72,0.00,0.00,270.00);
-    CreateDynamicObject(18648,2424.95,1825.24,13.32,0.00,0.00,0.00);
-    CreateDynamicObject(18649,2440.09,1794.81,14.42,0.00,0.00,0.00);
-    CreateDynamicObject(18661,2428.66,1809.11,16.82,0.00,0.00,180.00);
-    CreateDynamicObject(1226,2428.16,1815.07,17.32,0.00,0.00,0.00);
-    CreateDynamicObject(1225,2423.87,1797.63,15.72,0.00,0.00,0.00);
-    CreateDynamicObject(1227,2427.15,1810.65,16.12,0.00,0.00,0.00);
-    CreateDynamicObject(1230,2425.61,1811.07,15.72,0.00,0.00,0.00);
-    CreateDynamicObject(1225,2427.78,1812.30,15.72,0.00,0.00,0.00);
-    CreateDynamicObject(1685,2408.06,1819.52,15.82,0.00,0.00,0.00);
-    CreateDynamicObject(3111,2423.38,1803.06,16.72,90.00,450.00,360.00);
+	// Deagle DM
+	CreateDynamicObject(19456,2428.54,1806.78,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2423.61,1811.56,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2432.81,1792.28,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2433.33,1801.98,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2437.56,1806.99,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2442.38,1807.15,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2447.07,1802.34,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2437.50,1797.09,16.32,0.00,0.00,270.00);
+	CreateDynamicObject(19456,2427.99,1797.06,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2423.28,1801.97,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2418.85,1806.87,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2425.07,1793.39,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2420.34,1788.58,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2417.91,1793.35,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2421.23,1829.95,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2425.81,1818.59,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2416.07,1811.48,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2414.02,1798.44,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2409.31,1803.31,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2413.99,1797.41,16.32,0.00,0.00,0.00);
+	CreateDynamicObject(19456,2409.51,1818.50,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2416.53,1825.18,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(19456,2412.11,1825.18,16.32,0.00,0.00,90.00);
+	CreateDynamicObject(18666,2425.52,1818.72,16.72,0.00,0.00,270.00);
+	CreateDynamicObject(18667,2417.45,1811.64,16.72,0.00,0.00,270.00);
+	CreateDynamicObject(18648,2424.95,1825.24,13.32,0.00,0.00,0.00);
+	CreateDynamicObject(18649,2440.09,1794.81,14.42,0.00,0.00,0.00);
+	CreateDynamicObject(18661,2428.66,1809.11,16.82,0.00,0.00,180.00);
+	CreateDynamicObject(1226,2428.16,1815.07,17.32,0.00,0.00,0.00);
+	CreateDynamicObject(1225,2423.87,1797.63,15.72,0.00,0.00,0.00);
+	CreateDynamicObject(1227,2427.15,1810.65,16.12,0.00,0.00,0.00);
+	CreateDynamicObject(1230,2425.61,1811.07,15.72,0.00,0.00,0.00);
+	CreateDynamicObject(1225,2427.78,1812.30,15.72,0.00,0.00,0.00);
+	CreateDynamicObject(1685,2408.06,1819.52,15.82,0.00,0.00,0.00);
+	CreateDynamicObject(3111,2423.38,1803.06,16.72,90.00,450.00,360.00);
 
-    // Fist DM
-    CreateDynamicObject(18759,2170.38,2539.66,584.77,0.00,0.00,0.00);
+	// Fist DM
+	CreateDynamicObject(18759,2170.38,2539.66,584.77,0.00,0.00,0.00);
 
 	// Bikepark Stunt - 1
 	CreateDynamicObject(18800,1128.10,1265.82,20.82,0.00,0.00,180.00);
@@ -4310,81 +4310,81 @@ stock LoadObjects()
 	CreateDynamicObject(18772,1164.82,817.94,68.34,0.00,0.00,0.00);
 	CreateDynamicObject(18781,1165.13,672.58,76.65,0.00,0.00,180.00);
 	CreateDynamicObject(18779,1118.13,1338.01,19.72,0.00,0.00,0.00);
-    CreateDynamicObject(18790,1052.97,1343.98,57.75,0.00,60.00,0.00);
+	CreateDynamicObject(18790,1052.97,1343.98,57.75,0.00,60.00,0.00);
 
-    // Ebenin amı
-    CreateDynamicObject(19494,2105.84,1292.90,798.96,0.00,0.00,0.00);
-    CreateDynamicObject(19325,2111.45,1293.34,798.31,0.00,0.00,0.00);
-    CreateDynamicObject(19325,2103.86,1296.18,797.21,0.00,0.00,0.00);
+	// Ebenin amı
+	CreateDynamicObject(19494,2105.84,1292.90,798.96,0.00,0.00,0.00);
+	CreateDynamicObject(19325,2111.45,1293.34,798.31,0.00,0.00,0.00);
+	CreateDynamicObject(19325,2103.86,1296.18,797.21,0.00,0.00,0.00);
 
-    // OrmanEvi
-    AddStaticVehicleEx(453,-1472.5999800,-2122.8999000,0.0000000,310.0000000,29,59,15); //Reefer
-   	AddStaticVehicleEx(542,-1636.0000000,-2251.3000500,31.3000000,92.0000000,95,39,15); //Clover
-   	CreateDynamicObject(1232,-1645.1999500,-2260.1001000,34.1000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (1)
-   	CreateDynamicObject(1232,-1645.5000000,-2226.1999500,32.2000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (2)
-   	CreateDynamicObject(1232,-1641.5000000,-2201.1999500,34.3000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (3)
-   	CreateDynamicObject(1232,-1621.0000000,-2190.6999500,28.8000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (4)
-   	CreateDynamicObject(1232,-1601.9000200,-2185.1999500,23.8000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (5)
-   	CreateDynamicObject(1232,-1575.5999800,-2179.3000500,16.7000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (6)
-   	CreateDynamicObject(1232,-1551.5999800,-2175.5000000,10.7000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (7)
-   	CreateDynamicObject(1232,-1527.8000500,-2169.6001000,5.0000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (8)
-   	CreateDynamicObject(1232,-1511.6999500,-2164.3000500,2.9000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (9)
-   	CreateDynamicObject(1799,-1629.8000500,-2244.3000500,30.6000000,0.0000000,0.0000000,184.0000000); //object(med_bed_4) (1)
-   	CreateDynamicObject(13758,-1609.1999500,-2247.3000500,45.1000000,0.0000000,0.0000000,0.0000000); //object(radarmast1_lawn01) (1)
-   	CreateDynamicObject(2296,-1634.5000000,-2232.3999000,30.5000000,0.0000000,0.0000000,0.0000000); //object(tv_unit_1) (1)
-   	CreateDynamicObject(1432,-1635.5999800,-2242.5000000,30.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_table_2) (1)
-   	CreateDynamicObject(1768,-1632.1999500,-2235.5000000,30.5000000,0.0000000,0.0000000,182.0000000); //object(low_couch_3) (1)
-   	CreateDynamicObject(15036,-1635.4000200,-2246.6001000,31.6000000,0.0000000,0.0000000,2.0000000); //object(kit_cab_washin_sv) (1)
-   	CreateDynamicObject(2261,-1637.4000200,-2232.8000500,31.9000000,0.0000000,0.0000000,0.0000000); //object(frame_slim_2) (1)
-   	CreateDynamicObject(2282,-1628.9000200,-2242.6999500,32.1000000,0.0000000,0.0000000,270.0000000); //object(frame_thick_4) (1)
-   	CreateDynamicObject(2108,-1630.1999500,-2232.5000000,30.5000000,0.0000000,0.0000000,0.0000000); //object(cj_mlight13) (1)
-   	CreateDynamicObject(2080,-1634.0000000,-2234.1001000,30.5000000,0.0000000,0.0000000,0.0000000); //object(swank_dinning_2) (1)
-   	CreateDynamicObject(2108,-1636.5000000,-2232.8999000,30.5000000,0.0000000,0.0000000,0.0000000); //object(cj_mlight13) (2)
-   	CreateDynamicObject(1502,-1638.0999800,-2238.5000000,30.5000000,0.0000000,0.0000000,271.0000000); //object(gen_doorint04) (1)
-   	CreateDynamicObject(11631,-1629.1999500,-2238.6001000,31.7000000,0.0000000,0.0000000,271.0000000); //object(ranch_desk) (1)
-   	CreateDynamicObject(1811,-1630.1999500,-2238.8000500,31.1000000,0.0000000,0.0000000,210.0000000); //object(med_din_chair_5) (1)
-   	CreateDynamicObject(1738,-1631.9000200,-2247.8000500,31.1000000,0.0000000,0.0000000,0.0000000); //object(cj_radiator_old) (1)
-   	CreateDynamicObject(1551,-1633.3000500,-2234.3000500,31.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_wine_big) (1)
-   	CreateDynamicObject(1551,-1633.5999800,-2234.1999500,31.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_wine_big) (2)
-   	CreateDynamicObject(1736,-1637.5000000,-2241.6001000,32.6000000,0.0000000,0.0000000,92.5000000); //object(cj_stags_head) (1)
-   	CreateDynamicObject(2099,-1628.4000200,-2242.5000000,30.5000000,0.0000000,0.0000000,272.0000000); //object(med_hi_fi_1) (1)
-   	CreateDynamicObject(2819,-1629.5000000,-2245.1999500,30.5000000,0.0000000,0.0000000,0.0000000); //object(gb_bedclothes01) (1)
+	// OrmanEvi
+	AddStaticVehicleEx(453,-1472.5999800,-2122.8999000,0.0000000,310.0000000,29,59,15); //Reefer
+	   AddStaticVehicleEx(542,-1636.0000000,-2251.3000500,31.3000000,92.0000000,95,39,15); //Clover
+	   CreateDynamicObject(1232,-1645.1999500,-2260.1001000,34.1000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (1)
+	   CreateDynamicObject(1232,-1645.5000000,-2226.1999500,32.2000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (2)
+	   CreateDynamicObject(1232,-1641.5000000,-2201.1999500,34.3000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (3)
+	   CreateDynamicObject(1232,-1621.0000000,-2190.6999500,28.8000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (4)
+	   CreateDynamicObject(1232,-1601.9000200,-2185.1999500,23.8000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (5)
+	   CreateDynamicObject(1232,-1575.5999800,-2179.3000500,16.7000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (6)
+	   CreateDynamicObject(1232,-1551.5999800,-2175.5000000,10.7000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (7)
+	   CreateDynamicObject(1232,-1527.8000500,-2169.6001000,5.0000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (8)
+	   CreateDynamicObject(1232,-1511.6999500,-2164.3000500,2.9000000,0.0000000,0.0000000,0.0000000); //object(streetlamp1) (9)
+	   CreateDynamicObject(1799,-1629.8000500,-2244.3000500,30.6000000,0.0000000,0.0000000,184.0000000); //object(med_bed_4) (1)
+	   CreateDynamicObject(13758,-1609.1999500,-2247.3000500,45.1000000,0.0000000,0.0000000,0.0000000); //object(radarmast1_lawn01) (1)
+	   CreateDynamicObject(2296,-1634.5000000,-2232.3999000,30.5000000,0.0000000,0.0000000,0.0000000); //object(tv_unit_1) (1)
+	   CreateDynamicObject(1432,-1635.5999800,-2242.5000000,30.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_table_2) (1)
+	   CreateDynamicObject(1768,-1632.1999500,-2235.5000000,30.5000000,0.0000000,0.0000000,182.0000000); //object(low_couch_3) (1)
+	   CreateDynamicObject(15036,-1635.4000200,-2246.6001000,31.6000000,0.0000000,0.0000000,2.0000000); //object(kit_cab_washin_sv) (1)
+	   CreateDynamicObject(2261,-1637.4000200,-2232.8000500,31.9000000,0.0000000,0.0000000,0.0000000); //object(frame_slim_2) (1)
+	   CreateDynamicObject(2282,-1628.9000200,-2242.6999500,32.1000000,0.0000000,0.0000000,270.0000000); //object(frame_thick_4) (1)
+	   CreateDynamicObject(2108,-1630.1999500,-2232.5000000,30.5000000,0.0000000,0.0000000,0.0000000); //object(cj_mlight13) (1)
+	   CreateDynamicObject(2080,-1634.0000000,-2234.1001000,30.5000000,0.0000000,0.0000000,0.0000000); //object(swank_dinning_2) (1)
+	   CreateDynamicObject(2108,-1636.5000000,-2232.8999000,30.5000000,0.0000000,0.0000000,0.0000000); //object(cj_mlight13) (2)
+	   CreateDynamicObject(1502,-1638.0999800,-2238.5000000,30.5000000,0.0000000,0.0000000,271.0000000); //object(gen_doorint04) (1)
+	   CreateDynamicObject(11631,-1629.1999500,-2238.6001000,31.7000000,0.0000000,0.0000000,271.0000000); //object(ranch_desk) (1)
+	   CreateDynamicObject(1811,-1630.1999500,-2238.8000500,31.1000000,0.0000000,0.0000000,210.0000000); //object(med_din_chair_5) (1)
+	   CreateDynamicObject(1738,-1631.9000200,-2247.8000500,31.1000000,0.0000000,0.0000000,0.0000000); //object(cj_radiator_old) (1)
+	   CreateDynamicObject(1551,-1633.3000500,-2234.3000500,31.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_wine_big) (1)
+	   CreateDynamicObject(1551,-1633.5999800,-2234.1999500,31.5000000,0.0000000,0.0000000,0.0000000); //object(dyn_wine_big) (2)
+	   CreateDynamicObject(1736,-1637.5000000,-2241.6001000,32.6000000,0.0000000,0.0000000,92.5000000); //object(cj_stags_head) (1)
+	   CreateDynamicObject(2099,-1628.4000200,-2242.5000000,30.5000000,0.0000000,0.0000000,272.0000000); //object(med_hi_fi_1) (1)
+	   CreateDynamicObject(2819,-1629.5000000,-2245.1999500,30.5000000,0.0000000,0.0000000,0.0000000); //object(gb_bedclothes01) (1)
 
-    // Köy Çete Mekanı - 11/04/2013
-    AddStaticVehicleEx(518,1566.0999800,30.9000000,24.0000000,95.0000000,-1,-1,15); //Buccaneer
-    AddStaticVehicleEx(463,1562.8000500,25.3000000,23.8000000,0.0000000,159,157,15); //Freeway
-    AddStaticVehicleEx(463,1563.0000000,22.4000000,23.8000000,0.0000000,159,157,15); //Freeway
-    AddStaticVehicleEx(463,1563.0000000,19.4000000,23.8000000,0.0000000,37,37,15); //Freeway
-    AddStaticVehicleEx(463,1562.0000000,23.9000000,23.8000000,0.0000000,22,34,15); //Freeway
-    AddStaticVehicleEx(463,1562.0000000,20.5000000,23.8000000,0.0000000,22,34,15); //Freeway
-    CreateDynamicObject(1649,1549.5999800,19.7000000,24.8000000,0.0000000,90.0000000,100.0000000); //object(wglasssmash) (1)
-    CreateDynamicObject(1649,1550.4000200,15.0000000,24.8000000,0.0000000,90.0000000,100.0000000); //object(wglasssmash) (2)
-    CreateDynamicObject(1494,1549.9000200,18.1000000,23.1000000,0.0000000,0.0000000,280.0000000); //object(gen_doorint03) (1)
-    CreateDynamicObject(1649,1550.4000200,15.0000000,24.8000000,0.0000000,90.0000000,279.9970000); //object(wglasssmash) (3)
-    CreateDynamicObject(1649,1549.5999800,19.7000000,24.8000000,0.0000000,90.0000000,279.9920000); //object(wglasssmash) (5)
-    CreateDynamicObject(1649,1550.0000000,17.5000000,27.8100000,0.0000000,90.0000000,99.9970000); //object(wglasssmash) (6)
-    CreateDynamicObject(1649,1550.0000000,17.5000000,27.8100000,0.0000000,90.0000000,279.9980000); //object(wglasssmash) (7)
-    CreateDynamicObject(1494,1537.8000500,18.1000000,23.1000000,0.0000000,0.0000000,279.9980000); //object(gen_doorint03) (2)
-    CreateDynamicObject(1494,1545.4000200,22.4000000,23.1000000,0.0000000,0.0000000,189.9980000); //object(gen_doorint03) (3)
-    CreateDynamicObject(1494,1543.1999500,10.8000000,23.1000000,0.0000000,0.0000000,189.9980000); //object(gen_doorint03) (4)
-    CreateDynamicObject(2315,1545.5999800,12.1000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(cj_tv_table4) (1)
-    CreateDynamicObject(2595,1546.0000000,12.2000000,24.0000000,0.0000000,0.0000000,130.0000000); //object(cj_shop_tv_video) (1)
-    CreateDynamicObject(2827,1546.9000200,12.3000000,23.6000000,0.0000000,0.0000000,0.0000000); //object(gb_novels05) (1)
-    CreateDynamicObject(1768,1544.5000000,14.0000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(low_couch_3) (1)
-    CreateDynamicObject(1594,1551.3000500,21.9000000,23.6000000,0.0000000,0.0000000,322.0000000); //object(chairsntable) (1)
-    CreateDynamicObject(1801,1538.6999500,17.3000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(swank_bed_4) (1)
-    CreateDynamicObject(1801,1541.0999800,17.8000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(swank_bed_4) (2)
-    CreateDynamicObject(2101,1544.6999500,12.0000000,23.1000000,0.0000000,0.0000000,180.0000000); //object(med_hi_fi_3) (1)
-    CreateDynamicObject(2101,1544.0000000,12.0000000,23.1000000,0.0000000,0.0000000,129.9950000); //object(med_hi_fi_3) (2)
-    CreateDynamicObject(1829,1539.5999800,13.2000000,23.6000000,0.0000000,0.0000000,100.0000000); //object(man_safenew) (1)
-    CreateDynamicObject(876,1519.9000200,46.9000000,26.4000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (2)
-    CreateDynamicObject(876,1529.1999500,64.2000000,27.9000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (4)
-    CreateDynamicObject(876,1521.5999800,82.4000000,29.7000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (6)
-    CreateDynamicObject(876,1555.9000200,77.0000000,28.5000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (8)
-    CreateDynamicObject(1362,1566.4000200,17.5000000,23.8000000,0.0000000,0.0000000,0.0000000); //object(cj_firebin) (1)
-    CreateDynamicObject(3461,1566.4000200,17.5000000,22.6000000,0.0000000,0.0000000,0.0000000); //object(tikitorch01_lvs) (1)
+	// Köy Çete Mekanı - 11/04/2013
+	AddStaticVehicleEx(518,1566.0999800,30.9000000,24.0000000,95.0000000,-1,-1,15); //Buccaneer
+	AddStaticVehicleEx(463,1562.8000500,25.3000000,23.8000000,0.0000000,159,157,15); //Freeway
+	AddStaticVehicleEx(463,1563.0000000,22.4000000,23.8000000,0.0000000,159,157,15); //Freeway
+	AddStaticVehicleEx(463,1563.0000000,19.4000000,23.8000000,0.0000000,37,37,15); //Freeway
+	AddStaticVehicleEx(463,1562.0000000,23.9000000,23.8000000,0.0000000,22,34,15); //Freeway
+	AddStaticVehicleEx(463,1562.0000000,20.5000000,23.8000000,0.0000000,22,34,15); //Freeway
+	CreateDynamicObject(1649,1549.5999800,19.7000000,24.8000000,0.0000000,90.0000000,100.0000000); //object(wglasssmash) (1)
+	CreateDynamicObject(1649,1550.4000200,15.0000000,24.8000000,0.0000000,90.0000000,100.0000000); //object(wglasssmash) (2)
+	CreateDynamicObject(1494,1549.9000200,18.1000000,23.1000000,0.0000000,0.0000000,280.0000000); //object(gen_doorint03) (1)
+	CreateDynamicObject(1649,1550.4000200,15.0000000,24.8000000,0.0000000,90.0000000,279.9970000); //object(wglasssmash) (3)
+	CreateDynamicObject(1649,1549.5999800,19.7000000,24.8000000,0.0000000,90.0000000,279.9920000); //object(wglasssmash) (5)
+	CreateDynamicObject(1649,1550.0000000,17.5000000,27.8100000,0.0000000,90.0000000,99.9970000); //object(wglasssmash) (6)
+	CreateDynamicObject(1649,1550.0000000,17.5000000,27.8100000,0.0000000,90.0000000,279.9980000); //object(wglasssmash) (7)
+	CreateDynamicObject(1494,1537.8000500,18.1000000,23.1000000,0.0000000,0.0000000,279.9980000); //object(gen_doorint03) (2)
+	CreateDynamicObject(1494,1545.4000200,22.4000000,23.1000000,0.0000000,0.0000000,189.9980000); //object(gen_doorint03) (3)
+	CreateDynamicObject(1494,1543.1999500,10.8000000,23.1000000,0.0000000,0.0000000,189.9980000); //object(gen_doorint03) (4)
+	CreateDynamicObject(2315,1545.5999800,12.1000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(cj_tv_table4) (1)
+	CreateDynamicObject(2595,1546.0000000,12.2000000,24.0000000,0.0000000,0.0000000,130.0000000); //object(cj_shop_tv_video) (1)
+	CreateDynamicObject(2827,1546.9000200,12.3000000,23.6000000,0.0000000,0.0000000,0.0000000); //object(gb_novels05) (1)
+	CreateDynamicObject(1768,1544.5000000,14.0000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(low_couch_3) (1)
+	CreateDynamicObject(1594,1551.3000500,21.9000000,23.6000000,0.0000000,0.0000000,322.0000000); //object(chairsntable) (1)
+	CreateDynamicObject(1801,1538.6999500,17.3000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(swank_bed_4) (1)
+	CreateDynamicObject(1801,1541.0999800,17.8000000,23.1000000,0.0000000,0.0000000,10.0000000); //object(swank_bed_4) (2)
+	CreateDynamicObject(2101,1544.6999500,12.0000000,23.1000000,0.0000000,0.0000000,180.0000000); //object(med_hi_fi_3) (1)
+	CreateDynamicObject(2101,1544.0000000,12.0000000,23.1000000,0.0000000,0.0000000,129.9950000); //object(med_hi_fi_3) (2)
+	CreateDynamicObject(1829,1539.5999800,13.2000000,23.6000000,0.0000000,0.0000000,100.0000000); //object(man_safenew) (1)
+	CreateDynamicObject(876,1519.9000200,46.9000000,26.4000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (2)
+	CreateDynamicObject(876,1529.1999500,64.2000000,27.9000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (4)
+	CreateDynamicObject(876,1521.5999800,82.4000000,29.7000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (6)
+	CreateDynamicObject(876,1555.9000200,77.0000000,28.5000000,0.0000000,0.0000000,0.0000000); //object(veg_pflowers03) (8)
+	CreateDynamicObject(1362,1566.4000200,17.5000000,23.8000000,0.0000000,0.0000000,0.0000000); //object(cj_firebin) (1)
+	CreateDynamicObject(3461,1566.4000200,17.5000000,22.6000000,0.0000000,0.0000000,0.0000000); //object(tikitorch01_lvs) (1)
 
-   	// - LVDM arabaları
+	   // - LVDM arabaları
 	AddStaticVehicle(451,2040.0520,1319.2799,10.3779,183.2439,16,16);
 	AddStaticVehicle(429,2040.5247,1359.2783,10.3516,177.1306,13,13);
 	AddStaticVehicle(421,2110.4102,1398.3672,10.7552,359.5964,13,13);
@@ -4601,208 +4601,208 @@ stock LoadObjects()
 	AddStaticVehicle(420,1713.9319,1467.8354,10.5219,342.8006,6,1); // taxi
 
 	// Los Santos House
- 	CreateDynamicObject(5706, 399.70001220703, -996.79998779297, 87.5, 0, 0, 0);
-    CreateDynamicObject(19442, 406.29998779297, -989, 93, 0, 0, 90);
-    CreateDynamicObject(19447, 388.60000610352, -986.90002441406, 92.699996948242, 0, 0, 270);
-    CreateDynamicObject(19447, 393.29998779297, -991.70001220703, 92.699996948242, 0, 0, 0);
-    CreateDynamicObject(19447, 383.69921875, -991.69921875, 92.699996948242, 0, 0, 0);
-    CreateDynamicObject(19449, 388.5, -994.79998779297, 94.5, 0, 90, 270);
-    CreateDynamicObject(19449, 388.5, -991.29998779297, 94.5, 0, 90, 270);
-    CreateDynamicObject(19449, 388.5, -987.79998779297, 94.5, 0, 90, 270);
-    CreateDynamicObject(19397, 407, -992.09997558594, 93, 0, 0, 0);
-    CreateDynamicObject(19415, 399.39999389648, -996.90002441406, 93, 0, 0, 0);
-    CreateDynamicObject(970, 385.29998779297, -983.70001220703, 91.900001525879, 0, 0, 0);
-    CreateDynamicObject(970, 389.39999389648, -983.70001220703, 91.900001525879, 0, 0, 0);
-    CreateDynamicObject(970, 393.5, -983.70001220703, 91.900001525879, 0, 0, 0);
-    CreateDynamicObject(970, 397.60000610352, -983.70001220703, 91.900001525879, 0, 0, 0);
-    CreateDynamicObject(970, 416.20001220703, -1003, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(970, 383.29998779297, -985.70001220703, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(970, 383.29998779297, -989.79998779297, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(970, 383.29998779297, -993.90002441406, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(970, 383.29998779297, -998, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(970, 383.29998779297, -1002.0999755859, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(700, 383.29998779297, -1006.299987793, 91, 0, 0, 0);
-    CreateDynamicObject(3499, 384.70001220703, -985.40002441406, 77, 0, 0, 0);
-    CreateDynamicObject(3499, 392, -985.09997558594, 77, 0, 0, 0);
-    CreateDynamicObject(3499, 400.70001220703, -985.20001220703, 77, 0, 0, 0);
-    CreateDynamicObject(762, 386.89999389648, -990.29998779297, 78.400001525879, 0, 0, 0);
-    CreateDynamicObject(762, 394.5, -989.79998779297, 78.400001525879, 0, 0, 0);
-    CreateDynamicObject(762, 402.79998779297, -987.59997558594, 78.400001525879, 0, 0, 0);
-    CreateDynamicObject(19369, 411.89999389648, -1003.4000244141, 93, 0, 0, 90);
-    CreateDynamicObject(970, 414.29998779297, -1005.299987793, 91.900001525879, 0, 0, 182);
-    CreateDynamicObject(970, 416.20001220703, -998.90002441406, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(970, 416.20001220703, -994.79998779297, 91.900001525879, 0, 0, 270);
-    CreateDynamicObject(19369, 402.5, -1003.4000244141, 93, 0, 0, 90);
-    CreateDynamicObject(1649, 405.10000610352, -1003.4000244141, 93, 0, 0, 0);
-    CreateDynamicObject(19369, 408.70001220703, -1003.4000244141, 93, 0, 0, 90);
-    CreateDynamicObject(19462, 411.60000610352, -998.59997558594, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19462, 408.10000610352, -998.599609375, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19462, 404.60000610352, -998.599609375, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19462, 401.10000610352, -998.599609375, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19442, 407.45999145508, -999.5, 93, 0, 0, 0);
-    CreateDynamicObject(1649, 399.39999389648, -997, 93, 0, 0, 90);
-    CreateDynamicObject(19369, 407, -988.90002441406, 93, 0, 0, 0);
-    CreateDynamicObject(1502, 399.39999389648, -1000.8499755859, 91.230003356934, 0, 0, 90);
-    CreateDynamicObject(700, 416.20001220703, -1005, 91, 0, 0, 0);
-    CreateDynamicObject(1742, 402.29998779297, -987.40002441406, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(1744, 411.39999389648, -993.79998779297, 93.5, 0, 0, 180);
-    CreateDynamicObject(2134, 406.39999389648, -985.79998779297, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(2133, 404.39999389648, -984.79998779297, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2341, 406.39999389648, -984.79998779297, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(14535, 410.39999389648, -999.09997558594, 93.400001525879, 0, 0, 0);
-    CreateDynamicObject(19369, 407.45999145508, -1001.9000244141, 93, 0, 0, 0);
-    CreateDynamicObject(19442, 399.3994140625, -1002.5, 93, 0, 0, 0);
-    CreateDynamicObject(19462, 411.599609375, -988.97998046875, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19462, 408.099609375, -988.97998046875, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19462, 404.599609375, -988.97998046875, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(19462, 401.099609375, -988.97998046875, 91.300003051758, 0, 90, 0);
-    CreateDynamicObject(2842, 410.79998779297, -1001.9000244141, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2842, 409, -1001.9000244141, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2099, 409, -993.79998779297, 91.400001525879, 0, 0, 180);
-    CreateDynamicObject(19369, 411.70001220703, -993.79998779297, 93, 0, 0, 90);
-    CreateDynamicObject(19369, 408.5, -993.79998779297, 93, 0, 0, 90);
-    CreateDynamicObject(19397, 399.3994140625, -1000.099609375, 93, 0, 0, 0);
-    CreateDynamicObject(19369, 401.10000610352, -998.40002441406, 93, 0, 0, 270);
-    CreateDynamicObject(19369, 407, -985.70001220703, 93, 0, 0, 0);
-    CreateDynamicObject(19461, 413.3994140625, -998.5, 93, 0, 0, 0);
-    CreateDynamicObject(19369, 413.39999389648, -988.70001220703, 93, 0, 0, 0);
-    CreateDynamicObject(1649, 413.3994140625, -991.7998046875, 93, 0, 0, 90);
-    CreateDynamicObject(1649, 404.79998779297, -984.20001220703, 93, 0, 0, 0);
-    CreateDynamicObject(3499, 408, -985, 77, 0, 0, 0);
-    CreateDynamicObject(3499, 414.70001220703, -985.5, 77, 0, 0, 0);
-    CreateDynamicObject(691, 385, -983.70001220703, 72.300003051758, 0, 0, 0);
-    CreateDynamicObject(691, 419, -983.79998779297, 72.300003051758, 0, 0, 0);
-    CreateDynamicObject(691, 412.5, -978.59997558594, 72.300003051758, 0, 0, 0);
-    CreateDynamicObject(19369, 411.89999389648, -984.20001220703, 93, 0, 0, 90);
-    CreateDynamicObject(1649, 413.39999389648, -986.40002441406, 93, 0, 0, 90);
-    CreateDynamicObject(1745, 409.5, -986, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(2190, 411.5, -993.59997558594, 92.199996948242, 0, 0, 190);
-    CreateDynamicObject(2630, 412.89999389648, -989.90002441406, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2173, 411.60000610352, -993.09997558594, 91.400001525879, 0, 0, 180);
-    CreateDynamicObject(1671, 411.10000610352, -992.5, 91.800003051758, 0, 0, 0);
-    CreateDynamicObject(2593, 412.39999389648, -993.29998779297, 92.199996948242, 0, 0, 0);
-    CreateDynamicObject(2652, 413, -993, 91.900001525879, 0, 0, 0);
-    CreateDynamicObject(19424, 410.29998779297, -993.20001220703, 92.199996948242, 0, 0, 0);
-    CreateDynamicObject(1502, 403.10998535156, -989.02001953125, 91.230003356934, 0, 0, 0);
-    CreateDynamicObject(2576, 402.89999389648, -1002.799987793, 91.400001525879, 0, 0, 180);
-    CreateDynamicObject(1429, 407.39999389648, -986.5, 92.800003051758, 0, 0, 90);
-    CreateDynamicObject(948, 407.60000610352, -989.20001220703, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2010, 407.5, -993.29998779297, 91.300003051758, 0, 0, 0);
-    CreateDynamicObject(2240, 407.70001220703, -984.79998779297, 92, 0, 0, 0);
-    CreateDynamicObject(2254, 411.89999389648, -984.29998779297, 93.300003051758, 0, 0, 0);
-    CreateDynamicObject(2287, 412.79998779297, -988.59997558594, 93.5, 0, 0, 270);
-    CreateDynamicObject(2282, 410.60000610352, -993.20001220703, 92.800003051758, 0, 0, 180);
-    CreateDynamicObject(2276, 407.58999633789, -990.5, 93, 0, 0, 90);
-    CreateDynamicObject(2817, 410.29998779297, -989.5, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2817, 410.29998779297, -990.5, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2817, 410.29998779297, -991.5, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(1649, 409.19921875, -984.19921875, 93, 0, 0, 0);
-    CreateDynamicObject(19369, 402.5, -984.20001220703, 93, 0, 0, 90);
-    CreateDynamicObject(2515, 405.29998779297, -984.70001220703, 92.559997558594, 0, 0, 0);
-    CreateDynamicObject(2517, 405.5, -988, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(2519, 403.20001220703, -984.79998779297, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(2525, 406.39999389648, -987.09997558594, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(2133, 405.3994140625, -984.7998046875, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(19369, 402.20001220703, -985.90002441406, 93, 0, 0, 0);
-    CreateDynamicObject(19397, 403.89999389648, -989, 93, 0, 0, 90);
-    CreateDynamicObject(19442, 400.099609375, -1003.3994140625, 93, 0, 0, 90);
-    CreateDynamicObject(19442, 402.20001220703, -988.29998779297, 93, 0, 0, 0);
-    CreateDynamicObject(1502, 407, -992.849609375, 91.230003356934, 0, 0, 90);
-    CreateDynamicObject(2847, 404.5, -986.20001220703, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2010, 402.60000610352, -988.59997558594, 91.300003051758, 0, 0, 0);
-    CreateDynamicObject(2274, 403.29998779297, -984.79998779297, 93, 0, 0, 0);
-    CreateDynamicObject(2269, 402.79998779297, -987.20001220703, 93, 0, 0, 90);
-    CreateDynamicObject(2265, 406.39999389648, -986.09002685547, 93.400001525879, 0, 0, 270);
-    CreateDynamicObject(19442, 399.39999389648, -991.29998779297, 93, 0, 0, 180);
-    CreateDynamicObject(1649, 399.39999389648, -989.59997558594, 93, 0, 0, 90);
-    CreateDynamicObject(19369, 399.39999389648, -985.90002441406, 93, 0, 0, 0);
-    CreateDynamicObject(1723, 400, -993.09997558594, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(19415, 405.69921875, -984.19921875, 93, 0, 0, 270);
-    CreateDynamicObject(19442, 400.099609375, -984.19921875, 93, 0, 0, 90);
-    CreateDynamicObject(19369, 399.3994140625, -993.69921875, 93, 0, 0, 0);
-    CreateDynamicObject(1724, 403.20001220703, -993.5, 91.400001525879, 0, 0, 320);
-    CreateDynamicObject(2100, 405.60000610352, -989.20001220703, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(1790, 401.70001220703, -997.90002441406, 92, 0, 0, 18);
-    CreateDynamicObject(1791, 400.60000610352, -998, 91.900001525879, 0, 0, 180);
-    CreateDynamicObject(2313, 401.79998779297, -997.79998779297, 91.400001525879, 0, 0, 180);
-    CreateDynamicObject(2350, 409.10000610352, -998.70001220703, 91.800003051758, 0, 0, 0);
-    CreateDynamicObject(2350, 411.5, -998.70001220703, 91.800003051758, 0, 0, 0);
-    CreateDynamicObject(2964, 405.60000610352, -1000.9000244141, 91.370002746582, 0, 0, 90);
-    CreateDynamicObject(2996, 405.79998779297, -1000.700012207, 92.300003051758, 0, 0, 0);
-    CreateDynamicObject(2997, 405.70001220703, -1000.9000244141, 92.300003051758, 0, 0, 0);
-    CreateDynamicObject(2998, 405.20001220703, -1000.200012207, 92.300003051758, 0, 0, 0);
-    CreateDynamicObject(2999, 405.20001220703, -1000.299987793, 92.300003051758, 0, 0, 0);
-    CreateDynamicObject(3002, 405.5, -1001.0999755859, 92.300003051758, 0, 0, 0);
-    CreateDynamicObject(3101, 405.20001220703, -1001.700012207, 92.300003051758, 0, 0, 0);
-    CreateDynamicObject(1669, 410.10000610352, -998.40002441406, 92.599998474121, 0, 0, 0);
-    CreateDynamicObject(1667, 410, -998.40002441406, 92.5, 0, 0, 0);
-    CreateDynamicObject(1665, 410.39999389648, -996, 92.199996948242, 0, 0, 0);
-    CreateDynamicObject(1512, 407.89999389648, -1000.4000244141, 92.5, 0, 0, 0);
-    CreateDynamicObject(1455, 407.89999389648, -1000.200012207, 92.400001525879, 0, 0, 0);
-    CreateDynamicObject(947, 384.10000610352, -1000.700012207, 93.5, 0, 0, 270);
-    CreateDynamicObject(2286, 405.60000610352, -989.20001220703, 93.599998474121, 0, 0, 0);
-    CreateDynamicObject(2239, 402.5, -997.70001220703, 91.400001525879, 0, 0, 210);
-    CreateDynamicObject(2114, 383.70001220703, -1000.0999755859, 91.5, 0, 0, 0);
-    CreateDynamicObject(2164, 407.39999389648, -993.90002441406, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(1742, 402.2998046875, -985.59997558594, 91.400001525879, 0, 0, 270);
-    CreateDynamicObject(2292, 400, -984.70001220703, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2295, 406.89999389648, -1002.9000244141, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2291, 400.5, -984.70001220703, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2291, 400, -986.20001220703, 91.400001525879, 0, 0, 90);
-    CreateDynamicObject(2291, 400, -987.20001220703, 91.400001525879, 0, 0, 90);
-    CreateDynamicObject(2273, 400.70001220703, -984.79998779297, 93, 0, 0, 0);
-    CreateDynamicObject(2270, 400, -994.90002441406, 93, 0, 0, 90);
-    CreateDynamicObject(2269, 400, -993.59997558594, 93, 0, 0, 90);
-    CreateDynamicObject(2265, 406.79998779297, -1000, 93, 0, 0, 270);
-    CreateDynamicObject(2263, 403, -1002.799987793, 93.599998474121, 0, 0, 178);
-    CreateDynamicObject(2576, 407.599609375, -988.7998046875, 91.400001525879, 0, 0, 90);
-    CreateDynamicObject(2238, 400.20001220703, -1002.9000244141, 92.900001525879, 0, 0, 0);
-    CreateDynamicObject(2818, 400.70001220703, -996.59997558594, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2818, 400.70001220703, -995.5, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2818, 400.89999389648, -1002.4000244141, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(2195, 399.79998779297, -998.90002441406, 92, 0, 0, 0);
-    CreateDynamicObject(2243, 407, -999, 91.699996948242, 0, 0, 0);
-    CreateDynamicObject(2246, 413, -999.5, 91.800003051758, 0, 0, 0);
-    CreateDynamicObject(2251, 400.79998779297, -1002.9000244141, 93.400001525879, 0, 0, 0);
-    CreateDynamicObject(2253, 407.70001220703, -998.79998779297, 91.699996948242, 0, 0, 0);
-    CreateDynamicObject(2811, 412.89999389648, -994.20001220703, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(3802, 412.79998779297, -998.90002441406, 93.900001525879, 0, 0, 180);
-    CreateDynamicObject(19449, 411.60000610352, -998.59997558594, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19449, 408.10000610352, -998.599609375, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19449, 401.10000610352, -998.599609375, 94.699996948242, 0, 90, 0);
-    CreateDynamicObject(19449, 404.60000610352, -998.599609375, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19449, 411.599609375, -988.97998046875, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19449, 401.099609375, -988.9794921875, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19449, 404.599609375, -988.9794921875, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19449, 408.099609375, -988.9794921875, 94.669998168945, 0, 90, 0);
-    CreateDynamicObject(19125, 383.39999389648, -1005, 91.900001525879, 0, 0, 0);
-    CreateDynamicObject(1734, 401, -995.29998779297, 94.5, 0, 0, 0);
-    CreateDynamicObject(957, 410.10000610352, -989.90002441406, 94.550003051758, 0, 0, 0);
-    CreateDynamicObject(957, 409.60000610352, -998.90002441406, 94.599998474121, 0, 0, 0);
-    CreateDynamicObject(957, 402.5, -1001.5, 94.599998474121, 0, 0, 0);
-    CreateDynamicObject(957, 404.20001220703, -987.59997558594, 94.599998474121, 0, 0, 0);
-    CreateDynamicObject(957, 399.70001220703, -987.40002441406, 94.599998474121, 0, 0, 0);
-    CreateDynamicObject(1697, 410.5, -987.20001220703, 96.400001525879, 0, 0, 180);
-    CreateDynamicObject(970, 410.20001220703, -1005.5, 91.900001525879, 0, 0, 181.99951171875);
-    CreateDynamicObject(970, 406.10000610352, -1005.5999755859, 91.900001525879, 0, 0, 181.99951171875);
-    CreateDynamicObject(970, 402, -1005.700012207, 91.900001525879, 0, 0, 181.99951171875);
-    CreateDynamicObject(970, 397.89999389648, -1005.9000244141, 91.900001525879, 0, 0, 181.99951171875);
-    CreateDynamicObject(713, 430.39999389648, -1005.4000244141, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(673, 398.70001220703, -1006.5999755859, 91.400001525879, 0, 0, 0);
-    CreateDynamicObject(673, 406.70001220703, -1006.5, 91.5, 0, 0, 0);
-    CreateDynamicObject(792, 392.10000610352, -985.20001220703, 91.5, 0, 0, 0);
-    CreateDynamicObject(792, 388.29998779297, -985.20001220703, 91.5, 0, 0, 0);
-    CreateDynamicObject(792, 384.5, -984.90002441406, 91.5, 0, 0, 0);
-    CreateDynamicObject(1690, 385.70001220703, -988.5, 95.300003051758, 0, 0, 310);
-    CreateDynamicObject(2652, 392.89999389648, -988, 91.800003051758, 0, 0, 0);
-    CreateDynamicObject(2652, 392, -987.5, 91.800003051758, 0, 0, 90);
-    CreateDynamicObject(1985, 384.79998779297, -989.79998779297, 94.5, 0, 0, 0);
+	 CreateDynamicObject(5706, 399.70001220703, -996.79998779297, 87.5, 0, 0, 0);
+	CreateDynamicObject(19442, 406.29998779297, -989, 93, 0, 0, 90);
+	CreateDynamicObject(19447, 388.60000610352, -986.90002441406, 92.699996948242, 0, 0, 270);
+	CreateDynamicObject(19447, 393.29998779297, -991.70001220703, 92.699996948242, 0, 0, 0);
+	CreateDynamicObject(19447, 383.69921875, -991.69921875, 92.699996948242, 0, 0, 0);
+	CreateDynamicObject(19449, 388.5, -994.79998779297, 94.5, 0, 90, 270);
+	CreateDynamicObject(19449, 388.5, -991.29998779297, 94.5, 0, 90, 270);
+	CreateDynamicObject(19449, 388.5, -987.79998779297, 94.5, 0, 90, 270);
+	CreateDynamicObject(19397, 407, -992.09997558594, 93, 0, 0, 0);
+	CreateDynamicObject(19415, 399.39999389648, -996.90002441406, 93, 0, 0, 0);
+	CreateDynamicObject(970, 385.29998779297, -983.70001220703, 91.900001525879, 0, 0, 0);
+	CreateDynamicObject(970, 389.39999389648, -983.70001220703, 91.900001525879, 0, 0, 0);
+	CreateDynamicObject(970, 393.5, -983.70001220703, 91.900001525879, 0, 0, 0);
+	CreateDynamicObject(970, 397.60000610352, -983.70001220703, 91.900001525879, 0, 0, 0);
+	CreateDynamicObject(970, 416.20001220703, -1003, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(970, 383.29998779297, -985.70001220703, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(970, 383.29998779297, -989.79998779297, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(970, 383.29998779297, -993.90002441406, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(970, 383.29998779297, -998, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(970, 383.29998779297, -1002.0999755859, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(700, 383.29998779297, -1006.299987793, 91, 0, 0, 0);
+	CreateDynamicObject(3499, 384.70001220703, -985.40002441406, 77, 0, 0, 0);
+	CreateDynamicObject(3499, 392, -985.09997558594, 77, 0, 0, 0);
+	CreateDynamicObject(3499, 400.70001220703, -985.20001220703, 77, 0, 0, 0);
+	CreateDynamicObject(762, 386.89999389648, -990.29998779297, 78.400001525879, 0, 0, 0);
+	CreateDynamicObject(762, 394.5, -989.79998779297, 78.400001525879, 0, 0, 0);
+	CreateDynamicObject(762, 402.79998779297, -987.59997558594, 78.400001525879, 0, 0, 0);
+	CreateDynamicObject(19369, 411.89999389648, -1003.4000244141, 93, 0, 0, 90);
+	CreateDynamicObject(970, 414.29998779297, -1005.299987793, 91.900001525879, 0, 0, 182);
+	CreateDynamicObject(970, 416.20001220703, -998.90002441406, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(970, 416.20001220703, -994.79998779297, 91.900001525879, 0, 0, 270);
+	CreateDynamicObject(19369, 402.5, -1003.4000244141, 93, 0, 0, 90);
+	CreateDynamicObject(1649, 405.10000610352, -1003.4000244141, 93, 0, 0, 0);
+	CreateDynamicObject(19369, 408.70001220703, -1003.4000244141, 93, 0, 0, 90);
+	CreateDynamicObject(19462, 411.60000610352, -998.59997558594, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19462, 408.10000610352, -998.599609375, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19462, 404.60000610352, -998.599609375, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19462, 401.10000610352, -998.599609375, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19442, 407.45999145508, -999.5, 93, 0, 0, 0);
+	CreateDynamicObject(1649, 399.39999389648, -997, 93, 0, 0, 90);
+	CreateDynamicObject(19369, 407, -988.90002441406, 93, 0, 0, 0);
+	CreateDynamicObject(1502, 399.39999389648, -1000.8499755859, 91.230003356934, 0, 0, 90);
+	CreateDynamicObject(700, 416.20001220703, -1005, 91, 0, 0, 0);
+	CreateDynamicObject(1742, 402.29998779297, -987.40002441406, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(1744, 411.39999389648, -993.79998779297, 93.5, 0, 0, 180);
+	CreateDynamicObject(2134, 406.39999389648, -985.79998779297, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(2133, 404.39999389648, -984.79998779297, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2341, 406.39999389648, -984.79998779297, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(14535, 410.39999389648, -999.09997558594, 93.400001525879, 0, 0, 0);
+	CreateDynamicObject(19369, 407.45999145508, -1001.9000244141, 93, 0, 0, 0);
+	CreateDynamicObject(19442, 399.3994140625, -1002.5, 93, 0, 0, 0);
+	CreateDynamicObject(19462, 411.599609375, -988.97998046875, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19462, 408.099609375, -988.97998046875, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19462, 404.599609375, -988.97998046875, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(19462, 401.099609375, -988.97998046875, 91.300003051758, 0, 90, 0);
+	CreateDynamicObject(2842, 410.79998779297, -1001.9000244141, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2842, 409, -1001.9000244141, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2099, 409, -993.79998779297, 91.400001525879, 0, 0, 180);
+	CreateDynamicObject(19369, 411.70001220703, -993.79998779297, 93, 0, 0, 90);
+	CreateDynamicObject(19369, 408.5, -993.79998779297, 93, 0, 0, 90);
+	CreateDynamicObject(19397, 399.3994140625, -1000.099609375, 93, 0, 0, 0);
+	CreateDynamicObject(19369, 401.10000610352, -998.40002441406, 93, 0, 0, 270);
+	CreateDynamicObject(19369, 407, -985.70001220703, 93, 0, 0, 0);
+	CreateDynamicObject(19461, 413.3994140625, -998.5, 93, 0, 0, 0);
+	CreateDynamicObject(19369, 413.39999389648, -988.70001220703, 93, 0, 0, 0);
+	CreateDynamicObject(1649, 413.3994140625, -991.7998046875, 93, 0, 0, 90);
+	CreateDynamicObject(1649, 404.79998779297, -984.20001220703, 93, 0, 0, 0);
+	CreateDynamicObject(3499, 408, -985, 77, 0, 0, 0);
+	CreateDynamicObject(3499, 414.70001220703, -985.5, 77, 0, 0, 0);
+	CreateDynamicObject(691, 385, -983.70001220703, 72.300003051758, 0, 0, 0);
+	CreateDynamicObject(691, 419, -983.79998779297, 72.300003051758, 0, 0, 0);
+	CreateDynamicObject(691, 412.5, -978.59997558594, 72.300003051758, 0, 0, 0);
+	CreateDynamicObject(19369, 411.89999389648, -984.20001220703, 93, 0, 0, 90);
+	CreateDynamicObject(1649, 413.39999389648, -986.40002441406, 93, 0, 0, 90);
+	CreateDynamicObject(1745, 409.5, -986, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(2190, 411.5, -993.59997558594, 92.199996948242, 0, 0, 190);
+	CreateDynamicObject(2630, 412.89999389648, -989.90002441406, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2173, 411.60000610352, -993.09997558594, 91.400001525879, 0, 0, 180);
+	CreateDynamicObject(1671, 411.10000610352, -992.5, 91.800003051758, 0, 0, 0);
+	CreateDynamicObject(2593, 412.39999389648, -993.29998779297, 92.199996948242, 0, 0, 0);
+	CreateDynamicObject(2652, 413, -993, 91.900001525879, 0, 0, 0);
+	CreateDynamicObject(19424, 410.29998779297, -993.20001220703, 92.199996948242, 0, 0, 0);
+	CreateDynamicObject(1502, 403.10998535156, -989.02001953125, 91.230003356934, 0, 0, 0);
+	CreateDynamicObject(2576, 402.89999389648, -1002.799987793, 91.400001525879, 0, 0, 180);
+	CreateDynamicObject(1429, 407.39999389648, -986.5, 92.800003051758, 0, 0, 90);
+	CreateDynamicObject(948, 407.60000610352, -989.20001220703, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2010, 407.5, -993.29998779297, 91.300003051758, 0, 0, 0);
+	CreateDynamicObject(2240, 407.70001220703, -984.79998779297, 92, 0, 0, 0);
+	CreateDynamicObject(2254, 411.89999389648, -984.29998779297, 93.300003051758, 0, 0, 0);
+	CreateDynamicObject(2287, 412.79998779297, -988.59997558594, 93.5, 0, 0, 270);
+	CreateDynamicObject(2282, 410.60000610352, -993.20001220703, 92.800003051758, 0, 0, 180);
+	CreateDynamicObject(2276, 407.58999633789, -990.5, 93, 0, 0, 90);
+	CreateDynamicObject(2817, 410.29998779297, -989.5, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2817, 410.29998779297, -990.5, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2817, 410.29998779297, -991.5, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(1649, 409.19921875, -984.19921875, 93, 0, 0, 0);
+	CreateDynamicObject(19369, 402.5, -984.20001220703, 93, 0, 0, 90);
+	CreateDynamicObject(2515, 405.29998779297, -984.70001220703, 92.559997558594, 0, 0, 0);
+	CreateDynamicObject(2517, 405.5, -988, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(2519, 403.20001220703, -984.79998779297, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(2525, 406.39999389648, -987.09997558594, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(2133, 405.3994140625, -984.7998046875, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(19369, 402.20001220703, -985.90002441406, 93, 0, 0, 0);
+	CreateDynamicObject(19397, 403.89999389648, -989, 93, 0, 0, 90);
+	CreateDynamicObject(19442, 400.099609375, -1003.3994140625, 93, 0, 0, 90);
+	CreateDynamicObject(19442, 402.20001220703, -988.29998779297, 93, 0, 0, 0);
+	CreateDynamicObject(1502, 407, -992.849609375, 91.230003356934, 0, 0, 90);
+	CreateDynamicObject(2847, 404.5, -986.20001220703, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2010, 402.60000610352, -988.59997558594, 91.300003051758, 0, 0, 0);
+	CreateDynamicObject(2274, 403.29998779297, -984.79998779297, 93, 0, 0, 0);
+	CreateDynamicObject(2269, 402.79998779297, -987.20001220703, 93, 0, 0, 90);
+	CreateDynamicObject(2265, 406.39999389648, -986.09002685547, 93.400001525879, 0, 0, 270);
+	CreateDynamicObject(19442, 399.39999389648, -991.29998779297, 93, 0, 0, 180);
+	CreateDynamicObject(1649, 399.39999389648, -989.59997558594, 93, 0, 0, 90);
+	CreateDynamicObject(19369, 399.39999389648, -985.90002441406, 93, 0, 0, 0);
+	CreateDynamicObject(1723, 400, -993.09997558594, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(19415, 405.69921875, -984.19921875, 93, 0, 0, 270);
+	CreateDynamicObject(19442, 400.099609375, -984.19921875, 93, 0, 0, 90);
+	CreateDynamicObject(19369, 399.3994140625, -993.69921875, 93, 0, 0, 0);
+	CreateDynamicObject(1724, 403.20001220703, -993.5, 91.400001525879, 0, 0, 320);
+	CreateDynamicObject(2100, 405.60000610352, -989.20001220703, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(1790, 401.70001220703, -997.90002441406, 92, 0, 0, 18);
+	CreateDynamicObject(1791, 400.60000610352, -998, 91.900001525879, 0, 0, 180);
+	CreateDynamicObject(2313, 401.79998779297, -997.79998779297, 91.400001525879, 0, 0, 180);
+	CreateDynamicObject(2350, 409.10000610352, -998.70001220703, 91.800003051758, 0, 0, 0);
+	CreateDynamicObject(2350, 411.5, -998.70001220703, 91.800003051758, 0, 0, 0);
+	CreateDynamicObject(2964, 405.60000610352, -1000.9000244141, 91.370002746582, 0, 0, 90);
+	CreateDynamicObject(2996, 405.79998779297, -1000.700012207, 92.300003051758, 0, 0, 0);
+	CreateDynamicObject(2997, 405.70001220703, -1000.9000244141, 92.300003051758, 0, 0, 0);
+	CreateDynamicObject(2998, 405.20001220703, -1000.200012207, 92.300003051758, 0, 0, 0);
+	CreateDynamicObject(2999, 405.20001220703, -1000.299987793, 92.300003051758, 0, 0, 0);
+	CreateDynamicObject(3002, 405.5, -1001.0999755859, 92.300003051758, 0, 0, 0);
+	CreateDynamicObject(3101, 405.20001220703, -1001.700012207, 92.300003051758, 0, 0, 0);
+	CreateDynamicObject(1669, 410.10000610352, -998.40002441406, 92.599998474121, 0, 0, 0);
+	CreateDynamicObject(1667, 410, -998.40002441406, 92.5, 0, 0, 0);
+	CreateDynamicObject(1665, 410.39999389648, -996, 92.199996948242, 0, 0, 0);
+	CreateDynamicObject(1512, 407.89999389648, -1000.4000244141, 92.5, 0, 0, 0);
+	CreateDynamicObject(1455, 407.89999389648, -1000.200012207, 92.400001525879, 0, 0, 0);
+	CreateDynamicObject(947, 384.10000610352, -1000.700012207, 93.5, 0, 0, 270);
+	CreateDynamicObject(2286, 405.60000610352, -989.20001220703, 93.599998474121, 0, 0, 0);
+	CreateDynamicObject(2239, 402.5, -997.70001220703, 91.400001525879, 0, 0, 210);
+	CreateDynamicObject(2114, 383.70001220703, -1000.0999755859, 91.5, 0, 0, 0);
+	CreateDynamicObject(2164, 407.39999389648, -993.90002441406, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(1742, 402.2998046875, -985.59997558594, 91.400001525879, 0, 0, 270);
+	CreateDynamicObject(2292, 400, -984.70001220703, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2295, 406.89999389648, -1002.9000244141, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2291, 400.5, -984.70001220703, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2291, 400, -986.20001220703, 91.400001525879, 0, 0, 90);
+	CreateDynamicObject(2291, 400, -987.20001220703, 91.400001525879, 0, 0, 90);
+	CreateDynamicObject(2273, 400.70001220703, -984.79998779297, 93, 0, 0, 0);
+	CreateDynamicObject(2270, 400, -994.90002441406, 93, 0, 0, 90);
+	CreateDynamicObject(2269, 400, -993.59997558594, 93, 0, 0, 90);
+	CreateDynamicObject(2265, 406.79998779297, -1000, 93, 0, 0, 270);
+	CreateDynamicObject(2263, 403, -1002.799987793, 93.599998474121, 0, 0, 178);
+	CreateDynamicObject(2576, 407.599609375, -988.7998046875, 91.400001525879, 0, 0, 90);
+	CreateDynamicObject(2238, 400.20001220703, -1002.9000244141, 92.900001525879, 0, 0, 0);
+	CreateDynamicObject(2818, 400.70001220703, -996.59997558594, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2818, 400.70001220703, -995.5, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2818, 400.89999389648, -1002.4000244141, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(2195, 399.79998779297, -998.90002441406, 92, 0, 0, 0);
+	CreateDynamicObject(2243, 407, -999, 91.699996948242, 0, 0, 0);
+	CreateDynamicObject(2246, 413, -999.5, 91.800003051758, 0, 0, 0);
+	CreateDynamicObject(2251, 400.79998779297, -1002.9000244141, 93.400001525879, 0, 0, 0);
+	CreateDynamicObject(2253, 407.70001220703, -998.79998779297, 91.699996948242, 0, 0, 0);
+	CreateDynamicObject(2811, 412.89999389648, -994.20001220703, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(3802, 412.79998779297, -998.90002441406, 93.900001525879, 0, 0, 180);
+	CreateDynamicObject(19449, 411.60000610352, -998.59997558594, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19449, 408.10000610352, -998.599609375, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19449, 401.10000610352, -998.599609375, 94.699996948242, 0, 90, 0);
+	CreateDynamicObject(19449, 404.60000610352, -998.599609375, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19449, 411.599609375, -988.97998046875, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19449, 401.099609375, -988.9794921875, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19449, 404.599609375, -988.9794921875, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19449, 408.099609375, -988.9794921875, 94.669998168945, 0, 90, 0);
+	CreateDynamicObject(19125, 383.39999389648, -1005, 91.900001525879, 0, 0, 0);
+	CreateDynamicObject(1734, 401, -995.29998779297, 94.5, 0, 0, 0);
+	CreateDynamicObject(957, 410.10000610352, -989.90002441406, 94.550003051758, 0, 0, 0);
+	CreateDynamicObject(957, 409.60000610352, -998.90002441406, 94.599998474121, 0, 0, 0);
+	CreateDynamicObject(957, 402.5, -1001.5, 94.599998474121, 0, 0, 0);
+	CreateDynamicObject(957, 404.20001220703, -987.59997558594, 94.599998474121, 0, 0, 0);
+	CreateDynamicObject(957, 399.70001220703, -987.40002441406, 94.599998474121, 0, 0, 0);
+	CreateDynamicObject(1697, 410.5, -987.20001220703, 96.400001525879, 0, 0, 180);
+	CreateDynamicObject(970, 410.20001220703, -1005.5, 91.900001525879, 0, 0, 181.99951171875);
+	CreateDynamicObject(970, 406.10000610352, -1005.5999755859, 91.900001525879, 0, 0, 181.99951171875);
+	CreateDynamicObject(970, 402, -1005.700012207, 91.900001525879, 0, 0, 181.99951171875);
+	CreateDynamicObject(970, 397.89999389648, -1005.9000244141, 91.900001525879, 0, 0, 181.99951171875);
+	CreateDynamicObject(713, 430.39999389648, -1005.4000244141, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(673, 398.70001220703, -1006.5999755859, 91.400001525879, 0, 0, 0);
+	CreateDynamicObject(673, 406.70001220703, -1006.5, 91.5, 0, 0, 0);
+	CreateDynamicObject(792, 392.10000610352, -985.20001220703, 91.5, 0, 0, 0);
+	CreateDynamicObject(792, 388.29998779297, -985.20001220703, 91.5, 0, 0, 0);
+	CreateDynamicObject(792, 384.5, -984.90002441406, 91.5, 0, 0, 0);
+	CreateDynamicObject(1690, 385.70001220703, -988.5, 95.300003051758, 0, 0, 310);
+	CreateDynamicObject(2652, 392.89999389648, -988, 91.800003051758, 0, 0, 0);
+	CreateDynamicObject(2652, 392, -987.5, 91.800003051758, 0, 0, 90);
+	CreateDynamicObject(1985, 384.79998779297, -989.79998779297, 94.5, 0, 0, 0);
 }
 
 stock DeleteObjects(playerid)
 {
 	// - Petrol damıtma alanı objeleri
-   	RemoveBuildingForPlayer(playerid, 3682, 247.9297, 1461.8594, 33.4141, 0.25);
+	   RemoveBuildingForPlayer(playerid, 3682, 247.9297, 1461.8594, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3682, 192.2734, 1456.1250, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3682, 199.7578, 1397.8828, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3683, 133.7422, 1356.9922, 17.0938, 0.25);
@@ -4900,23 +4900,23 @@ stock DeleteObjects(playerid)
 
 SkyAntiDeAMX()
 {
-    new AMX;
-    #emit load.pri AMX
-    #emit stor.pri AMX
+	new AMX;
+	#emit load.pri AMX
+	#emit stor.pri AMX
 
 	new AMXX;
-    #emit load.pri AMXX
-    #emit stor.pri AMXX
+	#emit load.pri AMXX
+	#emit stor.pri AMXX
 
-    new AMXXX;
-    #emit LOAD.S.alt AMXXX
-    #emit STOR.S.alt AMXXX
+	new AMXXX;
+	#emit LOAD.S.alt AMXXX
+	#emit STOR.S.alt AMXXX
 
-    new AMXXXX[][] =
-    {
-        "Unarmed (Fist)",
-        "Brass K"
-    };
-    #pragma unused AMXXXX
+	new AMXXXX[][] =
+	{
+		"Unarmed (Fist)",
+		"Brass K"
+	};
+	#pragma unused AMXXXX
 
 }

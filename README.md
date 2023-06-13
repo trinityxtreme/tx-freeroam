@@ -1,15 +1,15 @@
 # trinity-xtreme
 
-[![sampctl](https://img.shields.io/badge/sampctl-trinity--xtreme-2f2f2f.svg?style=for-the-badge)](https://github.com/gguilt/trinity-xtreme)
+[![sampctl](https://img.shields.io/badge/sampctl-trinity--xtreme-2f2f2f.svg?style=for-the-badge)](https://github.com/naphteine/trinity-xtreme)
 
-![trinity](https://github.com/gguilt/trinity-xtreme/raw/main/graphics/crosscuk-trinity.jpg)
+![trinity](https://github.com/naphteine/trinity-xtreme/raw/main/graphics/crosscuk-trinity.jpg)
 
 ## Installation
 
 Simply install to your project:
 
 ```bash
-sampctl package install gguilt/trinity-xtreme
+sampctl package install naphteine/trinity-xtreme
 ```
 
 Include in your code and begin using the library:

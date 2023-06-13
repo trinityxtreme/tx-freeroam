@@ -243,23 +243,23 @@ new firstperson[MAX_PLAYERS];
 
 new g_VehNames[][] =
 {
-	!"{FFFFFF}Landstalker", !"{FFFFFF}Bravura", !"{FFFFFF}Buffalo", !"{FFFFFF}Linerunner", !"{FFFFFF}Pereniel", !"{FFFFFF}Sentinel", !"{FFFFFF}Dumper", !"{FFFFFF}Firetruck", !"{FFFFFF}Trashmaster", !"{FFFFFF}Stretch", !"{FFFFFF}Manana", !"{FFFFFF}Infernus",
-	!"{FFFFFF}Voodoo", !"{FFFFFF}Pony", !"{FFFFFF}Mule", !"{FFFFFF}Cheetah", !"{FFFFFF}Ambulance", !"{FFFFFF}Leviathan", !"{FFFFFF}Moonbeam", !"{FFFFFF}Esperanto", !"{FFFFFF}Taxi", !"{FFFFFF}Washington", !"{FFFFFF}Bobcat", !"{FFFFFF}Mr Whoopee", !"{FFFFFF}BF Injection",
-	!"{FFFFFF}Hunter [YASAK]", !"{FFFFFF}Premier", !"{FFFFFF}Enforcer", !"{FFFFFF}Securicar", !"{FFFFFF}Banshee", !"{FFFFFF}Predator", !"{FFFFFF}Bus", !"{FFFFFF}Rhino [YASAK]", !"{FFFFFF}Barracks", !"{FFFFFF}Hotknife", !"{FFFFFF}Trailer", !"{FFFFFF}Previon", !"{FFFFFF}Coach", !"{FFFFFF}Cabbie",
-	!"{FFFFFF}Stallion", !"{FFFFFF}Rumpo", !"{FFFFFF}RC Bandit", !"{FFFFFF}Romero", !"{FFFFFF}Packer", !"{FFFFFF}Monster", !"{FFFFFF}Admiral", !"{FFFFFF}Squalo", !"{FFFFFF}Seasparrow", !"{FFFFFF}Pizzaboy", !"{FFFFFF}Tram", !"{FFFFFF}Trailer", !"{FFFFFF}Turismo", !"{FFFFFF}Speeder",
-	!"{FFFFFF}Reefer", !"{FFFFFF}Tropic", !"{FFFFFF}Flatbed", !"{FFFFFF}Yankee", !"{FFFFFF}Caddy", !"{FFFFFF}Solair", !"{FFFFFF}Berkley's RC Van", !"{FFFFFF}Skimmer", !"{FFFFFF}PCJ-600", !"{FFFFFF}Faggio", !"{FFFFFF}Freeway", !"{FFFFFF}RC Baron", !"{FFFFFF}RC Raider",
-	!"{FFFFFF}Glendale", !"{FFFFFF}Oceanic", !"{FFFFFF}Sanchez", !"{FFFFFF}Sparrow", !"{FFFFFF}Patriot", !"{FFFFFF}Quad", !"{FFFFFF}Coastguard", !"{FFFFFF}Dinghy", !"{FFFFFF}Hermes", !"{FFFFFF}Sabre", !"{FFFFFF}Rustler", !"{FFFFFF}ZR3 50", !"{FFFFFF}Walton", !"{FFFFFF}Regina",
-	!"{FFFFFF}Comet", !"{FFFFFF}BMX", !"{FFFFFF}Burrito", !"{FFFFFF}Camper", !"{FFFFFF}Marquis", !"{FFFFFF}Baggage", !"{FFFFFF}Dozer", !"{FFFFFF}Maverick", !"{FFFFFF}News Chopper", !"{FFFFFF}Rancher", !"{FFFFFF}FBI Rancher", !"{FFFFFF}Virgo", !"{FFFFFF}Greenwood",
-	!"{FFFFFF}Jetmax", !"{FFFFFF}Hotring", !"{FFFFFF}Sandking", !"{FFFFFF}Blista Compact", !"{FFFFFF}Police Maverick", !"{FFFFFF}Boxville", !"{FFFFFF}Benson", !"{FFFFFF}Mesa", !"{FFFFFF}RC Goblin", !"{FFFFFF}Hotring Racer A", !"{FFFFFF}Hotring Racer B",
-	!"{FFFFFF}Bloodring Banger", !"{FFFFFF}Rancher", !"{FFFFFF}Super GT", !"{FFFFFF}Elegant", !"{FFFFFF}Journey", !"{FFFFFF}Bike", !"{FFFFFF}Mountain Bike", !"{FFFFFF}Beagle", !"{FFFFFF}Cropdust", !"{FFFFFF}Stunt", !"{FFFFFF}Tanker", !"{FFFFFF}RoadTrain",
-	!"{FFFFFF}Nebula", !"{FFFFFF}Majestic", !"{FFFFFF}Buccaneer", !"{FFFFFF}Shamal", !"{FFFFFF}Hydra [YASAK]", !"{FFFFFF}FCR-900", !"{FFFFFF}NRG-500", !"{FFFFFF}HPV1000", !"{FFFFFF}Cement Truck", !"{FFFFFF}Tow Truck", !"{FFFFFF}Fortune", !"{FFFFFF}Cadrona", !"{FFFFFF}FBI Truck",
-	!"{FFFFFF}Willard", !"{FFFFFF}Forklift", !"{FFFFFF}Tractor", !"{FFFFFF}Combine", !"{FFFFFF}Feltzer", !"{FFFFFF}Remington", !"{FFFFFF}Slamvan", !"{FFFFFF}Blade", !"{FFFFFF}Freight", !"{FFFFFF}Streak", !"{FFFFFF}Vortex", !"{FFFFFF}Vincent", !"{FFFFFF}Bullet", !"{FFFFFF}Clover",
-	!"{FFFFFF}Sadler", !"{FFFFFF}Firetruck", !"{FFFFFF}Hustler", !"{FFFFFF}Intruder", !"{FFFFFF}Primo", !"{FFFFFF}Cargobob", !"{FFFFFF}Tampa", !"{FFFFFF}Sunrise", !"{FFFFFF}Merit", !"{FFFFFF}Utility", !"{FFFFFF}Nevada", !"{FFFFFF}Yosemite", !"{FFFFFF}Windsor", !"{FFFFFF}Monster A",
-	!"{FFFFFF}Monster B", !"{FFFFFF}Uranus", !"{FFFFFF}Jester", !"{FFFFFF}Sultan", !"{FFFFFF}Stratum", !"{FFFFFF}Elegy", !"{FFFFFF}Raindance", !"{FFFFFF}RC Tiger", !"{FFFFFF}Flash", !"{FFFFFF}Tahoma", !"{FFFFFF}Savanna", !"{FFFFFF}Bandito", !"{FFFFFF}Freight", !"{FFFFFF}Trailer",
-	!"{FFFFFF}Kart", !"{FFFFFF}Mower", !"{FFFFFF}Duneride", !"{FFFFFF}Sweeper", !"{FFFFFF}Broadway", !"{FFFFFF}Tornado", !"{FFFFFF}AT-400", !"{FFFFFF}DFT-30", !"{FFFFFF}Huntley", !"{FFFFFF}Stafford", !"{FFFFFF}BF-400", !"{FFFFFF}Newsvan", !"{FFFFFF}Tug", !"{FFFFFF}Trailer A", !"{FFFFFF}Emperor",
-	!"{FFFFFF}Wayfarer", !"{FFFFFF}Euros", !"{FFFFFF}Hotdog", !"{FFFFFF}Club", !"{FFFFFF}Trailer B", !"{FFFFFF}Trailer C", !"{FFFFFF}Andromada", !"{FFFFFF}Dodo", !"{FFFFFF}RC Cam", !"{FFFFFF}Launch", !"{FFFFFF}Police Car (LSPD)", !"{FFFFFF}Police Car (SFPD)",
-	!"{FFFFFF}Police Car (LVPD)", !"{FFFFFF}Police Ranger", !"{FFFFFF}Picador", !"{FFFFFF}S.W.A.T. Van", !"{FFFFFF}Alpha", !"{FFFFFF}Phoenix", !"{FFFFFF}Glendale", !"{FFFFFF}Sadler", !"{FFFFFF}Luggage Trailer A", !"{FFFFFF}Luggage Trailer B",
-	!"{FFFFFF}Stair Trailer", !"{FFFFFF}Boxville", !"{FFFFFF}Farm Plow", !"{FFFFFF}Utility Trailer"
+	!"Landstalker", !"Bravura", !"Buffalo", !"Linerunner", !"Pereniel", !"Sentinel", !"Dumper", !"Firetruck", !"Trashmaster", !"Stretch", !"Manana", !"Infernus",
+	!"Voodoo", !"Pony", !"Mule", !"Cheetah", !"Ambulance", !"Leviathan", !"Moonbeam", !"Esperanto", !"Taxi", !"Washington", !"Bobcat", !"Mr Whoopee", !"BF Injection",
+	!"Hunter [YASAK]", !"Premier", !"Enforcer", !"Securicar", !"Banshee", !"Predator", !"Bus", !"Rhino [YASAK]", !"Barracks", !"Hotknife", !"Trailer", !"Previon", !"Coach", !"Cabbie",
+	!"Stallion", !"Rumpo", !"RC Bandit", !"Romero", !"Packer", !"Monster", !"Admiral", !"Squalo", !"Seasparrow", !"Pizzaboy", !"Tram", !"Trailer", !"Turismo", !"Speeder",
+	!"Reefer", !"Tropic", !"Flatbed", !"Yankee", !"Caddy", !"Solair", !"Berkley's RC Van", !"Skimmer", !"PCJ-600", !"Faggio", !"Freeway", !"RC Baron", !"RC Raider",
+	!"Glendale", !"Oceanic", !"Sanchez", !"Sparrow", !"Patriot", !"Quad", !"Coastguard", !"Dinghy", !"Hermes", !"Sabre", !"Rustler", !"ZR3 50", !"Walton", !"Regina",
+	!"Comet", !"BMX", !"Burrito", !"Camper", !"Marquis", !"Baggage", !"Dozer", !"Maverick", !"News Chopper", !"Rancher", !"FBI Rancher", !"Virgo", !"Greenwood",
+	!"Jetmax", !"Hotring", !"Sandking", !"Blista Compact", !"Police Maverick", !"Boxville", !"Benson", !"Mesa", !"RC Goblin", !"Hotring Racer A", !"Hotring Racer B",
+	!"Bloodring Banger", !"Rancher", !"Super GT", !"Elegant", !"Journey", !"Bike", !"Mountain Bike", !"Beagle", !"Cropdust", !"Stunt", !"Tanker", !"RoadTrain",
+	!"Nebula", !"Majestic", !"Buccaneer", !"Shamal", !"Hydra [YASAK]", !"FCR-900", !"NRG-500", !"HPV1000", !"Cement Truck", !"Tow Truck", !"Fortune", !"Cadrona", !"FBI Truck",
+	!"Willard", !"Forklift", !"Tractor", !"Combine", !"Feltzer", !"Remington", !"Slamvan", !"Blade", !"Freight", !"Streak", !"Vortex", !"Vincent", !"Bullet", !"Clover",
+	!"Sadler", !"Firetruck", !"Hustler", !"Intruder", !"Primo", !"Cargobob", !"Tampa", !"Sunrise", !"Merit", !"Utility", !"Nevada", !"Yosemite", !"Windsor", !"Monster A",
+	!"Monster B", !"Uranus", !"Jester", !"Sultan", !"Stratum", !"Elegy", !"Raindance", !"RC Tiger", !"Flash", !"Tahoma", !"Savanna", !"Bandito", !"Freight", !"Trailer",
+	!"Kart", !"Mower", !"Duneride", !"Sweeper", !"Broadway", !"Tornado", !"AT-400", !"DFT-30", !"Huntley", !"Stafford", !"BF-400", !"Newsvan", !"Tug", !"Trailer A", !"Emperor",
+	!"Wayfarer", !"Euros", !"Hotdog", !"Club", !"Trailer B", !"Trailer C", !"Andromada", !"Dodo", !"RC Cam", !"Launch", !"Police Car (LSPD)", !"Police Car (SFPD)",
+	!"Police Car (LVPD)", !"Police Ranger", !"Picador", !"S.W.A.T. Van", !"Alpha", !"Phoenix", !"Glendale", !"Sadler", !"Luggage Trailer A", !"Luggage Trailer B",
+	!"Stair Trailer", !"Boxville", !"Farm Plow", !"Utility Trailer"
 };
 
 // - Modifiyeli Araç spawn sistemi tanıtımları
@@ -328,29 +328,29 @@ forward EvYakininda(playerid);
 
 // - Random spawn
 new Float:RandomPlayerSpawns[23][3] = {
-	{1958.3783,1343.1572,15.3746},
-	{2199.6531,1393.3678,10.8203},
-	{2483.5977,1222.0825,10.8203},
-	{2637.2712,1129.2743,11.1797},
-	{2000.0106,1521.1111,17.0625},
-	{2024.8190,1917.9425,12.3386},
-	{2261.9048,2035.9547,10.8203},
-	{2262.0986,2398.6572,10.8203},
-	{2244.2566,2523.7280,10.8203},
-	{2335.3228,2786.4478,10.8203},
-	{2150.0186,2734.2297,11.1763},
-	{2158.0811,2797.5488,10.8203},
-	{1969.8301,2722.8564,10.8203},
-	{1652.0555,2709.4072,10.8265},
-	{1564.0052,2756.9463,10.8203},
-	{1271.5452,2554.0227,10.8203},
-	{1441.5894,2567.9099,10.8203},
-	{1480.6473,2213.5718,11.0234},
-	{1400.5906,2225.6960,11.0234},
-	{1598.8419,2221.5676,11.0625},
-	{1318.7759,1251.3580,10.8203},
-	{1558.0731,1007.8292,10.8125},
-	{1705.2347,1025.6808,10.8203}
+	{ 1958.3783, 1343.1572, 15.3746 },
+	{ 2199.6531, 1393.3678, 10.8203 },
+	{ 2483.5977, 1222.0825, 10.8203 },
+	{ 2637.2712, 1129.2743, 11.1797 },
+	{ 2000.0106, 1521.1111, 17.0625 },
+	{ 2024.8190, 1917.9425, 12.3386 },
+	{ 2261.9048, 2035.9547, 10.8203 },
+	{ 2262.0986, 2398.6572, 10.8203 },
+	{ 2244.2566, 2523.7280, 10.8203 },
+	{ 2335.3228, 2786.4478, 10.8203 },
+	{ 2150.0186, 2734.2297, 11.1763 },
+	{ 2158.0811, 2797.5488, 10.8203 },
+	{ 1969.8301, 2722.8564, 10.8203 },
+	{ 1652.0555, 2709.4072, 10.8265 },
+	{ 1564.0052, 2756.9463, 10.8203 },
+	{ 1271.5452, 2554.0227, 10.8203 },
+	{ 1441.5894, 2567.9099, 10.8203 },
+	{ 1480.6473, 2213.5718, 11.0234 },
+	{ 1400.5906, 2225.6960, 11.0234 },
+	{ 1598.8419, 2221.5676, 11.0625 },
+	{ 1318.7759, 1251.3580, 10.8203 },
+	{ 1558.0731, 1007.8292, 10.8125 },
+	{ 1705.2347, 1025.6808, 10.8203 }
 };
 
 main()
@@ -505,7 +505,8 @@ public OnGameModeInit()
 	TextDrawSetProportional(textdraw_server, 1);
 
 	printf("Yüklendi: \"Sunucu textdrawlarç.\"");
-	// - Exp sistemi ayarlarç
+
+	// - Exp sistemi ayarları
 	expbox = TextDrawCreate(460.000000, 410.000000, "~n~");
 	TextDrawBackgroundColor(expbox, 255);
 	TextDrawFont(expbox, 1);
@@ -542,22 +543,22 @@ public OnGameModeInit()
 	//expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
 	}
 	printf("Yüklendi: \"Exp-Level sistemi.\"");
-	// - Saat sistemi ayarları
 
-	   Hour = 06;
-	   Minute = 0;
-	   SetWorldTime(Hour);
+	// - Saat sistemi
+	Hour = 06;
+	Minute = 0;
+	SetWorldTime(Hour);
 
-	   TimeText = TextDrawCreate (547.000000, 23.000000, "00:00");
-	   TextDrawBackgroundColor (TimeText, 255);
-	   TextDrawFont (TimeText, 3);
-	   TextDrawLetterSize (TimeText, 0.599999, 2.100000);
-	   TextDrawColor (TimeText, -1);
-	   TextDrawSetOutline (TimeText, 1);
-	   TextDrawSetProportional (TimeText, 1);
+	TimeText = TextDrawCreate (547.000000, 23.000000, "00:00");
+	TextDrawBackgroundColor (TimeText, 255);
+	TextDrawFont (TimeText, 3);
+	TextDrawLetterSize (TimeText, 0.599999, 2.100000);
+	TextDrawColor (TimeText, -1);
+	TextDrawSetOutline (TimeText, 1);
+	TextDrawSetProportional (TimeText, 1);
 
-	   KillTimer(Timer);
-	   Timer = SetTimer("UpdateServerTime",1000,true);
+	KillTimer(Timer);
+	Timer = SetTimer("UpdateServerTime", 1000, true);
 
 	printf("Yüklendi: \"Saat sistemi.\"");
 	// - Sunucu Harita Objeleri

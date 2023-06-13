@@ -831,57 +831,61 @@ public OnPlayerSpawn(playerid)
 	TextDrawShowForPlayer(playerid, Textdraw9);
 	TextDrawShowForPlayer(playerid, textdraw_server);
 	TextDrawShowForPlayer(playerid, TimeText);
+
 	// Exp sistemi
 	TextDrawShowForPlayer(playerid,expbox);
 	TextDrawShowForPlayer(playerid,expmeter[playerid]);
 	//ShowProgressBarForPlayer(playerid,Bar:expbar[playerid]);
 
-	// Exp sistemi bitişi
-
+	// Deathmatch
 	switch(DM[playerid])
 	{
 		case 1:
 		{
-		new State = GetPlayerState(playerid);
-		if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-		{
-		GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-		SendInfo(playerid,"Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-		}
-		DM[playerid]=1;
-		SetPlayerArmour(playerid,100);
-		SetPlayerHealth(playerid,100);
-		SetPlayerInterior(playerid,0);
-		SetPlayerVirtualWorld(playerid,0);
-		ResetPlayerWeapons(playerid);
-		new rand = random(sizeof(deagledm1pos));
-		SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
-		GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-		SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-		GivePlayerWeapon(playerid,24,99999);
-		SetPlayerTeam(playerid, NO_TEAM);
+			new State = GetPlayerState(playerid);
+			if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER) {
+				GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+				SendInfo(playerid,"Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			}
+
+			DM[playerid]=1;
+
+			SetPlayerArmour(playerid,100);
+			SetPlayerHealth(playerid,100);
+			SetPlayerInterior(playerid,0);
+			SetPlayerVirtualWorld(playerid,0);
+			ResetPlayerWeapons(playerid);
+			GivePlayerWeapon(playerid,24,99999);
+
+			new rand = random(sizeof(deagledm1pos));
+			SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
+			GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+			SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			SetPlayerTeam(playerid, NO_TEAM);
 		}
 
 		case 2:
 		{
-		new State = GetPlayerState(playerid);
-		if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-		{
-		GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-		SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-		}
-		DM[playerid]=2;
-		SetPlayerArmour(playerid,100);
-		SetPlayerHealth(playerid,100);
-		SetPlayerSkin(playerid, 80);
-		SetPlayerInterior(playerid,1);
-		SetPlayerVirtualWorld(playerid,0);
-		ResetPlayerWeapons(playerid);
-		new rand = random(sizeof(fistdm1pos));
-		SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
-		GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-		SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-		SetPlayerTeam(playerid, NO_TEAM);
+			new State = GetPlayerState(playerid);
+			if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER) {
+				GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+				SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			}
+
+			DM[playerid]=2;
+
+			SetPlayerArmour(playerid,100);
+			SetPlayerHealth(playerid,100);
+			SetPlayerSkin(playerid, 80);
+			SetPlayerInterior(playerid,1);
+			SetPlayerVirtualWorld(playerid,0);
+			ResetPlayerWeapons(playerid);
+
+			new rand = random(sizeof(fistdm1pos));
+			SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
+			GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+			SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			SetPlayerTeam(playerid, NO_TEAM);
 		}
 	}
 
@@ -910,17 +914,14 @@ public OnPlayerSpawn(playerid)
 
 public OnPlayerDeath(playerid, killerid, reason)
 {
-	ExpVer(killerid);
-	SendDeathMessage(killerid, playerid, reason);
-	SetPlayerScore(killerid,GetPlayerScore(killerid)+1);
-	if(GetPlayerScore(playerid) > 0) return SetPlayerScore(playerid,GetPlayerScore(playerid)-1);
-	PlayerPlaySound(playerid,5206, 0, 0, 0);
-
-	if(!(GetPlayerScore(playerid) <= 0))
-		SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
-
+	if(GetPlayerScore(playerid) > 0) return SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
 	SetPlayerScore(killerid, GetPlayerScore(killerid) + 1);
+
 	SendDeathMessage(killerid, playerid, reason);
+
+	ExpVer(killerid);
+	SetPlayerScore(killerid,GetPlayerScore(killerid)+1);
+	PlayerPlaySound(playerid,5206, 0, 0, 0);
 
 	PlayerAccount[playerid][pA_Hungry] = 0;
 	PlayerAccount[playerid][pA_Radiation] = 0;
@@ -991,11 +992,11 @@ dcmd_pmkapat(playerid, const params[])
 	if(pInfo[playerid][NoPM] == 0)
 	{
 		pInfo[playerid][NoPM] = 1;
-		SendInfo(playerid,"çzel mesaj hattçnızı kapattçnız.");
+		SendInfo(playerid,"Özel mesaj hattınızı kapattınız.");
 	}
 	else
 	{
-		SendError(playerid,"çzel mesaj hattçnız zaten kapalç.");
+		SendError(playerid,"Özel mesaj hattınız zaten kapalı.");
 	}
 }
 
@@ -1004,12 +1005,12 @@ dcmd_pmac(playerid, const params[])
 	#pragma unused params
 	if(pInfo[playerid][NoPM] == 0)
 	{
-		SendInfo(playerid,"çzel mesaj hattçnız zaten açık.");
+		SendInfo(playerid,"Özel mesaj hattınız zaten açık.");
 	}
 	else
 	{
 		pInfo[playerid][NoPM] = 0;
-		SendInfo(playerid,"çzel mesaj hattçnızı açtçnız.");
+		SendInfo(playerid,"Özel mesaj hattınızı açtınız.");
 	}
 }
 
@@ -1017,13 +1018,13 @@ dcmd_pm(playerid, const params[])
 {
 	new pID, text[128], string[128];
 	if(sscanf(params, "us", pID, text)) return SendUse(playerid,"/pm (nick/id) (mesaj)");
-	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadç.");
-	if(pID == playerid) return SendError(playerid,"Kendinize çzel mesaj gçnderemezsiniz.");
-	format(string, sizeof(string), "ç HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun çzel mesaj hattç kapalç.", PlayerName(pID), pID);
+	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
+	if(pID == playerid) return SendError(playerid,"Kendinize çzel mesaj gönderemezsiniz.");
+	format(string, sizeof(string), "** HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun özel mesaj hattı kapalı.", PlayerName(pID), pID);
 	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
-	format(string, sizeof(string), "çç [PM] %s: %s", PlayerName(pID), text);
+	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(pID), text);
 	SendClientMessage(playerid, -1, string);
-	format(string, sizeof(string), "çç [PM] %s: %s", PlayerName(playerid), text);
+	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(playerid), text);
 	SendClientMessage(pID, -1, string);
 	pInfo[pID][Last] = playerid;
 	return 1;
@@ -1034,13 +1035,13 @@ dcmd_reply(playerid, const params[])
 	new text[128], string[128];
 	if(sscanf(params, "s", text)) return SendUse(playerid,"/reply (mesaj)");
 	new pID = pInfo[playerid][Last];
-	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadç.");
-	if(pID == playerid) return SendError(playerid,"Kendinize çzel mesaj gçnderemezsiniz.");
-	format(string, sizeof(string), "ç HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun çzel mesaj hattç kapalç.", PlayerName(pID), pID);
+	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
+	if(pID == playerid) return SendError(playerid,"Kendinize özel mesaj gönderemezsiniz.");
+	format(string, sizeof(string), "** HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun özel mesaj hattı kapalı.", PlayerName(pID), pID);
 	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
-	format(string, sizeof(string), "çç [PM] %s: %s", PlayerName(pID), text);
+	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(pID), text);
 	SendClientMessage(playerid, -1, string);
-	format(string, sizeof(string), "çç [PM] %s: %s", PlayerName(playerid), text);
+	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(playerid), text);
 	SendClientMessage(pID, -1, string);
 	pInfo[pID][Last] = playerid;
 	return 1;
@@ -1145,37 +1146,37 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		PlayAudioStreamForPlayer(playerid, randomSongs[music][0], pX, pY, pZ, 20.0, 1);
 		SetPlayerAttachedObject(playerid, 0, 19317, 6, -0.434999, -0.387000, 0.180000, -58.100009, -96.599891, 24.100002, 1.000000, 1.000000, 1.000000);
 		ApplyAnimation(playerid,"BEACH", "ParkSit_M_loop", 4.0, 1, 0, 0, 0, 0);
-		showMessage(playerid, "Gitar çalmaya baÅŸladçnız, durmak için: /guitardown");
+		showMessage(playerid, "Gitar çalmaya başladınız, durmak için: /guitardown");
 		return 1;
 	}
 
 	if(!strcmp(cmdtext, "/guitardown", true))
 	{
-		if(guitarSong[playerid] == false) return showMessage(playerid, "Gitar çalmçyorsunuz! (/guitar)");
+		if(guitarSong[playerid] == false) return showMessage(playerid, "Zaten gitar çalmıyorsunuz! (/guitar)");
 		guitarSong[playerid] = false;
 
 		TogglePlayerControllable(playerid, 1);
 		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
 		ClearAnimations(playerid);
-		showMessage(playerid, "Gitar çalmayç bçraktçnız!");
+		showMessage(playerid, "Gitar çalmayı bıraktınız!");
 		return 1;
 	}
 
 
 	if(!strcmp("/dmcik",cmdtext,true))
 	{
-		if(DM[playerid] == 0) return SendError(playerid,"Zaten deathmatch alançnda deçilsin!");
+		if(DM[playerid] == 0) return SendError(playerid,"Zaten deathmatch alanında değilsin!");
 		DM[playerid]=0;
 		SetPlayerArmour(playerid,0.0);
 		SetPlayerHealth(playerid,100.0);
 		ResetPlayerWeapons(playerid);
 		SpawnPlayer(playerid);
-		SendInfo(playerid,"Deathmatch alançndan çıktçnız.");
+		SendInfo(playerid,"Deathmatch alanından çıktınız.");
 		return 1;
 	}
 
-	   if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alançnda komut kullanmak yasaktçr. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	   if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alanında komut kullanmak yasaktır. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 	// - DCMD komutlarç
 	dcmd(pm, 2, cmdtext);
 	dcmd(ms, 2, cmdtext);
@@ -1188,13 +1189,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	// - Genel komutlar && dialog komutlarç
 	if(!strcmp(cmdtext, "/kurallar", true))
 	{
-	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktçr.\n~~ Argo yasaktçr.\n~~ çnanç & gçrççe karçç hakaret yasaktçr.\n~~ Yçnetimi rahatsız etmek yasaktçr.","Kapat","");
+	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktır.\n~~ Argo yasaktır.\n~~ İnanç ve görüşe karşı hakaret yasaktır.\n~~ Yönetimi rahatsız etmek yasaktır.","Kapat","");
 	return 1;
 	}
 
 	if(!strcmp(cmdtext, "/changelog", true))
 	{
-	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyalarç oluçturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles mençsı eklendi.\n~ Yardçm mençsı eklendi.\n~ Kurallar mençsı eklendi.\n~ çlk haritalar ve Araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarç eklendi.","RC1.1","Kapat");
+	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyalarç oluçturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles menüsü eklendi.\n~ Yardım menüsü eklendi.\n~ Kurallar menüsü eklendi.\n~ İlk haritalar ve araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarç eklendi.","RC1.1","Kapat");
 	return 1;
 	}
 
@@ -1534,133 +1535,110 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	AttachPlayerObjectToVehicle(playerid,Surus[playerid],p,-0.314999, -0.195000, 0.510000, 0.000000, 0.000000, 0.000000);
 	AttachCameraToPlayerObject(playerid,Surus[playerid]);
 	SetPVarInt(playerid,"used",1);
-	SendInfo(playerid,"Kamerayç eski haline dçndçrmek için {00FF00}/surus {FFFFFF}yazınız.");
+	SendInfo(playerid,"Kamerayı eski haline döndürmek için {00FF00}/surus {FFFFFF}yazınız.");
 	}
-	else if(GetPVarInt(playerid,"used") == 1)
+	else
 	{
 	SetCameraBehindPlayer(playerid);
 	DestroyPlayerObject(playerid,Surus[playerid]);
 	SetPVarInt(playerid,"used",0);
-	SendInfo(playerid,"Kamera eski haline dçndçrçldç."); }
+	SendInfo(playerid,"Kamera eski haline döndürüldü."); }
 	return 1;
 	}
 
-	// - Iççnlanma komutlarç
+	// - Işınlanma komutları
 	if(strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0)
 	{
 	Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-	SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/dag", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0)
 	{
 	Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
-	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/sahil", true) == 0)
 	{
 	Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
-	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/area51", true) == 0)
 	{
 	Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
-	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/china", true) == 0)
 	{
 	Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
-	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/flores", true) == 0)
 	{
 	Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
-	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
 	if(strcmp(cmdtext, "/mod1", true) == 0)
 	{
 	Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 1 {FFFFFF}alanına ışınlanıldı.");
 	return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod2", true) == 0)
-	{
-	Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 2 {FFFFFF}alanına ışınlanıldı.");
-	return 1;
+	if(strcmp(cmdtext,"/mod2", true) == 0) {
+		Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod3", true) == 0)
-	{
-	Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 3 {FFFFFF}alanına ışınlanıldı.");
-	return 1;
+	if(strcmp(cmdtext,"/mod3", true) == 0) {
+		Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod4", true) == 0)
-	{
-	Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanına ışınlanıldı.");
-	 return 1;
+	if(strcmp(cmdtext,"/mod4", true) == 0) {
+		Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod5", true) == 0)
-	{
-	Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanına ışınlanıldı.");
-	 return 1;
+	if(strcmp(cmdtext,"/mod5", true) == 0) {
+		Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap1", true) == 0)
-	{
-	Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanına ışınlanıldı.");
-	 return 1;
+	if(strcmp(cmdtext,"/ap1", true) == 0) {
+		Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap2", true) == 0)
-	{
-	Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanına ışınlanıldı.");
-	 return 1;
+	if(strcmp(cmdtext,"/ap2", true) == 0) {
+		Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap3", true) == 0)
-	{
-	Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanına ışınlanıldı.");
-	 return 1;
+	if(strcmp(cmdtext,"/ap3", true) == 0) {
+		Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
+		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap4", true) == 0)
-	{
-	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanına ışınlanıldı.");
-	 return 1;
+	if(strcmp(cmdtext,"/ap4", true) == 0) {
+		Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
+		return 1;
 	}
 
 	// - Can & zırh komutlarç
 	if(strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0)
 	{
-	if(GetPVarInt(playerid, "SpamKoruma") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
-	SetPVarInt(playerid, "SpamKoruma", GetTickCount() + 30000);
-	if(GetPlayerMoney(playerid) < 750)
-	return SendError(playerid,"Paranız {FF0000}yetersiz!");
-	SetPlayerHealth(playerid,100);
-	GivePlayerMoney(playerid,-750);
-	SendInfo(playerid,"Can paketi {00FF00}başarıyla {FFFFFF}alındı. [750$]");
+		if(GetPVarInt(playerid, "SpamKoruma") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+		SetPVarInt(playerid, "SpamKoruma", GetTickCount() + 30000);
+		if(GetPlayerMoney(playerid) < 750)
+		return SendError(playerid,"Paranız {FF0000}yetersiz!");
+		SetPlayerHealth(playerid,100);
+		GivePlayerMoney(playerid,-750);
+		SendInfo(playerid,"Can paketi {00FF00}başarıyla {FFFFFF}alındı. [750$]");
 	return 1;
 	}
 
@@ -2523,87 +2501,24 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	}
-	// - Teles alanlarç dialoglarç
-	if(dialogid == 1000)
-	{
-	if(response)
-	{
-	if(listitem == 0)
-	{
-	Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-	SendInfo(playerid,"{ACDA00}Four Dragon Casino {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 1)
-	{
-	Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
-	SendInfo(playerid,"{ACDA00}Chilliad Mountain {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 2)
-	{
-	Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
-	SendInfo(playerid,"{ACDA00}Santa Maria Beach {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 3)
-	{
-	Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
-	SendInfo(playerid,"{ACDA00}Area51 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 4)
-	{
-	Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
-	SendInfo(playerid,"{ACDA00}China Town {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 5)
-	{
-	Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
-	SendInfo(playerid,"{ACDA00}Los Flores {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 6)
-	{
-	Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 1 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 7)
-	{
-	Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 2 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 8)
-	{
-	Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 3 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 9)
-	{
-	Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 4 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 10)
-	{
-	Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
-	SendInfo(playerid,"{ACDA00}Modifiye Yeri 5 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 11)
-	{
-	Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 1 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 12)
-	{
-	Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 2 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 13)
-	{
-	Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 3 {FFFFFF}alanına ışınlanıldı.");
-	}
-	if(listitem == 14)
- {
-	Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
-	SendInfo(playerid,"{ACDA00}Airport 4 {FFFFFF}alanına ışınlanıldı.");
-	}
-	}
+
+	// - Teles alanları diyalogları
+	if(dialogid == 1000 && response) {
+		if(listitem == 0) Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
+		if(listitem == 1) Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
+		if(listitem == 2) Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
+		if(listitem == 3) Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
+		if(listitem == 4) Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
+		if(listitem == 5) Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
+		if(listitem == 6) Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
+		if(listitem == 7) Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
+		if(listitem == 8) Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
+		if(listitem == 9) Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
+		if(listitem == 10) Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
+		if(listitem == 11) Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
+		if(listitem == 12) Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
+		if(listitem == 13) Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
+		if(listitem == 14) Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
 	}
 
 	// - Changelog dialoglarç
@@ -3300,34 +3215,26 @@ stock SilahSat(playerid,silahid,silahammo,const silahisim[],ucret)
 }
 
 // - Teleport sistemi
-stock Teleport(playerid,Float:tX,Float:tY,Float:tZ,Int,World, const isim[], const command[],arabali,objeyukle)
+stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const isim[], const command[], arabali, objeyukle)
 {
-	if(objeyukle == 1)
-	 {
-		ObjeYukle(playerid);
-	 }
-	if(arabali == 1)
-	{
-		if(IsPlayerInAnyVehicle(playerid))
-		{
-			SetVehiclePos(GetPlayerVehicleID(playerid),tX,tY,tZ);
-			LinkVehicleToInterior(GetPlayerVehicleID(playerid),Int);
-			SetPlayerInterior(playerid,Int);
-			SetPlayerVirtualWorld(playerid,World);
-		}else{
-			SetPlayerPos(playerid,tX,tY,tZ);
-			SetPlayerInterior(playerid,Int);
-			SetPlayerVirtualWorld(playerid,World);
-		}
-	 }else{
-		  SetPlayerPos(playerid,tX,tY,tZ);
-		  SetPlayerInterior(playerid,Int);
-		  SetPlayerVirtualWorld(playerid,World);
-	 }
+	if(objeyukle == 1) ObjeYukle(playerid);
+
+	if(arabali == 1 && IsPlayerInAnyVehicle(playerid)) {
+		SetVehiclePos(GetPlayerVehicleID(playerid),tX,tY,tZ);
+		LinkVehicleToInterior(GetPlayerVehicleID(playerid),Int);
+	} else {
+		SetPlayerPos(playerid,tX,tY,tZ);
+	}
+
+	SetPlayerInterior(playerid, Int);
+	SetPlayerVirtualWorld(playerid, World);
 
 	new string[512];
-	format(string,512,"ç BçLGç: {FFFFFF}%s rumuzlu oyuncu {ACDA00}%s {FFFFFF}bçlgesine çççnlandç. {ACDA00}(%s)",PlayerName(playerid),isim,command);
-	SendClientMessageToAll(0x00A2F6AA,string);
+	format(string,512,"** BİLGİ: {FFFFFF}%s rumuzlu oyuncu {ACDA00}%s {FFFFFF}bölgesine ışınlandı. {ACDA00}(%s)",PlayerName(playerid),isim,command);
+	SendClientMessageToAll(0x00A2F6AA, string);
+
+	format(string, 512, "{ACDA00}%s {FFFFFF}alanına ışınlandınız.", isim);
+	SendInfo(playerid, string);
 }
 
 forward ObjeYukle(playerid);

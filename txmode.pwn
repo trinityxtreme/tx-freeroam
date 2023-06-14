@@ -1690,52 +1690,68 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	if(strcmp(cmdtext, "/m1", true) == 0) {
 		// Sultan
 
-		new Float:X, Float:Y, Float:Z, Float:Angle, LVehicleIDt;
-		GetPlayerPos(playerid, X, Y, Z);
-		GetPlayerFacingAngle(playerid, Angle);
+		new Float:x, Float:y, Float:z, Float:angle, CarID;
 
-		LVehicleIDt = CreateVehicle(560,X,Y,Z,Angle,1,-1,-1);
-		PutPlayerInVehicle(playerid,LVehicleIDt,0);
-		AddVehicleComponent(LVehicleIDt, 1028);
-		AddVehicleComponent(LVehicleIDt, 1030);
-		AddVehicleComponent(LVehicleIDt, 1031);
-		AddVehicleComponent(LVehicleIDt, 1138);
-		AddVehicleComponent(LVehicleIDt, 1140); 
-		AddVehicleComponent(LVehicleIDt, 1170);
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
 
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=LVehicleIDt;
-		MCarPlayerInfo[playerid][pMAraba]=1;
+		carID = CreateVehicle(560, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+
+		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		
-		AddVehicleComponent(LVehicleIDt, 1028);
-		AddVehicleComponent(LVehicleIDt, 1030);
-		AddVehicleComponent(LVehicleIDt, 1031);
-		AddVehicleComponent(LVehicleIDt, 1138);
-		AddVehicleComponent(LVehicleIDt, 1140);
-		AddVehicleComponent(LVehicleIDt, 1170);
-		AddVehicleComponent(LVehicleIDt, 1080);
-		AddVehicleComponent(LVehicleIDt, 1086);
-		AddVehicleComponent(LVehicleIDt, 1087);
-		AddVehicleComponent(LVehicleIDt, 1010);
-		ChangeVehiclePaintjob(LVehicleIDt,1);
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
 		
-		PlayerPlaySound(playerid,1133,0.0,0.0,0.0);
-		SetVehicleVirtualWorld(LVehicleIDt, GetPlayerVirtualWorld(playerid));
-		LinkVehicleToInterior(LVehicleIDt, GetPlayerInterior(playerid));
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1028);
+		AddVehicleComponent(carID, 1030);
+		AddVehicleComponent(carID, 1031);
+		AddVehicleComponent(carID, 1138);
+		AddVehicleComponent(carID, 1140);
+		AddVehicleComponent(carID, 1170);
+		AddVehicleComponent(carID, 1080);
+		AddVehicleComponent(carID, 1086);
+		AddVehicleComponent(carID, 1087);
+		ChangeVehiclePaintjob(carID, 1);
+		
+		PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
 		return 1;
 	}
 
 	if(strcmp(cmdtext, "/m2", true) == 0)	{ 
 		//Sultan
-		new Float:X, Float:Y, Float:Z, Float:Angle, LVehicleIDt;
-		GetPlayerPos(playerid,X,Y,Z);
-		GetPlayerFacingAngle(playerid,Angle);
-		LVehicleIDt = CreateVehicle(560,X,Y,Z,Angle,1,-1,-1);	PutPlayerInVehicle(playerid,LVehicleIDt,0); AddVehicleComponent(LVehicleIDt, 1028);	AddVehicleComponent(LVehicleIDt, 1030);	AddVehicleComponent(LVehicleIDt, 1031);	AddVehicleComponent(LVehicleIDt, 1138);	AddVehicleComponent(LVehicleIDt, 1140);  AddVehicleComponent(LVehicleIDt, 1170);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=LVehicleIDt;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(LVehicleIDt, 1080);	AddVehicleComponent(LVehicleIDt, 1086); AddVehicleComponent(LVehicleIDt, 1087); AddVehicleComponent(LVehicleIDt, 1010);	PlayerPlaySound(playerid,1133,0.0,0.0,0.0);	ChangeVehiclePaintjob(LVehicleIDt,2);
-		SetVehicleVirtualWorld(LVehicleIDt, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(LVehicleIDt, GetPlayerInterior(playerid));
+
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+
+		carID = CreateVehicle(560, x, y, z, anle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1028);
+		AddVehicleComponent(carID, 1030);
+		AddVehicleComponent(carID, 1031);
+		AddVehicleComponent(carID, 1138);
+		AddVehicleComponent(carID, 1140);
+		AddVehicleComponent(carID, 1170);
+		AddVehicleComponent(carID, 1080);
+		AddVehicleComponent(carID, 1086);
+		AddVehicleComponent(carID, 1087);
+		ChangeVehiclePaintjob(carID, 2);
+		
+		PlayerPlaySound(playerid, 1133, 0.0, 0.0, 0.0);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
 		return 1;
 	}
 
@@ -1781,7 +1797,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		GetPlayerPos(playerid, X, Y, Z);
 		GetPlayerFacingAngle(playerid, Angle);
 
-		carid = CreateVehicle(561,X, Y, Z, Angle, 1, -1, -1);
+		carid = CreateVehicle(561, X, Y, Z, Angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carid, 0);
 		
 		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
@@ -1795,6 +1811,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		AddVehicleComponent(carid, 1010);
 		AddVehicleComponent(carid, 1073);
 		ChangeVehiclePaintjob(carid, 1);
+
 		SetVehicleVirtualWorld(carid, GetPlayerVirtualWorld(playerid));
 		LinkVehicleToInterior(carid, GetPlayerInterior(playerid));
 		return 1;

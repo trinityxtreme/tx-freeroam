@@ -1815,23 +1815,23 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 		new Float:x, Float:y, Float:z, Float:angle, carID;
 		
-		GetPlayerPos(playerid,X,Y,Z);
-		GetPlayerFacingAngle(playerid,angle);
+		GetPlayerPos(playerid,x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
 
-		carID = CreateVehicle(558,X,Y,Z,angle,1,-1,-1);
-		PutPlayerInVehicle(playerid,carID,0);
+		carID = CreateVehicle(558, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
 
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
 
-		AddVehicleComponent(carID,1088);
-		AddVehicleComponent(carID,1092);
-		AddVehicleComponent(carID,1139);
-		AddVehicleComponent(carID,1010);
-		AddVehicleComponent(carID,1073);
-		ChangeVehiclePaintjob(carID,1);
+		AddVehicleComponent(carID, 1088);
+		AddVehicleComponent(carID, 1092);
+		AddVehicleComponent(carID, 1139);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1073);
+		ChangeVehiclePaintjob(carID, 1);
 		
 		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
 		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
@@ -1846,7 +1846,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		GetPlayerPos(playerid, x, y, z);
 		GetPlayerFacingAngle(playerid, angle);
 
-		carID = CreateVehicle(561, X, Y, Z, angle, 1, -1, -1);
+		carID = CreateVehicle(561, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
 		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
@@ -1866,91 +1866,196 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m7", true) == 0) {
+	if (strcmp(cmdtext, "/m7", true) == 0) {
 		// Elegy
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(562,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(carID,1034); AddVehicleComponent(carID,1038); AddVehicleComponent(carID,1147); AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1073); ChangeVehiclePaintjob(carID,1);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(562, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		AddVehicleComponent(carID, 1034);
+		AddVehicleComponent(carID, 1038);
+		AddVehicleComponent(carID, 1147);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1073);
+		ChangeVehiclePaintjob(carID, 1);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m8", true) == 0) {
+	if (strcmp(cmdtext, "/m8", true) == 0) {
 		// Savanna
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(567,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(carID,1102); AddVehicleComponent(carID,1129); AddVehicleComponent(carID,1133); AddVehicleComponent(carID,1186); AddVehicleComponent(carID,1188); ChangeVehiclePaintjob(carID,1); AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1085); AddVehicleComponent(carID,1087); AddVehicleComponent(carID,1086);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(567, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		AddVehicleComponent(carID, 1102);
+		AddVehicleComponent(carID, 1129);
+		AddVehicleComponent(carID, 1133);
+		AddVehicleComponent(carID, 1186);
+		AddVehicleComponent(carID, 1188);
+		ChangeVehiclePaintjob(carID, 1);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1085);
+		AddVehicleComponent(carID, 1087);
+		AddVehicleComponent(carID, 1086);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m9", true) == 0) {
+	if (strcmp(cmdtext, "/m9", true) == 0) {
 		// Uranus
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(558,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		   AddVehicleComponent(carID,1092); AddVehicleComponent(carID,1166); AddVehicleComponent(carID,1165); AddVehicleComponent(carID,1090);
-		AddVehicleComponent(carID,1094); AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1087); AddVehicleComponent(carID,1163);
-		AddVehicleComponent(carID,1091); ChangeVehiclePaintjob(carID,2);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(558, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		AddVehicleComponent(carID, 1092);
+		AddVehicleComponent(carID, 1166);
+		AddVehicleComponent(carID, 1165);
+		AddVehicleComponent(carID, 1090);
+		AddVehicleComponent(carID, 1094);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1087);
+		AddVehicleComponent(carID, 1163);
+		AddVehicleComponent(carID, 1091);
+		ChangeVehiclePaintjob(carID, 2);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m10", true) == 0) {
+	if (strcmp(cmdtext, "/m10", true) == 0) {
 		// Monster
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(557,X,Y,Z,angle,1,1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1081);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(557, x, y, z, angle, 1, 1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1081);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m11", true) == 0) {
+	if (strcmp(cmdtext, "/m11", true) == 0) {
 		// Slamvan
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(535,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		ChangeVehiclePaintjob(carID,1); AddVehicleComponent(carID,1109); AddVehicleComponent(carID,1115); AddVehicleComponent(carID,1117); AddVehicleComponent(carID,1073); AddVehicleComponent(carID,1010);
-		AddVehicleComponent(carID,1087); AddVehicleComponent(carID,1114); AddVehicleComponent(carID,1081); AddVehicleComponent(carID,1119); AddVehicleComponent(carID,1121);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(535, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		ChangeVehiclePaintjob(carID, 1);
+		AddVehicleComponent(carID, 1109);
+		AddVehicleComponent(carID, 1115);
+		AddVehicleComponent(carID, 1117);
+		AddVehicleComponent(carID, 1073);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1087);
+		AddVehicleComponent(carID, 1114);
+		AddVehicleComponent(carID, 1081);
+		AddVehicleComponent(carID, 1119);
+		AddVehicleComponent(carID, 1121);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m12", true) == 0) {
+	if (strcmp(cmdtext, "/m12", true) == 0) {
 		// Elegy
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(562,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		  AddVehicleComponent(carID,1034); AddVehicleComponent(carID,1038); AddVehicleComponent(carID,1147);
-		AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1073); ChangeVehiclePaintjob(carID,0);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(562, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		AddVehicleComponent(carID, 1034);
+		AddVehicleComponent(carID, 1038);
+		AddVehicleComponent(carID, 1147);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1073);
+		ChangeVehiclePaintjob(carID, 0);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/nrg", true) == 0) {
+	if (strcmp(cmdtext, "/nrg", true) == 0) {
 		// NRG
-		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(522,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		  ChangeVehiclePaintjob(carID,0);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+		carID = CreateVehicle(522, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+		
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) {
+			DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		}
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+		
+		ChangeVehiclePaintjob(carID, 0);
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		
 		return 1;
 	}
 

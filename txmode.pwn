@@ -1663,38 +1663,28 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Araç spawn komutu
-	if(!strcmp(cmdtext, "/v", true, 2))
-		{
-				if(cmdtext[2] == EOS)
-						return 0;
+	if(!strcmp(cmdtext, "/v", true, 2)) {
+		if(cmdtext[2] == EOS) return 0;
 
-				new
-						iList = strval(cmdtext[2]) - 1
-				;
-				if(0 <= iList <= 17)
-				{
-						static
-								s_szName[24],
-								s_szVehDialog[256]
-						;
-						s_szVehDialog = "";
+		new iList = strval(cmdtext[2]) - 1;
+		if(!(0 <= iList <= 17)) return SendError(playerid, "Hatalı komut!");
 
-						for(new i = (iList * 12), j = ((iList + 1) * 12); i < j; ++i)
-						{
-								if(i >= sizeof(g_VehNames))
-										break;
+		static s_szName[24], s_szVehDialog[256];
+		
+		s_szVehDialog = "";
 
-								strunpack(s_szName, g_VehNames[i]);
-								strcat(s_szVehDialog, s_szName);
-								strcat(s_szVehDialog, "\n");
-						}
-						ShowPlayerDialog(playerid, (DIALOG_OFFSET_ID + iList), DIALOG_STYLE_LIST, "Arac Listesi", s_szVehDialog, "Spawn", "Kapat");
-						SetPVarInt(playerid, "iList", iList);
+		for(new i = (iList * 12), j = ((iList + 1) * 12); i < j; ++i) {
+			if(i >= sizeof(g_VehNames)) break;
 
-						return 1;
-				}
-				return 0;
+			strunpack(s_szName, g_VehNames[i]);
+			strcat(s_szVehDialog, s_szName);
+			strcat(s_szVehDialog, "\n");
 		}
+		
+		ShowPlayerDialog(playerid, (DIALOG_OFFSET_ID + iList), DIALOG_STYLE_LIST, "Arac Listesi", s_szVehDialog, "Spawn", "Kapat");
+		SetPVarInt(playerid, "iList", iList);
+		return 0;
+	}
 
 	// - Modifiyeli Araç spawn komutları
 	if(strcmp(cmdtext, "/m1", true)==0) // Sultan
@@ -2148,36 +2138,34 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	}
 
 
-	// - Ev sistemi ayarları
+	// - Ev sistemi
 	if(PRESSED(16))
 	{
-		if(!IsPlayerInAnyVehicle(playerid))
+		if(IsPlayerInAnyVehicle(playerid)) return;
+
+		new evid = GetHouseID(playerid);
+		if(Kontrol(playerid))
 		{
-			new evid = GetHouseID(playerid);
-			if(Kontrol(playerid))
-			{
-				new dosya[64];
-				format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
-				if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
-				else if(EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoşgeldiniz!"),Mesaj(playerid,"Evinizi düzenlemek veya ayarlarına girmek için '{008080}/ev{FFFFFF}' komutunu kullanınız.");
-				else if(EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
-				if(EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
-				else if(EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
-				else if(EvBilgi[evid][evint] == 2) PlayerPos(playerid,225.630997,1022.479980,1084.069946,7,EvBilgi[evid][evworld]);
-				else if(EvBilgi[evid][evint] == 3) PlayerPos(playerid,295.2057,1472.9973,1080.2578,15,EvBilgi[evid][evworld]);
-				else if(EvBilgi[evid][evint] == 4) PlayerPos(playerid,327.9004,1478.2839,1084.4375,15,EvBilgi[evid][evworld]);
-				else if(EvBilgi[evid][evint] == 5) PlayerPos(playerid,2324.3735,-1148.8219,1050.7101,12,EvBilgi[evid][evworld]);
-				OyuncuEv[playerid] = evid;
-			}
-			else if(IsPlayerInRangeOfPoint(playerid,2,235.1575,1187.2721,1080.2578) ||
-			IsPlayerInRangeOfPoint(playerid,2,225.756989,1240.000000,1082.149902) ||
-			IsPlayerInRangeOfPoint(playerid,2,225.630997,1022.479980,1084.069946) ||
-			IsPlayerInRangeOfPoint(playerid,2,295.2057,1472.9973,1080.2578) ||
-			IsPlayerInRangeOfPoint(playerid,2,327.9004,1478.2839,1084.4375) ||
-			IsPlayerInRangeOfPoint(playerid,2,2324.3735,-1148.8219,1050.7101))
-
-
-						{ PlayerPos(playerid,EvBilgi[OyuncuEv[playerid]][ev_X],EvBilgi[OyuncuEv[playerid]][ev_Y],EvBilgi[OyuncuEv[playerid]][ev_Z],0,0),OyuncuEv[playerid] = -1; }
+			new dosya[64];
+			format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
+			if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
+			else if(EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoşgeldiniz!"),Mesaj(playerid,"Evinizi düzenlemek veya ayarlarına girmek için '{008080}/ev{FFFFFF}' komutunu kullanınız.");
+			else if(EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
+			if(EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
+			else if(EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
+			else if(EvBilgi[evid][evint] == 2) PlayerPos(playerid,225.630997,1022.479980,1084.069946,7,EvBilgi[evid][evworld]);
+			else if(EvBilgi[evid][evint] == 3) PlayerPos(playerid,295.2057,1472.9973,1080.2578,15,EvBilgi[evid][evworld]);
+			else if(EvBilgi[evid][evint] == 4) PlayerPos(playerid,327.9004,1478.2839,1084.4375,15,EvBilgi[evid][evworld]);
+			else if(EvBilgi[evid][evint] == 5) PlayerPos(playerid,2324.3735,-1148.8219,1050.7101,12,EvBilgi[evid][evworld]);
+			OyuncuEv[playerid] = evid;
+		}
+		else if(IsPlayerInRangeOfPoint(playerid,2,235.1575,1187.2721,1080.2578) ||
+		IsPlayerInRangeOfPoint(playerid,2,225.756989,1240.000000,1082.149902) ||
+		IsPlayerInRangeOfPoint(playerid,2,225.630997,1022.479980,1084.069946) ||
+		IsPlayerInRangeOfPoint(playerid,2,295.2057,1472.9973,1080.2578) ||
+		IsPlayerInRangeOfPoint(playerid,2,327.9004,1478.2839,1084.4375) ||
+		IsPlayerInRangeOfPoint(playerid,2,2324.3735,-1148.8219,1050.7101)) {
+			PlayerPos(playerid,EvBilgi[OyuncuEv[playerid]][ev_X],EvBilgi[OyuncuEv[playerid]][ev_Y],EvBilgi[OyuncuEv[playerid]][ev_Z],0,0),OyuncuEv[playerid] = -1;
 		}
 	}
 	return 1;

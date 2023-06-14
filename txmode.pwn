@@ -270,8 +270,10 @@ enum ModArac
 };
 
 new MCarPlayerInfo[MAX_PLAYERS][ModArac];
-// - Hızlandırıcı pickup tanıtımları
-new hizlandirici[14];
+
+// - Hızlandırıcı Pickup
+#define HIZLANDIRICI_COUNT 14
+new hizlandirici[HIZLANDIRICI_COUNT];
 #define HIZ_VER 5
 
 // - Ev sistemi tanıtımları
@@ -567,6 +569,7 @@ public OnGameModeInit()
 
 	printf("Yüklendi: \"Sunucu haritası.\"");
 	printf("Yüklendi: \"Sunucu araçları.\"");
+
 	// - Hızlandırma pickupları
 	hizlandirici[1] = CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
 	hizlandirici[2] = CreatePickup(1313,14,2066.5132,1019.7257,10.6719,0);
@@ -643,7 +646,7 @@ public OnGameModeInit()
 	//mysql_query("CREATE TABLE IF NOT EXISTS players(SQLID INT(11), Nickname VARCHAR(24), Password VARCHAR(16), AdminLevel INT(1), Killed INT(11), Death INT(11), Score INT(11), Money INT(11), Radiation INT(3), Hungry INT(3), Comfort INT(3), Last_X FLOAT, Last_Y FLOAT, Last_Z, FLOAT, Last_INT INT(3), LastIP VARCHAR(16), Online TINYINT(1), LastOnline DATE");
 	//mysql_query("CREATE TABLE IF NOT EXISTS iplog(playername VARCHAR(24), ip VARCHAR(16), connected TINYINT(1))");
 	
-	 //if(mysql_ping() > 0)
+	 //if (mysql_ping() > 0)
 	//    printf("  ** MySQL connection successful! [Host: %s / Database: %s]", mysql_hostname, mysql_database);
 	//else
 	printf("  ** MySQL connection failed!");
@@ -734,7 +737,7 @@ public OnPlayerConnect(playerid)
 	//mysql_store_result();
 	//new rows = mysql_num_rows();
 	
-	//if(true)
+	//if (true)
 	ShowPlayerDialog(playerid, dialog_register, DIALOG_STYLE_INPUT, "{BBBBBB}** {00B3FF}Character Register:", "{BBBBBB}Welcome to the {00B3FF}"server_modname"!\n{333333}Enter your password and play the game.", "Register", "Cancel");
 	//else
 	SendClientMessage(playerid, -1, "not rows");
@@ -751,7 +754,7 @@ public OnPlayerConnect(playerid)
 	format(dosya, sizeof(dosya), "Hesaplar/Level/%s.txt", isim);
 
 	
-	//if(!dini_Exists(dosya)) seviye[playerid]=1, dini_Create(dosya);
+	//if (!dini_Exists(dosya)) seviye[playerid]=1, dini_Create(dosya);
 	//else BilgiYukle(playerid);
 	expguncelle[playerid] = SetTimerEx("BilgiYenile", 1000, true, "d", playerid);
 
@@ -777,7 +780,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 	// - Araç spawn ayarlarç
 	new iVehID = GetPVarInt(playerid, "iVehID");
-	if(iVehID)
+	if (iVehID)
 	DestroyVehicle(iVehID);
 
 	// - Ev sistemi ayarlarç
@@ -798,13 +801,13 @@ public OnPlayerDisconnect(playerid, reason)
 	KillTimer(hungryTimer[playerid]);   // Hunry Timer stopped.
 	UnloadTextDraws(playerid);  // Textdraws unloaded.
 
-	if(campFire[playerid] == true)
+	if (campFire[playerid] == true)
 	{
 		DestroyDynamicObject(fireWoods[playerid]);
 		DestroyDynamicObject(fireObject[playerid]);
 	}
 
-	if(guitarSong[playerid] == true)
+	if (guitarSong[playerid] == true)
 	{
 		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
@@ -844,7 +847,7 @@ public OnPlayerSpawn(playerid)
 		case 1:
 		{
 			new State = GetPlayerState(playerid);
-			if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER) {
+			if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER) {
 				GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
 				SendInfo(playerid,"Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 			}
@@ -868,7 +871,7 @@ public OnPlayerSpawn(playerid)
 		case 2:
 		{
 			new State = GetPlayerState(playerid);
-			if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER) {
+			if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER) {
 				GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
 				SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 			}
@@ -915,7 +918,7 @@ public OnPlayerSpawn(playerid)
 
 public OnPlayerDeath(playerid, killerid, reason)
 {
-	if(GetPlayerScore(playerid) > 0) return SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
+	if (GetPlayerScore(playerid) > 0) return SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
 	SetPlayerScore(killerid, GetPlayerScore(killerid) + 1);
 
 	SendDeathMessage(killerid, playerid, reason);
@@ -931,13 +934,13 @@ public OnPlayerDeath(playerid, killerid, reason)
 	TextDrawHideForPlayer(playerid, textdraw_radiation[playerid]);
 	TextDrawHideForPlayer(playerid, textdraw_ping[playerid]);
 
-	if(campFire[playerid] == true)
+	if (campFire[playerid] == true)
 	{
 		DestroyDynamicObject(fireWoods[playerid]);
 		DestroyDynamicObject(fireObject[playerid]);
 	}
 
-	if(guitarSong[playerid] == true)
+	if (guitarSong[playerid] == true)
 	{
 		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
@@ -963,14 +966,14 @@ public OnPlayerText(playerid, text[])
 	SendClientMessageToAll(GetPlayerColor(playerid), pText);
 	/*
 	new chatmessage[1024];
-	if(IsPlayerAdmin(playerid))
+	if (IsPlayerAdmin(playerid))
 	{
 	format(chatmessage,1024,"{C30000}[{FFFFFF}RGM{C30000}]{ACDA00}%s{C30000}({FFFFFF}%i{C30000}){FFFFFF}:%s",PlayerName(playerid),playerid,text);
 	SendClientMessageToAll(1,chatmessage);
 	}
 	else
 	{
-	if(IsPlayeraLAdmin(playerid))
+	if (IsPlayeraLAdmin(playerid))
 	{
 	format(chatmessage,1024,"{C30000}[{FFFFFF}GM{C30000}]{ACDA00}%s{C30000}({FFFFFF}%i{C30000}){FFFFFF}:%s",PlayerName(playerid),playerid,text);
 	SendClientMessageToAll(1,chatmessage);
@@ -989,7 +992,7 @@ public OnPlayerText(playerid, text[])
 // - DCMD komutları:
 dcmd_pmkapat(playerid, const params[])
 {
-	if(pInfo[playerid][NoPM] == 1) return SendError(playerid,"Özel mesaj hattınız zaten kapalı.");
+	if (pInfo[playerid][NoPM] == 1) return SendError(playerid,"Özel mesaj hattınız zaten kapalı.");
 
 	pInfo[playerid][NoPM] = 1;
 	SendInfo(playerid,"Özel mesaj hattınızı kapattınız.");
@@ -997,7 +1000,7 @@ dcmd_pmkapat(playerid, const params[])
 
 dcmd_pmac(playerid, const params[])
 {
-	if(pInfo[playerid][NoPM] == 0) return SendInfo(playerid,"Özel mesaj hattınız zaten açık.");
+	if (pInfo[playerid][NoPM] == 0) return SendInfo(playerid,"Özel mesaj hattınız zaten açık.");
 
 	pInfo[playerid][NoPM] = 0;
 	SendInfo(playerid, "Özel mesaj hattınızı açtınız.");
@@ -1006,11 +1009,11 @@ dcmd_pmac(playerid, const params[])
 dcmd_pm(playerid, const params[])
 {
 	new pID, text[128], string[128];
-	if(sscanf(params, "us", pID, text)) return SendUse(playerid,"/pm (nick/id) (mesaj)");
-	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
-	if(pID == playerid) return SendError(playerid,"Kendinize çzel mesaj gönderemezsiniz.");
+	if (sscanf(params, "us", pID, text)) return SendUse(playerid,"/pm (nick/id) (mesaj)");
+	if (!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
+	if (pID == playerid) return SendError(playerid,"Kendinize çzel mesaj gönderemezsiniz.");
 	format(string, sizeof(string), "** HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun özel mesaj hattı kapalı.", PlayerName(pID), pID);
-	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
+	if (pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
 	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(pID), text);
 	SendClientMessage(playerid, -1, string);
 	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(playerid), text);
@@ -1022,12 +1025,12 @@ dcmd_pm(playerid, const params[])
 dcmd_reply(playerid, const params[])
 {
 	new text[128], string[128];
-	if(sscanf(params, "s", text)) return SendUse(playerid,"/reply (mesaj)");
+	if (sscanf(params, "s", text)) return SendUse(playerid,"/reply (mesaj)");
 	new pID = pInfo[playerid][Last];
-	if(!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
-	if(pID == playerid) return SendError(playerid,"Kendinize özel mesaj gönderemezsiniz.");
+	if (!IsPlayerConnected(pID)) return SendError(playerid,"Oyuncu bulunamadı.");
+	if (pID == playerid) return SendError(playerid,"Kendinize özel mesaj gönderemezsiniz.");
 	format(string, sizeof(string), "** HATA: {FFFFFF}%s(%d) rumuzlu oyuncunun özel mesaj hattı kapalı.", PlayerName(pID), pID);
-	if(pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
+	if (pInfo[pID][NoPM] == 1) return SendClientMessage(playerid,0xF63845AA,string);
 	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(pID), text);
 	SendClientMessage(playerid, -1, string);
 	format(string, sizeof(string), "** [PM] %s: %s", PlayerName(playerid), text);
@@ -1048,9 +1051,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	printf("[command] %s entered \"%s\" command.", pName(playerid), cmdtext);
 
 	// Roleplay commands:
-	if(!strcmp(cmdtext, "/me", true, 3))
+	if (!strcmp(cmdtext, "/me", true, 3))
 	{
-		if(!cmdtext[3]) return showMessage(playerid, "USAGE: /me [action]");
+		if (!cmdtext[3]) return showMessage(playerid, "USAGE: /me [action]");
 
 		new text[128];
 		format(text, sizeof(text), "* %s %s", pName(playerid), cmdtext[4]);
@@ -1059,7 +1062,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	   // Debug commands:
-	  if(!strcmp(cmdtext, "/eat", true))
+	  if (!strcmp(cmdtext, "/eat", true))
 	{
 		showMessage(playerid, "You're eated a {006699}burger.");
 		PlayerAccount[playerid][pA_Hungry] = 0;
@@ -1067,14 +1070,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(!strcmp(cmdtext, "/addrad", true))
+	if (!strcmp(cmdtext, "/addrad", true))
 	{
 		showMessage(playerid, "Radiation coming!");
 		PlayerAccount[playerid][pA_Radiation] += 15;
 		return 1;
 	}
 
-	if(!strcmp(cmdtext, "/radpills", true))
+	if (!strcmp(cmdtext, "/radpills", true))
 	{
 		showMessage(playerid, "You're used a {006699}radiation pill.");
 		PlayerAccount[playerid][pA_Radiation] = 0;
@@ -1085,10 +1088,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 // ========================================================================== //
 
 	// Campfire script:
-	if(!strcmp(cmdtext, "/campfire", true))
+	if (!strcmp(cmdtext, "/campfire", true))
 	{
-		if(campFire[playerid] == true) return showMessage(playerid, "You need quench your last campfire. (/firedown)");
-		if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateç yakamazsınız!");
+		if (campFire[playerid] == true) return showMessage(playerid, "You need quench your last campfire. (/firedown)");
+		if (GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateç yakamazsınız!");
 		campFire[playerid] = true;
 
 		new Float:fireX, Float:fireY, Float:fireZ;
@@ -1099,14 +1102,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(!strcmp(cmdtext, "/firedown", true))
+	if (!strcmp(cmdtext, "/firedown", true))
 	{
-		if(campFire[playerid] == false) return showMessage(playerid, "Once you need setting a campfire. (/campfire)");
-		if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateçi sındçremezsiniz!");
+		if (campFire[playerid] == false) return showMessage(playerid, "Once you need setting a campfire. (/campfire)");
+		if (GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken ateçi sındçremezsiniz!");
 
 		new Float:fireX, Float:fireY, Float:fireZ;
 		GetDynamicObjectPos(fireWoods[playerid], fireX, fireY, fireZ);
-		if(!IsPlayerInRangeOfPoint(playerid, 7.0, fireX, fireY, fireZ)) return showMessage(playerid, "Kamp ateçinin yakçnçnda deçilsiniz! [7 metre]");
+		if (!IsPlayerInRangeOfPoint(playerid, 7.0, fireX, fireY, fireZ)) return showMessage(playerid, "Kamp ateçinin yakçnçnda deçilsiniz! [7 metre]");
 
 		campFire[playerid] = false;
 		 DestroyDynamicObject(fireWoods[playerid]);
@@ -1116,9 +1119,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// Guitar script:
-	if(!strcmp(cmdtext, "/guitar", true))
+	if (!strcmp(cmdtext, "/guitar", true))
 	{
-		if(GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken gitar çalamazsınız!");
+		if (GetPlayerState(playerid) == PLAYER_STATE_DRIVER || GetPlayerState(playerid) == PLAYER_STATE_PASSENGER) return showMessage(playerid, "Arabadayken gitar çalamazsınız!");
 		guitarSong[playerid] = true;
 
 		new randomSongs[2][0] =
@@ -1138,9 +1141,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(!strcmp(cmdtext, "/guitardown", true))
+	if (!strcmp(cmdtext, "/guitardown", true))
 	{
-		if(guitarSong[playerid] == false) return showMessage(playerid, "Zaten gitar çalmıyorsunuz! (/guitar)");
+		if (guitarSong[playerid] == false) return showMessage(playerid, "Zaten gitar çalmıyorsunuz! (/guitar)");
 		guitarSong[playerid] = false;
 
 		TogglePlayerControllable(playerid, 1);
@@ -1152,9 +1155,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 
-	if(!strcmp("/dmcik",cmdtext,true))
+	if (!strcmp("/dmcik",cmdtext,true))
 	{
-		if(DM[playerid] == 0) return SendError(playerid,"Zaten deathmatch alanında değilsin!");
+		if (DM[playerid] == 0) return SendError(playerid,"Zaten deathmatch alanında değilsin!");
 		DM[playerid]=0;
 		SetPlayerArmour(playerid,0.0);
 		SetPlayerHealth(playerid,100.0);
@@ -1164,7 +1167,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	   if(DM[playerid] > 0) return SendError(playerid,"Deathmatch alanında komut kullanmak yasaktır. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+	   if (DM[playerid] > 0) return SendError(playerid,"Deathmatch alanında komut kullanmak yasaktır. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 	// - DCMD komutlarç
 	dcmd(pm, 2, cmdtext);
 	dcmd(ms, 2, cmdtext);
@@ -1175,37 +1178,37 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	dcmd(pmkapat, 7, cmdtext);
 
 	// - Genel komutlar && dialog komutlarç
-	if(!strcmp(cmdtext, "/kurallar", true))
+	if (!strcmp(cmdtext, "/kurallar", true))
 	{
 	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktır.\n~~ Argo yasaktır.\n~~ İnanç ve görüşe karşı hakaret yasaktır.\n~~ Yönetimi rahatsız etmek yasaktır.","Kapat","");
 	return 1;
 	}
 
-	if(!strcmp(cmdtext, "/changelog", true))
+	if (!strcmp(cmdtext, "/changelog", true))
 	{
 	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyalarç oluçturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles menüsü eklendi.\n~ Yardım menüsü eklendi.\n~ Kurallar menüsü eklendi.\n~ İlk haritalar ve araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarç eklendi.","RC1.1","Kapat");
 	return 1;
 	}
 
-	if(!strcmp(cmdtext, "/teles", true))
+	if (!strcmp(cmdtext, "/teles", true))
 	{
 	ShowPlayerDialog(playerid,1000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Teleport","{FFFFFF}Four Dragon Casino (/4dragon)\nChilliad Mountain (/dag)\nSanta Maria Beach (/sahil)\nArea51 Zone (/area51)\nSan Fierro ChinaTown (/china)\nLos Santos Los Flores (/flores)\nModifiye Yeri 1 (/mod1)\nModifiye Yeri 2 (/mod2)\nModifiye Yeri 3 (/mod3)\nModifiye Yeri 4 (/mod4)\nModifiye Yeri 5 (/mod5)\nAirport 1 (/ap1)\nAirport 2 (/ap2)\nAirport 3 (/ap3)\nAirport 4 (/ap4)\n~ Diçer Sayfa.","Seç","Kapat");
 	return 1;
 	}
 
-	if(!strcmp(cmdtext, "/dmler", true))
+	if (!strcmp(cmdtext, "/dmler", true))
 	{
 	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch","{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)","Seç","Kapat");
 	return 1;
 	}
 
-	if(!strcmp(cmdtext, "/stuntlar", true))
+	if (!strcmp(cmdtext, "/stuntlar", true))
 	{
 	ShowPlayerDialog(playerid,2001,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Stunt Zones","{FFFFFF}Bikepark Stunt - 1 (/bikestunt1)","Seç","Kapat");
 	return 1;
 	}
 
-	if(!strcmp(cmdtext, "/silahlar", true))
+	if (!strcmp(cmdtext, "/silahlar", true))
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	return 1;
@@ -1229,10 +1232,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Araç yçnetim komutlarç
-	if(strcmp(cmd, "/motorac",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/motorac",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,VEHICLE_PARAMS_ON,isiklar,alarm,kapilar,kaput,bagaj,objective);
@@ -1241,10 +1244,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/motorkapat",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/motorkapat",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,VEHICLE_PARAMS_OFF,isiklar,alarm,kapilar,kaput,bagaj,objective);
@@ -1253,10 +1256,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/farac",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/farac",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_ON,alarm,kapilar,kaput,bagaj,objective);
@@ -1265,10 +1268,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/farkapat",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/farkapat",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,VEHICLE_PARAMS_OFF,alarm,kapilar,kaput,bagaj,objective);
@@ -1277,10 +1280,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/alarmac",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/alarmac",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_ON,kapilar,kaput,bagaj,objective);
@@ -1289,10 +1292,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/alarmkapat",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/alarmkapat",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,isiklar,VEHICLE_PARAMS_OFF,kapilar,kaput,bagaj,objective);
@@ -1301,10 +1304,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/kaputac",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/kaputac",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_ON,bagaj,objective);
@@ -1313,10 +1316,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/kaputkapat",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/kaputkapat",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,VEHICLE_PARAMS_OFF,bagaj,objective);
@@ -1325,10 +1328,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/bagajac",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/bagajac",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_ON,objective);
@@ -1337,10 +1340,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(strcmp(cmd, "/bagajkapat",true) == 0) {
-	if(!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
+	if (strcmp(cmd, "/bagajkapat",true) == 0) {
+	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid,"ççfçr koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
-	if(vid != INVALID_VEHICLE_ID)
+	if (vid != INVALID_VEHICLE_ID)
 	{
 	GetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,bagaj,objective);
 	SetVehicleParamsEx(vid,motor,isiklar,alarm,kapilar,kaput,VEHICLE_PARAMS_OFF,objective);
@@ -1349,23 +1352,23 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(!strcmp(cmdtext,"/kilit",true))
+	if (!strcmp(cmdtext,"/kilit",true))
 	{
-		if(!IsPlayerInAnyVehicle(playerid)) return 1;
-		if(GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return 1;
-		if(Kilit[playerid] != 0) return 1;
+		if (!IsPlayerInAnyVehicle(playerid)) return 1;
+		if (GetPlayerState(playerid) != PLAYER_STATE_DRIVER) return 1;
+		if (Kilit[playerid] != 0) return 1;
 		Kilit[playerid] = 1;
 		Arac[playerid] = GetPlayerVehicleID(playerid);
 		SendInfo(playerid,"Araç kilitlendi, kilidi açmak için {00FF00}/kilitac");
 		return 1;
 	}
 
-	if(!strcmp(cmdtext,"/kilitac",true))
+	if (!strcmp(cmdtext,"/kilitac",true))
 	{
-		if(Kilit[playerid] != 1) return 1;
+		if (Kilit[playerid] != 1) return 1;
 		new Float:X, Float:Y, Float:Z;
 		GetVehiclePos(Arac[playerid],X,Y,Z);
-		if(IsPlayerInRangeOfPoint(playerid,5,X,Y,Z))
+		if (IsPlayerInRangeOfPoint(playerid,5,X,Y,Z))
 		{
 			Kilit[playerid] = 0;
 
@@ -1375,23 +1378,23 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Araç renk deçiçtirme komutu
-	if(strcmp(cmd, "/renk", true) == 0)
+	if (strcmp(cmd, "/renk", true) == 0)
 	{
-	if(IsPlayerInAnyVehicle(playerid))
+	if (IsPlayerInAnyVehicle(playerid))
 	{
 	new color1,color2,string[128];
 	tmp=strtok(cmdtext,idx);
-	if(!strlen(tmp) || !IsNumeric(tmp))
+	if (!strlen(tmp) || !IsNumeric(tmp))
 	{
 	SendUse(playerid,"/renk {00FF00}[0-255] [0-255]");
 	return 1;
 	}
 	color1=strval(tmp);
 	tmp=strtok(cmdtext,idx);
-	if(!strlen(tmp) || !IsNumeric(tmp))color2=color1;
+	if (!strlen(tmp) || !IsNumeric(tmp))color2=color1;
 	else color2=strval(tmp);
-	if(color1<0 || color1>255 || color2<0 || color2>255)
-	if(!strlen(tmp) || !IsNumeric(tmp))
+	if (color1<0 || color1>255 || color2<0 || color2>255)
+	if (!strlen(tmp) || !IsNumeric(tmp))
 	{
 	SendUse(playerid,"/renk {00FF00}[0-255] [0-255]");
 	return 1;
@@ -1405,12 +1408,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Skin deçiçtirme komutu
-	if(strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
+	if (strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
 	{
-	if(cmdtext[7] != ' ' || cmdtext[8] == EOS)
+	if (cmdtext[7] != ' ' || cmdtext[8] == EOS)
 	return SendUse(playerid,"/myskin [id]");
 	if ((cmdtext[0] < 0) || (cmdtext[0] > 299)) return SendError(playerid,"Girilen deçer geçersiz!");
-	if(IsValidSkin((cmdtext[0] = strval(cmdtext[8]))))
+	if (IsValidSkin((cmdtext[0] = strval(cmdtext[8]))))
 	SetPlayerSkin(playerid, cmdtext[0]);
 	else
 	SendError(playerid,"Girilen deçer geçersiz!");
@@ -1418,10 +1421,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - DM alanç komutlarç
-	if(!strcmp(cmdtext, "/deagledm1",true))
+	if (!strcmp(cmdtext, "/deagledm1",true))
 	{
 	new State = GetPlayerState(playerid);
-	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
 	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
 	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
@@ -1442,10 +1445,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	if(!strcmp(cmdtext, "/fistdm1",true))
+	if (!strcmp(cmdtext, "/fistdm1",true))
 	{
 	new State = GetPlayerState(playerid);
-	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
 	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
 	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
@@ -1466,15 +1469,15 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - 31 sistemi komutlarç
-	if(!strcmp("/31",cmd,true))
+	if (!strcmp("/31",cmd,true))
 	{
 	tmp=strtok(cmdtext,idx);
 
-	if(!strlen(tmp)) return SendUse(playerid,"/31 [cek/birak]");
+	if (!strlen(tmp)) return SendUse(playerid,"/31 [cek/birak]");
 
-	if(!strcmp("cek",tmp,true))
+	if (!strcmp("cek",tmp,true))
 	{
-	if(cekiyor[playerid] == 1) return SendError(playerid,"Zaten 31 çekmektesiniz.");
+	if (cekiyor[playerid] == 1) return SendError(playerid,"Zaten 31 çekmektesiniz.");
 	   ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
 	   ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
 	asilantimer = SetTimerEx("asilanadamtimer", 19000,false,"i",playerid);
@@ -1482,9 +1485,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	   return 1;
 	   }
 
-	if(!strcmp("birak",tmp,true))
+	if (!strcmp("birak",tmp,true))
 	{
-	   if(cekiyor[playerid] == 0) return SendError(playerid,"Zaten 31 çekmiyorsunuz.");
+	   if (cekiyor[playerid] == 0) return SendError(playerid,"Zaten 31 çekmiyorsunuz.");
 	SendInfo(playerid,"Artçk 31 çekmiyorsunuz.");
 	ClearAnimations(playerid);
 	   KillTimer(asilantimer);
@@ -1494,18 +1497,18 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 	// - Para gçnderme komutu
-	if(!strcmp("/paraver",cmd,true))
+	if (!strcmp("/paraver",cmd,true))
 	{
 		tmp=strtok(cmdtext,idx);
-		if(!strlen(tmp)) return SendUse(playerid,"/paraver {00FF00}[id][miktar]");
+		if (!strlen(tmp)) return SendUse(playerid,"/paraver {00FF00}[id][miktar]");
 		new id=strval(tmp);
-		if(!IsPlayerConnected(id)) return SendError(playerid,"Oyuncu oyunda {FF0000}bulunmuyor!");
+		if (!IsPlayerConnected(id)) return SendError(playerid,"Oyuncu oyunda {FF0000}bulunmuyor!");
 		tmp=strtok(cmdtext,idx);
-		if(!strlen(tmp)) return SendUse(playerid,"/paraver {00FF00}[id][miktar]");
+		if (!strlen(tmp)) return SendUse(playerid,"/paraver {00FF00}[id][miktar]");
 		new miktar=strval(tmp);
 
-		if(miktar < 0) return SendError(playerid,"Girilen miktar {FF0000}geçersiz!");
-		if(GetPlayerMoney(playerid) < miktar) return SendError(playerid,"Paranız {FF0000}yetersiz!");
+		if (miktar < 0) return SendError(playerid,"Girilen miktar {FF0000}geçersiz!");
+		if (GetPlayerMoney(playerid) < miktar) return SendError(playerid,"Paranız {FF0000}yetersiz!");
 
 		GivePlayerMoney(playerid,-miktar);
 		GivePlayerMoney(id,miktar);
@@ -1515,8 +1518,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	// - sırçç kamerası komutu
 	if (strcmp("/surus", cmdtext, true, 10) == 0)
 	{
-	if(!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada olmalısınız!");
-	if(GetPVarInt(playerid,"used") == 0)
+	if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada olmalısınız!");
+	if (GetPVarInt(playerid,"used") == 0)
 	{
 	new p = GetPlayerVehicleID(playerid);
 	Surus[playerid] = CreatePlayerObject(playerid,19300, 0.0000, -1282.9984, 10.1493, 0.0000, -1, -1, 100);
@@ -1535,85 +1538,85 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Işınlanma komutları
-	if(strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
+	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
 		Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/dag", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0) {
+	if (strcmp(cmdtext, "/dag", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0) {
 		Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/sahil", true) == 0) {
+	if (strcmp(cmdtext, "/sahil", true) == 0) {
 		Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/area51", true) == 0) {
+	if (strcmp(cmdtext, "/area51", true) == 0) {
 		Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/china", true) == 0) {
+	if (strcmp(cmdtext, "/china", true) == 0) {
 		Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/flores", true) == 0) {
+	if (strcmp(cmdtext, "/flores", true) == 0) {
 		Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/mod1", true) == 0) {
+	if (strcmp(cmdtext, "/mod1", true) == 0) {
 		Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod2", true) == 0) {
+	if (strcmp(cmdtext,"/mod2", true) == 0) {
 		Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod3", true) == 0) {
+	if (strcmp(cmdtext,"/mod3", true) == 0) {
 		Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod4", true) == 0) {
+	if (strcmp(cmdtext,"/mod4", true) == 0) {
 		Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/mod5", true) == 0) {
+	if (strcmp(cmdtext,"/mod5", true) == 0) {
 		Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap1", true) == 0) {
+	if (strcmp(cmdtext,"/ap1", true) == 0) {
 		Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap2", true) == 0) {
+	if (strcmp(cmdtext,"/ap2", true) == 0) {
 		Teleport(playerid,-1345.0, -229.8, 14.1, 0, 0, "Airport 2","/ap2", true, false);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap3", true) == 0) {
+	if (strcmp(cmdtext,"/ap3", true) == 0) {
 		Teleport(playerid,1435.5, 1463.2, 10.8, 0, 0, "Airport 3", "/ap3", true, false);
 		return 1;
 	}
 
-	if(strcmp(cmdtext,"/ap4", true) == 0) {
+	if (strcmp(cmdtext,"/ap4", true) == 0) {
 		Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4","/ap4", true, false);
 		return 1;
 	}
 
 	// - Can & zırh komutlarç
-	if(strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0) {
-		if(GetPVarInt(playerid, "SpamKorumaCan") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
-		if(GetPlayerMoney(playerid) < 750) return SendError(playerid,"Paranız {FF0000}yetersiz!");
+	if (strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0) {
+		if (GetPVarInt(playerid, "SpamKorumaCan") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+		if (GetPlayerMoney(playerid) < 750) return SendError(playerid,"Paranız {FF0000}yetersiz!");
 		
 		SetPVarInt(playerid, "SpamKorumaCan", GetTickCount() + 30 * 1000);
 		SetPlayerHealth(playerid, 100);
@@ -1623,8 +1626,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	if (strcmp(cmdtext, "/yelek", true)==0 || strcmp(cmdtext, "/zirh", true) == 0) {
-		if(GetPVarInt(playerid, "SpamKorumaZırh") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
-		if(GetPlayerMoney(playerid) < 1000) return SendError(playerid,"Paranız {FF0000}yetersiz!");
+		if (GetPVarInt(playerid, "SpamKorumaZırh") > GetTickCount()) return SendInfo(playerid,"Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
+		if (GetPlayerMoney(playerid) < 1000) return SendError(playerid,"Paranız {FF0000}yetersiz!");
 
 		SetPVarInt(playerid, "SpamKorumaZırh", GetTickCount() + 30 * 1000);
 		SetPlayerArmour(playerid,100);
@@ -1650,8 +1653,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - Araç çevirme komutu
-	if(strcmp(cmdtext,"/cevir",true) == 0) {
-		if(!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada {FF0000}değilsiniz!");
+	if (strcmp(cmdtext,"/cevir",true) == 0) {
+		if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid,"Arabada {FF0000}değilsiniz!");
 
 		new VehicleID, Float:X, Float:Y, Float:Z;
 		GetPlayerPos(playerid,X, Y, Z);
@@ -1663,18 +1666,18 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - /v komutu
-	if(!strcmp(cmdtext, "/v", true, 2)) {
-		if(cmdtext[2] == EOS) return 0;
+	if (!strcmp(cmdtext, "/v", true, 2)) {
+		if (cmdtext[2] == EOS) return 0;
 
 		new iList = strval(cmdtext[2]) - 1;
-		if(!(0 <= iList <= 17)) return SendError(playerid, "Hatalı komut!");
+		if (!(0 <= iList <= 17)) return SendError(playerid, "Hatalı komut!");
 
 		static s_szName[24], s_szVehDialog[256];
 		
 		s_szVehDialog = "";
 
 		for(new i = (iList * 12), j = ((iList + 1) * 12); i < j; ++i) {
-			if(i >= sizeof(g_VehNames)) break;
+			if (i >= sizeof(g_VehNames)) break;
 
 			strunpack(s_szName, g_VehNames[i]);
 			strcat(s_szVehDialog, s_szName);
@@ -1687,7 +1690,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// - /m1-/m12 /nrg komutları
-	if(strcmp(cmdtext, "/m1", true) == 0) {
+	if (strcmp(cmdtext, "/m1", true) == 0) {
 		// Sultan
 
 		new Float:x, Float:y, Float:z, Float:angle, CarID;
@@ -1698,7 +1701,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(560, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		
 		MCarPlayerInfo[playerid][pMArabaID] = carID;
 		MCarPlayerInfo[playerid][pMAraba] = 1;
@@ -1721,7 +1724,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m2", true) == 0)	{ 
+	if (strcmp(cmdtext, "/m2", true) == 0)	{ 
 		//Sultan
 
 		new Float:x, Float:y, Float:z, Float:angle, carID;
@@ -1732,7 +1735,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(560, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 
 		MCarPlayerInfo[playerid][pMArabaID] = carID;
 		MCarPlayerInfo[playerid][pMAraba] = 1;
@@ -1755,7 +1758,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m3", true) == 0) {
+	if (strcmp(cmdtext, "/m3", true) == 0) {
 		// Jester
 
 		new Float:x, Float:y, Float:z, Float:angle, carID;
@@ -1766,7 +1769,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(559, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 
 		MCarPlayerInfo[playerid][pMArabaID] = carID;
 		MCarPlayerInfo[playerid][pMAraba] = 1;
@@ -1783,7 +1786,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m4", true) == 0) {
+	if (strcmp(cmdtext, "/m4", true) == 0) {
 		// Flash
 
 		new Float:x, Float:y, Float:z, Float:angle, carID;
@@ -1793,7 +1796,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(565, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		
 		MCarPlayerInfo[playerid][pMArabaID] = carID;
 		MCarPlayerInfo[playerid][pMAraba] = 1;
@@ -1810,7 +1813,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m5", true) == 0) {
+	if (strcmp(cmdtext, "/m5", true) == 0) {
 		// Uranus
 
 		new Float:x, Float:y, Float:z, Float:angle, carID;
@@ -1821,7 +1824,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(558, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 
 		MCarPlayerInfo[playerid][pMArabaID] = carID;
 		MCarPlayerInfo[playerid][pMAraba] = 1;
@@ -1838,7 +1841,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m6", true) == 0) {
+	if (strcmp(cmdtext, "/m6", true) == 0) {
 		// Stratum
 
 		new Float:x, Float:y, Float:z, Float:angle, carID;
@@ -1849,7 +1852,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(561, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		if (MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		
 		MCarPlayerInfo[playerid][pMArabaID] = carID;
 		MCarPlayerInfo[playerid][pMAraba] = 1;
@@ -2062,10 +2065,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	// - Ev sistemi
 	if (strcmp("/evmenu", cmdtext, true, 10) == 0)
 	{
-		if(!IsPlayerAdmin(playerid)) return Mesaj(playerid,"Bu komutu kullanmak için gerekli izniniz yok!");
-		if(GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak için interior dçççnda olmalısınız!");
-		if(!Kontrol(playerid)) return ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
-		if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
+		if (!IsPlayerAdmin(playerid)) return Mesaj(playerid,"Bu komutu kullanmak için gerekli izniniz yok!");
+		if (GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak için interior dçççnda olmalısınız!");
+		if (!Kontrol(playerid)) return ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
+		if (EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
 		
 		EvEditleniyor[GetHouseID(playerid)] = true;
 		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
@@ -2076,10 +2079,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 		new dosya[64];
 		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
-		if(OyuncuEv[playerid] == -1) return Mesaj(playerid,"Şu anda evde değilsin!");
-		else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"Şu anda bu evi başka bir oyuncu düzenliyor...");
-		else if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
-		else if(EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait değil!");
+		if (OyuncuEv[playerid] == -1) return Mesaj(playerid,"Şu anda evde değilsin!");
+		else if (EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"Şu anda bu evi başka bir oyuncu düzenliyor...");
+		else if (IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
+		else if (EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait değil!");
 
 		EvEditleniyor[OyuncuEv[playerid]] = true;
 		ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
@@ -2088,10 +2091,10 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if (strcmp("/satinal", cmdtext, true, 10) == 0)
 	{
-		if(!Kontrol(playerid)) return Mesaj(playerid,"Herhangi bir evin üstünde değilsiniz!");
+		if (!Kontrol(playerid)) return Mesaj(playerid,"Herhangi bir evin üstünde değilsiniz!");
 
 		new evid = GetHouseID(playerid);
-		if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık bir ev seçiniz!");
+		if (EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık bir ev seçiniz!");
 		new str[256];
 		format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatı: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satçn almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
 		ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satçn Al","İptal");
@@ -2104,7 +2107,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 {
-	if(vehicleid == Arac[playerid] && Kilit[playerid] == 1)
+	if (vehicleid == Arac[playerid] && Kilit[playerid] == 1)
 	{
 		ClearAnimations(playerid);
 		return 0;
@@ -2164,162 +2167,24 @@ public OnPlayerObjectMoved(playerid, objectid)
 
 public OnPlayerPickUpPickup(playerid, pickupid)
 {
-	if(pickupid==hizlandirici[1]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
+	for (new i; i < HIZLANDIRICI_COUNT; i++) {
+		if (pickupid == hizlandirici[i]) {
+			if (!IsPlayerInAnyVehicle(playerid)) return;
+
+			new Float:x, Float:y, Float:z;
+			GetPlayerPos(playerid, x, y, z);
+			DestroyPickup(hizlandirici[i]);
+			hizlandirici[i] = CreatePickup(1313, 14, x, y, z, 0);
+
+			new Float:vx, Float:vy, Float:vz;
+			GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
+
+			if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER) {
+				SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
+			}
+		}
 	}
-	}
-	DestroyPickup(hizlandirici[1]);
-	hizlandirici[1]=CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
-	}
-	if(pickupid==hizlandirici[2]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[2]);
-	hizlandirici[2]=CreatePickup(1313,14,2066.5132,1019.7257,10.6719,0);
-	}
-	if(pickupid==hizlandirici[3]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[3]);
-	hizlandirici[3]=CreatePickup(1313,14,2066.5918,1254.1406,10.6719,0);
-	}
-	if(pickupid==hizlandirici[4]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[4]);
-	hizlandirici[4]=CreatePickup(1313,14,2048.8401,1284.9427,10.6719,0);
-	}
-	if(pickupid==hizlandirici[5]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[5]);
-	hizlandirici[5]=CreatePickup(1313,14,2121.1084,1847.6072,10.6719,0);
-	}
-	if(pickupid==hizlandirici[6]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[6]);
-	hizlandirici[6]=CreatePickup(1313,14,2146.4421,1874.5963,10.6719,0);
-	}
-	if(pickupid==hizlandirici[7]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[7]);
-	hizlandirici[7]=CreatePickup(1313,14,2128.2676,2219.6204,10.6719,0);
-	}
-	if(pickupid==hizlandirici[8]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[8]);
-	hizlandirici[8]=CreatePickup(1313,14,2229.9316,2555.6431,10.8203,0);
-	}
-	if(pickupid==hizlandirici[9]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[9]);
-	hizlandirici[9]=CreatePickup(1313,14,1964.1276,2593.7170,10.8126,0);
-	}
-	if(pickupid==hizlandirici[10]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[10]);
-	hizlandirici[10]=CreatePickup(1313,14,-2084.9065,-1967.6328,378.5436,0); //
-	}
-	if(pickupid==hizlandirici[11]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[11]);
-	hizlandirici[11]=CreatePickup(1313,14,2048.4058,815.1559,8.4697,0); //
-	}
-	if(pickupid==hizlandirici[12]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[12]);
-	hizlandirici[12]=CreatePickup(1313,14,2364.7070,433.8943,17.6082,0);
-	}
-	if(pickupid==hizlandirici[13]){
-	if(IsPlayerInAnyVehicle(playerid)){
-	new Float:vx, Float:vy, Float:vz;
-	GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);
-	if (floatabs(vx) < HIZ_VER && floatabs(vy) < HIZ_VER && floatabs(vz) < HIZ_VER)
-	{
-	SetVehicleVelocity(GetPlayerVehicleID(playerid), vx * HIZ_VER, vy * HIZ_VER, vz * HIZ_VER);
-	}
-	}
-	DestroyPickup(hizlandirici[13]);
-	hizlandirici[13]=CreatePickup(1313,14,1294.1956,2598.3647,11.9492,0);
-	}
+
 	return 1;
 }
 
@@ -2356,9 +2221,9 @@ public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
 	// - 2 tuşu fonksiyonu
-	if(newkeys & KEY_LOOK_BEHIND && IsPlayerInAnyVehicle(playerid))
+	if (newkeys & KEY_LOOK_BEHIND && IsPlayerInAnyVehicle(playerid))
 	{
-		if(!IsNosVehicle(GetPlayerVehicleID(playerid))) return RepairVehicle(GetPlayerVehicleID(playerid)),PlayerPlaySound(playerid, 1133 ,0, 0, 0),GameTextForPlayer(playerid,"~b~~h~Full Tamir",500,5);
+		if (!IsNosVehicle(GetPlayerVehicleID(playerid))) return RepairVehicle(GetPlayerVehicleID(playerid)),PlayerPlaySound(playerid, 1133 ,0, 0, 0),GameTextForPlayer(playerid,"~b~~h~Full Tamir",500,5);
 		
 		AddVehicleComponent(GetPlayerVehicleID(playerid), 1010);
 		PlayerPlaySound(playerid, 1133 ,0, 0, 0);
@@ -2368,27 +2233,27 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 
 	// - Ev sistemi
-	if(PRESSED(16))
+	if (PRESSED(16))
 	{
-		if(IsPlayerInAnyVehicle(playerid)) return;
+		if (IsPlayerInAnyVehicle(playerid)) return;
 
 		new evid = GetHouseID(playerid);
-		if(Kontrol(playerid))
+		if (Kontrol(playerid))
 		{
 			new dosya[64];
 			format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
-			if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
-			else if(EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoşgeldiniz!"),Mesaj(playerid,"Evinizi düzenlemek veya ayarlarına girmek için '{008080}/ev{FFFFFF}' komutunu kullanınız.");
-			else if(EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
-			if(EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
-			else if(EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
-			else if(EvBilgi[evid][evint] == 2) PlayerPos(playerid,225.630997,1022.479980,1084.069946,7,EvBilgi[evid][evworld]);
-			else if(EvBilgi[evid][evint] == 3) PlayerPos(playerid,295.2057,1472.9973,1080.2578,15,EvBilgi[evid][evworld]);
-			else if(EvBilgi[evid][evint] == 4) PlayerPos(playerid,327.9004,1478.2839,1084.4375,15,EvBilgi[evid][evworld]);
-			else if(EvBilgi[evid][evint] == 5) PlayerPos(playerid,2324.3735,-1148.8219,1050.7101,12,EvBilgi[evid][evworld]);
+			if (IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
+			else if (EvSahipID[evid] == playerid) Mesaj(playerid,"Evinize hoşgeldiniz!"),Mesaj(playerid,"Evinizi düzenlemek veya ayarlarına girmek için '{008080}/ev{FFFFFF}' komutunu kullanınız.");
+			else if (EvBilgi[evid][evkilit] == 1) return Mesaj(playerid,"Bu ev kilitli, kilitli evlere giremezsiniz.");
+			if (EvBilgi[evid][evint] == 0) PlayerPos(playerid,235.1575,1187.2721,1080.2578,3,EvBilgi[evid][evworld]);
+			else if (EvBilgi[evid][evint] == 1) PlayerPos(playerid,225.756989 ,1240.000000 ,1082.149902 ,2,EvBilgi[evid][evworld]);
+			else if (EvBilgi[evid][evint] == 2) PlayerPos(playerid,225.630997,1022.479980,1084.069946,7,EvBilgi[evid][evworld]);
+			else if (EvBilgi[evid][evint] == 3) PlayerPos(playerid,295.2057,1472.9973,1080.2578,15,EvBilgi[evid][evworld]);
+			else if (EvBilgi[evid][evint] == 4) PlayerPos(playerid,327.9004,1478.2839,1084.4375,15,EvBilgi[evid][evworld]);
+			else if (EvBilgi[evid][evint] == 5) PlayerPos(playerid,2324.3735,-1148.8219,1050.7101,12,EvBilgi[evid][evworld]);
 			OyuncuEv[playerid] = evid;
 		}
-		else if(IsPlayerInRangeOfPoint(playerid,2,235.1575,1187.2721,1080.2578) ||
+		else if (IsPlayerInRangeOfPoint(playerid,2,235.1575,1187.2721,1080.2578) ||
 		IsPlayerInRangeOfPoint(playerid,2,225.756989,1240.000000,1082.149902) ||
 		IsPlayerInRangeOfPoint(playerid,2,225.630997,1022.479980,1084.069946) ||
 		IsPlayerInRangeOfPoint(playerid,2,295.2057,1472.9973,1080.2578) ||
@@ -2414,7 +2279,7 @@ public OnPlayerUpdate(playerid)
 	//SetProgressBarValue(Bar:expbar[playerid],exp[playerid]);
 
 	// - Ev sistemi ayarları
-	if(Kontrol(playerid))
+	if (Kontrol(playerid))
 	{
 		OyuncuKontrolEv[playerid] = GetHouseID(playerid);
 	}
@@ -2445,225 +2310,225 @@ public OnVehicleStreamOut(vehicleid, forplayerid)
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
 	// - Silah menüsü
-	if(dialogid == 9500 && response) {
-		if(listitem == 0) return ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if(listitem == 1) return ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if(listitem == 2) return ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if(listitem == 3) return ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if(listitem == 4) return ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if(listitem == 5) return ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if(listitem == 6) return ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	if (dialogid == 9500 && response) {
+		if (listitem == 0) return ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 1) return ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 2) return ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 3) return ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 4) return ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 5) return ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 6) return ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
 
-	if(dialogid == 9501) // Tabancalar.
+	if (dialogid == 9501) // Tabancalar.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,22,200,"Colt .45",500);
 	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,23,200,"Susturuculu Colt .45",700);
 	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	SilahSat(playerid,24,200,"Desert Eagle",1200);
 	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 4)
+	if (listitem == 4)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9502) // Otomatik tabancalar.
+	if (dialogid == 9502) // Otomatik tabancalar.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,28,200,"Micro Uzi",1250);
 	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,32,200,"TEC-9",1700);
 	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	SilahSat(playerid,29,200,"MP-5",2300);
 	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 4)
+	if (listitem == 4)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9503) // Pompalç tçfekler.
+	if (dialogid == 9503) // Pompalç tçfekler.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,25,200,"Pump-Action Shotgun",3000);
 	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,26,200,"Double-Barrel Shotgun",4600);
 	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	SilahSat(playerid,27,200,"Combat Shotgun",6500);
 	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 4)
+	if (listitem == 4)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9504) // Makineli tçfekler.
+	if (dialogid == 9504) // Makineli tçfekler.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,31,200,"M4A1 Carbine",9500);
 	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,30,200,"Avtomat Kalashnikova 47",7500);
 	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9505) // Yivli tçfekler.
+	if (dialogid == 9505) // Yivli tçfekler.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,33,200,"Country Rifle .22",6700);
 	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,34,200,"Sniper Rifle",9750);
 	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9506) // Patlayçcçlar.
+	if (dialogid == 9506) // Patlayçcçlar.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,16,1,"Grenade",600);
 	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,17,1,"Gas Grenade",250);
 	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	SilahSat(playerid,18,1,"Molotov",700);
 	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 4)
+	if (listitem == 4)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if(dialogid == 9507) // Ateşsiz silahlar.
+	if (dialogid == 9507) // Ateşsiz silahlar.
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	SilahSat(playerid,1,1,"Brass Knuckles",50);
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 2)
+	if (listitem == 2)
 	{
 	SilahSat(playerid,5,1,"Baseball Bat",100);
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 3)
+	if (listitem == 3)
 	{
 	SilahSat(playerid,2,1,"Golf Club",120);
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 4)
+	if (listitem == 4)
 	{
 	SilahSat(playerid,4,1,"Knife",250);
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 5)
+	if (listitem == 5)
 	{
 	SilahSat(playerid,41,1200,"Spray",300);
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 6)
+	if (listitem == 6)
 	{
 	SilahSat(playerid,42,5500,"Fire Extinguisher",450);
 	ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
-	if(listitem == 7)
+	if (listitem == 7)
 	{
 	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tçfekler\n{FFFFFF}~ {ACDA00}Makinalç tçfekler\n{FFFFFF}~ {ACDA00}Yivli tçfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
@@ -2671,73 +2536,73 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 
 	// - Teles alanları diyalogları
-	if(dialogid == 1000 && response) {
-		if(listitem == 0) return Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
-		if(listitem == 1) return Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
-		if(listitem == 2) return Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
-		if(listitem == 3) return Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
-		if(listitem == 4) return Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
-		if(listitem == 5) return Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
-		if(listitem == 6) return Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
-		if(listitem == 7) return Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
-		if(listitem == 8) return Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
-		if(listitem == 9) return Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
-		if(listitem == 10) return Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
-		if(listitem == 11) return Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
-		if(listitem == 12) return Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
-		if(listitem == 13) return Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
-		if(listitem == 14) return Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
+	if (dialogid == 1000 && response) {
+		if (listitem == 0) return Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
+		if (listitem == 1) return Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
+		if (listitem == 2) return Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
+		if (listitem == 3) return Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
+		if (listitem == 4) return Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
+		if (listitem == 5) return Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
+		if (listitem == 6) return Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
+		if (listitem == 7) return Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
+		if (listitem == 8) return Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
+		if (listitem == 9) return Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
+		if (listitem == 10) return Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
+		if (listitem == 11) return Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
+		if (listitem == 12) return Teleport(playerid,-1345.0, -229.8,14.1,0,0,"Airport 2","/ap2",1,0);
+		if (listitem == 13) return Teleport(playerid,1435.5, 1463.2,10.8,0,0,"Airport 3","/ap3",1,0);
+		if (listitem == 14) return Teleport(playerid,350.7, 2539.2,16.8,0,0,"Airport 4","/ap4",1,0);
 	}
 
 	// - Changelog dialoglarç
-	if(dialogid == 1911)
+	if (dialogid == 1911)
 	{
-	if(response)
+	if (response)
 	{
 	ShowPlayerDialog(playerid,1912,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.1]","{ACDA00}~ Textdrawlar dçzenlendi.\n~ Teles mençsı gçncellendi. {FFFFFF}(4 yeni teleport alanç){ACDA00}\n~ Admin sistemi dçzenlendi.\n~ Yardçm mençsı dçzenlendi.\n~ \"Desert Eagle Deathmatch\" alanç eklendi.\n~ çlçm-çldçrme gçstergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.","RC1.2","Kapat");
 	}
 	}
 
-	if(dialogid == 1912)
+	if (dialogid == 1912)
 	{
-	if(response)
+	if (response)
 	{
 	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]","{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar gçncellendi.\n~ \"Bikepark Stunt 1\" alanç eklendi.\n~ /nrg komutu eklendi.\n~ Araç yçnetim komutlarç eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymalarç dçzeltildi.\n~ Gametext sıreleri dçççrçldç.\n~ Giriç dçzenlendi.","RC1.3","Kapat");
 	}
 	}
 
-	if(dialogid == 1913)
+	if (dialogid == 1913)
 	{
-	if(response)
+	if (response)
 	{
 	ShowPlayerDialog(playerid,1914,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.3]","{ACDA00}~ ALPHA hesaplarç silindi.\n~ Kick-Ban mesajlarç ve Giriç-çıkçç mesajlarç gçncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog dçzenlendi.\n~ Yeni haritalar eklendi.\n~ Geliçmiç saat sistemi eklendi.\n~ RGM-GM sistemi buglarç giderildi.\n~ Sohbet baloncuçu eklendi.\n~ Driveby engeli kaldçrçldç.","RC1.4","Kapat");
 	}
 	}
 
-	if(dialogid == 1914)
+	if (dialogid == 1914)
 	{
-	if(response)
+	if (response)
 	{
 	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]","{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi gçncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin gçncellendi. (4.4)\n~ Teleport komutlarç dçzenlendi.\n~ EXP-LEVEL textdrawç yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanlarç ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar mençsı eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Giriçe dans eklendi.","RC1.5","Kapat");
 	}
 	}
 	
-	if(dialogid == 1915)
+	if (dialogid == 1915)
 	{
-	if(response)
+	if (response)
 	{
 	ShowPlayerDialog(playerid,1916,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.5]","{ACDA00}~ ","Kapat","");
 	}
 	}
 	// - DM alanç dialoglarç
-	if(dialogid == 2000)
+	if (dialogid == 2000)
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	new State = GetPlayerState(playerid);
-	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
 	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
 	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
@@ -2755,10 +2620,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	GivePlayerWeapon(playerid,24,99999);
 	SetPlayerTeam(playerid, NO_TEAM);
 	}
-	if(listitem == 1)
+	if (listitem == 1)
 	{
 	new State = GetPlayerState(playerid);
-	if(IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
+	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
 	{
 	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
 	SendInfo(playerid,"Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
@@ -2779,11 +2644,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 
 	// - Stunt dialoglarç
-	if(dialogid == 2001)
+	if (dialogid == 2001)
 	{
-	if(response)
+	if (response)
 	{
-	if(listitem == 0)
+	if (listitem == 0)
 	{
 	SendInfo(playerid,"{00FF00}Bikepark Stunt - 1 {FFFFFF}alanına ışınlanıldı.");
 	SetPlayerPos(playerid,1165.3389,1344.6733,10.8125);
@@ -2791,26 +2656,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 	// Araç spawn ayarlarç
-	if(response)
+	if (response)
 	{
 	new iList = GetPVarInt(playerid, "iList");
 
-	if(dialogid == (DIALOG_OFFSET_ID + iList))
+	if (dialogid == (DIALOG_OFFSET_ID + iList))
 	{
-	if(0 <= listitem <= 12)
+	if (0 <= listitem <= 12)
 	{
 	new Float: fPos[3];
 
-	if(GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]))
+	if (GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]))
 	{
 	new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
 
-	if(IsPlayerInAnyVehicle(playerid))
+	if (IsPlayerInAnyVehicle(playerid))
 	GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
 	else
 	GetPlayerFacingAngle(playerid, fAngle);
 
-	if(iVehID)
+	if (iVehID)
 	DestroyVehicle(iVehID);
 
 	iVehID = (listitem + (iList * 12) + 400);
@@ -2833,15 +2698,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 
 	// - Ev sistemi
-	if(dialogid == SATINAL)
+	if (dialogid == SATINAL)
 	{
-		if(!response) return 1;
-		if(response)
+		if (!response) return 1;
+		if (response)
 		{
 			new evid = GetHouseID(playerid);
-			if(!Kontrol(playerid)) return Mesaj(playerid,"Evi satın almak için herhangi bir evin üstünde olmalısınız!");
-			else if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık ev seçiniz!");
-			else if(EvBilgi[evid][evfiyat] > GetPlayerMoney(playerid)) return Mesaj(playerid,"Evi almak için yeterli paranız bulunmamakta!");
+			if (!Kontrol(playerid)) return Mesaj(playerid,"Evi satın almak için herhangi bir evin üstünde olmalısınız!");
+			else if (EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık ev seçiniz!");
+			else if (EvBilgi[evid][evfiyat] > GetPlayerMoney(playerid)) return Mesaj(playerid,"Evi almak için yeterli paranız bulunmamakta!");
 			EvKaydetInt(evid,"evsatilik",0);
 			EvKaydetStr(evid,"evsahip",PlayerName(playerid));
 			EvYenile(evid);
@@ -2851,28 +2716,28 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU)
+	if (dialogid == MENU)
 	{
-		if(!response) EvEditleniyor[OyuncuEv[playerid]] = false;
-		if(response)
+		if (!response) EvEditleniyor[OyuncuEv[playerid]] = false;
+		if (response)
 		{
 			new str[256];
 			new evid = OyuncuEv[playerid];
-			if(listitem == 0)
+			if (listitem == 0)
 			{
 				format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayı değiştirmek için yenisini aşağıya yazınız.",EvBilgi[evid][evaciklama]);
 				ShowPlayerDialog(playerid,MENU+1,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir","İptal");
 			}
-			if(listitem == 1)
+			if (listitem == 1)
 			{
 				ShowPlayerDialog(playerid,MENU+2,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aç\n{FF4500}Kilitle","Ayarla","İptal");
 			}
-			if(listitem == 2)
+			if (listitem == 2)
 			{
 				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lütfen gerçekleştirilecek işlemi seçiniz.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
 				ShowPlayerDialog(playerid,MENU+3,DIALOG_STYLE_MSGBOX,BASLIK,str,"Yatır/çek","İptal");
 			}
-			if(listitem == 3)
+			if (listitem == 3)
 			{
 				format(str,sizeof(str),"{FF4500}Depodan Silah Al\n{FF4500}Depoya Elindeki Silahı Koy");
 				ShowPlayerDialog(playerid,MENU+8,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
@@ -2880,12 +2745,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+1)
+	if (dialogid == MENU+1)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
-			if(!strlen(inputtext)) return Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.");
+			if (!strlen(inputtext)) return Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.");
 			new evid = OyuncuEv[playerid];
 			EvKaydetStr(evid,"evaciklama",inputtext);
 			EvYenile(evid);
@@ -2894,20 +2759,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+2)
+	if (dialogid == MENU+2)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuEv[playerid];
-			if(listitem == 0)
+			if (listitem == 0)
 			{
 				EvKaydetInt(evid,"evkilit",0);
 				Mesaj(playerid,"Evin kilidini açtçnız!");
 				EvYenile(evid);
 				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
 			}
-			if(listitem == 1)
+			if (listitem == 1)
 			{
 				EvKaydetInt(evid,"evkilit",1);
 				Mesaj(playerid,"Evi kilitlediniz!");
@@ -2917,28 +2782,28 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+3)
+	if (dialogid == MENU+3)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para Yatçr\n{FF4500}Para çek","Seç","İptal");
 		}
 	}
 
-	if(dialogid == MENU+4)
+	if (dialogid == MENU+4)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new str[256];
 			new evid = OyuncuEv[playerid];
-			if(listitem == 0)
+			if (listitem == 0)
 			{
 				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasaya yatçrçlcak miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
 				ShowPlayerDialog(playerid,MENU+5,DIALOG_STYLE_INPUT,BASLIK,str,"Yatçr","İptal");
 			}
-			if(listitem == 1)
+			if (listitem == 1)
 			{
 				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasadan çekilecek miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
 				ShowPlayerDialog(playerid,MENU+6,DIALOG_STYLE_INPUT,BASLIK,str,"çek","İptal");
@@ -2947,15 +2812,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+5)
+	if (dialogid == MENU+5)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuEv[playerid];
-			if(!strlen(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
-			if(!strval(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
-			if(strval(inputtext) > GetPlayerMoney(playerid)) return Mesaj(playerid,"Yazılan miktar sizde yeteri kadar bulunmuyor.");
+			if (!strlen(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
+			if (!strval(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
+			if (strval(inputtext) > GetPlayerMoney(playerid)) return Mesaj(playerid,"Yazılan miktar sizde yeteri kadar bulunmuyor.");
 			EvKaydetInt(evid,"evbanka",EvBilgi[evid][evbanka]+strval(inputtext));
 			GivePlayerMoney(playerid,-strval(inputtext));
 			EvYenile(evid);
@@ -2963,15 +2828,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+6)
+	if (dialogid == MENU+6)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuEv[playerid];
-			if(!strlen(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
-			if(!strval(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
-			if(strval(inputtext) > EvBilgi[evid][evbanka]) return Mesaj(playerid,"Yazılan miktar kasanızda yeteri kadar bulunmuyor.");
+			if (!strlen(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
+			if (!strval(inputtext)) return Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
+			if (strval(inputtext) > EvBilgi[evid][evbanka]) return Mesaj(playerid,"Yazılan miktar kasanızda yeteri kadar bulunmuyor.");
 			EvKaydetInt(evid,"evbanka",EvBilgi[evid][evbanka]-strval(inputtext));
 			GivePlayerMoney(playerid,strval(inputtext));
 			EvYenile(evid);
@@ -2979,21 +2844,21 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+7)
+	if (dialogid == MENU+7)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 		}
 	}
 
-	if(dialogid == MENU+8)
+	if (dialogid == MENU+8)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuEv[playerid];
-			if(listitem == 0)
+			if (listitem == 0)
 			{
 				new s1 = EvBilgi[evid][silahslot1];
 				new s2 = EvBilgi[evid][silahslot2];
@@ -3002,17 +2867,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				new s5 = EvBilgi[evid][silahslot5];
 				new s6 = EvBilgi[evid][silahslot6];
 				new str[512],slot1[32],slot2[32],slot3[32],slot4[32],slot5[32],slot6[32];
-				if(s1 == -1) slot1 = "Yok"; else slot1 = WeaponName(s1);
-				if(s2 == -1) slot2 = "Yok"; else slot2 = WeaponName(s2);
-				if(s3 == -1) slot3 = "Yok"; else slot3 = WeaponName(s3);
-				if(s4 == -1) slot4 = "Yok"; else slot4 = WeaponName(s4);
-				if(s5 == -1) slot5 = "Yok"; else slot5 = WeaponName(s5);
-				if(s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
+				if (s1 == -1) slot1 = "Yok"; else slot1 = WeaponName(s1);
+				if (s2 == -1) slot2 = "Yok"; else slot2 = WeaponName(s2);
+				if (s3 == -1) slot3 = "Yok"; else slot3 = WeaponName(s3);
+				if (s4 == -1) slot4 = "Yok"; else slot4 = WeaponName(s4);
+				if (s5 == -1) slot5 = "Yok"; else slot5 = WeaponName(s5);
+				if (s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
 				format(str,sizeof(str),
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
 				ShowPlayerDialog(playerid,MENU+9,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
 			}
-			if(listitem == 1)
+			if (listitem == 1)
 			{
 				new s1 = EvBilgi[evid][silahslot1];
 				new s2 = EvBilgi[evid][silahslot2];
@@ -3021,12 +2886,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				new s5 = EvBilgi[evid][silahslot5];
 				new s6 = EvBilgi[evid][silahslot6];
 				new str[512],slot1[32],slot2[32],slot3[32],slot4[32],slot5[32],slot6[32];
-				if(s1 == -1) slot1 = "Yok"; else slot1 = WeaponName(s1);
-				if(s2 == -1) slot2 = "Yok"; else slot2 = WeaponName(s2);
-				if(s3 == -1) slot3 = "Yok"; else slot3 = WeaponName(s3);
-				if(s4 == -1) slot4 = "Yok"; else slot4 = WeaponName(s4);
-				if(s5 == -1) slot5 = "Yok"; else slot5 = WeaponName(s5);
-				if(s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
+				if (s1 == -1) slot1 = "Yok"; else slot1 = WeaponName(s1);
+				if (s2 == -1) slot2 = "Yok"; else slot2 = WeaponName(s2);
+				if (s3 == -1) slot3 = "Yok"; else slot3 = WeaponName(s3);
+				if (s4 == -1) slot4 = "Yok"; else slot4 = WeaponName(s4);
+				if (s5 == -1) slot5 = "Yok"; else slot5 = WeaponName(s5);
+				if (s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
 				format(str,sizeof(str),
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
 				ShowPlayerDialog(playerid,MENU+10,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
@@ -3034,10 +2899,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+9)
+	if (dialogid == MENU+9)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuEv[playerid];
 			new s1 = EvBilgi[evid][silahslot1];
@@ -3057,7 +2922,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			{
 				case 0:
 				{
-					if(s1 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s1 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					GivePlayerWeapon(playerid,s1,s1x);
 					EvKaydetInt(evid,"silahslot1",-1);
 					EvKaydetInt(evid,"silahslot1x",-1);
@@ -3065,7 +2930,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 1:
 				{
-					if(s2 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s2 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					GivePlayerWeapon(playerid,s2,s2x);
 					EvKaydetInt(evid,"silahslot2",-1);
 					EvKaydetInt(evid,"silahslot2x",-1);
@@ -3073,7 +2938,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 2:
 				{
-					if(s3 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s3 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					GivePlayerWeapon(playerid,s3,s3x);
 					EvKaydetInt(evid,"silahslot3",-1);
 					EvKaydetInt(evid,"silahslot3x",-1);
@@ -3081,7 +2946,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 3:
 				{
-					if(s4 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s4 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					GivePlayerWeapon(playerid,s4,s4x);
 					EvKaydetInt(evid,"silahslot4",-1);
 					EvKaydetInt(evid,"silahslot4x",-1);
@@ -3089,7 +2954,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 4:
 				{
-					if(s5 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s5 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					GivePlayerWeapon(playerid,s5,s5x);
 					EvKaydetInt(evid,"silahslot5",-1);
 					EvKaydetInt(evid,"silahslot5x",-1);
@@ -3097,7 +2962,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 5:
 				{
-					if(s6 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s6 == -1) return Mesaj(playerid,"Bu slotta silah yok."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					GivePlayerWeapon(playerid,s6,s6x);
 					EvKaydetInt(evid,"silahslot6",-1);
 					EvKaydetInt(evid,"silahslot6x",-1);
@@ -3108,10 +2973,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == MENU+10)
+	if (dialogid == MENU+10)
 	{
-		if(!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuEv[playerid];
 			new s1 = EvBilgi[evid][silahslot1];
@@ -3120,13 +2985,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			new s4 = EvBilgi[evid][silahslot4];
 			new s5 = EvBilgi[evid][silahslot5];
 			new s6 = EvBilgi[evid][silahslot6];
-			if(GetPlayerWeapon(playerid) == 0) return Mesaj(playerid,"Elinizde silah yok.");
+			if (GetPlayerWeapon(playerid) == 0) return Mesaj(playerid,"Elinizde silah yok.");
 
 			switch(listitem)
 			{
 				case 0:
 				{
-					if(s1 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s1 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					EvKaydetInt(evid,"silahslot1",GetPlayerWeapon(playerid));
 					EvKaydetInt(evid,"silahslot1x",GetPlayerAmmo(playerid));
 					DeletePlayerWeapon(playerid,GetPlayerWeapon(playerid));
@@ -3134,7 +2999,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 1:
 				{
-					if(s2 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s2 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					EvKaydetInt(evid,"silahslot2",GetPlayerWeapon(playerid));
 					EvKaydetInt(evid,"silahslot2x",GetPlayerAmmo(playerid));
 					DeletePlayerWeapon(playerid,GetPlayerWeapon(playerid));
@@ -3142,7 +3007,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 2:
 				{
-					if(s3 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s3 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					EvKaydetInt(evid,"silahslot3",GetPlayerWeapon(playerid));
 					EvKaydetInt(evid,"silahslot3x",GetPlayerAmmo(playerid));
 					DeletePlayerWeapon(playerid,GetPlayerWeapon(playerid));
@@ -3150,7 +3015,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 3:
 				{
-					if(s4 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s4 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					EvKaydetInt(evid,"silahslot4",GetPlayerWeapon(playerid));
 					EvKaydetInt(evid,"silahslot4x",GetPlayerAmmo(playerid));
 					DeletePlayerWeapon(playerid,GetPlayerWeapon(playerid));
@@ -3158,7 +3023,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 4:
 				{
-					if(s5 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s5 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					EvKaydetInt(evid,"silahslot5",GetPlayerWeapon(playerid));
 					EvKaydetInt(evid,"silahslot5x",GetPlayerAmmo(playerid));
 					DeletePlayerWeapon(playerid,GetPlayerWeapon(playerid));
@@ -3166,7 +3031,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				}
 				case 5:
 				{
-					if(s6 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
+					if (s6 != -1) return Mesaj(playerid,"Bu slotta zaten bir silah var."),EvEditleniyor[OyuncuEv[playerid]] = false;
 					EvKaydetInt(evid,"silahslot6",GetPlayerWeapon(playerid));
 					EvKaydetInt(evid,"silahslot6x",GetPlayerAmmo(playerid));
 					DeletePlayerWeapon(playerid,GetPlayerWeapon(playerid));
@@ -3177,35 +3042,35 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	if(dialogid == DIALOG)
+	if (dialogid == DIALOG)
 	{
-		if(!response) EvEditleniyor[GetHouseID(playerid)] = false;
-		if(response)
+		if (!response) EvEditleniyor[GetHouseID(playerid)] = false;
+		if (response)
 		{
-			if(!Kontrol(playerid)) return Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+			if (!Kontrol(playerid)) return Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			new str[256];
 			new evid = GetHouseID(playerid);
-			if(listitem == 0) //Ev Açıklaması
+			if (listitem == 0) //Ev Açıklaması
 			{
 				format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayç deçiçtirmek için yenisini açaççya yazınız.",EvBilgi[evid][evaciklama]);
 				ShowPlayerDialog(playerid,DIALOG+2,DIALOG_STYLE_INPUT,BASLIK,str,"Deçiçtir","İptal");
 			}
-			if(listitem == 1) //Ev Sahibi
+			if (listitem == 1) //Ev Sahibi
 			{
 				new sahip[255];
 				new dosya[64];
 				format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-				if(!strlen(EvBilgi[evid][evsahip])) sahip = "Yok";
+				if (!strlen(EvBilgi[evid][evsahip])) sahip = "Yok";
 				//else sahip = dini_Get(dosya,"evsahip");
 				format(str,sizeof(str),"{00FF7F}Ev Sahibi: {c0c0c0}%s\n\n{CD5C5C}Ev sahibini deçiçtirirseniz tçm ev belirlenen kiçiye devredilir.\nEçer boç bçrakçrsanız ev satçlçk olarak deçiçtirilir.",sahip);
 				ShowPlayerDialog(playerid,DIALOG+3,DIALOG_STYLE_INPUT,BASLIK,str,"Deçiçtir","İptal");
 			}
-			if(listitem == 2) //Ev Fiyatç
+			if (listitem == 2) //Ev Fiyatç
 			{
 				format(str,sizeof(str),"{00FF7F}Ev Fiyatç: {c0c0c0}%i$\n\n{CD5C5C}Yeni ev fiyatçnç deçiçtirmek için yeni miktarç giriniz.",EvBilgi[evid][evfiyat]);
 				ShowPlayerDialog(playerid,DIALOG+4,DIALOG_STYLE_INPUT,BASLIK,str,"Deçiçtir","İptal");
 			}
-			if(listitem == 3) //Ev Interior
+			if (listitem == 3) //Ev Interior
 			{
 				new menu[450];
 				strcat(menu,"{FF4500}Ev 1\n");
@@ -3216,25 +3081,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				strcat(menu,"{FF4500}Unused Villası");
 				ShowPlayerDialog(playerid,DIALOG+5,DIALOG_STYLE_LIST,BASLIK,menu,"Ayarla","İptal");
 			}
-			if(listitem == 4) //Ev Kilidi
+			if (listitem == 4) //Ev Kilidi
 			{
 				ShowPlayerDialog(playerid,DIALOG+7,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aç\n{FF4500}Kilitle","Ayarla","İptal");
 			}
-			if(listitem == 5) //Ev Sil
+			if (listitem == 5) //Ev Sil
 			{
 				ShowPlayerDialog(playerid,DIALOG+8,DIALOG_STYLE_MSGBOX,BASLIK,"{B22222}Bunu yaparsanız ev kaydç tamamen silinecektir ve Geri dönççç olmayacaktçr.\n{C0C0C0}Silmeyi onaylçyor musunuz ?","Onayla","İptal");
 			}
 		}
 	}
-	if(dialogid == DIALOG+1 && response)
+	if (dialogid == DIALOG+1 && response)
 	{
-		if(listitem == 0)
+		if (listitem == 0)
 		{
 			new Float:x, Float:y, Float:z;
 			GetPlayerPos(playerid, x, y, z);
 			for(new i;i<MAX_HOUSE;i++)
 			{
-				if(EvBilgi[i][evvid] == -1)
+				if (EvBilgi[i][evvid] == -1)
 				{
 					EvYarat(i, x, y, z);
 					break;
@@ -3243,40 +3108,40 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			Mesaj(playerid,"başarıyla ev yarattınız, düzenlemek için pickup üzerinde '{008080}/evmenu{FFFFFF}' komutunu kullanınız.");
 		}
 	}
-	if(dialogid == DIALOG+2)
+	if (dialogid == DIALOG+2)
 	{
-		if(!response) return ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) return ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 
-		if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
-		if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.") ;
+		if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+		if (!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.") ;
 		new evid = OyuncuKontrolEv[playerid];
 		EvKaydetStr(evid,"evaciklama",inputtext);
 		EvYenile(evid);
 		Mesaj(playerid,"Ev açıklaması deçiçtirildi.");
 		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 	}
-	if(dialogid == DIALOG+3)
+	if (dialogid == DIALOG+3)
 	{
-		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (response)
 		{
 			new evid = OyuncuKontrolEv[playerid];
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
-			if(!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip",""),Mesaj(playerid,"Ev satçlçk olarak deçiçtirildi!");
+			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+			if (!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip",""),Mesaj(playerid,"Ev satçlçk olarak deçiçtirildi!");
 			else EvKaydetInt(evid,"evsatilik",0),EvKaydetStr(evid,"evsahip",inputtext),Mesaj(playerid,"Ev sahibi deçiçtirildi!");
 			EvYenile(evid);
 			SahipKontrol();
 			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 		}
 	}
-	if(dialogid == DIALOG+4)
+	if (dialogid == DIALOG+4)
 	{
-		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (response)
 		{
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
-			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
-			if(!strval(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
+			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+			if (!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
+			if (!strval(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir rakam giriniz.");
 			new evid = OyuncuKontrolEv[playerid];
 			EvKaydetInt(evid,"evfiyat",strval(inputtext));
 			Mesaj(playerid,"Ev fiyatç deçiçtirildi!");
@@ -3284,40 +3149,40 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 		}
 	}
-	if(dialogid == DIALOG+5)
+	if (dialogid == DIALOG+5)
 	{
-		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (response)
 		{
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			new evid = OyuncuKontrolEv[playerid];
-			if(listitem == 0) EvKaydetInt(evid,"evint",0);
-			if(listitem == 1) EvKaydetInt(evid,"evint",1);
-			if(listitem == 2) EvKaydetInt(evid,"evint",2);
-			if(listitem == 3) EvKaydetInt(evid,"evint",3);
-			if(listitem == 4) EvKaydetInt(evid,"evint",4);
-			if(listitem == 5) EvKaydetInt(evid,"evint",5);
+			if (listitem == 0) EvKaydetInt(evid,"evint",0);
+			if (listitem == 1) EvKaydetInt(evid,"evint",1);
+			if (listitem == 2) EvKaydetInt(evid,"evint",2);
+			if (listitem == 3) EvKaydetInt(evid,"evint",3);
+			if (listitem == 4) EvKaydetInt(evid,"evint",4);
+			if (listitem == 5) EvKaydetInt(evid,"evint",5);
 
 			EvYenile(evid);
 			Mesaj(playerid,"Ev interioru deçiçtirildi!");
 			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 		}
 	}
-	if(dialogid == DIALOG+7)
+	if (dialogid == DIALOG+7)
 	{
-		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (response)
 		{
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 			new evid = OyuncuKontrolEv[playerid];
-			if(listitem == 0)
+			if (listitem == 0)
 			{
 				EvKaydetInt(evid,"evkilit",0);
 				Mesaj(playerid,"Evin kilidini açtçnız!");
 				EvYenile(evid);
 				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 			}
-			if(listitem == 1)
+			if (listitem == 1)
 			{
 				EvKaydetInt(evid, "evkilit", 1);
 				Mesaj(playerid,"Evi kilitlediniz!");
@@ -3326,12 +3191,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 		}
 	}
-	if(dialogid == DIALOG+8)
+	if (dialogid == DIALOG+8)
 	{
-		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		if(response)
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (response)
 		{
-			if(Kontrol(playerid)) EvSil(GetHouseID(playerid)),EvEditleniyor[GetHouseID(playerid)] = false;
+			if (Kontrol(playerid)) EvSil(GetHouseID(playerid)),EvEditleniyor[GetHouseID(playerid)] = false;
 			else Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
 		}
 	}
@@ -3367,7 +3232,7 @@ strtok(const string[], &index)
 // - Silah sistemi
 stock SilahSat(playerid,silahid,silahammo,const silahisim[],ucret)
 {
-	if(GetPlayerMoney(playerid) < ucret) return SendError(playerid,"Para yetersiz!");
+	if (GetPlayerMoney(playerid) < ucret) return SendError(playerid,"Para yetersiz!");
 	GivePlayerWeapon(playerid,silahid,silahammo);
 	GivePlayerMoney(playerid,-ucret);
 	new string[512];
@@ -3379,9 +3244,9 @@ stock SilahSat(playerid,silahid,silahammo,const silahisim[],ucret)
 // - Teleport sistemi
 stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const isim[], const command[], arabali, objeyukle)
 {
-	if(objeyukle == 1) ObjeYukle(playerid);
+	if (objeyukle == 1) ObjeYukle(playerid);
 
-	if(arabali == 1 && IsPlayerInAnyVehicle(playerid)) {
+	if (arabali == 1 && IsPlayerInAnyVehicle(playerid)) {
 		SetVehiclePos(GetPlayerVehicleID(playerid),tX,tY,tZ);
 		LinkVehicleToInterior(GetPlayerVehicleID(playerid),Int);
 	} else {
@@ -3463,89 +3328,89 @@ SetPlayerScore(playerid, dini_Int(SPL, "Skor"));
 return 1;}
 
 stock ExpVer(playerid){
-	if(seviye[playerid] == 1)
+	if (seviye[playerid] == 1)
 	{
 	exp[playerid]=exp[playerid]+20;
 	}
-	else if(seviye[playerid] == 2)
+	else if (seviye[playerid] == 2)
 	{
 	exp[playerid]=exp[playerid]+18;
 	}
-	else if(seviye[playerid] == 3)
+	else if (seviye[playerid] == 3)
 	{
 	exp[playerid]=exp[playerid]+18;
 	}
-	else if(seviye[playerid] == 4)
+	else if (seviye[playerid] == 4)
 	{
 	exp[playerid]=exp[playerid]+16;
 	}
-	else if(seviye[playerid] == 5)
+	else if (seviye[playerid] == 5)
 	{
 	exp[playerid]=exp[playerid]+14;
 	}
-	else if(seviye[playerid] == 6)
+	else if (seviye[playerid] == 6)
 	{
 	exp[playerid]=exp[playerid]+12;
 	}
-	else if(seviye[playerid] == 7)
+	else if (seviye[playerid] == 7)
 	{
 	exp[playerid]=exp[playerid]+10;
 	}
-	else if(seviye[playerid] == 8)
+	else if (seviye[playerid] == 8)
 	{
 	exp[playerid]=exp[playerid]+8;
 	}
-	else if(seviye[playerid] == 9)
+	else if (seviye[playerid] == 9)
 	{
 	exp[playerid]=exp[playerid]+6;
 	}
-	else if(seviye[playerid] == 10)
+	else if (seviye[playerid] == 10)
 	{
 	exp[playerid]=exp[playerid]+4;
 	}
-	else if(seviye[playerid] == 11)
+	else if (seviye[playerid] == 11)
 	{
 	exp[playerid]=exp[playerid]+4;
 	}
-	else if(seviye[playerid] == 12)
+	else if (seviye[playerid] == 12)
 	{
 	exp[playerid]=exp[playerid]+3;
 	}
-	else if(seviye[playerid] == 13)
+	else if (seviye[playerid] == 13)
 	{
 	exp[playerid]=exp[playerid]+3;
 	}
-	else if(seviye[playerid] == 14)
+	else if (seviye[playerid] == 14)
 	{
 	exp[playerid]=exp[playerid]+2;
 	}
-	else if(seviye[playerid] == 15)
+	else if (seviye[playerid] == 15)
 	{
 	exp[playerid]=exp[playerid]+2;
 	}
-	else if(seviye[playerid] == 16)
+	else if (seviye[playerid] == 16)
 	{
 	exp[playerid]=exp[playerid]+2;
 	}
-	else if(seviye[playerid] == 17)
+	else if (seviye[playerid] == 17)
 	{
 	exp[playerid]=exp[playerid]+1;
 	}
-	else if(seviye[playerid] == 18)
+	else if (seviye[playerid] == 18)
 	{
 	exp[playerid]=exp[playerid]+1;
 	}
-	else if(seviye[playerid] == 19)
+	else if (seviye[playerid] == 19)
 	{
 	exp[playerid]=exp[playerid]+1;
 	}
-	else if(seviye[playerid] > 19)
+	else if (seviye[playerid] > 19)
 	{
 	exp[playerid]=exp[playerid]+1;
 	}
 
-	if(exp[playerid] >= 1000){
-	if(seviye[playerid] < 50){
+	if (exp[playerid] >= 1000){
+	if (seviye[playerid] < 50){
 	seviye[playerid]++;
 	exp[playerid]=0;
 	}}
@@ -3558,12 +3423,12 @@ forward UpdateServerTime();
 public UpdateServerTime()
 {
 	Minute += 1;
-	if(Minute == 60 && Hour < 24)
+	if (Minute == 60 && Hour < 24)
 	{
 	Hour += 1, Minute = 0;
 	SetWorldTime(Hour);
 	}
-	if(Hour == 24 && Minute == 0)
+	if (Hour == 24 && Minute == 0)
 	{
 	Hour = 0, Minute = 0;
 	SetWorldTime(Hour);
@@ -3575,7 +3440,7 @@ public UpdateServerTime()
 
 	for(new playerid = 0; playerid < MAX_PLAYERS; playerid++)
 	{
-	if(!IsPlayerConnected(playerid)) continue;
+	if (!IsPlayerConnected(playerid)) continue;
 	SetPlayerTime(playerid, Hour, Minute);
 	}
 	return 1;
@@ -3585,7 +3450,7 @@ public UpdateServerTime()
 forward asilanadamtimer(playerid);
 public asilanadamtimer(playerid)
 {
-	if(cekiyor[playerid] == 1)
+	if (cekiyor[playerid] == 1)
 	{
 	GivePlayerMoney(playerid,31);
 	SendInfo(playerid,"31'den para aldçnız! {FF0000}(31$)");
@@ -3607,7 +3472,7 @@ stock IsNumeric(const string[])
 {
    for(new i, j = strlen(string); i < j; ++i)
    {
-	  if(!('0' <= string[i] <= '9'))
+	  if (!('0' <= string[i] <= '9'))
 	  {
 		 return 0;
 	  }
@@ -3629,7 +3494,7 @@ IsNosVehicle(vehicleid)
 
 	for(new i = 0; i < NO_NOS_VEHICLES; i++)
 	{
-		if(GetVehicleModel(vehicleid) == InvalidNosVehicles[i])
+		if (GetVehicleModel(vehicleid) == InvalidNosVehicles[i])
 		{
 			return false;
 		}
@@ -3645,13 +3510,13 @@ public OyuncuMapIconKontrol(playerid)
 	{
 		new dosya[64];
 		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",i);
-		if(dini_Exists(dosya))
+		if (dini_Exists(dosya))
 		{
-			if(EvBilgi[i][evsatilik] == 0)
+			if (EvBilgi[i][evsatilik] == 0)
 			{
 				 SetPlayerMapIcon(playerid,i,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z],REDMAP,0);
 			}
-			else if(EvBilgi[i][evsatilik] == 1)
+			else if (EvBilgi[i][evsatilik] == 1)
 			{
 				SetPlayerMapIcon(playerid,i,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z],GREENMAP,0);
 			}
@@ -3666,7 +3531,7 @@ public EvYukle(evid)
 	/*
 	new dosya[64];
 	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-	if(dini_Exists(dosya))
+	if (dini_Exists(dosya))
 	{
 		new str[256],durum[16];
 		EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
@@ -3694,18 +3559,18 @@ public EvYukle(evid)
 		EvBilgi[evid][silahslot5x] = dini_Int(dosya,"silahslot5x");
 		EvBilgi[evid][silahslot6x] = dini_Int(dosya,"silahslot6x");
 
-		if(EvBilgi[evid][evkilit] == 0) durum = "Açık";
-		else if(EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
+		if (EvBilgi[evid][evkilit] == 0) durum = "Açık";
+		else if (EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
 
 		TextLabel[evid] = Create3DTextLabel("...",0xFFFFFFFF,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],30,0);
 
-		if(EvBilgi[evid][evsatilik] == 0)
+		if (EvBilgi[evid][evsatilik] == 0)
 		{
 			format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evsahip],durum);
 			Pickup[evid] = CreatePickup(BLUEH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
 		}
-		else if(EvBilgi[evid][evsatilik] == 1)
+		else if (EvBilgi[evid][evsatilik] == 1)
 		{
 			format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
@@ -3725,7 +3590,7 @@ public EvYenile(evid)
 	/*
 	new dosya[64];
 	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-	if(dini_Exists(dosya))
+	if (dini_Exists(dosya))
 	{
 		new str[256],durum[16];
 		EvBilgi[evid][evsatilik] = dini_Int(dosya,"evsatilik");
@@ -3752,15 +3617,15 @@ public EvYenile(evid)
 		EvBilgi[evid][silahslot5x] = dini_Int(dosya,"silahslot5x");
 		EvBilgi[evid][silahslot6x] = dini_Int(dosya,"silahslot6x");
 
-		if(EvBilgi[evid][evkilit] == 0) durum = "Açık";
-		else if(EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
+		if (EvBilgi[evid][evkilit] == 0) durum = "Açık";
+		else if (EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
 
-		if(EvBilgi[evid][evsatilik] == 0)
+		if (EvBilgi[evid][evsatilik] == 0)
 		{
 			format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evsahip],durum);
 		}
-		else if(EvBilgi[evid][evsatilik] == 1)
+		else if (EvBilgi[evid][evsatilik] == 1)
 		{
 			format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
@@ -3780,7 +3645,7 @@ public EvYarat(evid, Float:X, Float:Y, Float:Z)
 	/*
 	new dosya[64];
 	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-	if(!dini_Exists(dosya))
+	if (!dini_Exists(dosya))
 	{
 		new str[256],durum[16];
 
@@ -3835,24 +3700,24 @@ public EvYarat(evid, Float:X, Float:Y, Float:Z)
 		EvBilgi[evid][silahslot5x] = dini_Int(dosya,"silahslot5x");
 		EvBilgi[evid][silahslot6x] = dini_Int(dosya,"silahslot6x");
 
-		if(EvBilgi[evid][evkilit] == 0) durum = "Açık";
-		else if(EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
+		if (EvBilgi[evid][evkilit] == 0) durum = "Açık";
+		else if (EvBilgi[evid][evkilit] == 1) durum = "Kilitli";
 
 		TextLabel[evid] = Create3DTextLabel("...",0xFFFFFFFF,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],30,0);
 
-		if(EvBilgi[evid][evsatilik] == 0)
+		if (EvBilgi[evid][evsatilik] == 0)
 		{
 			format(str,sizeof(str),"{FFFFFF}%s\n{CD5C5C}Ev Sahibi: {FFFFFF}%s\n{CD5C5C}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evsahip],durum);
 			Pickup[evid] = CreatePickup(BLUEH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
-			for(new a;a<MAX_PLAYERS;a++) if(IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],REDMAP,0);
+			for(new a;a<MAX_PLAYERS;a++) if (IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],REDMAP,0);
 		}
-		else if(EvBilgi[evid][evsatilik] == 1)
+		else if (EvBilgi[evid][evsatilik] == 1)
 		{
 			format(str,sizeof(str),"{FFFFFF}%s\n{00FF7F}Ev Durumu: {FFFFFF}Satçlçk\n{00FF7F}Ev Fiyatç: {FFFFFF}%i$\n{00FF7F}Kilit Durumu: {FFFFFF}%s",
 			EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat],durum);
 			Pickup[evid] = CreatePickup(GREENH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
-			for(new a;a<MAX_PLAYERS;a++) if(IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],GREENMAP,0);
+			for(new a;a<MAX_PLAYERS;a++) if (IsPlayerConnected(a)) SetPlayerMapIcon(a,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],GREENMAP,0);
 		}
 		Update3DTextLabelText(TextLabel[evid],0xFFFFFFFF,str);
 
@@ -3867,17 +3732,17 @@ public EvYarat(evid, Float:X, Float:Y, Float:Z)
 
 public EvPickupYenile(evid)
 {
-	if(EvBilgi[evid][evsatilik] == 0)
+	if (EvBilgi[evid][evsatilik] == 0)
 	{
 		DestroyPickup(Pickup[evid]);
 		Pickup[evid] = CreatePickup(BLUEH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
-		for(new i=0;i<MAX_PLAYERS;i++) if(IsPlayerConnected(i)) RemovePlayerMapIcon(i,evid),SetPlayerMapIcon(i,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],REDMAP,0);
+		for(new i=0;i<MAX_PLAYERS;i++) if (IsPlayerConnected(i)) RemovePlayerMapIcon(i,evid),SetPlayerMapIcon(i,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],REDMAP,0);
 	}
-	else if(EvBilgi[evid][evsatilik] == 1)
+	else if (EvBilgi[evid][evsatilik] == 1)
 	{
 		DestroyPickup(Pickup[evid]);
 		Pickup[evid] = CreatePickup(GREENH,1,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z]);
-		for(new i=0;i<MAX_PLAYERS;i++) if(IsPlayerConnected(i)) RemovePlayerMapIcon(i,evid),SetPlayerMapIcon(i,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],GREENMAP,0);
+		for(new i=0;i<MAX_PLAYERS;i++) if (IsPlayerConnected(i)) RemovePlayerMapIcon(i,evid),SetPlayerMapIcon(i,evid,EvBilgi[evid][ev_X],EvBilgi[evid][ev_Y],EvBilgi[evid][ev_Z],GREENMAP,0);
 	}
 	return 1;
 }
@@ -3887,13 +3752,13 @@ public EvSil(evid)
 	/*
 	new dosya[64];
 	format(dosya,sizeof(dosya),"/Evler/ev%i.ini",evid);
-	if(dini_Exists(dosya))
+	if (dini_Exists(dosya))
 	{
 		printf("");
 		printf("Ev ID: %i // Silindi.",evid);
 		DestroyPickup(Pickup[evid]);
 		Delete3DTextLabel(TextLabel[evid]);
-		for(new b;b<MAX_PLAYERS;b++) if(IsPlayerConnected(b)) RemovePlayerMapIcon(b,evid);
+		for(new b;b<MAX_PLAYERS;b++) if (IsPlayerConnected(b)) RemovePlayerMapIcon(b,evid);
 		EvBilgi[evid][evsatilik] = -1;
 		EvBilgi[evid][evsahip] = -1;
 		EvBilgi[evid][evaciklama] = -1;
@@ -3958,9 +3823,9 @@ public SahipKontrol()
 		EvSahipID[i] = -1;
 		new dosya[64];
 		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",i);
-		if(dini_Exists(dosya))
+		if (dini_Exists(dosya))
 		{
-			   if(IsPlayerConnected(GetPlayerID(dini_Get(dosya,"evsahip"))))
+			   if (IsPlayerConnected(GetPlayerID(dini_Get(dosya,"evsahip"))))
 			{
 				EvSahipID[i] = GetPlayerID(dini_Get(dosya,"evsahip"));
 			}
@@ -3974,7 +3839,7 @@ stock GetHouseID(playerid)
 {
 	for(new i=0;i<MAX_HOUSE;i++)
 	{
-		if(IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z])) return i;
+		if (IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z])) return i;
 	}
 	return -255;
 }
@@ -3983,7 +3848,7 @@ public Kontrol(playerid)
 {
 	for(new i=0;i<MAX_HOUSE;i++)
 	{
-		if(IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z]))
+		if (IsPlayerInRangeOfPoint(playerid,1,EvBilgi[i][ev_X],EvBilgi[i][ev_Y],EvBilgi[i][ev_Z]))
 		{
 			return 1;
 		}
@@ -4020,10 +3885,10 @@ GetPlayerID(const PlayerName[])
 
 	for(new i = 0; i < GetMaxPlayers(); i++)
 	{
-		if(IsPlayerConnected(i))
+		if (IsPlayerConnected(i))
 		{
 			GetPlayerName(i, pName, MAX_PLAYER_NAME);
-			if(strfind(pName, PlayerName, true) != -1)
+			if (strfind(pName, PlayerName, true) != -1)
 			{
 				return i;
 			}
@@ -4077,7 +3942,7 @@ stock DeletePlayerWeapon(playerid, weaponid)
 
 	for(new i; i != sizeof(gWeaponData); ++i)
 	{
-		if(gWeaponData[i][0] != weaponid)
+		if (gWeaponData[i][0] != weaponid)
 		{
 			GivePlayerWeapon(playerid, gWeaponData[i][0], gWeaponData[i][1]);
 		}
@@ -4091,49 +3956,49 @@ stock DeletePlayerWeapon(playerid, weaponid)
 forward playerGameTimer(playerid);
 public playerGameTimer(playerid)
 {
-	 if(PlayerAccount[playerid][pA_Hungry] >= 0 && PlayerAccount[playerid][pA_Hungry] < 50)
+	 if (PlayerAccount[playerid][pA_Hungry] >= 0 && PlayerAccount[playerid][pA_Hungry] < 50)
 	 {
 		new Float: playerHealth;
 		GetPlayerHealth(playerid, playerHealth);
 		TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~g~~h~LOW");
 
-		if(playerHealth < 100)
+		if (playerHealth < 100)
 			SetPlayerHealth(playerid, playerHealth + 3.0);
 	}
-	else if(PlayerAccount[playerid][pA_Hungry] > 50 && PlayerAccount[playerid][pA_Hungry] < 100)
+	else if (PlayerAccount[playerid][pA_Hungry] > 50 && PlayerAccount[playerid][pA_Hungry] < 100)
 		TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~y~MEDIUM");
-	else if(PlayerAccount[playerid][pA_Hungry] > 100)
+	else if (PlayerAccount[playerid][pA_Hungry] > 100)
 	{
 		new Float: playerHealth;
 		GetPlayerHealth(playerid, playerHealth);
 		TextDrawSetString(textdraw_hungry[playerid], "HUNGRY: ~r~~h~HIGH!");
 
-		if(playerHealth < 25)
+		if (playerHealth < 25)
 			SetPlayerHealth(playerid, playerHealth - 3.0);
 	}
 
-	if(PlayerAccount[playerid][pA_Radiation] == 0)
+	if (PlayerAccount[playerid][pA_Radiation] == 0)
 	{
 		TextDrawSetString(textdraw_radiation[playerid], "RADIATION: ~w~NONE");
 	}
 	else
 	{
 		new radiationText[64];
-		 if(PlayerAccount[playerid][pA_Radiation] > 0 && PlayerAccount[playerid][pA_Radiation] < 40)
+		 if (PlayerAccount[playerid][pA_Radiation] > 0 && PlayerAccount[playerid][pA_Radiation] < 40)
 			format(radiationText, sizeof(radiationText), "RADIATION: ~g~~h~%d", PlayerAccount[playerid][pA_Radiation]);
-		 else if(PlayerAccount[playerid][pA_Radiation] >= 40 && PlayerAccount[playerid][pA_Radiation] < 90)
+		 else if (PlayerAccount[playerid][pA_Radiation] >= 40 && PlayerAccount[playerid][pA_Radiation] < 90)
 			format(radiationText, sizeof(radiationText), "RADIATION: ~y~%d", PlayerAccount[playerid][pA_Radiation]);
-		 else if(PlayerAccount[playerid][pA_Radiation] >= 90)
+		 else if (PlayerAccount[playerid][pA_Radiation] >= 90)
 			format(radiationText, sizeof(radiationText), "RADIATION: ~r~~h~%d", PlayerAccount[playerid][pA_Radiation]);
 		TextDrawSetString(textdraw_radiation[playerid], radiationText);
 	}
 
 	new pingText[64];
-	if(GetPlayerPing(playerid) >= 0 && GetPlayerPing(playerid) < 80)
+	if (GetPlayerPing(playerid) >= 0 && GetPlayerPing(playerid) < 80)
 		format(pingText, sizeof(pingText), "PING: ~g~~h~%d", GetPlayerPing(playerid));
-	else if(GetPlayerPing(playerid) >= 80 && GetPlayerPing(playerid) < 200)
+	else if (GetPlayerPing(playerid) >= 80 && GetPlayerPing(playerid) < 200)
 		format(pingText, sizeof(pingText), "PING: ~y~%d", GetPlayerPing(playerid));
-	else if(GetPlayerPing(playerid) >= 200)
+	else if (GetPlayerPing(playerid) >= 200)
 		format(pingText, sizeof(pingText), "PING: ~r~~h~%d", GetPlayerPing(playerid));
 
 	TextDrawSetString(textdraw_ping[playerid], pingText);

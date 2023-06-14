@@ -1764,44 +1764,86 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		GetPlayerFacingAngle(playerid, angle);
 
 		carID = CreateVehicle(559, x, y, z, angle, 1, -1, -1);
-		PutPlayerInVehicle(playerid, carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(carID,1065);    AddVehicleComponent(carID,1067);    AddVehicleComponent(carID,1162); AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1073);	ChangeVehiclePaintjob(carID,1);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+		PutPlayerInVehicle(playerid, carID, 0);
+
+		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+
+		AddVehicleComponent(carID, 1065);
+		AddVehicleComponent(carID, 1067);
+		AddVehicleComponent(carID, 1162);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1073);
+		ChangeVehiclePaintjob(carID, 1);
+		
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m4", true) == 0)	{
+	if(strcmp(cmdtext, "/m4", true) == 0) {
 		// Flash
-		 new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(565,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
-		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
-		MCarPlayerInfo[playerid][pMArabaID]=carID;
-		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(carID,1046); AddVehicleComponent(carID,1049); AddVehicleComponent(carID,1053); AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1073); ChangeVehiclePaintjob(carID,1);
-		   SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		GetPlayerPos(playerid, x, y, z);
+		GetPlayerFacingAngle(playerid, angle);
+
+		carID = CreateVehicle(565, x, y, z, angle, 1, -1, -1);
+		PutPlayerInVehicle(playerid, carID, 0);
+
+		if(MCarPlayerInfo[playerid][pMAraba] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+		
+		MCarPlayerInfo[playerid][pMArabaID] = carID;
+		MCarPlayerInfo[playerid][pMAraba] = 1;
+
+		AddVehicleComponent(carID, 1046);
+		AddVehicleComponent(carID, 1049);
+		AddVehicleComponent(carID, 1053);
+		AddVehicleComponent(carID, 1010);
+		AddVehicleComponent(carID, 1073);
+		ChangeVehiclePaintjob(carID, 1);
+
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
 		return 1;
 	}
 
-	if(strcmp(cmdtext, "/m5", true) == 0)	{
+	if(strcmp(cmdtext, "/m5", true) == 0) {
 		// Uranus
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
-		carID = CreateVehicle(558,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
+
+		new Float:x, Float:y, Float:z, Float:angle, carID;
+		
+		GetPlayerPos(playerid,X,Y,Z);
+		GetPlayerFacingAngle(playerid,angle);
+
+		carID = CreateVehicle(558,X,Y,Z,angle,1,-1,-1);
+		PutPlayerInVehicle(playerid,carID,0);
+
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
+
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
 		MCarPlayerInfo[playerid][pMAraba]=1;
-		AddVehicleComponent(carID,1088); AddVehicleComponent(carID,1092); AddVehicleComponent(carID,1139); AddVehicleComponent(carID,1010); AddVehicleComponent(carID,1073); ChangeVehiclePaintjob(carID,1);
-			SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid)); LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
+
+		AddVehicleComponent(carID,1088);
+		AddVehicleComponent(carID,1092);
+		AddVehicleComponent(carID,1139);
+		AddVehicleComponent(carID,1010);
+		AddVehicleComponent(carID,1073);
+		ChangeVehiclePaintjob(carID,1);
+		
+		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
+		LinkVehicleToInterior(carID, GetPlayerInterior(playerid));
 		return 1;
 	}
 
 	if(strcmp(cmdtext, "/m6", true) == 0) {
 		// Stratum
-		new Float:x, Float:Y, Float:Z, Float:angle, carID;
+
+		new Float:x, Float:y, Float:z, Float:angle, carID;
 		
-		GetPlayerPos(playerid, X, Y, Z);
+		GetPlayerPos(playerid, x, y, z);
 		GetPlayerFacingAngle(playerid, angle);
 
 		carID = CreateVehicle(561, X, Y, Z, angle, 1, -1, -1);
@@ -1826,7 +1868,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/m7", true) == 0) {
 		// Elegy
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(562,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -1838,7 +1880,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/m8", true) == 0) {
 		// Savanna
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(567,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -1850,7 +1892,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/m9", true) == 0) {
 		// Uranus
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(558,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -1864,7 +1906,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/m10", true) == 0) {
 		// Monster
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(557,X,Y,Z,angle,1,1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -1876,7 +1918,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/m11", true) == 0) {
 		// Slamvan
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(535,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -1889,7 +1931,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/m12", true) == 0) {
 		// Elegy
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(562,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -1902,7 +1944,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if(strcmp(cmdtext, "/nrg", true) == 0) {
 		// NRG
-		new Float:x, Float:Y, Float:Z, Float:angle,carID;	GetPlayerPos(playerid,X,Y,Z); GetPlayerFacingAngle(playerid,angle);
+		new Float:x, Float:y, Float:z, Float:angle,carID;	GetPlayerPos(playerid, x, y, z); GetPlayerFacingAngle(playerid,angle);
 		carID = CreateVehicle(522,X,Y,Z,angle,1,-1,-1);	PutPlayerInVehicle(playerid,carID,0);
 		if(MCarPlayerInfo[playerid][pMAraba]!=0) DestroyVehicle(MCarPlayerInfo[playerid][pMArabaID]);
 		MCarPlayerInfo[playerid][pMArabaID]=carID;
@@ -3082,40 +3124,34 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 		}
 	}
-	if(dialogid == DIALOG+1)
+	if(dialogid == DIALOG+1 && response)
 	{
-		if(!response) return 1;
-		if(response)
+		if(listitem == 0)
 		{
-			if(listitem == 0)
+			new Float:x, Float:y, Float:z;
+			GetPlayerPos(playerid, x, y, z);
+			for(new i;i<MAX_HOUSE;i++)
 			{
-				new Float:X, Float:Y, Float:Z;
-				GetPlayerPos(playerid,X,Y,Z);
-				for(new i;i<MAX_HOUSE;i++)
+				if(EvBilgi[i][evvid] == -1)
 				{
-					if(EvBilgi[i][evvid] == -1)
-					{
-						EvYarat(i,X,Y,Z);
-						break;
-					}
+					EvYarat(i, x, y, z);
+					break;
 				}
-				Mesaj(playerid,"başarıyla ev yarattçnız, dçzenlemek için pickup çzerinde '{008080}/evmenu{FFFFFF}' komutunu kullançnız.");
 			}
+			Mesaj(playerid,"başarıyla ev yarattınız, düzenlemek için pickup üzerinde '{008080}/evmenu{FFFFFF}' komutunu kullanınız.");
 		}
 	}
 	if(dialogid == DIALOG+2)
 	{
-		if(!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		if(response)
-		{
-			if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
-			if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lçtfen geçerli bir yazı giriniz.") ;
-			new evid = OyuncuKontrolEv[playerid];
-			EvKaydetStr(evid,"evaciklama",inputtext);
-			EvYenile(evid);
-			Mesaj(playerid,"Ev açıklaması deçiçtirildi.");
-			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		}
+		if(!response) return ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+
+		if(!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin çstçnde olmalısınız!");
+		if(!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.") ;
+		new evid = OyuncuKontrolEv[playerid];
+		EvKaydetStr(evid,"evaciklama",inputtext);
+		EvYenile(evid);
+		Mesaj(playerid,"Ev açıklaması deçiçtirildi.");
+		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 	}
 	if(dialogid == DIALOG+3)
 	{

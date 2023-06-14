@@ -2059,21 +2059,16 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Ev sistemi komutlarç
+	// - Ev sistemi
 	if (strcmp("/evmenu", cmdtext, true, 10) == 0)
 	{
 		if(!IsPlayerAdmin(playerid)) return Mesaj(playerid,"Bu komutu kullanmak için gerekli izniniz yok!");
 		if(GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak için interior dçççnda olmalısınız!");
-		if(Kontrol(playerid))
-		{
-			if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
-			EvEditleniyor[GetHouseID(playerid)] = true;
-			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
-		}
-		else
-		{
-			ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
-		}
+		if(!Kontrol(playerid)) return ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
+		if(EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
+		
+		EvEditleniyor[GetHouseID(playerid)] = true;
+		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatç\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
 		return 1;
 	}
 
@@ -2081,10 +2076,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 		new dosya[64];
 		format(dosya,sizeof(dosya),"/Evler/ev%i.ini",OyuncuEv[playerid]);
-		if(OyuncuEv[playerid] == -1) return Mesaj(playerid,"çuanda evde deçilsin!");
-		else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"çu anda bu evi baçka bir kiçi dçzenliyor...");
+		if(OyuncuEv[playerid] == -1) return Mesaj(playerid,"Şu anda evde değilsin!");
+		else if(EvEditleniyor[OyuncuEv[playerid]] == true) return Mesaj(playerid,"Şu anda bu evi başka bir oyuncu düzenliyor...");
 		else if(IsPlayerAdmin(playerid)) Mesaj(playerid,"Rcon admin bypass aktif!");
-		else if(EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait deçil!");
+		else if(EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait değil!");
+
 		EvEditleniyor[OyuncuEv[playerid]] = true;
 		ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
 		return 1;
@@ -2092,16 +2088,17 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if (strcmp("/satinal", cmdtext, true, 10) == 0)
 	{
-		if(Kontrol(playerid))
-		{
-			new evid = GetHouseID(playerid);
-			if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lçtfen satçlçk ev seçiniz!");
-			new str[256];
-			format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatç: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satçn almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
-			ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satçn Al","İptal");
-		} else Mesaj(playerid,"Herhangi bir evin üstünde değilsiniz!");
+		if(!Kontrol(playerid)) return Mesaj(playerid,"Herhangi bir evin üstünde değilsiniz!");
+
+		new evid = GetHouseID(playerid);
+		if(EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık bir ev seçiniz!");
+		new str[256];
+		format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatı: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satçn almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
+		ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satçn Al","İptal");
+
 		return 1;
 	}
+
 	return SendError(playerid,"Komut bulunamadı!");
 }
 

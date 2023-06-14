@@ -1,11 +1,11 @@
-//============================================================================//
-//                           Trinity-Xtreme                                   //
-//                                Survival Freeroam Project                   //
-//                                                                            //
-//										Gamemode by naphteine (aka. ImmortaL) //
-// 														Map & art by Crosscuk //
-// Development started at 2013-01-27 - 01:52 UTC+2							  //
-//============================================================================//
+//==========================================================================//
+//							Trinity-Xtreme									//
+//											Freeroam Project				//
+//																			//
+//									Started at 2013-01-27 - 01:52 UTC+2		//
+//									Gamemode by naphteine (aka. ImmortaL)	//
+// 									Map & art by Crosscuk					//
+//==========================================================================//
 
 // ** Library include
 #include <a_samp>		// SA-MP 0.3x kütüphanesi
@@ -27,12 +27,12 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS     (50)
 
-// ** Standart message formats
+// ** Standard message formats
 #define showMessage(%0,%1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
-#define showDialog(%0,%1)  ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**","{BBBBBB}" %1, "Tamam", "")
-#define SendError(%0,%1) SendClientMessage(%0,0xF63845AA, "[!] HATA: {FFFFFF}" %1)
-#define SendInfo(%0,%1) SendClientMessage(%0,0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
-#define SendUse(%0,%1) SendClientMessage(%0,0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
+#define showDialog(%0,%1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**","{BBBBBB}" %1, "Tamam", "")
+#define SendError(%0,%1) SendClientMessage(%0, 0xF63845AA, "[!] HATA: {FFFFFF}" %1)
+#define SendInfo(%0,%1) SendClientMessage(%0, 0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
+#define SendUse(%0,%1) SendClientMessage(%0, 0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
 
 // ** Textdraws
 new Text:textdraw_server;
@@ -189,22 +189,22 @@ new Arac[MAX_PLAYERS];
 new DM[MAX_PLAYERS];
 
 // - Desert Eagle Deathmatch - 1
-new Float:deagledm1pos[7][6] = {
-	{2441.3003,1809.5614,16.3222},
-	{2434.2029,1793.4486,16.3222},
-	{2421.7632,1791.1007,16.3222},
-	{2431.6787,1790.4875,16.3222},
-	{2423.8142,1820.0522,16.3222},
-	{2423.8674,1832.9325,16.3222},
-	{2407.1179,1812.8815,16.3222}
+new Float:deagledm1pos[7][3] = {
+	{2441.3003, 1809.5614, 16.3222},
+	{2434.2029, 1793.4486, 16.3222},
+	{2421.7632, 1791.1007, 16.3222},
+	{2431.6787, 1790.4875, 16.3222},
+	{2423.8142, 1820.0522, 16.3222},
+	{2423.8674, 1832.9325, 16.3222},
+	{2407.1179, 1812.8815, 16.3222}
 };
 
 // - Fist Deathmatch - 1
-new Float:fistdm1pos[4][6] = {
-	{2192.8518,2516.2422,585.7723},
-	{2193.9260,2562.2336,585.7723},
-	{2147.8921,2563.0903,585.7723},
-	{2146.9512,2517.0962,585.7723}
+new Float:fistdm1pos[4][3] = {
+	{2192.8518, 2516.2422, 585.7723},
+	{2193.9260, 2562.2336, 585.7723},
+	{2147.8921, 2563.0903, 585.7723},
+	{2146.9512, 2517.0962, 585.7723}
 };
 
 // - Yardım menüsü tanıtımları
@@ -273,8 +273,24 @@ new MCarPlayerInfo[MAX_PLAYERS][ModArac];
 
 // - Hızlandırıcı Pickup
 #define HIZLANDIRICI_COUNT 14
-new hizlandirici[HIZLANDIRICI_COUNT];
 #define HIZ_VER 5
+
+new hizlandirici[HIZLANDIRICI_COUNT];
+new speedLocation[HIZLANDIRICI_COUNT][3] = {
+	{ 2048.6716, 1015.3157, 10.6719 },
+	{ 2066.5132, 1019.7257, 10.6719 },
+	{ 2066.5918, 1254.1406, 10.6719 },
+	{ 2048.8401, 1284.9427, 10.6719 },
+	{ 2121.1084, 1847.6072, 10.6719 },
+	{ 2146.4421, 1874.5963, 10.6719 },
+	{ 2128.2676, 2219.6204, 10.6719 },
+	{ 2229.9316, 2555.6431, 10.8203 },
+	{ 1964.1276, 2593.7170, 10.8126 },
+	{ -2084.9065, -1967.6328, 378.5436 },
+	{ 2048.4058, 815.1559, 8.4697 },
+	{ 2364.7070, 433.8943, 17.6082 },
+	{ 1294.1956, 2598.3647, 11.9492 }
+};
 
 // - Ev sistemi tanıtımları
 enum bilgi
@@ -571,21 +587,12 @@ public OnGameModeInit()
 	printf("Yüklendi: \"Sunucu araçları.\"");
 
 	// - Hızlandırma pickupları
-	hizlandirici[1] = CreatePickup(1313,14,2048.6716,1015.3157,10.6719,0);
-	hizlandirici[2] = CreatePickup(1313,14,2066.5132,1019.7257,10.6719,0);
-	hizlandirici[3] = CreatePickup(1313,14,2066.5918,1254.1406,10.6719,0);
-	hizlandirici[4] = CreatePickup(1313,14,2048.8401,1284.9427,10.6719,0);
-	hizlandirici[5] = CreatePickup(1313,14,2121.1084,1847.6072,10.6719,0);
-	hizlandirici[6] = CreatePickup(1313,14,2146.4421,1874.5963,10.6719,0);
-	hizlandirici[7] = CreatePickup(1313,14,2128.2676,2219.6204,10.6719,0);
-	hizlandirici[8] = CreatePickup(1313,14,2229.9316,2555.6431,10.8203,0);
-	hizlandirici[9] = CreatePickup(1313,14,1964.1276,2593.7170,10.8126,0);
-	hizlandirici[10] = CreatePickup(1313,14,-2084.9065,-1967.6328,378.5436,0);
-	hizlandirici[11] = CreatePickup(1313,14,2048.4058,815.1559,8.4697,0);
-	hizlandirici[12] = CreatePickup(1313,14,2364.7070,433.8943,17.6082,0);
-	hizlandirici[13] = CreatePickup(1313,14,1294.1956,2598.3647,11.9492,0);
+	for (new i = 0; i < HIZLANDIRICI_COUNT; i++) {
+		hizlandirici[i] = CreatePickup(1313, 14, speedLocation[i][0], speedLocation[i][1], speedLocation[i][2], 0);
+	}
 
 	printf("Yüklendi: \"Hız pickupları.\"");
+
 	// - Ev sistemi ayarları
 	SetTimer("SahipKontrol",3000,1);
 
@@ -626,9 +633,6 @@ public OnGameModeInit()
 		EvYukle(i);
 	}
 	printf("Toplam \"%i\" ev bulunmakta.",ToplamEv);
-
-	// General:
-	
 
 	// Class settings:
 	new skinValue = 1;
@@ -2153,10 +2157,8 @@ public OnPlayerPickUpPickup(playerid, pickupid)
 		if (pickupid == hizlandirici[i]) {
 			if (!IsPlayerInAnyVehicle(playerid)) return;
 
-			new Float:x, Float:y, Float:z;
-			GetPlayerPos(playerid, x, y, z);
 			DestroyPickup(hizlandirici[i]);
-			hizlandirici[i] = CreatePickup(1313, 14, x, y, z, 0);
+			hizlandirici[i] = CreatePickup(1313, 14, speedLocation[i][0], speedLocation[i][1], speedLocation[i][2], 0);
 
 			new Float:vx, Float:vy, Float:vz;
 			GetVehicleVelocity(GetPlayerVehicleID(playerid), vx, vy, vz);

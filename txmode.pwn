@@ -34,7 +34,7 @@
 #define SendInfo(%0,%1) SendClientMessage(%0, 0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
 #define SendUse(%0,%1) SendClientMessage(%0, 0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
 
-#define SendInfoToAll(%0) SendClientMessageToAll(0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %0)
+#define SendInfoToAll(%0) SendClientMessageToAll(0x00A2F6AA, "{BBBBBB}** {FFFFFF}" %0)
 
 // ** Textdraws
 new Text:textdraw_server;
@@ -726,8 +726,8 @@ public OnPlayerRequestClass(playerid, classid)
 public OnPlayerConnect(playerid)
 {
 	new connectMessage[64 + MAX_PLAYER_NAME];
-	format(connectMessage, sizeof(connectMessage), "{BBBBBB}** {00B3FF}%s {BBBBBB}connected server.", pName(playerid));
-	SendClientMessageToAll(-1, connectMessage);
+	format(connectMessage, sizeof(connectMessage), "{00B3FF}%s {BBBBBB}connected server.", pName(playerid));
+	SendInfoToAll(connectMessage);
 	SetPlayerColor(playerid, PlayerColors[playerid]);
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 200);
 	SetPlayerTime(playerid, 06, 00);
@@ -1211,7 +1211,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	if (!strcmp(cmdtext, "/silahlar", true))
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	return 1;
 	}
 
@@ -2280,7 +2280,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2310,37 +2310,37 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
 
-	if (dialogid == 9503) // Pompalç tüfekler.
+	if (dialogid == 9503) // Pompalı tüfekler.
 	{
 	if (response)
 	{
 	if (listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
 	if (listitem == 1)
 	{
 	SilahSat(playerid,25,200,"Pump-Action Shotgun",3000);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
 	if (listitem == 2)
 	{
 	SilahSat(playerid,26,200,"Double-Barrel Shotgun",4600);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
 	if (listitem == 3)
 	{
 	SilahSat(playerid,27,200,"Combat Shotgun",6500);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2365,7 +2365,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2390,7 +2390,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2420,7 +2420,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2465,7 +2465,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (listitem == 7)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalç tüfekler\n{FFFFFF}~ {ACDA00}Makinalç tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
 	}
 	}
 	}
@@ -2502,7 +2502,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (response)
 	{
-	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]","{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar güncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yönetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları düzeltildi.\n~ Gametext sıreleri dçççrçldç.\n~ Giriç düzenlendi.","RC1.3","Kapat");
+	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]","{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar güncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yönetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları düzeltildi.\n~ Gametext süreleri düşürüldü.\n~ Giriş düzenlendi.","RC1.3","Kapat");
 	}
 	}
 
@@ -3040,7 +3040,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					break;
 				}
 			}
-			Mesaj(playerid,"başarıyla ev yarattınız, düzenlemek için pickup üzerinde '{008080}/evmenu{FFFFFF}' komutunu kullanınız.");
+			Mesaj(playerid,"Başarıyla ev yarattınız, düzenlemek için pickup üzerinde '{008080}/evmenu{FFFFFF}' komutunu kullanınız.");
 		}
 	}
 	if (dialogid == DIALOG+2)
@@ -3159,14 +3159,14 @@ strtok(const string[], &index)
 }
 
 // - Silah sistemi
-stock SilahSat(playerid,silahid,silahammo,const silahisim[],ucret)
+stock SilahSat(playerid, silahid, silahammo, const silahisim[], ucret)
 {
 	if (GetPlayerMoney(playerid) < ucret) return SendError(playerid,"Para yetersiz!");
 	GivePlayerWeapon(playerid,silahid,silahammo);
 	GivePlayerMoney(playerid,-ucret);
 	new string[512];
-	format(string,512,"ç BçLGç: {ACDA00}%s {FFFFFF}isimli silahı {ACDA00}%d$ {FFFFFF}çdeyerek aldçnız.",silahisim,ucret);
-	SendClientMessageToAll(0x00A2F6AA,string);
+	format(string, sizeof(string), "{ACDA00}%d$ {FFFFFF}ödeyerek {ACDA00}%s {FFFFFF}aldınız.", ucret, silahisim);
+	SendInfoToAll(string);
 	return 1;
 }
 
@@ -3910,22 +3910,17 @@ public playerGameTimer(playerid)
 	else
 	{
 		new radiationText[64];
-		 if (PlayerAccount[playerid][pA_Radiation] > 0 && PlayerAccount[playerid][pA_Radiation] < 40)
-			format(radiationText, sizeof(radiationText), "RADIATION: ~g~~h~%d", PlayerAccount[playerid][pA_Radiation]);
-		 else if (PlayerAccount[playerid][pA_Radiation] >= 40 && PlayerAccount[playerid][pA_Radiation] < 90)
-			format(radiationText, sizeof(radiationText), "RADIATION: ~y~%d", PlayerAccount[playerid][pA_Radiation]);
-		 else if (PlayerAccount[playerid][pA_Radiation] >= 90)
-			format(radiationText, sizeof(radiationText), "RADIATION: ~r~~h~%d", PlayerAccount[playerid][pA_Radiation]);
+		 if (PlayerAccount[playerid][pA_Radiation] < 40) format(radiationText, sizeof(radiationText), "RADIATION: ~g~~h~%d", PlayerAccount[playerid][pA_Radiation]);
+		 else if (PlayerAccount[playerid][pA_Radiation] < 90) format(radiationText, sizeof(radiationText), "RADIATION: ~y~%d", PlayerAccount[playerid][pA_Radiation]);
+		 else format(radiationText, sizeof(radiationText), "RADIATION: ~r~~h~%d", PlayerAccount[playerid][pA_Radiation]);
+		 
 		TextDrawSetString(textdraw_radiation[playerid], radiationText);
 	}
 
 	new pingText[64];
-	if (GetPlayerPing(playerid) >= 0 && GetPlayerPing(playerid) < 80)
-		format(pingText, sizeof(pingText), "PING: ~g~~h~%d", GetPlayerPing(playerid));
-	else if (GetPlayerPing(playerid) >= 80 && GetPlayerPing(playerid) < 200)
-		format(pingText, sizeof(pingText), "PING: ~y~%d", GetPlayerPing(playerid));
-	else if (GetPlayerPing(playerid) >= 200)
-		format(pingText, sizeof(pingText), "PING: ~r~~h~%d", GetPlayerPing(playerid));
+	if (GetPlayerPing(playerid) < 80) format(pingText, sizeof(pingText), "PING: ~g~~h~%d", GetPlayerPing(playerid));
+	else if (GetPlayerPing(playerid) < 200) format(pingText, sizeof(pingText), "PING: ~y~%d", GetPlayerPing(playerid));
+	else format(pingText, sizeof(pingText), "PING: ~r~~h~%d", GetPlayerPing(playerid));
 
 	TextDrawSetString(textdraw_ping[playerid], pingText);
 }

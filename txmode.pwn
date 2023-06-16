@@ -3352,25 +3352,26 @@ forward UpdateServerTime();
 public UpdateServerTime()
 {
 	Minute += 1;
-	if (Minute == 60 && Hour < 24)
-	{
-	Hour += 1, Minute = 0;
-	SetWorldTime(Hour);
+
+	if (Minute == 60 && Hour < 23) {
+		Hour += 1;
+		Minute = 0;
+		SetWorldTime(Hour);
 	}
-	if (Hour == 24 && Minute == 0)
-	{
-	Hour = 0, Minute = 0;
-	SetWorldTime(Hour);
+
+	if (Hour > 23) {
+		Hour = 0;
+		Minute = 0;
+		SetWorldTime(Hour);
 	}
 
 	new string[6];
 	format(string, sizeof(string), "%02d:%02d", Hour, Minute);
 	TextDrawSetString(TimeText, string);
 
-	for (new playerid = 0; playerid < MAX_PLAYERS; playerid++)
-	{
-	if (!IsPlayerConnected(playerid)) continue;
-	SetPlayerTime(playerid, Hour, Minute);
+	for (new playerid = 0; playerid < MAX_PLAYERS; playerid++) {
+		if (!IsPlayerConnected(playerid)) continue;
+		SetPlayerTime(playerid, Hour, Minute);
 	}
 	return 1;
 }

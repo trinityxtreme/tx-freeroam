@@ -1,19 +1,19 @@
-//==========================================================================//
+//																			//
 //							Trinity-Xtreme									//
 //											Freeroam Project				//
 //																			//
 //									Started at 2013-01-27 - 01:52 UTC+2		//
 //									Gamemode by naphteine (aka. ImmortaL)	//
 // 									Map & art by Crosscuk					//
-//==========================================================================//
+//																			//
 
-// ** Library include
+// Library include
 #include <a_samp>		// SA-MP 0.3x kütüphanesi
 #include <sscanf2>		// SSCANF kütüphanesi
 #include <streamer>		// Obje streamer kütüphanesi
 //#include <progress2>	// Progressbar kütüphanesi
 
-// ** Server settings
+// Server settings
 #define server_name     "Trinity-Xtreme Freeroam"
 #define server_version  "1.0.0"
 #define server_modname  "Xtreme"
@@ -27,7 +27,7 @@
 #undef MAX_PLAYERS
 #define MAX_PLAYERS     (50)
 
-// ** Standard message formats
+// Standard message formats
 #define showMessage(%0, %1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
 #define showDialog(%0, %1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**", "{BBBBBB}" %1, "Tamam", "")
 #define SendError(%0, %1) SendClientMessage(%0, 0xF63845AA, "[!] HATA: {FFFFFF}" %1)
@@ -36,7 +36,7 @@
 
 #define SendInfoToAll(%0) SendClientMessageToAll(0x00A2F6AA, "{BBBBBB}** {FFFFFF}" %0)
 
-// ** Textdraws
+// Textdraws
 new Text:textdraw_server;
 new Text:textdraw_hungry[MAX_PLAYERS];
 new Text:textdraw_radiation[MAX_PLAYERS];
@@ -125,10 +125,10 @@ new PlayerColors[200] = {
 	0xD8C762FF, 0xD8C762FF
 };
 
-// - DCMD defineleri
+// DCMD defineleri
 #define dcmd(%1, %2, %3) if (!strcmp((%3)[1], #%1, true, (%2)) && ((((%3)[(%2) + 1] == '\0') && (dcmd_%1(playerid, ""))) || (((%3)[(%2) + 1] == ' ') && (dcmd_%1(playerid, (%3)[(%2) + 2]))))) return 1
 
-// - Ev sistemi defineleri
+// Ev sistemi defineleri
 #define DIALOG 8000 // Başlangıç dialog id
 #define MAX_HOUSE 100 // Toplam yaratılan ev sayısı.
 #define BASLIK "{FFFFFF}Trinity-Xtreme / {009BFF}Ev Sistemi" // Dialog, mesaj başlıkları
@@ -150,7 +150,7 @@ new PlayerColors[200] = {
 #define PRESSED(%0) \
 	(((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
 
-// - Girişte dans tanıtımları
+// Girişte dans tanıtımları
 new RandAnims[6][] = {
 	"DAN_LOOP_A",
 	"DNCE_M_A",
@@ -160,7 +160,7 @@ new RandAnims[6][] = {
 	"DNCE_M_E"
 };
 
-// - PM sistemi tanıtımları
+// PM sistemi tanıtımları
 enum PlayerInfo
 {
 	Last,
@@ -169,25 +169,25 @@ enum PlayerInfo
 
 new pInfo[MAX_PLAYERS][PlayerInfo];
 
-// - Exp sistemi tanıtımları
+// Exp sistemi tanıtımları
 new exp[MAX_PLAYERS], seviye[MAX_PLAYERS], expguncelle[MAX_PLAYERS];
 new Text:expbox;
-new Text:expmeter[MAX_PLAYERS]; 
+new Text:expmeter[MAX_PLAYERS];
 
 // new Bar:expbar[MAX_PLAYERS];
 
-// - Saat sistemi tanıtımları
+// Saat sistemi tanıtımları
 new Hour, Minute, Timer, Text:TimeText;
 
-// - Araç yönetim tanıtımları
+// Araç yönetim tanıtımları
 new motor, isiklar, alarm, kapilar, kaput, bagaj, objective;
 new Kilit[MAX_PLAYERS] = 0;
 new Arac[MAX_PLAYERS];
 
-// - DM sistemi tanıtımları
+// DM sistemi tanıtımları
 new DM[MAX_PLAYERS];
 
-// - Desert Eagle Deathmatch - 1
+// Desert Eagle Deathmatch - 1
 new Float:deagledm1pos[7][3] = {
 	{2441.3003, 1809.5614, 16.3222},
 	{2434.2029, 1793.4486, 16.3222},
@@ -198,7 +198,7 @@ new Float:deagledm1pos[7][3] = {
 	{2407.1179, 1812.8815, 16.3222}
 };
 
-// - Fist Deathmatch - 1
+// Fist Deathmatch - 1
 new Float:fistdm1pos[4][3] = {
 	{2192.8518, 2516.2422, 585.7723},
 	{2193.9260, 2562.2336, 585.7723},
@@ -206,7 +206,7 @@ new Float:fistdm1pos[4][3] = {
 	{2146.9512, 2517.0962, 585.7723}
 };
 
-// - Yardım menüsü tanıtımları
+// Yardım menüsü tanıtımları
 new dIp[][] =
 {
 	"{ACDA00}/firstperson\t\t{FFFFFF}FPS moduna giriş yaparsınız.",
@@ -229,15 +229,15 @@ new dIp[][] =
 	"\n\nBu mod {009BFF}MR.ImmortaL {FFFFFF}tarafından kodlanmıştır."
 };
 
-// - 31 sistemi tanıtımları
+// 31 sistemi tanıtımları
 new asilantimer;
 new cekiyor[MAX_PLAYERS] = 0;
 
-// - FPS sistemi tanıtımları
+// FPS sistemi tanıtımları
 new Surus[MAX_PLAYERS];
 new firstperson[MAX_PLAYERS];
 
-// - Araç spawn sistemi tanıtımları
+// Araç spawn sistemi tanıtımları
 #define DIALOG_OFFSET_ID (1024)
 
 new g_VehNames[][] =
@@ -261,7 +261,7 @@ new g_VehNames[][] =
 	!"Stair Trailer", !"Boxville", !"Farm Plow", !"Utility Trailer"
 };
 
-// - Modifiyeli Araç spawn sistemi tanıtımları
+// Modifiyeli Araç spawn sistemi tanıtımları
 enum ModArac
 {
 	pMAraba,
@@ -270,7 +270,7 @@ enum ModArac
 
 new MCarPlayerInfo[MAX_PLAYERS][ModArac];
 
-// - Hızlandırıcı Pickup
+// Hızlandırıcı Pickup
 #define HIZLANDIRICI_COUNT 14
 #define HIZ_VER 5
 
@@ -291,7 +291,7 @@ new speedLocation[HIZLANDIRICI_COUNT][3] = {
 	{ 1294.1956, 2598.3647, 11.9492 }
 };
 
-// - Ev sistemi tanıtımları
+// Ev sistemi tanıtımları
 enum bilgi
 {
 	evaciklama[255],
@@ -343,7 +343,7 @@ forward PlayerPos(playerid, Float:X, Float:Y, Float:Z, interior, world);
 forward SahipKontrol();
 forward EvYakininda(playerid);
 
-// - Random spawn
+// Random spawn
 new Float:RandomPlayerSpawns[23][3] = {
 	{ 1958.3783, 1343.1572, 15.3746 },
 	{ 2199.6531, 1393.3678, 10.8203 },
@@ -393,7 +393,7 @@ public OnGameModeInit()
 {
 	printf(" ** %s initializing.", server_modname);
 
-	// - General settings
+	// General settings
 	SendRconCommand("rcon 0");
 
 	SetGameModeText(server_modname " " server_version);
@@ -419,7 +419,7 @@ public OnGameModeInit()
 	
 	printf("  ** LOADED: general settings.");
 
-	// - Textdraws
+	// Textdraws
 	Textdraw0 = TextDrawCreate(310.000000, 435.000000, "~r~~h~~h~ /yardim ~w~~h~~h~/teles /silahlar /stuntlar /dmler /shop /animlist /v1..18 /m1..12 ~r~~h~~h~/kurallar");
 	TextDrawAlignment(Textdraw0, 2);
 	TextDrawBackgroundColor(Textdraw0, 255);
@@ -523,7 +523,7 @@ public OnGameModeInit()
 
 	printf("Yüklendi: \"Sunucu textdrawları.\"");
 
-	// - Exp sistemi ayarları
+	// Exp sistemi ayarları
 	expbox = TextDrawCreate(460.000000, 410.000000, "~n~");
 	TextDrawBackgroundColor(expbox, 255);
 	TextDrawFont(expbox, 1);
@@ -561,7 +561,7 @@ public OnGameModeInit()
 	}
 	printf("Yüklendi: \"Exp-Level sistemi.\"");
 
-	// - Saat sistemi
+	// Saat sistemi
 	Hour = 06;
 	Minute = 0;
 	SetWorldTime(Hour);
@@ -578,21 +578,21 @@ public OnGameModeInit()
 	Timer = SetTimer("UpdateServerTime", 1000, true);
 
 	printf("Yüklendi: \"Saat sistemi.\"");
-	// - Sunucu Harita Objeleri
+	// Sunucu Harita Objeleri
 
 	
 
 	printf("Yüklendi: \"Sunucu haritası.\"");
 	printf("Yüklendi: \"Sunucu araçları.\"");
 
-	// - Hızlandırma pickupları
+	// Hızlandırma pickupları
 	for (new i = 0; i < HIZLANDIRICI_COUNT; i++) {
 		hizlandirici[i] = CreatePickup(1313, 14, speedLocation[i][0], speedLocation[i][1], speedLocation[i][2], 0);
 	}
 
 	printf("Yüklendi: \"Hız pickupları.\"");
 
-	// - Ev sistemi ayarları
+	// Ev sistemi ayarları
 	SetTimer("SahipKontrol", 3000, 1);
 
 	AddStaticPickup(ARROW, 1, 235.1575, 1187.2721, 1080.2578, -1);
@@ -752,11 +752,11 @@ public OnPlayerConnect(playerid)
 	//return 1;
 
 	GameTextForPlayer(playerid, "~b~~h~Trinity-~w~Xtreme~n~~r~~h~F~g~~h~r~b~~h~e~y~e~r~r~w~o~p~a~g~m", 5000, 1);
-	// - PM sistemi
+	// PM sistemi
 	pInfo[playerid][Last] = -1;
 	pInfo[playerid][NoPM] = 0;
 
-	// - EXP sistemi
+	// EXP sistemi
 	   new dosya[50], isim[24];
 	GetPlayerName(playerid, isim, sizeof(isim));
 	format(dosya, sizeof(dosya), "Hesaplar/Level/%s.txt", isim);
@@ -766,32 +766,31 @@ public OnPlayerConnect(playerid)
 	//else BilgiYukle(playerid);
 	expguncelle[playerid] = SetTimerEx("BilgiYenile", 1000, true, "d", playerid);
 
-	// - Ev sistemi ayarı
+	// Ev sistemi ayarı
 	OyuncuMapIconKontrol(playerid);
 
-	// - Araç kilit ayarı
+	// Araç kilit ayarı
 	   Kilit[playerid] = 0;
 
-	   
 	return 1;
 }
 
 public OnPlayerDisconnect(playerid, reason)
 {
-	// - PM sistemi
+	// PM sistemi
 	pInfo[playerid][Last] = -1;
 	pInfo[playerid][NoPM] = 0;
 
-	// - EXP sistemi
+	// EXP sistemi
 	BilgiYenile(playerid);
 	KillTimer(expguncelle[playerid]);
 
-	// - Araç spawn ayarları
+	// Araç spawn ayarları
 	new iVehID = GetPVarInt(playerid, "iVehID");
 	if (iVehID)
 	DestroyVehicle(iVehID);
 
-	// - Ev sistemi ayarları
+	// Ev sistemi ayarları
 	OyuncuEv[playerid] = -1;
 	EvEditleniyor[GetHouseID(playerid)] = false;
 	OyuncuKontrolEv[playerid]=-255;
@@ -986,7 +985,7 @@ public OnPlayerText(playerid, text[])
 	*/
 }
 
-// - DCMD komutları:
+// DCMD komutları:
 dcmd_pmkapat(playerid, const params[])
 {
 	if (pInfo[playerid][NoPM] == 1) return SendError(playerid, "Özel mesaj hattınız zaten kapalı.");
@@ -1164,7 +1163,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	if (DM[playerid] > 0) return SendError(playerid, "Deathmatch alanında komut kullanmak yasaktır. çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	// - DCMD komutları
+	// DCMD komutları
 	dcmd(pm, 2, cmdtext);
 	dcmd(ms, 2, cmdtext);
 	dcmd(m, 1, cmdtext);
@@ -1173,7 +1172,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	dcmd(pmac, 4, cmdtext);
 	dcmd(pmkapat, 7, cmdtext);
 
-	// - Genel komutlar && dialog komutları
+	// Genel komutlar && dialog komutları
 	if (!strcmp(cmdtext, "/kurallar", true))
 	{
 	ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar", "{00FF00}~~ Hile kesinlikle yasaktır.\n~~ Argo yasaktır.\n~~ İnanç ve görüşe karşı hakaret yasaktır.\n~~ Yönetimi rahatsız etmek yasaktır.", "Kapat", "");
@@ -1227,7 +1226,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Araç yönetim komutları
+	// Araç yönetim komutları
 	if (strcmp(cmd, "/motorac", true) == 0) {
 	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendError(playerid, "Şöför koltuçunda deçilsiniz!");
 	new vid = GetPlayerVehicleID(playerid);
@@ -1373,7 +1372,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Araç renk değiştirme
+	// Araç renk değiştirme
 	if (strcmp(cmd, "/renk", true) == 0) {
 		if (IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "Araçta değilsiniz.");
 
@@ -1395,7 +1394,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Skin değiştirme komutu
+	// Skin değiştirme komutu
 	if (strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
 	{
 	if (cmdtext[7] != ' ' || cmdtext[8] == EOS)
@@ -1408,7 +1407,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	// - DM alanı komutları
+	// DM alanı komutları
 	if (!strcmp(cmdtext, "/deagledm1", true))
 	{
 	new State = GetPlayerState(playerid);
@@ -1456,7 +1455,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	// - 31 sistemi komutları
+	// 31 sistemi komutları
 	if (!strcmp("/31", cmd, true))
 	{
 	tmp=strtok(cmdtext, idx);
@@ -1484,7 +1483,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	   }
 	return 1;
 	}
-	// - Para gönderme komutu
+	// Para gönderme komutu
 	if (!strcmp("/paraver", cmd, true))
 	{
 		tmp=strtok(cmdtext, idx);
@@ -1503,7 +1502,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Sürüş kamerası komutu
+	// Sürüş kamerası komutu
 	if (strcmp("/surus", cmdtext, true, 10) == 0)
 	{
 	if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "Arabada olmalısınız!");
@@ -1525,7 +1524,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 1;
 	}
 
-	// - Işınlanma komutları
+	// Işınlanma komutları
 	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
 		Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", 1, 0);
 		return 1;
@@ -1601,7 +1600,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Can & zırh komutları
+	// Can & zırh komutları
 	if (strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0) {
 		if (GetPVarInt(playerid, "SpamKorumaCan") > GetTickCount()) return SendInfo(playerid, "Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
 		if (GetPlayerMoney(playerid) < 750) return SendError(playerid, "Paranız {FF0000}yetersiz!");
@@ -1624,7 +1623,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - FPS komutları
+	// FPS komutları
 	if (strcmp("/firstperson", cmdtext, true, 10) == 0)
 	{
 		firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
@@ -1640,7 +1639,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Araç çevirme komutu
+	// Araç çevirme komutu
 	if (strcmp(cmdtext, "/cevir", true) == 0) {
 		if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "Arabada {FF0000}değilsiniz!");
 
@@ -1653,7 +1652,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - /v komutu
+	// /v komutu
 	if (!strcmp(cmdtext, "/v", true, 2)) {
 		if (cmdtext[2] == EOS) return 0;
 
@@ -1677,7 +1676,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 0;
 	}
 
-	// - /m1-/m12 /nrg komutları
+	// /m1-/m12 /nrg komutları
 	if (strcmp(cmdtext, "/m1", true) == 0) {
 		// Sultan
 
@@ -2050,7 +2049,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// - Ev sistemi
+	// Ev sistemi
 	if (strcmp("/evmenu", cmdtext, true, 10) == 0)
 	{
 		if (!IsPlayerAdmin(playerid)) return Mesaj(playerid, "Bu komutu kullanmak için gerekli izniniz yok!");
@@ -2103,56 +2102,6 @@ public OnPlayerEnterVehicle(playerid, vehicleid, ispassenger)
 	return 1;
 }
 
-public OnPlayerExitVehicle(playerid, vehicleid)
-{
-	return 1;
-}
-
-public OnPlayerStateChange(playerid, newstate, oldstate)
-{
-	return 1;
-}
-
-public OnPlayerEnterCheckpoint(playerid)
-{
-	return 1;
-}
-
-public OnPlayerLeaveCheckpoint(playerid)
-{
-	return 1;
-}
-
-public OnPlayerEnterRaceCheckpoint(playerid)
-{
-	return 1;
-}
-
-public OnPlayerLeaveRaceCheckpoint(playerid)
-{
-	return 1;
-}
-
-public OnRconCommand(cmd[])
-{
-	return 1;
-}
-
-public OnPlayerRequestSpawn(playerid)
-{
-	return 1;
-}
-
-public OnObjectMoved(objectid)
-{
-	return 1;
-}
-
-public OnPlayerObjectMoved(playerid, objectid)
-{
-	return 1;
-}
-
 public OnPlayerPickUpPickup(playerid, pickupid)
 {
 	for (new i; i < HIZLANDIRICI_COUNT; i++) {
@@ -2176,7 +2125,7 @@ public OnPlayerPickUpPickup(playerid, pickupid)
 
 public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 {
-	// - 2 tuşu fonksiyonu
+	// 2 tuşu fonksiyonu
 	if (newkeys & KEY_LOOK_BEHIND && IsPlayerInAnyVehicle(playerid))
 	{
 		if (!IsNosVehicle(GetPlayerVehicleID(playerid))) return RepairVehicle(GetPlayerVehicleID(playerid)), PlayerPlaySound(playerid, 1133 , 0, 0, 0), GameTextForPlayer(playerid, "~b~~h~Full Tamir", 500, 5);
@@ -2188,7 +2137,7 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 	}
 
 
-	// - Ev sistemi
+	// Ev sistemi
 	if (PRESSED(16))
 	{
 		if (IsPlayerInAnyVehicle(playerid)) return;
@@ -2223,13 +2172,13 @@ public OnPlayerKeyStateChange(playerid, newkeys, oldkeys)
 
 public OnPlayerUpdate(playerid)
 {
-	// - EXP sistemi
+	// EXP sistemi
 	new str[64];
 	format(str, sizeof(str), "EXP:%d/1000 - Level:%d/50", exp[playerid], seviye[playerid]);
 	TextDrawSetString(expmeter[playerid], str);
 	//SetProgressBarValue(Bar:expbar[playerid], exp[playerid]);
 
-	// - Ev sistemi ayarları
+	// Ev sistemi ayarları
 	if (Kontrol(playerid)) {
 		OyuncuKontrolEv[playerid] = GetHouseID(playerid);
 	}
@@ -2239,7 +2188,7 @@ public OnPlayerUpdate(playerid)
 
 public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
-	// - Silah menüsü
+	// Silah menüsü
 	if (dialogid == 9500 && response) {
 		if (listitem == 0) return ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 		if (listitem == 1) return ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
@@ -2406,7 +2355,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		}
 	}
 
-	// - Teles alanları diyalogları
+	// Teles alanları diyalogları
 	if (dialogid == 1000 && response) {
 		if (listitem == 0) return Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", 1, 0);
 		else if (listitem == 1) return Teleport(playerid, -2353.0940, -1633.6820, 483.6954, 0, 0, "Chilliad Mountain", "/dag", 1, 0);
@@ -2425,7 +2374,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		else if (listitem == 14) return Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4", "/ap4", 1, 0);
 	}
 
-	// - Changelog dialogları
+	// Changelog dialogları
 	if (dialogid == 1911)
 	{
 	if (response)
@@ -2465,7 +2414,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	ShowPlayerDialog(playerid, 1916, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.5]", "{ACDA00}~ ", "Kapat", "");
 	}
 	}
-	// - DM alanı dialogları
+	// DM alanı dialogları
 	if (dialogid == 2000)
 	{
 	if (response)
@@ -2514,7 +2463,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 
-	// - Stunt dialogları
+	// Stunt dialogları
 	if (dialogid == 2001)
 	{
 	if (response)
@@ -2551,7 +2500,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	iVehID = (listitem + (iList * 12) + 400);
 
-	// - Yasak Araç ayarları
+	// Yasak Araç ayarları
 	switch (iVehID)
 	{
 	case 425, 432, 520:
@@ -2568,7 +2517,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 
-	// - Ev sistemi
+	// Ev sistemi
 	if (dialogid == SATINAL)
 	{
 		if (!response) return 1;
@@ -3074,7 +3023,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	return 1;
 }
 
-// - strtok
+// strtok
 strtok(const string[], &index)
 {
 	new length = strlen(string);
@@ -3094,7 +3043,7 @@ strtok(const string[], &index)
 	return result;
 }
 
-// - Silah sistemi
+// Silah sistemi
 stock SilahSat(playerid, silahid, silahammo, const silahisim[], ucret)
 {
 	if (GetPlayerMoney(playerid) < ucret) return SendError(playerid, "Para yetersiz!");
@@ -3106,7 +3055,7 @@ stock SilahSat(playerid, silahid, silahammo, const silahisim[], ucret)
 	return 1;
 }
 
-// - Teleport sistemi
+// Teleport sistemi
 stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const isim[], const command[], arabali, objeyukle)
 {
 	if (objeyukle == 1) ObjeYukle(playerid);
@@ -3144,7 +3093,7 @@ public ObjeYukleTamam(playerid)
 	GameTextForPlayer(playerid, "~y~] ~b~Objeler Yuklendi. ~y~]", 5000, 5);
 }
 
-// - EXP sistemi
+// EXP sistemi
 stock BilgiYenile(playerid)
 {
 	printf("%i", playerid);
@@ -3283,7 +3232,7 @@ stock ExpVer(playerid){
 }
 */
 
-// - Saat sistemi
+// Saat sistemi
 forward UpdateServerTime();
 public UpdateServerTime()
 {
@@ -3312,7 +3261,7 @@ public UpdateServerTime()
 	return 1;
 }
 
-// - 31 çekme sistemi
+// 31 çekme sistemi
 forward asilanadamtimer(playerid);
 public asilanadamtimer(playerid)
 {
@@ -3324,7 +3273,7 @@ public asilanadamtimer(playerid)
 	return 1;
 }
 
-// - Random spawn publici
+// Random spawn publici
 forward SetPlayerRandomSpawn(playerid);
 public SetPlayerRandomSpawn(playerid)
 {
@@ -3333,7 +3282,7 @@ public SetPlayerRandomSpawn(playerid)
 	return 1;
 }
 
-// - IsNumeric
+// IsNumeric
 stock IsNumeric(const string[])
 {
    for (new i, j = strlen(string); i < j; ++i)
@@ -3346,7 +3295,7 @@ stock IsNumeric(const string[])
    return 1;
 }
 
-// - Nos alabilecek Araçlar
+// Nos alabilecek Araçlar
 IsNosVehicle(vehicleid)
 {
 	#define NO_NOS_VEHICLES 29
@@ -3368,7 +3317,7 @@ IsNosVehicle(vehicleid)
 	return true;
 }
 
-// - Ev sistemi public & fonksiyonları
+// Ev sistemi public & fonksiyonları
 public OyuncuMapIconKontrol(playerid)
 {
 	/*
@@ -3742,7 +3691,7 @@ stock Mesaj(playerid, const yazi[], {Float, _}:...)
 	return -1;
 }
 
-// - Oyuncu idi fonksiyonu
+// Oyuncu idi fonksiyonu
 /*
 GetPlayerID(const PlayerName[])
 {
@@ -3763,7 +3712,7 @@ GetPlayerID(const PlayerName[])
 }
 */
 
-// - Oyuncu adç fonksiyonu
+// Oyuncu adç fonksiyonu
 stock PlayerName(playerid)
 {
 	new pname[MAX_PLAYER_NAME];
@@ -3771,7 +3720,7 @@ stock PlayerName(playerid)
 	return pname;
 }
 
-// - Silah adları
+// Silah adları
 stock WeaponName(weaponid)
 {
 	new wname[32];
@@ -3779,7 +3728,7 @@ stock WeaponName(weaponid)
 	return wname;
 }
 
-// - Yasak skinler
+// Yasak skinler
 stock IsValidSkin(iSkin)
 {
 	switch (iSkin)
@@ -3790,7 +3739,7 @@ stock IsValidSkin(iSkin)
 	return 1;
 }
 
-// - DeletePlayerWeapon Fonksiyonu
+// DeletePlayerWeapon Fonksiyonu
 stock DeletePlayerWeapon(playerid, weaponid)
 {
 	new gWeaponData[13][2];
@@ -3813,8 +3762,6 @@ stock DeletePlayerWeapon(playerid, weaponid)
 	return 1;
 }
 
-
-// == (( Extra Public Unit )) =============================================== //
 // General player timer:
 forward playerGameTimer(playerid);
 public playerGameTimer(playerid)
@@ -4170,7 +4117,7 @@ stock LoadObjects()
 	CreateDynamicObject(1362, 1566.4000200, 17.5000000, 23.8000000, 0.0000000, 0.0000000, 0.0000000); //object(cj_firebin) (1)
 	CreateDynamicObject(3461, 1566.4000200, 17.5000000, 22.6000000, 0.0000000, 0.0000000, 0.0000000); //object(tikitorch01_lvs) (1)
 
-	// - LVDM arabaları
+	// LVDM arabaları
 	AddStaticVehicle(451, 2040.0520, 1319.2799, 10.3779, 183.2439, 16, 16);
 	AddStaticVehicle(429, 2040.5247, 1359.2783, 10.3516, 177.1306, 13, 13);
 	AddStaticVehicle(421, 2110.4102, 1398.3672, 10.7552, 359.5964, 13, 13);
@@ -4587,7 +4534,7 @@ stock LoadObjects()
 
 stock DeleteObjects(playerid)
 {
-	// - Petrol damıtma alanı objeleri
+	// Petrol damıtma alanı objeleri
 	RemoveBuildingForPlayer(playerid, 3682, 247.9297, 1461.8594, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3682, 192.2734, 1456.1250, 33.4141, 0.25);
 	RemoveBuildingForPlayer(playerid, 3682, 199.7578, 1397.8828, 33.4141, 0.25);

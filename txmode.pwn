@@ -29,7 +29,7 @@
 
 // ** Standard message formats
 #define showMessage(%0,%1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
-#define showDialog(%0,%1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**","{BBBBBB}" %1, "Tamam", "")
+#define showDialog(%0,%1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**", "{BBBBBB}" %1, "Tamam", "")
 #define SendError(%0,%1) SendClientMessage(%0, 0xF63845AA, "[!] HATA: {FFFFFF}" %1)
 #define SendInfo(%0,%1) SendClientMessage(%0, 0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
 #define SendUse(%0,%1) SendClientMessage(%0, 0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
@@ -1178,37 +1178,37 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	// - Genel komutlar && dialog komutlarç
 	if (!strcmp(cmdtext, "/kurallar", true))
 	{
-	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar","{00FF00}~~ Hile kesinlikle yasaktır.\n~~ Argo yasaktır.\n~~ İnanç ve görüşe karşı hakaret yasaktır.\n~~ Yönetimi rahatsız etmek yasaktır.","Kapat","");
+	ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX,"{FFFFFF}Trinity-Xtreme / {009BFF}Kurallar", "{00FF00}~~ Hile kesinlikle yasaktır.\n~~ Argo yasaktır.\n~~ İnanç ve görüşe karşı hakaret yasaktır.\n~~ Yönetimi rahatsız etmek yasaktır.", "Kapat", "");
 	return 1;
 	}
 
 	if (!strcmp(cmdtext, "/changelog", true))
 	{
-	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]","{ACDA00}~ Sunucu dosyalarç oluçturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles menüsü eklendi.\n~ Yardım menüsü eklendi.\n~ Kurallar menüsü eklendi.\n~ İlk haritalar ve araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarç eklendi.","RC1.1","Kapat");
+	ShowPlayerDialog(playerid,1911,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.0]", "{ACDA00}~ Sunucu dosyalarç oluçturuldu.\n~ LAdmin 4.0 eklendi.\n~ Changelog eklendi.\n~ Textdrawlar eklendi.\n~ Teles menüsü eklendi.\n~ Yardım menüsü eklendi.\n~ Kurallar menüsü eklendi.\n~ İlk haritalar ve araçlar eklendi.\n~ aLypSe Ev Sistemi moda eklendi.\n~ /v1-/v18 Araç spawn sistemi eklendi.\n~ /m1-/m12 Araç spawn sistemi eklendi.\n~ /paraver-/can-/yelek-/surus-/cevir komutlarç eklendi.", "RC1.1", "Kapat");
 	return 1;
 	}
 
 	if (!strcmp(cmdtext, "/teles", true))
 	{
-	ShowPlayerDialog(playerid,1000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Teleport","{FFFFFF}Four Dragon Casino (/4dragon)\nChilliad Mountain (/dag)\nSanta Maria Beach (/sahil)\nArea51 Zone (/area51)\nSan Fierro ChinaTown (/china)\nLos Santos Los Flores (/flores)\nModifiye Yeri 1 (/mod1)\nModifiye Yeri 2 (/mod2)\nModifiye Yeri 3 (/mod3)\nModifiye Yeri 4 (/mod4)\nModifiye Yeri 5 (/mod5)\nAirport 1 (/ap1)\nAirport 2 (/ap2)\nAirport 3 (/ap3)\nAirport 4 (/ap4)\n~ Diçer Sayfa.","Seç","Kapat");
+	ShowPlayerDialog(playerid,1000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Teleport", "{FFFFFF}Four Dragon Casino (/4dragon)\nChilliad Mountain (/dag)\nSanta Maria Beach (/sahil)\nArea51 Zone (/area51)\nSan Fierro ChinaTown (/china)\nLos Santos Los Flores (/flores)\nModifiye Yeri 1 (/mod1)\nModifiye Yeri 2 (/mod2)\nModifiye Yeri 3 (/mod3)\nModifiye Yeri 4 (/mod4)\nModifiye Yeri 5 (/mod5)\nAirport 1 (/ap1)\nAirport 2 (/ap2)\nAirport 3 (/ap3)\nAirport 4 (/ap4)\n~ Diçer Sayfa.", "Seç", "Kapat");
 	return 1;
 	}
 
 	if (!strcmp(cmdtext, "/dmler", true))
 	{
-	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch","{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)","Seç","Kapat");
+	ShowPlayerDialog(playerid,2000,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Deathmatch", "{FFFFFF}Desert Eagle Deathmatch - 1 (/deagledm1)\n{FFFFFF}Fight Club Deathmatch -1 (/fistdm1)", "Seç", "Kapat");
 	return 1;
 	}
 
 	if (!strcmp(cmdtext, "/stuntlar", true))
 	{
-	ShowPlayerDialog(playerid,2001,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Stunt Zones","{FFFFFF}Bikepark Stunt - 1 (/bikestunt1)","Seç","Kapat");
+	ShowPlayerDialog(playerid,2001,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme / {009BFF}Stunt Zones", "{FFFFFF}Bikepark Stunt - 1 (/bikestunt1)", "Seç", "Kapat");
 	return 1;
 	}
 
 	if (!strcmp(cmdtext, "/silahlar", true))
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Mençsı", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 	return 1;
 	}
 
@@ -1216,7 +1216,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 		new string[2048];
 		format(string,2048,"%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s",dIp[0],dIp[1],dIp[2],dIp[3],dIp[4],dIp[5],dIp[6],dIp[7],dIp[8],dIp[9],dIp[10],dIp[11],dIp[12],dIp[13],dIp[14],dIp[15],dIp[16],dIp[17]);
-		ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}Yardçm",string,"Kapat","");
+		ShowPlayerDialog(playerid,0,DIALOG_STYLE_MSGBOX, "{FFFFFF}Trinity-Xtreme / {009BFF}Yardçm",string,"Kapat", "");
 		return 1;
 	}
 
@@ -1529,67 +1529,67 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	// - Işınlanma komutları
 	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
-		Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino","/4d",1,0);
+		Teleport(playerid,2027.8171,1008.1444,10.8203,0,0,"Four Dragon Casino", "/4d",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext, "/dag", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0) {
-		Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain","/dag",1,0);
+		Teleport(playerid,-2353.0940,-1633.6820,483.6954,0,0,"Chilliad Mountain", "/dag",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext, "/sahil", true) == 0) {
-		Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach","/sahil",1,0);
+		Teleport(playerid,369.8283,-1787.7871,5.3585,0,0,"Santa Maria Beach", "/sahil",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext, "/area51", true) == 0) {
-		Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51","/area51",1,0);
+		Teleport(playerid,231.5036,1914.3851,17.6406,0,0,"Area51", "/area51",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext, "/china", true) == 0) {
-		Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town","/china",1,0);
+		Teleport(playerid,-2276.2874,718.5117,49.4453,0,0,"China Town", "/china",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext, "/flores", true) == 0) {
-		Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores","/flores",1,0);
+		Teleport(playerid,2786.9534,-1319.9723,34.7975,0,0,"Los Flores", "/flores",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext, "/mod1", true) == 0) {
-		Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1","/mod1",1,0);
+		Teleport(playerid,-1917.2754,287.0215,41.0469,0,0,"Modifiye Yeri 1", "/mod1",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext,"/mod2", true) == 0) {
-		Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2","/mod2",1,0);
+		Teleport(playerid,-2705.5503, 206.1621,4.1797,0,0,"Modifiye Yeri 2", "/mod2",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext,"/mod3", true) == 0) {
-		Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3","/mod3",1,0);
+		Teleport(playerid,2387.4126,1022.6620,10.8203,0,0,"Modifiye Yeri 3", "/mod3",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext,"/mod4", true) == 0) {
-		Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4","/mod4",1,0);
+		Teleport(playerid,2644.7686,-2019.1096,13.5507,0,0,"Modifiye Yeri 4", "/mod4",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext,"/mod5", true) == 0) {
-		Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5","/mod5",1,0);
+		Teleport(playerid,1042.0564,-1045.5176,31.8108,0,0,"Modifiye Yeri 5", "/mod5",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext,"/ap1", true) == 0) {
-		Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1","/ap1",1,0);
+		Teleport(playerid,1686.7,-2450.2,13.6,0,0,"Airport 1", "/ap1",1,0);
 		return 1;
 	}
 
 	if (strcmp(cmdtext,"/ap2", true) == 0) {
-		Teleport(playerid,-1345.0, -229.8, 14.1, 0, 0, "Airport 2","/ap2", true, false);
+		Teleport(playerid,-1345.0, -229.8, 14.1, 0, 0, "Airport 2", "/ap2", true, false);
 		return 1;
 	}
 
@@ -1599,7 +1599,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	if (strcmp(cmdtext,"/ap4", true) == 0) {
-		Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4","/ap4", true, false);
+		Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4", "/ap4", true, false);
 		return 1;
 	}
 
@@ -2057,11 +2057,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	{
 		if (!IsPlayerAdmin(playerid)) return Mesaj(playerid,"Bu komutu kullanmak için gerekli izniniz yok!");
 		if (GetPlayerInterior(playerid) != 0) return Mesaj(playerid,"Ev yaratmak için interior dışında olmalısınız!");
-		if (!Kontrol(playerid)) return ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat","Seç","İptal");
+		if (!Kontrol(playerid)) return ShowPlayerDialog(playerid,DIALOG+1,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Yeni Ev Yarat", "Seç", "İptal");
 		if (EvEditleniyor[GetHouseID(playerid)] == true) return Mesaj(playerid,"Şu anda bu evi başka bir kişi düzenliyor...");
 		
 		EvEditleniyor[GetHouseID(playerid)] = true;
-		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		return 1;
 	}
 
@@ -2075,7 +2075,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		else if (EvSahipID[OyuncuEv[playerid]] != playerid) return Mesaj(playerid,"Bu ev size ait değil!");
 
 		EvEditleniyor[OyuncuEv[playerid]] = true;
-		ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		return 1;
 	}
 
@@ -2087,7 +2087,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		if (EvSahipID[evid] != -1) return Mesaj(playerid,"Bu evin zaten bir sahibi var, lütfen satılık bir ev seçiniz!");
 		new str[256];
 		format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n{00FF7F}Ev Fiyatı: {c0c0c0}%i$\n\n{CD5C5C}Bu evi satın almak istiyor musunuz ?",EvBilgi[evid][evaciklama],EvBilgi[evid][evfiyat]);
-		ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satın Al","İptal");
+		ShowPlayerDialog(playerid,SATINAL,DIALOG_STYLE_MSGBOX,BASLIK,str,"Satın Al", "İptal");
 
 		return 1;
 	}
@@ -2243,13 +2243,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
 	// - Silah menüsü
 	if (dialogid == 9500 && response) {
-		if (listitem == 0) return ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if (listitem == 1) return ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if (listitem == 2) return ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if (listitem == 3) return ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if (listitem == 4) return ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if (listitem == 5) return ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
-		if (listitem == 6) return ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
+		if (listitem == 0) return ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		if (listitem == 1) return ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		if (listitem == 2) return ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		if (listitem == 3) return ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		if (listitem == 4) return ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		if (listitem == 5) return ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		if (listitem == 6) return ShowPlayerDialog(playerid,9507,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 
 	if (dialogid == 9501) // Tabancalar.
@@ -2258,26 +2258,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 1)
 	{
 	SilahSat(playerid,22,200,"Colt .45",500);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 2)
 	{
 	SilahSat(playerid,23,200,"Susturuculu Colt .45",700);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 3)
 	{
 	SilahSat(playerid,24,200,"Desert Eagle",1200);
-	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9501,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 	}
 	}
 	}
@@ -2288,26 +2288,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 1)
 	{
 	SilahSat(playerid,28,200,"Micro Uzi",1250);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 2)
 	{
 	SilahSat(playerid,32,200,"TEC-9",1700);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 3)
 	{
 	SilahSat(playerid,29,200,"MP-5",2300);
-	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9502,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 	}
 	}
 	}
@@ -2318,26 +2318,26 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 1)
 	{
 	SilahSat(playerid,25,200,"Pump-Action Shotgun",3000);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 2)
 	{
 	SilahSat(playerid,26,200,"Double-Barrel Shotgun",4600);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 3)
 	{
 	SilahSat(playerid,27,200,"Combat Shotgun",6500);
-	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9503,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 4)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 	}
 	}
 	}
@@ -2348,21 +2348,21 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 1)
 	{
 	SilahSat(playerid,31,200,"M4A1 Carbine",9500);
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 2)
 	{
 	SilahSat(playerid,30,200,"Avtomat Kalashnikova 47",7500);
-	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9504,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 	}
 	}
 	}
@@ -2373,53 +2373,36 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (listitem == 0)
 	{
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 1)
 	{
 	SilahSat(playerid,33,200,"Country Rifle .22",6700);
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 2)
 	{
 	SilahSat(playerid,34,200,"Sniper Rifle",9750);
-	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.","Seç","Kapat");
+	ShowPlayerDialog(playerid,9505,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 	if (listitem == 3)
 	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 	}
 	}
 	}
 
-	if (dialogid == 9506) // Patlayçcçlar.
-	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
-	}
-	if (listitem == 1)
-	{
-	SilahSat(playerid,16,1,"Grenade",600);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
-	}
-	if (listitem == 2)
-	{
-	SilahSat(playerid,17,1,"Gas Grenade",250);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
-	}
-	if (listitem == 3)
-	{
-	SilahSat(playerid,18,1,"Molotov",700);
-	ShowPlayerDialog(playerid,9506,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Patlayçcçlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.","Seç","Kapat");
-	}
-	if (listitem == 4)
-	{
-	ShowPlayerDialog(playerid,9500,DIALOG_STYLE_LIST,"{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
-	}
-	}
+	// Patlayıcılar
+	if (dialogid == 9506 && response) {
+		if (listitem == 1) SilahSat(playerid, 16, 1, "Grenade", 600);
+		if (listitem == 2) SilahSat(playerid, 17, 1, "Gas Grenade", 250);
+		if (listitem == 3) SilahSat(playerid, 18, 1, "Molotov", 700);
+
+		if (listitem == 4) {
+			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
+		} else {
+			ShowPlayerDialog(playerid, 9506, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		}
 	}
 
 	// Ateşsiz silahlar
@@ -2432,29 +2415,29 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		if (listitem == 6) SilahSat(playerid, 42, 5500, "Fire Extinguisher", 450);
 
 		if (listitem == 7) {
-			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü","{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar","Seç","Kapat");
+			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayçcçlar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
 		} else {
-			ShowPlayerDialog(playerid, 9507, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar","{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.","Seç","Kapat");
+			ShowPlayerDialog(playerid, 9507, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 		}
 	}
 
 	// - Teles alanları diyalogları
 	if (dialogid == 1000 && response) {
-		if (listitem == 0) return Teleport(playerid, 2027.8171,1008.1444, 10.8203, 0, 0, "Four Dragon Casino","/4d", 1, 0);
-		if (listitem == 1) return Teleport(playerid, -2353.0940,-1633.6820, 483.6954, 0, 0, "Chilliad Mountain","/dag", 1, 0);
-		if (listitem == 2) return Teleport(playerid, 369.8283,-1787.7871, 5.3585, 0, 0, "Santa Maria Beach","/sahil", 1, 0);
-		if (listitem == 3) return Teleport(playerid, 231.5036,1914.3851, 17.6406, 0, 0, "Area51","/area51", 1, 0);
-		if (listitem == 4) return Teleport(playerid, -2276.2874,718.5117, 49.4453, 0, 0, "China Town","/china", 1, 0);
-		if (listitem == 5) return Teleport(playerid, 2786.9534,-1319.9723, 34.7975, 0, 0, "Los Flores","/flores", 1, 0);
-		if (listitem == 6) return Teleport(playerid, -1917.2754,287.0215, 41.0469, 0, 0, "Modifiye Yeri 1","/mod1", 1, 0);
-		if (listitem == 7) return Teleport(playerid, -2705.5503, 206.1621, 4.1797, 0, 0, "Modifiye Yeri 2","/mod2", 1, 0);
-		if (listitem == 8) return Teleport(playerid, 2387.4126, 1022.6620, 10.8203, 0, 0, "Modifiye Yeri 3","/mod3", 1, 0);
-		if (listitem == 9) return Teleport(playerid, 2644.7686,-2019.1096, 13.5507, 0, 0, "Modifiye Yeri 4","/mod4", 1, 0);
-		if (listitem == 10) return Teleport(playerid, 1042.0564, -1045.5176, 31.8108, 0, 0, "Modifiye Yeri 5","/mod5", 1, 0);
-		if (listitem == 11) return Teleport(playerid, 1686.7, -2450.2, 13.6, 0, 0, "Airport 1","/ap1", 1, 0);
-		if (listitem == 12) return Teleport(playerid, -1345.0, -229.8, 14.1, 0, 0, "Airport 2","/ap2", 1, 0);
-		if (listitem == 13) return Teleport(playerid, 1435.5, 1463.2, 10.8, 0, 0, "Airport 3","/ap3", 1, 0);
-		if (listitem == 14) return Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4","/ap4", 1, 0);
+		if (listitem == 0) return Teleport(playerid, 2027.8171,1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", 1, 0);
+		if (listitem == 1) return Teleport(playerid, -2353.0940,-1633.6820, 483.6954, 0, 0, "Chilliad Mountain", "/dag", 1, 0);
+		if (listitem == 2) return Teleport(playerid, 369.8283,-1787.7871, 5.3585, 0, 0, "Santa Maria Beach", "/sahil", 1, 0);
+		if (listitem == 3) return Teleport(playerid, 231.5036,1914.3851, 17.6406, 0, 0, "Area51", "/area51", 1, 0);
+		if (listitem == 4) return Teleport(playerid, -2276.2874,718.5117, 49.4453, 0, 0, "China Town", "/china", 1, 0);
+		if (listitem == 5) return Teleport(playerid, 2786.9534,-1319.9723, 34.7975, 0, 0, "Los Flores", "/flores", 1, 0);
+		if (listitem == 6) return Teleport(playerid, -1917.2754,287.0215, 41.0469, 0, 0, "Modifiye Yeri 1", "/mod1", 1, 0);
+		if (listitem == 7) return Teleport(playerid, -2705.5503, 206.1621, 4.1797, 0, 0, "Modifiye Yeri 2", "/mod2", 1, 0);
+		if (listitem == 8) return Teleport(playerid, 2387.4126, 1022.6620, 10.8203, 0, 0, "Modifiye Yeri 3", "/mod3", 1, 0);
+		if (listitem == 9) return Teleport(playerid, 2644.7686,-2019.1096, 13.5507, 0, 0, "Modifiye Yeri 4", "/mod4", 1, 0);
+		if (listitem == 10) return Teleport(playerid, 1042.0564, -1045.5176, 31.8108, 0, 0, "Modifiye Yeri 5", "/mod5", 1, 0);
+		if (listitem == 11) return Teleport(playerid, 1686.7, -2450.2, 13.6, 0, 0, "Airport 1", "/ap1", 1, 0);
+		if (listitem == 12) return Teleport(playerid, -1345.0, -229.8, 14.1, 0, 0, "Airport 2", "/ap2", 1, 0);
+		if (listitem == 13) return Teleport(playerid, 1435.5, 1463.2, 10.8, 0, 0, "Airport 3", "/ap3", 1, 0);
+		if (listitem == 14) return Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4", "/ap4", 1, 0);
 	}
 
 	// - Changelog dialoglarç
@@ -2462,7 +2445,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (response)
 	{
-	ShowPlayerDialog(playerid,1912,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.1]","{ACDA00}~ Textdrawlar düzenlendi.\n~ Teles menüsü güncellendi. {FFFFFF}(4 yeni teleport alanı){ACDA00}\n~ Admin sistemi düzenlendi.\n~ Yardım menüsü düzenlendi.\n~ \"Desert Eagle Deathmatch\" alanı eklendi.\n~ çlçm-çldçrme gçstergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.","RC1.2","Kapat");
+	ShowPlayerDialog(playerid,1912,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.1]", "{ACDA00}~ Textdrawlar düzenlendi.\n~ Teles menüsü güncellendi. {FFFFFF}(4 yeni teleport alanı){ACDA00}\n~ Admin sistemi düzenlendi.\n~ Yardım menüsü düzenlendi.\n~ \"Desert Eagle Deathmatch\" alanı eklendi.\n~ çlçm-çldçrme gçstergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.", "RC1.2", "Kapat");
 	}
 	}
 
@@ -2470,7 +2453,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (response)
 	{
-	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]","{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar güncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yönetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları düzeltildi.\n~ Gametext süreleri düşürüldü.\n~ Giriş düzenlendi.","RC1.3","Kapat");
+	ShowPlayerDialog(playerid,1913,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.2]", "{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar güncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yönetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları düzeltildi.\n~ Gametext süreleri düşürüldü.\n~ Giriş düzenlendi.", "RC1.3", "Kapat");
 	}
 	}
 
@@ -2478,7 +2461,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (response)
 	{
-	ShowPlayerDialog(playerid,1914,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.3]","{ACDA00}~ ALPHA hesapları silindi.\n~ Kick-Ban mesajları ve Giriş-çıkış mesajları güncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog düzenlendi.\n~ Yeni haritalar eklendi.\n~ Gelişmiş saat sistemi eklendi.\n~ RGM-GM sistemi bugları giderildi.\n~ Sohbet baloncuğu eklendi.\n~ Driveby engeli kaldırıldı.","RC1.4","Kapat");
+	ShowPlayerDialog(playerid,1914,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.3]", "{ACDA00}~ ALPHA hesapları silindi.\n~ Kick-Ban mesajları ve Giriş-çıkış mesajları güncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog düzenlendi.\n~ Yeni haritalar eklendi.\n~ Gelişmiş saat sistemi eklendi.\n~ RGM-GM sistemi bugları giderildi.\n~ Sohbet baloncuğu eklendi.\n~ Driveby engeli kaldırıldı.", "RC1.4", "Kapat");
 	}
 	}
 
@@ -2486,7 +2469,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (response)
 	{
-	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]","{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi güncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin güncellendi. (4.4)\n~ Teleport komutları düzenlendi.\n~ EXP-LEVEL textdrawı yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanları ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menüsü eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Girişe dans eklendi.","RC1.5","Kapat");
+	ShowPlayerDialog(playerid,1915,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.4]", "{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi güncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin güncellendi. (4.4)\n~ Teleport komutları düzenlendi.\n~ EXP-LEVEL textdrawı yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanları ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menüsü eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Girişe dans eklendi.", "RC1.5", "Kapat");
 	}
 	}
 	
@@ -2494,7 +2477,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	{
 	if (response)
 	{
-	ShowPlayerDialog(playerid,1916,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.5]","{ACDA00}~ ","Kapat","");
+	ShowPlayerDialog(playerid,1916,DIALOG_STYLE_MSGBOX,"Changelog / [ALPHA RC1.5]", "{ACDA00}~ ", "Kapat", "");
 	}
 	}
 	// - DM alanı dialogları
@@ -2629,28 +2612,28 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if (listitem == 0)
 			{
 				format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayı değiştirmek için yenisini aşağıya yazınız.",EvBilgi[evid][evaciklama]);
-				ShowPlayerDialog(playerid,MENU+1,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir","İptal");
+				ShowPlayerDialog(playerid,MENU+1,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir", "İptal");
 			}
 			if (listitem == 1)
 			{
-				ShowPlayerDialog(playerid,MENU+2,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aç\n{FF4500}Kilitle","Ayarla","İptal");
+				ShowPlayerDialog(playerid,MENU+2,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aç\n{FF4500}Kilitle", "Ayarla", "İptal");
 			}
 			if (listitem == 2)
 			{
 				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lütfen gerçekleştirilecek işlemi seçiniz.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
-				ShowPlayerDialog(playerid,MENU+3,DIALOG_STYLE_MSGBOX,BASLIK,str,"Yatır/çek","İptal");
+				ShowPlayerDialog(playerid,MENU+3,DIALOG_STYLE_MSGBOX,BASLIK,str,"Yatır/çek", "İptal");
 			}
 			if (listitem == 3)
 			{
 				format(str,sizeof(str),"{FF4500}Depodan Silah Al\n{FF4500}Depoya Elindeki Silahı Koy");
-				ShowPlayerDialog(playerid,MENU+8,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
+				ShowPlayerDialog(playerid,MENU+8,DIALOG_STYLE_LIST,BASLIK,str,"Seç", "İptal");
 			}
 		}
 	}
 
 	if (dialogid == MENU+1)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			if (!strlen(inputtext)) return Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.");
@@ -2658,13 +2641,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			EvKaydetStr(evid,"evaciklama",inputtext);
 			EvYenile(evid);
 			Mesaj(playerid,"Ev açıklaması değiştirildi.");
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		}
 	}
 
 	if (dialogid == MENU+2)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuEv[playerid];
@@ -2673,30 +2656,30 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				EvKaydetInt(evid,"evkilit",0);
 				Mesaj(playerid,"Evin kilidini açtınız!");
 				EvYenile(evid);
-				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 			}
 			if (listitem == 1)
 			{
 				EvKaydetInt(evid,"evkilit",1);
 				Mesaj(playerid,"Evi kilitlediniz!");
 				EvYenile(evid);
-				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+				ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 			}
 		}
 	}
 
 	if (dialogid == MENU+3)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
-			ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para Yatır\n{FF4500}Para çek","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU+4,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Para Yatır\n{FF4500}Para çek", "Seç", "İptal");
 		}
 	}
 
 	if (dialogid == MENU+4)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new str[256];
@@ -2704,12 +2687,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if (listitem == 0)
 			{
 				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasaya yatırılacak miktarı yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
-				ShowPlayerDialog(playerid,MENU+5,DIALOG_STYLE_INPUT,BASLIK,str,"Yatır","İptal");
+				ShowPlayerDialog(playerid,MENU+5,DIALOG_STYLE_INPUT,BASLIK,str,"Yatır", "İptal");
 			}
 			if (listitem == 1)
 			{
 				format(str,sizeof(str),"{00FF7F}Kasadaki Para: {c0c0c0}%i$\n{00FF7F}Mevcut Paranız: {c0c0c0}%i$\n\n{CD5C5C}Lçtfen kasadan çekilecek miktarç yazınız.",EvBilgi[evid][evbanka],GetPlayerMoney(playerid));
-				ShowPlayerDialog(playerid,MENU+6,DIALOG_STYLE_INPUT,BASLIK,str,"çek","İptal");
+				ShowPlayerDialog(playerid,MENU+6,DIALOG_STYLE_INPUT,BASLIK,str,"çek", "İptal");
 			}
 
 		}
@@ -2717,7 +2700,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if (dialogid == MENU+5)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuEv[playerid];
@@ -2727,13 +2710,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			EvKaydetInt(evid,"evbanka",EvBilgi[evid][evbanka]+strval(inputtext));
 			GivePlayerMoney(playerid,-strval(inputtext));
 			EvYenile(evid);
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		}
 	}
 
 	if (dialogid == MENU+6)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuEv[playerid];
@@ -2743,13 +2726,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			EvKaydetInt(evid,"evbanka",EvBilgi[evid][evbanka]-strval(inputtext));
 			GivePlayerMoney(playerid,strval(inputtext));
 			EvYenile(evid);
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		}
 	}
 
 	if (dialogid == MENU+7)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 		}
@@ -2757,7 +2740,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 	if (dialogid == MENU+8)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuEv[playerid];
@@ -2778,7 +2761,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if (s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
 				format(str,sizeof(str),
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
-				ShowPlayerDialog(playerid,MENU+9,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
+				ShowPlayerDialog(playerid,MENU+9,DIALOG_STYLE_LIST,BASLIK,str,"Seç", "İptal");
 			}
 			if (listitem == 1)
 			{
@@ -2797,14 +2780,14 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if (s6 == -1) slot6 = "Yok"; else slot6 = WeaponName(s6);
 				format(str,sizeof(str),
 				"{FF4500}Slot 1: {FFFFFF}%s\n{FF4500}Slot 2: {FFFFFF}%s\n{FF4500}Slot 3: {FFFFFF}%s\n{FF4500}Slot 4: {FFFFFF}%s\n{FF4500}Slot 5: {FFFFFF}%s\n{FF4500}Slot 6: {FFFFFF}%s",slot1,slot2,slot3,slot4,slot5,slot6);
-				ShowPlayerDialog(playerid,MENU+10,DIALOG_STYLE_LIST,BASLIK,str,"Seç","İptal");
+				ShowPlayerDialog(playerid,MENU+10,DIALOG_STYLE_LIST,BASLIK,str,"Seç", "İptal");
 			}
 		}
 	}
 
 	if (dialogid == MENU+9)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuEv[playerid];
@@ -2872,13 +2855,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					EvYenile(evid);
 				}
 			}
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		}
 	}
 
 	if (dialogid == MENU+10)
 	{
-		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuEv[playerid];
@@ -2941,7 +2924,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					EvYenile(evid);
 				}
 			}
-			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu","Seç","İptal");
+			ShowPlayerDialog(playerid,MENU,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Kilidi\n{FF4500}Ev Kasası\n{FF4500}Ev Silah Deposu", "Seç", "İptal");
 		}
 	}
 
@@ -2956,7 +2939,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			if (listitem == 0) //Ev Açıklaması
 			{
 				format(str,sizeof(str),"{00FF7F}Ev Açıklaması: {c0c0c0}%s\n\n{CD5C5C}Açıklamayı değiştirmek için yenisini açaççya yazınız.",EvBilgi[evid][evaciklama]);
-				ShowPlayerDialog(playerid,DIALOG+2,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir","İptal");
+				ShowPlayerDialog(playerid,DIALOG+2,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir", "İptal");
 			}
 			if (listitem == 1) //Ev Sahibi
 			{
@@ -2966,12 +2949,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if (!strlen(EvBilgi[evid][evsahip])) sahip = "Yok";
 				//else sahip = dini_Get(dosya,"evsahip");
 				format(str,sizeof(str),"{00FF7F}Ev Sahibi: {c0c0c0}%s\n\n{CD5C5C}Ev sahibini değiştirirseniz tüm ev belirlenen kişiye devredilir.\nEğer boş bırakırsanız ev satılık olarak değiştirilir.",sahip);
-				ShowPlayerDialog(playerid,DIALOG+3,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir","İptal");
+				ShowPlayerDialog(playerid,DIALOG+3,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir", "İptal");
 			}
 			if (listitem == 2) //Ev Fiyatı
 			{
 				format(str,sizeof(str),"{00FF7F}Ev Fiyatı: {c0c0c0}%i$\n\n{CD5C5C}Yeni ev fiyatını değiştirmek için yeni miktarı giriniz.",EvBilgi[evid][evfiyat]);
-				ShowPlayerDialog(playerid,DIALOG+4,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir","İptal");
+				ShowPlayerDialog(playerid,DIALOG+4,DIALOG_STYLE_INPUT,BASLIK,str,"Değiştir", "İptal");
 			}
 			if (listitem == 3) //Ev Interior
 			{
@@ -2982,15 +2965,15 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				strcat(menu,"{FF4500}Ev 4\n");
 				strcat(menu,"{FF4500}Ev 5\n");
 				strcat(menu,"{FF4500}Unused Villası");
-				ShowPlayerDialog(playerid,DIALOG+5,DIALOG_STYLE_LIST,BASLIK,menu,"Ayarla","İptal");
+				ShowPlayerDialog(playerid,DIALOG+5,DIALOG_STYLE_LIST,BASLIK,menu,"Ayarla", "İptal");
 			}
 			if (listitem == 4) //Ev Kilidi
 			{
-				ShowPlayerDialog(playerid,DIALOG+7,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aç\n{FF4500}Kilitle","Ayarla","İptal");
+				ShowPlayerDialog(playerid,DIALOG+7,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Kilidi Aç\n{FF4500}Kilitle", "Ayarla", "İptal");
 			}
 			if (listitem == 5) //Ev Sil
 			{
-				ShowPlayerDialog(playerid,DIALOG+8,DIALOG_STYLE_MSGBOX,BASLIK,"{B22222}Bunu yaparsanız ev kaydı tamamen silinecektir ve Geri dönüşü olmayacaktır.\n{C0C0C0}Silmeyi onaylıyor musunuz ?","Onayla","İptal");
+				ShowPlayerDialog(playerid,DIALOG+8,DIALOG_STYLE_MSGBOX,BASLIK,"{B22222}Bunu yaparsanız ev kaydı tamamen silinecektir ve Geri dönüşü olmayacaktır.\n{C0C0C0}Silmeyi onaylıyor musunuz ?", "Onayla", "İptal");
 			}
 		}
 	}
@@ -3013,7 +2996,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	if (dialogid == DIALOG+2)
 	{
-		if (!response) return ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) return ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 
 		if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev düzenlemek için herhangi bir evin üstünde olmalısınız!");
 		if (!strlen(inputtext)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Lütfen geçerli bir yazı giriniz.") ;
@@ -3021,25 +3004,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		EvKaydetStr(evid,"evaciklama",inputtext);
 		EvYenile(evid);
 		Mesaj(playerid,"Ev açıklaması deçiçtirildi.");
-		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 	}
 	if (dialogid == DIALOG+3)
 	{
-		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		if (response)
 		{
 			new evid = OyuncuKontrolEv[playerid];
 			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev düzenlemek için herhangi bir evin üstünde olmalısınız!");
-			if (!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip",""),Mesaj(playerid,"Ev satılık olarak deçiçtirildi!");
+			if (!strlen(inputtext)) EvKaydetInt(evid,"evsatilik",1),EvKaydetStr(evid,"evsahip", ""),Mesaj(playerid,"Ev satılık olarak deçiçtirildi!");
 			else EvKaydetInt(evid,"evsatilik",0),EvKaydetStr(evid,"evsahip",inputtext),Mesaj(playerid,"Ev sahibi deçiçtirildi!");
 			EvYenile(evid);
 			SahipKontrol();
-			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		}
 	}
 	if (dialogid == DIALOG+4)
 	{
-		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		if (response)
 		{
 			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev düzenlemek için herhangi bir evin üstünde olmalısınız!");
@@ -3049,12 +3032,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			EvKaydetInt(evid,"evfiyat",strval(inputtext));
 			Mesaj(playerid,"Ev fiyatı değiştirildi!");
 			EvYenile(evid);
-			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		}
 	}
 	if (dialogid == DIALOG+5)
 	{
-		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		if (response)
 		{
 			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev dçzenlemek için herhangi bir evin üstünde olmalısınız!");
@@ -3068,12 +3051,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 			EvYenile(evid);
 			Mesaj(playerid,"Ev interioru değiştirildi!");
-			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+			ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		}
 	}
 	if (dialogid == DIALOG+7)
 	{
-		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		if (response)
 		{
 			if (!Kontrol(playerid)) return EvEditleniyor[GetHouseID(playerid)] = false, Mesaj(playerid,"Ev düzenlemek için herhangi bir evin üstünde olmalısınız!");
@@ -3083,20 +3066,20 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				EvKaydetInt(evid,"evkilit",0);
 				Mesaj(playerid,"Evin kilidini açtınız!");
 				EvYenile(evid);
-				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 			}
 			if (listitem == 1)
 			{
 				EvKaydetInt(evid, "evkilit", 1);
 				Mesaj(playerid,"Evi kilitlediniz!");
 				EvYenile(evid);
-				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+				ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 			}
 		}
 	}
 	if (dialogid == DIALOG+8)
 	{
-		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil","Seç","İptal");
+		if (!response) ShowPlayerDialog(playerid,DIALOG,DIALOG_STYLE_LIST,BASLIK,"{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 		if (response)
 		{
 			if (Kontrol(playerid)) EvSil(GetHouseID(playerid)),EvEditleniyor[GetHouseID(playerid)] = false;
@@ -3549,7 +3532,7 @@ public EvYarat(evid, Float:X, Float:Y, Float:Z)
 
 		dini_Create(dosya);
 		dini_Set(dosya,"evaciklama",ACIKLAMA);
-		dini_Set(dosya,"evsahip","");
+		dini_Set(dosya,"evsahip", "");
 		dini_IntSet(dosya,"evsatilik",1);
 		dini_IntSet(dosya,"evfiyat",FIYAT);
 		dini_IntSet(dosya,"evbanka",KASA);

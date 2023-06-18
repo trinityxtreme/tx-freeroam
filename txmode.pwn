@@ -2313,45 +2313,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 
 	// Changelog dialogları
-	if (dialogid == 1911)
-	{
-	if (response)
-	{
-	ShowPlayerDialog(playerid, 1912, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.1]", "{ACDA00}~ Textdrawlar düzenlendi.\n~ Teles menüsü güncellendi. {FFFFFF}(4 yeni teleport alanı){ACDA00}\n~ Admin sistemi düzenlendi.\n~ Yardım menüsü düzenlendi.\n~ \"Desert Eagle Deathmatch\" alanı eklendi.\n~ çlçm-çldçrme gçstergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.", "RC1.2", "Kapat");
-	}
-	}
+	if (dialogid == 1911 && response) ShowPlayerDialog(playerid, 1912, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.1]", "{ACDA00}~ Textdrawlar düzenlendi.\n~ Teles menüsü güncellendi. {FFFFFF}(4 yeni teleport alanı){ACDA00}\n~ Admin sistemi düzenlendi.\n~ Yardım menüsü düzenlendi.\n~ \"Desert Eagle Deathmatch\" alanı eklendi.\n~ çlçm-çldçrme gçstergesi eklendi.\n~ /skin komutu eklendi.\n~ /renk komutu eklendi.\n~ Ufak buglar giderildi.\n~ DM sistemi eklendi.", "RC1.2", "Kapat");
+	if (dialogid == 1912 && response) ShowPlayerDialog(playerid, 1913, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.2]", "{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar güncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yönetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları düzeltildi.\n~ Gametext süreleri düşürüldü.\n~ Giriş düzenlendi.", "RC1.3", "Kapat");
+	if (dialogid == 1913 && response) ShowPlayerDialog(playerid, 1914, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.3]", "{ACDA00}~ ALPHA hesapları silindi.\n~ Kick-Ban mesajları ve Giriş-çıkış mesajları güncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog düzenlendi.\n~ Yeni haritalar eklendi.\n~ Gelişmiş saat sistemi eklendi.\n~ RGM-GM sistemi bugları giderildi.\n~ Sohbet baloncuğu eklendi.\n~ Driveby engeli kaldırıldı.", "RC1.4", "Kapat");
+	if (dialogid == 1914 && response) ShowPlayerDialog(playerid, 1915, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.4]", "{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi güncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin güncellendi. (4.4)\n~ Teleport komutları düzenlendi.\n~ EXP-LEVEL textdrawı yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanları ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menüsü eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Girişe dans eklendi.", "RC1.5", "Kapat");
+	if (dialogid == 1915 && response) ShowPlayerDialog(playerid, 1916, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.5]", "{ACDA00}~ ", "Kapat", "");
 
-	if (dialogid == 1912)
-	{
-	if (response)
-	{
-	ShowPlayerDialog(playerid, 1913, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.2]", "{ACDA00}~ Ufak buglar giderildi.\n~ \"Fight Club Deathmatch\" alanç eklendi.\n~ Eksik haritalar güncellendi.\n~ \"Bikepark Stunt 1\" alanı eklendi.\n~ /nrg komutu eklendi.\n~ Araç yönetim komutları eklendi.\n~ Website eklendi. {FFFFFF}(trinity.immortal-official.tk){ACDA00}\n~ Textdraw kaymaları düzeltildi.\n~ Gametext süreleri düşürüldü.\n~ Giriş düzenlendi.", "RC1.3", "Kapat");
-	}
-	}
-
-	if (dialogid == 1913)
-	{
-	if (response)
-	{
-	ShowPlayerDialog(playerid, 1914, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.3]", "{ACDA00}~ ALPHA hesapları silindi.\n~ Kick-Ban mesajları ve Giriş-çıkış mesajları güncellendi.\n~ Araç Kilit Sistemi eklendi. {FFFFFF}(/kilit - /kilitac){ACDA00}\n~ 31 sistemi bugu giderildi.\n~ Ufak buglar giderildi.\n~ Changelog düzenlendi.\n~ Yeni haritalar eklendi.\n~ Gelişmiş saat sistemi eklendi.\n~ RGM-GM sistemi bugları giderildi.\n~ Sohbet baloncuğu eklendi.\n~ Driveby engeli kaldırıldı.", "RC1.4", "Kapat");
-	}
-	}
-
-	if (dialogid == 1914)
-	{
-	if (response)
-	{
-	ShowPlayerDialog(playerid, 1915, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.4]", "{ACDA00}~ EXP-LEVEL sistemi eklendi.\n~ Ev sistemi güncellendi.\n~ Ufak buglar giderildi.\n~ LAdmin güncellendi. (4.4)\n~ Teleport komutları düzenlendi.\n~ EXP-LEVEL textdrawı yenilendi.\n~ Object Streamer eklendi.\n~ Modifiye alanları ve Airport'lar için teleport eklendi. {FFFFFF}(/teles)\n{ACDA00}~ Silahlar menüsü eklendi. {FFFFFF}(/silahlar)\n{ACDA00}~ aLAdmin sistemi eklendi.\n~ Girişe dans eklendi.", "RC1.5", "Kapat");
-	}
-	}
-	
-	if (dialogid == 1915)
-	{
-	if (response)
-	{
-	ShowPlayerDialog(playerid, 1916, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.5]", "{ACDA00}~ ", "Kapat", "");
-	}
-	}
 	// DM alanı dialogları
 	if (dialogid == 2000)
 	{

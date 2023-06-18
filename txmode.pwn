@@ -2289,29 +2289,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 
-	if (dialogid == 9504) // Makineli tüfekler.
+	// Makineli tüfekler
+	if (dialogid == 9504 && response)
 	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	ShowPlayerDialog(playerid, 9504, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 1)
-	{
-	SilahSat(playerid, 31, 200, "M4A1 Carbine", 9500);
-	ShowPlayerDialog(playerid, 9504, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 2)
-	{
-	SilahSat(playerid, 30, 200, "Avtomat Kalashnikova 47", 7500);
-	ShowPlayerDialog(playerid, 9504, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 3)
-	{
-	ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
-	}
-	}
+		if (listitem == 1) SilahSat(playerid, 31, 200, "M4A1 Carbine", 9500);
+		else if (listitem == 2) SilahSat(playerid, 30, 200, "Avtomat Kalashnikova 47", 7500);
+
+		if (listitem == 3) {
+			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
+		} else {
+			ShowPlayerDialog(playerid, 9504, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tçfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		}
 	}
 
 	// Yivli tüfekler
@@ -3011,7 +2999,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 		}
 	}
-	
+
 	if (dialogid == DIALOG+8) {
 		if (!response) return ShowPlayerDialog(playerid, DIALOG, DIALOG_STYLE_LIST, BASLIK, "{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
 

@@ -2229,34 +2229,18 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 
-	if (dialogid == 9502) // Otomatik tabancalar.
+	// Otomatik tabancalar
+	if (dialogid == 9502 && response) {
 	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 1)
-	{
-	SilahSat(playerid, 28, 200, "Micro Uzi", 1250);
-	ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 2)
-	{
-	SilahSat(playerid, 32, 200, "TEC-9", 1700);
-	ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 3)
-	{
-	SilahSat(playerid, 29, 200, "MP-5", 2300);
-	ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 4)
-	{
-	ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
-	}
-	}
+		if (listitem == 1) SilahSat(playerid, 28, 200, "Micro Uzi", 1250);
+		else if (listitem == 2) SilahSat(playerid, 32, 200, "TEC-9", 1700);
+		else if (listitem == 3) SilahSat(playerid, 29, 200, "MP-5", 2300);
+
+		if (listitem == 4) {
+			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
+		} else {
+			ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		}
 	}
 
 	// Pompalı tüfekler

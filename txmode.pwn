@@ -2191,42 +2191,25 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	// Silah menüsü
 	if (dialogid == 9500 && response) {
 		if (listitem == 0) return ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-		if (listitem == 1) return ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-		if (listitem == 2) return ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-		if (listitem == 3) return ShowPlayerDialog(playerid, 9504, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-		if (listitem == 4) return ShowPlayerDialog(playerid, 9505, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-		if (listitem == 5) return ShowPlayerDialog(playerid, 9506, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-		if (listitem == 6) return ShowPlayerDialog(playerid, 9507, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		else if (listitem == 1) return ShowPlayerDialog(playerid, 9502, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Oto. tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Micro Uzi\t\t\t{FFFFFF}1250$\n{FFFFFF}~ {ACDA00}TEC-9\t\t\t{FFFFFF}1700$\n{FFFFFF}~ {ACDA00}MP-5\t\t\t\t{FFFFFF}2300$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		else if (listitem == 2) return ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		else if (listitem == 3) return ShowPlayerDialog(playerid, 9504, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Mak. Tüfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}M4A1 Carbine\t\t\t{FFFFFF}9500$\n{FFFFFF}~ {ACDA00}Avtomat Kalashnikova 47\t{FFFFFF}7500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		else if (listitem == 4) return ShowPlayerDialog(playerid, 9505, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Yivli Tüfekler", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Country Rifle .22\t\t{FFFFFF}6700$\n{FFFFFF}~ {ACDA00}Sniper Rifle\t\t\t{FFFFFF}9750$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		else if (listitem == 5) return ShowPlayerDialog(playerid, 9506, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Patlayıcılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Grenade [1x]\t\t\t{FFFFFF}600$\n{FFFFFF}~ {ACDA00}Gas Grenade [1x]\t\t{FFFFFF}250$\n{FFFFFF}~ {ACDA00}Molotov [1x]\t\t\t{FFFFFF}700$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		else if (listitem == 6) return ShowPlayerDialog(playerid, 9507, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Ateşsiz Silahlar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{ACDA00}~ Brass Knuckles\t\t{FFFFFF}50$\n{ACDA00}~ Baseball Bat\t\t\t{FFFFFF}100$\n{ACDA00}~ Golf Club\t\t\t{FFFFFF}1200$\n{ACDA00}~ Knife\t\t\t\t{FFFFFF}250$\n{ACDA00}~ Spray\t\t\t{FFFFFF}300$\n{ACDA00}~ Fire Extinguisher\t\t{FFFFFF}450$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
 	}
 
-	if (dialogid == 9501) // Tabancalar.
-	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 1)
-	{
-	SilahSat(playerid, 22, 200, "Colt .45", 500);
-	ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 2)
-	{
-	SilahSat(playerid, 23, 200, "Susturuculu Colt .45", 700);
-	ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 3)
-	{
-	SilahSat(playerid, 24, 200, "Desert Eagle", 1200);
-	ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 4)
-	{
-	ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
-	}
-	}
+	// Tabancalar
+	if (dialogid == 9501 && response) {
+		if (listitem == 1) SilahSat(playerid, 22, 200, "Colt .45", 500);
+		else if (listitem == 2) SilahSat(playerid, 23, 200, "Susturuculu Colt .45", 700);
+		else if (listitem == 3) SilahSat(playerid, 24, 200, "Desert Eagle", 1200);
+
+		if (listitem == 4) {
+			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
+		} else {
+			ShowPlayerDialog(playerid, 9501, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Tabancalar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Colt .45\t\t\t{FFFFFF}500$\n{FFFFFF}~ {ACDA00}Colt .45 & susturucu\t\t{FFFFFF}800$\n{FFFFFF}~ {ACDA00}Desert Eagle .50\t\t{FFFFFF}1200$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		}
 	}
 
 	// Otomatik tabancalar

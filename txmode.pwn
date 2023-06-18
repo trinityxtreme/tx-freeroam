@@ -3011,14 +3011,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 			}
 		}
 	}
-	if (dialogid == DIALOG+8)
-	{
-		if (!response) ShowPlayerDialog(playerid, DIALOG, DIALOG_STYLE_LIST, BASLIK, "{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
-		if (response)
-		{
-			if (Kontrol(playerid)) EvSil(GetHouseID(playerid)), EvEditleniyor[GetHouseID(playerid)] = false;
-			else Mesaj(playerid, "Ev düzenlemek için herhangi bir evin üstünde olmalısınız!");
-		}
+	
+	if (dialogid == DIALOG+8) {
+		if (!response) return ShowPlayerDialog(playerid, DIALOG, DIALOG_STYLE_LIST, BASLIK, "{FF4500}Ev Açıklaması\n{FF4500}Ev Sahibi\n{FF4500}Ev Fiyatı\n{FF4500}Ev Interior\n{FF4500}Ev Kilidi\n{DC143C}Evi Sil", "Seç", "İptal");
+
+		if (Kontrol(playerid)) EvSil(GetHouseID(playerid)), EvEditleniyor[GetHouseID(playerid)] = false;
+		else Mesaj(playerid, "Ev düzenlemek için herhangi bir evin üstünde olmalısınız!");
 	}
 	return 1;
 }
@@ -3027,18 +3025,18 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 strtok(const string[], &index)
 {
 	new length = strlen(string);
-	while ((index < length) && (string[index] <= ' '))
-	{
+	while ((index < length) && (string[index] <= ' ')) {
 		index++;
 	}
 
 	new offset = index;
 	new result[20];
-	while ((index < length) && (string[index] > ' ') && ((index - offset) < (sizeof(result) - 1)))
-	{
+
+	while ((index < length) && (string[index] > ' ') && ((index - offset) < (sizeof(result) - 1))) {
 		result[index - offset] = string[index];
 		index++;
 	}
+
 	result[index - offset] = EOS;
 	return result;
 }
@@ -3285,10 +3283,8 @@ public SetPlayerRandomSpawn(playerid)
 // IsNumeric
 stock IsNumeric(const string[])
 {
-   for (new i, j = strlen(string); i < j; ++i)
-   {
-	  if (!('0' <= string[i] <= '9'))
-	  {
+   for (new i, j = strlen(string); i < j; ++i) {
+	  if (!('0' <= string[i] <= '9')) {
 		 return 0;
 	  }
    }
@@ -3300,17 +3296,14 @@ IsNosVehicle(vehicleid)
 {
 	#define NO_NOS_VEHICLES 29
 
-	new InvalidNosVehicles[NO_NOS_VEHICLES] =
-	{
-		   581, 523, 462, 521, 463, 522, 461, 448, 468, 586,
-		   509, 481, 510, 472, 473, 493, 595, 484, 430, 453,
-		   452, 446, 454, 590, 569, 537, 538, 570, 449
+	new InvalidNosVehicles[NO_NOS_VEHICLES] = {
+		581, 523, 462, 521, 463, 522, 461, 448, 468, 586,
+		509, 481, 510, 472, 473, 493, 595, 484, 430, 453,
+		452, 446, 454, 590, 569, 537, 538, 570, 449
 	};
 
-	for (new i = 0; i < NO_NOS_VEHICLES; i++)
-	{
-		if (GetVehicleModel(vehicleid) == InvalidNosVehicles[i])
-		{
+	for (new i = 0; i < NO_NOS_VEHICLES; i++) {
+		if (GetVehicleModel(vehicleid) == InvalidNosVehicles[i]) {
 			return false;
 		}
 	}

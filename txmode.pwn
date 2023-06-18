@@ -2259,34 +2259,17 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 	}
 
-	if (dialogid == 9503) // Pompalı tüfekler.
-	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 1)
-	{
-	SilahSat(playerid, 25, 200, "Pump-Action Shotgun", 3000);
-	ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 2)
-	{
-	SilahSat(playerid, 26, 200, "Double-Barrel Shotgun", 4600);
-	ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 3)
-	{
-	SilahSat(playerid, 27, 200, "Combat Shotgun", 6500);
-	ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
-	}
-	if (listitem == 4)
-	{
-	ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
-	}
-	}
+	// Pompalı tüfekler
+	if (dialogid == 9503 && response) {
+		if (listitem == 1) SilahSat(playerid, 25, 200, "Pump-Action Shotgun", 3000);
+		else if (listitem == 2) SilahSat(playerid, 26, 200, "Double-Barrel Shotgun", 4600);
+		else if (listitem == 3) SilahSat(playerid, 27, 200, "Combat Shotgun", 6500);
+
+		if (listitem == 4) {
+			ShowPlayerDialog(playerid, 9500, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Silah Menüsü", "{FFFFFF}~ {ACDA00}Tabancalar\n{FFFFFF}~ {ACDA00}Otomatik tabancalar\n{FFFFFF}~ {ACDA00}Pompalı tüfekler\n{FFFFFF}~ {ACDA00}Makinalı tüfekler\n{FFFFFF}~ {ACDA00}Yivli tüfekler\n{FFFFFF}~ {ACDA00}Patlayıcılar\n{FFFFFF}~ {ACDA00}Ateşsiz silahlar", "Seç", "Kapat");
+		} else {
+			ShowPlayerDialog(playerid, 9503, DIALOG_STYLE_LIST, "{FFFFFF}Trinity-Xtreme /{009BFF} Pompalılar", "{009BFF}SİLAH ADI\t\t\tSİLAH FİYATI\n{FFFFFF}~ {ACDA00}Pump-Action Shotgun\t\t{FFFFFF}3000$\n{FFFFFF}~ {ACDA00}Double-Barrel Shotgun\t{FFFFFF}4600$\n{FFFFFF}~ {ACDA00}Combat Shotgun\t\t{FFFFFF}6500$\n{009BFF}~ Geri dön.", "Seç", "Kapat");
+		}
 	}
 
 	// Makineli tüfekler

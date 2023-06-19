@@ -2369,17 +2369,13 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 
 	// Stunt dialogları
-	if (dialogid == 2001)
-	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	SendInfo(playerid, "{00FF00}Bikepark Stunt - 1 {FFFFFF}alanına ışınlanıldı.");
-	SetPlayerPos(playerid, 1165.3389, 1344.6733, 10.8125);
+	if (dialogid == 2001 && response) {
+		if (listitem == 0) {
+			SendInfo(playerid, "{00FF00}Bikepark Stunt - 1 {FFFFFF}alanına ışınlanıldı.");
+			SetPlayerPos(playerid, 1165.3389, 1344.6733, 10.8125);
+		}
 	}
-	}
-	}
+
 	// Araç spawn ayarları
 	if (response)
 	{

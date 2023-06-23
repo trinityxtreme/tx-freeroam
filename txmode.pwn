@@ -2320,52 +2320,35 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	if (dialogid == 1915 && response) ShowPlayerDialog(playerid, 1916, DIALOG_STYLE_MSGBOX, "Changelog / [ALPHA RC1.5]", "{ACDA00}~ ", "Kapat", "");
 
 	// DM alanı dialogları
-	if (dialogid == 2000)
-	{
-	if (response)
-	{
-	if (listitem == 0)
-	{
-	new State = GetPlayerState(playerid);
-	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-	{
-	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	}
-	DM[playerid]=1;
-	SetPlayerArmour(playerid, 100);
-	SetPlayerHealth(playerid, 100);
-	SetPlayerSkin(playerid, 285);
-	SetPlayerInterior(playerid, 0);
-	ResetPlayerWeapons(playerid);
-	new rand = random(sizeof(deagledm1pos));
-	SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
-	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	GivePlayerWeapon(playerid, 24, 99999);
-	SetPlayerTeam(playerid, NO_TEAM);
-	}
-	if (listitem == 1)
-	{
-	new State = GetPlayerState(playerid);
-	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-	{
-	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	}
-	DM[playerid]=2;
-	SetPlayerArmour(playerid, 100);
-	SetPlayerHealth(playerid, 100);
-	SetPlayerSkin(playerid, 80);
-	SetPlayerInterior(playerid, 1);
-	ResetPlayerWeapons(playerid);
-	new rand = random(sizeof(fistdm1pos));
-	SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
-	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	SetPlayerTeam(playerid, NO_TEAM);
-	}
-	}
+	if (dialogid == 2000 && response) {
+		if (listitem == 0) {
+			DM[playerid]=1;
+			SetPlayerArmour(playerid, 100);
+			SetPlayerHealth(playerid, 100);
+			SetPlayerSkin(playerid, 285);
+			SetPlayerInterior(playerid, 0);
+			ResetPlayerWeapons(playerid);
+			new rand = random(sizeof(deagledm1pos));
+			SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
+			GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 5000, 1);
+			SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			GivePlayerWeapon(playerid, 24, 99999);
+			SetPlayerTeam(playerid, NO_TEAM);
+		}
+
+		if (listitem == 1) {
+			DM[playerid]=2;
+			SetPlayerArmour(playerid, 100);
+			SetPlayerHealth(playerid, 100);
+			SetPlayerSkin(playerid, 80);
+			SetPlayerInterior(playerid, 1);
+			ResetPlayerWeapons(playerid);
+			new rand = random(sizeof(fistdm1pos));
+			SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
+			GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 5000, 1);
+			SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			SetPlayerTeam(playerid, NO_TEAM);
+		}
 	}
 
 	// Stunt dialogları

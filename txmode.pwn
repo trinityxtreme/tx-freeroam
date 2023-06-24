@@ -1395,92 +1395,75 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// Skin değiştirme komutu
-	if (strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7)
-	{
-	if (cmdtext[7] != ' ' || cmdtext[8] == EOS)
-	return SendUse(playerid, "/myskin [id]");
-	if ((cmdtext[0] < 0) || (cmdtext[0] > 299)) return SendError(playerid, "Girilen de*er geçersiz!");
-	if (IsValidSkin((cmdtext[0] = strval(cmdtext[8]))))
-	SetPlayerSkin(playerid, cmdtext[0]);
-	else
-	SendError(playerid, "Girilen değer geçersiz!");
-	return 1;
+	if (strcmp(cmdtext, "/myskin", true) == 7 || strcmp(cmdtext, "/skin", true) == 7) {
+		if (cmdtext[7] != ' ' || cmdtext[8] == EOS) return SendUse(playerid, "/myskin [id]");
+		if ((cmdtext[0] < 0) || (cmdtext[0] > 299)) return SendError(playerid, "Girilen de*er geçersiz!");
+		
+		if (IsValidSkin((cmdtext[0] = strval(cmdtext[8]))))
+			SetPlayerSkin(playerid, cmdtext[0]);
+		else
+			SendError(playerid, "Girilen değer geçersiz!");
+		
+		return 1;
 	}
 
 	// DM alanı komutları
-	if (!strcmp(cmdtext, "/deagledm1", true))
-	{
-	new State = GetPlayerState(playerid);
-	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-	{
-	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	}
-	DM[playerid]=1;
-	SetPlayerArmour(playerid, 100);
-	SetPlayerHealth(playerid, 100);
-	SetPlayerSkin(playerid, 285);
-	SetPlayerInterior(playerid, 0);
-	SetPlayerVirtualWorld(playerid, 0);
-	ResetPlayerWeapons(playerid);
-	new rand = random(sizeof(deagledm1pos));
-	SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
-	GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	GivePlayerWeapon(playerid, 24, 99999);
-	SetPlayerTeam(playerid, NO_TEAM);
-	return 1;
+	if (!strcmp(cmdtext, "/deagledm1", true)) {
+		DM[playerid]=1;
+		SetPlayerArmour(playerid, 100);
+		SetPlayerHealth(playerid, 100);
+		SetPlayerSkin(playerid, 285);
+		SetPlayerInterior(playerid, 0);
+		SetPlayerVirtualWorld(playerid, 0);
+		ResetPlayerWeapons(playerid);
+		new rand = random(sizeof(deagledm1pos));
+		SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
+		GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
+		SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+		GivePlayerWeapon(playerid, 24, 99999);
+		SetPlayerTeam(playerid, NO_TEAM);
+		return 1;
 	}
 
-	if (!strcmp(cmdtext, "/fistdm1", true))
-	{
-	new State = GetPlayerState(playerid);
-	if (IsPlayerInAnyVehicle(playerid) && State == PLAYER_STATE_DRIVER)
-	{
-	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	}
-	DM[playerid]=2;
-	SetPlayerArmour(playerid, 100);
-	SetPlayerHealth(playerid, 100);
-	SetPlayerSkin(playerid, 80);
-	SetPlayerInterior(playerid, 1);
-	SetPlayerVirtualWorld(playerid, 0);
-	ResetPlayerWeapons(playerid);
-	new rand = random(sizeof(fistdm1pos));
-	SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
-	GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-	SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
-	SetPlayerTeam(playerid, NO_TEAM);
-	return 1;
+	if (!strcmp(cmdtext, "/fistdm1", true)) {
+		DM[playerid]=2;
+		SetPlayerArmour(playerid, 100);
+		SetPlayerHealth(playerid, 100);
+		SetPlayerSkin(playerid, 80);
+		SetPlayerInterior(playerid, 1);
+		SetPlayerVirtualWorld(playerid, 0);
+		ResetPlayerWeapons(playerid);
+		new rand = random(sizeof(fistdm1pos));
+		SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
+		GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
+		SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+		SetPlayerTeam(playerid, NO_TEAM);
+		return 1;
 	}
 
 	// 31 sistemi komutları
 	if (!strcmp("/31", cmd, true))
 	{
-	tmp=strtok(cmdtext, idx);
+		tmp=strtok(cmdtext, idx);
 
-	if (!strlen(tmp)) return SendUse(playerid, "/31 [cek/birak]");
+		if (!strlen(tmp)) return SendUse(playerid, "/31 [cek/birak]");
 
-	if (!strcmp("cek", tmp, true))
-	{
-	if (cekiyor[playerid] == 1) return SendError(playerid, "Zaten 31 çekmektesiniz.");
-	   ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
-	   ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
-	asilantimer = SetTimerEx("asilanadamtimer", 19000, false, "i", playerid);
-	   cekiyor[playerid] = 1;
-	   return 1;
-	   }
-
-	if (!strcmp("birak", tmp, true))
-	{
-	   if (cekiyor[playerid] == 0) return SendError(playerid, "Zaten 31 çekmiyorsunuz.");
-	SendInfo(playerid, "Artık 31 çekmiyorsunuz.");
-	ClearAnimations(playerid);
-	   KillTimer(asilantimer);
-	cekiyor[playerid] = 0;
-	return 1;
-	   }
+		if (!strcmp("cek", tmp, true)) {
+			if (cekiyor[playerid] == 1) return SendError(playerid, "Zaten 31 çekmektesiniz.");
+			ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
+			ApplyAnimation(playerid, "PAULNMAC", "wank_loop", 4.0, 1, 0, 0, 0, 0);
+			asilantimer = SetTimerEx("asilanadamtimer", 19000, false, "i", playerid);
+			cekiyor[playerid] = 1;
+			return 1;
+		}
+		else if (!strcmp("birak", tmp, true)) {
+			if (cekiyor[playerid] == 0) return SendError(playerid, "Zaten 31 çekmiyorsunuz.");
+			SendInfo(playerid, "Artık 31 çekmiyorsunuz.");
+			ClearAnimations(playerid);
+			KillTimer(asilantimer);
+			cekiyor[playerid] = 0;
+			return 1;
+		}
 	return 1;
 	}
 	// Para gönderme komutu
@@ -1503,25 +1486,24 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	}
 
 	// Sürüş kamerası komutu
-	if (strcmp("/surus", cmdtext, true, 10) == 0)
-	{
-	if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "Arabada olmalısınız!");
-	if (GetPVarInt(playerid, "used") == 0)
-	{
-	new p = GetPlayerVehicleID(playerid);
-	Surus[playerid] = CreatePlayerObject(playerid, 19300, 0.0000, -1282.9984, 10.1493, 0.0000, -1, -1, 100);
-	AttachPlayerObjectToVehicle(playerid, Surus[playerid], p, -0.314999, -0.195000, 0.510000, 0.000000, 0.000000, 0.000000);
-	AttachCameraToPlayerObject(playerid, Surus[playerid]);
-	SetPVarInt(playerid, "used", 1);
-	SendInfo(playerid, "Kamerayı eski haline döndürmek için {00FF00}/surus {FFFFFF}yazınız.");
-	}
-	else
-	{
-	SetCameraBehindPlayer(playerid);
-	DestroyPlayerObject(playerid, Surus[playerid]);
-	SetPVarInt(playerid, "used", 0);
-	SendInfo(playerid, "Kamera eski haline döndürüldü."); }
-	return 1;
+	if (strcmp("/surus", cmdtext, true, 10) == 0) {
+		if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "Arabada olmalısınız!");
+		
+		if (GetPVarInt(playerid, "used") == 0) {
+			new p = GetPlayerVehicleID(playerid);
+			Surus[playerid] = CreatePlayerObject(playerid, 19300, 0.0000, -1282.9984, 10.1493, 0.0000, -1, -1, 100);
+			AttachPlayerObjectToVehicle(playerid, Surus[playerid], p, -0.314999, -0.195000, 0.510000, 0.000000, 0.000000, 0.000000);
+			AttachCameraToPlayerObject(playerid, Surus[playerid]);
+			SetPVarInt(playerid, "used", 1);
+			SendInfo(playerid, "Kamerayı eski haline döndürmek için {00FF00}/surus {FFFFFF}yazınız.");
+		} else {
+			SetCameraBehindPlayer(playerid);
+			DestroyPlayerObject(playerid, Surus[playerid]);
+			SetPVarInt(playerid, "used", 0);
+			SendInfo(playerid, "Kamera eski haline döndürüldü.");
+		}
+
+		return 1;
 	}
 
 	// Işınlanma komutları
@@ -2364,7 +2346,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 		new iList = GetPVarInt(playerid, "iList");
 
 		if (dialogid == (DIALOG_OFFSET_ID + iList)) {
-			
+
 			if (0 <= listitem <= 12) {
 				new Float: fPos[3];
 

@@ -2360,45 +2360,42 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 	}
 
 	// Araç spawn ayarları
-	if (response)
-	{
-	new iList = GetPVarInt(playerid, "iList");
+	if (response) {
+		new iList = GetPVarInt(playerid, "iList");
 
-	if (dialogid == (DIALOG_OFFSET_ID + iList))
-	{
-	if (0 <= listitem <= 12)
-	{
-	new Float: fPos[3];
+		if (dialogid == (DIALOG_OFFSET_ID + iList)) {
+			
+			if (0 <= listitem <= 12) {
+				new Float: fPos[3];
 
-	if (GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]))
-	{
-	new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
+				if (GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2])) {
+					new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
 
-	if (IsPlayerInAnyVehicle(playerid))
-	GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
-	else
-	GetPlayerFacingAngle(playerid, fAngle);
+					if (IsPlayerInAnyVehicle(playerid))
+					GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
+					else
+					GetPlayerFacingAngle(playerid, fAngle);
 
-	if (iVehID)
-	DestroyVehicle(iVehID);
+					if (iVehID)
+					DestroyVehicle(iVehID);
 
-	iVehID = (listitem + (iList * 12) + 400);
+					iVehID = (listitem + (iList * 12) + 400);
 
-	// Yasak Araç ayarları
-	switch (iVehID)
-	{
-	case 425, 432, 520:
-	return 1;
-	}
+					// Yasak Araç ayarları
+					switch (iVehID)
+					{
+						case 425, 432, 520:
+						return 1;
+					}
 
 
-	iVehID = CreateVehicle(iVehID, fPos[0], fPos[1], fPos[2], fAngle, -1, -1, 1 << 16);
-	PutPlayerInVehicle(playerid, iVehID, 0);
+					iVehID = CreateVehicle(iVehID, fPos[0], fPos[1], fPos[2], fAngle, -1, -1, 1 << 16);
+					PutPlayerInVehicle(playerid, iVehID, 0);
 
-	SetPVarInt(playerid, "iVehID", iVehID);
-	}
-	}
-	}
+					SetPVarInt(playerid, "iVehID", iVehID);
+				}
+			}
+		}
 	}
 
 	// Ev sistemi

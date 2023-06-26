@@ -536,28 +536,26 @@ public OnGameModeInit()
 	TextDrawBoxColor(expbox, 255);
 	TextDrawTextSize(expbox, 174.000000, 0.000000);
 
-	for (new i; i<MAX_PLAYERS; i++)
-	{
-/*   expmeter[i] = TextDrawCreate(177.000000, 398.000000, " ");
-	TextDrawBackgroundColor(expmeter[i], 255);
-	TextDrawFont(expmeter[i], 1);
-	TextDrawLetterSize(expmeter[i], 0.320000, 0.899999);
-	TextDrawColor(expmeter[i], -1);
-	TextDrawSetOutline(expmeter[i], 0);
-	TextDrawSetProportional(expmeter[i], 1);
-	TextDrawSetShadow(expmeter[i], 1);*/
+	for (new i; i<MAX_PLAYERS; i++) {
+		/*expmeter[i] = TextDrawCreate(177.000000, 398.000000, " ");
+		TextDrawBackgroundColor(expmeter[i], 255);
+		TextDrawFont(expmeter[i], 1);
+		TextDrawLetterSize(expmeter[i], 0.320000, 0.899999);
+		TextDrawColor(expmeter[i], -1);
+		TextDrawSetOutline(expmeter[i], 0);
+		TextDrawSetProportional(expmeter[i], 1);
+		TextDrawSetShadow(expmeter[i], 1);*/
 
-	expmeter[i] = TextDrawCreate(322.000000, 411.000000, " ");
-	TextDrawAlignment(expmeter[i], 2);
-	TextDrawBackgroundColor(expmeter[i], 255);
-	TextDrawFont(expmeter[i], 3);
-	TextDrawLetterSize(expmeter[i], 0.340000, 1.000000);
-	TextDrawColor(expmeter[i], -641287425);
-	TextDrawSetOutline(expmeter[i], 1);
-	TextDrawSetProportional(expmeter[i], 1);
+		expmeter[i] = TextDrawCreate(322.000000, 411.000000, " ");
+		TextDrawAlignment(expmeter[i], 2);
+		TextDrawBackgroundColor(expmeter[i], 255);
+		TextDrawFont(expmeter[i], 3);
+		TextDrawLetterSize(expmeter[i], 0.340000, 1.000000);
+		TextDrawColor(expmeter[i], -641287425);
+		TextDrawSetOutline(expmeter[i], 1);
+		TextDrawSetProportional(expmeter[i], 1);
 
-
-	//expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
+		//expbar[i] = CreateProgressBar(181.00, 412.00, 273.50, 8.19, 10223615, 100.0);
 	}
 	printf("Yüklendi: \"Exp-Level sistemi.\"");
 
@@ -578,10 +576,9 @@ public OnGameModeInit()
 	Timer = SetTimer("UpdateServerTime", 1000, true);
 
 	printf("Yüklendi: \"Saat sistemi.\"");
+
 	// Sunucu Harita Objeleri
-
-	
-
+	LoadObjects();
 	printf("Yüklendi: \"Sunucu haritası.\"");
 	printf("Yüklendi: \"Sunucu araçları.\"");
 
@@ -656,9 +653,6 @@ public OnGameModeInit()
 
 	SkyAntiDeAMX();
 	printf("  ** AntiDeAMX started!");
-
-	LoadObjects();
-	printf("  ** Objects loaded!");
 
 	return 1;
 }
@@ -808,14 +802,12 @@ public OnPlayerDisconnect(playerid, reason)
 	KillTimer(hungryTimer[playerid]);   // Hunry Timer stopped.
 	UnloadTextDraws(playerid);  // Textdraws unloaded.
 
-	if (campFire[playerid] == true)
-	{
+	if (campFire[playerid] == true) {
 		DestroyDynamicObject(fireWoods[playerid]);
 		DestroyDynamicObject(fireObject[playerid]);
 	}
 
-	if (guitarSong[playerid] == true)
-	{
+	if (guitarSong[playerid] == true) {
 		StopAudioStreamForPlayer(playerid);
 		RemovePlayerAttachedObject(playerid, 0);
 		ClearAnimations(playerid);

@@ -1,3 +1,6 @@
+
+/*
+
 //																			//
 //							Trinity-Xtreme									//
 //											Freeroam Project				//
@@ -28,13 +31,12 @@
 #define MAX_PLAYERS     (50)
 
 // Standard message formats
-#define showMessage(%0, %1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
-#define showDialog(%0, %1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**", "{BBBBBB}" %1, "Tamam", "")
-#define SendError(%0, %1) SendClientMessage(%0, 0xF63845AA, "[!] HATA: {FFFFFF}" %1)
-#define SendInfo(%0, %1) SendClientMessage(%0, 0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
-#define SendUse(%0, %1) SendClientMessage(%0, 0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
-
-#define SendInfoToAll(%0) SendClientMessageToAll(0x00A2F6AA, "{BBBBBB}** {FFFFFF}" %0)
+#define showMessage(%0,%1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
+#define showDialog(%0,%1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**", "{BBBBBB}" %1, "Tamam", "")
+#define SendError(%0,%1) SendClientMessage(%0, 0xF63845AA, "[!] HATA: {FFFFFF}" %1)
+#define SendInfo(%0,%1) SendClientMessage(%0, 0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
+#define SendUse(%0,%1) SendClientMessage(%0, 0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
+#define SendInfoToAll(%0,%1) SendClientMessageToAll(%0, "{BBBBBB}** {FFFFFF}" %1)
 
 // Textdraws
 new Text:textdraw_server;
@@ -271,11 +273,11 @@ enum ModArac
 new MCarPlayerInfo[MAX_PLAYERS][ModArac];
 
 // Hızlandırıcı Pickup
-#define HIZLANDIRICI_COUNT 14
+#define HIZLANDIRICI_COUNT 13
 #define HIZ_VER 5
 
 new hizlandirici[HIZLANDIRICI_COUNT];
-new speedLocation[HIZLANDIRICI_COUNT][3] = {
+new Float:speedLocation[HIZLANDIRICI_COUNT][3] = {
 	{ 2048.6716, 1015.3157, 10.6719 },
 	{ 2066.5132, 1019.7257, 10.6719 },
 	{ 2066.5918, 1254.1406, 10.6719 },
@@ -545,7 +547,7 @@ public OnGameModeInit()
 		TextDrawSetOutline(expmeter[i], 0);
 		TextDrawSetProportional(expmeter[i], 1);
 		TextDrawSetShadow(expmeter[i], 1);*/
-
+/*
 		expmeter[i] = TextDrawCreate(322.000000, 411.000000, " ");
 		TextDrawAlignment(expmeter[i], 2);
 		TextDrawBackgroundColor(expmeter[i], 255);
@@ -632,7 +634,7 @@ public OnGameModeInit()
 
 	// Class settings:
 	new skinCount = 1;
-	for (new i = 0; i < = 299; i++)
+	for (new i = 0; i <= 299; i++)
 	{
 		 if (AddPlayerClass(i, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0)) {
 			skinCount++;
@@ -673,6 +675,7 @@ public OnGameModeExit()
 	TextDrawDestroy(textdraw_server);
 	/*TextDrawDestroy(expbox);
 	TextDrawDestroy(expmeter);*/
+	/*
 	KillTimer(Timer);
 
 	new year, month, day;
@@ -701,7 +704,7 @@ public OnPlayerRequestClass(playerid, classid)
 	SetPlayerCameraPos(playerid, 2616.2153, 1824.3500, 12.8204);
 	SetPlayerCameraLookAt(playerid, 2621.1831, 1824.3500, 12.0234);
 	*/
-
+/*
 	CreateExplosion(1544.7887, -1675.4630, 13.5591, 12, 20.0);
 	SetPlayerPos(playerid, 1544.7887, -1675.4630, 13.5591);
 	SetPlayerFacingAngle(playerid, 90.0);
@@ -719,6 +722,7 @@ public OnPlayerConnect(playerid)
 	new connectMessage[64 + MAX_PLAYER_NAME];
 	format(connectMessage, sizeof(connectMessage), "{00B3FF}%s {BBBBBB}connected server.", pName(playerid));
 	SendInfoToAll(connectMessage);
+
 	SetPlayerColor(playerid, PlayerColors[playerid]);
 	SendDeathMessage(INVALID_PLAYER_ID, playerid, 200);
 	SetPlayerTime(playerid, 06, 00);
@@ -751,10 +755,9 @@ public OnPlayerConnect(playerid)
 	pInfo[playerid][NoPM] = 0;
 
 	// EXP sistemi
-	   new dosya[50], isim[24];
+	new dosya[50], isim[24];
 	GetPlayerName(playerid, isim, sizeof(isim));
 	format(dosya, sizeof(dosya), "Hesaplar/Level/%s.txt", isim);
-
 	
 	//if (!dini_Exists(dosya)) seviye[playerid] = 1, dini_Create(dosya);
 	//else BilgiYukle(playerid);
@@ -764,7 +767,7 @@ public OnPlayerConnect(playerid)
 	OyuncuMapIconKontrol(playerid);
 
 	// Araç kilit ayarı
-	   Kilit[playerid] = 0;
+	Kilit[playerid] = 0;
 
 	return 1;
 }
@@ -857,7 +860,7 @@ public OnPlayerSpawn(playerid)
 			new rand = random(sizeof(deagledm1pos));
 			SetPlayerPos(playerid, deagledm1pos[rand][0], deagledm1pos[rand][1], deagledm1pos[rand][2]);
 			GameTextForPlayer(playerid, "~b~~h~Desert Eagle~n~~w~~h~Deathmatch", 2000, 1);
-			SendInfo(playerid, "Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 			SetPlayerTeam(playerid, NO_TEAM);
 		}
 
@@ -875,7 +878,7 @@ public OnPlayerSpawn(playerid)
 			new rand = random(sizeof(fistdm1pos));
 			SetPlayerPos(playerid, fistdm1pos[rand][0], fistdm1pos[rand][1], fistdm1pos[rand][2]);
 			GameTextForPlayer(playerid, "~b~~h~Fight Club~n~~w~~h~Deathmatch", 2000, 1);
-			SendInfo(playerid, "Deathmatch alançndan çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
+			SendInfo(playerid, "Deathmatch alanından çıkmak için {00FF00}/dmcik {FFFFFF}yazınız.");
 			SetPlayerTeam(playerid, NO_TEAM);
 		}
 	}
@@ -963,6 +966,7 @@ public OnPlayerText(playerid, text[])
 	SetPlayerChatBubble(playerid, text, 0xACDA00AA, 100.0, 5000);
 	return 0;
 	*/
+	/*
 }
 
 // DCMD komutları:
@@ -1619,14 +1623,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		if (cmdtext[2] == EOS) return 0;
 
 		new iList = strval(cmdtext[2]) - 1;
-		if (!(0 < = iList < = 17)) return SendError(playerid, "Hatalı komut!");
+		if (!(0 <= iList <= 17)) return SendError(playerid, "Hatalı komut!");
 
 		static s_szName[24], s_szVehDialog[256];
 		
 		s_szVehDialog = "";
 
 		for (new i = (iList * 12), j = ((iList + 1) * 12); i < j; ++i) {
-			if (i > = sizeof(g_VehNames)) break;
+			if (i >= sizeof(g_VehNames)) break;
 
 			strunpack(s_szName, g_VehNames[i]);
 			strcat(s_szVehDialog, s_szName);
@@ -2327,7 +2331,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 		if (dialogid == (DIALOG_OFFSET_ID + iList)) {
 
-			if (0 < = listitem < = 12) {
+			if (0 <= listitem <= 12) {
 				new Float: fPos[3];
 
 				if (GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2])) {
@@ -2868,7 +2872,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 strtok(const string[], &index)
 {
 	new length = strlen(string);
-	while ((index < length) && (string[index] < = ' ')) {
+	while ((index < length) && (string[index] <= ' ')) {
 		index++;
 	}
 
@@ -2913,7 +2917,7 @@ stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const isim[],
 
 	new string[512];
 	format(string, 512, "{ACDA00}%s {FFFFFF}rumuzlu oyuncu {ACDA00}%s {FFFFFF}bölgesine ışınlandı. {ACDA00}(%s)", PlayerName(playerid), isim, command);
-	SendInfoToAll(string);3
+	SendInfoToAll(string);
 
 	format(string, 512, "{ACDA00}%s {FFFFFF}alanına ışınlandınız.", isim);
 	SendInfo(playerid, string);
@@ -3064,7 +3068,7 @@ stock ExpVer(playerid){
 	exp[playerid] = exp[playerid]+1;
 	}
 
-	if (exp[playerid] > = 1000){
+	if (exp[playerid] >= 1000){
 	if (seviye[playerid] < 50){
 	seviye[playerid]++;
 	exp[playerid] = 0;
@@ -3072,7 +3076,7 @@ stock ExpVer(playerid){
 	return 1;
 }
 */
-
+/*
 // Saat sistemi
 forward UpdateServerTime();
 public UpdateServerTime()
@@ -3127,7 +3131,7 @@ public SetPlayerRandomSpawn(playerid)
 stock IsNumeric(const string[])
 {
    for (new i, j = strlen(string); i < j; ++i) {
-	  if (!('0' < = string[i] < = '9')) {
+	  if (!('0' <= string[i] <= '9')) {
 		 return 0;
 	  }
    }
@@ -3174,6 +3178,7 @@ public OyuncuMapIconKontrol(playerid)
 		}
 	}
 	*/
+	/*
 	return 1;
 }
 
@@ -3233,6 +3238,8 @@ public EvYukle(evid)
 		ToplamEv++;
 	}
 	*/
+
+	/*
 	return 1;
 }
 
@@ -3287,7 +3294,7 @@ public EvYenile(evid)
 		printf("");
 		printf("Ev ID: %i - Fiyat: %i - Kilit: %s // Yenilendi.", evid, EvBilgi[evid][evfiyat], durum);
 	}
-	*/
+	*//*
 	return 1;
 }
 
@@ -3377,7 +3384,7 @@ public EvYarat(evid, Float:X, Float:Y, Float:Z)
 
 		ToplamEv++;
 	}
-	*/
+	*//*
 	return 1;
 }
 
@@ -3438,7 +3445,7 @@ public EvSil(evid)
 		dini_Remove(dosya);
 		ToplamEv--;
 	}
-	*/
+	*//*
 	return 1;
 }
 
@@ -3482,7 +3489,7 @@ public SahipKontrol()
 			}
 		}
 	}
-	*/
+	*//*
 	return 1;
 }
 
@@ -3546,7 +3553,7 @@ GetPlayerID(const PlayerName[])
 	}
 	return -1;
 }
-*/
+*//*
 
 // Oyuncu adç fonksiyonu
 stock PlayerName(playerid)
@@ -3602,7 +3609,7 @@ stock DeletePlayerWeapon(playerid, weaponid)
 forward playerGameTimer(playerid);
 public playerGameTimer(playerid)
 {
-	 if (PlayerAccount[playerid][pA_Hungry] > = 0 && PlayerAccount[playerid][pA_Hungry] < 50)
+	 if (PlayerAccount[playerid][pA_Hungry] >= 0 && PlayerAccount[playerid][pA_Hungry] < 50)
 	 {
 		new Float: playerHealth;
 		GetPlayerHealth(playerid, playerHealth);
@@ -4486,6 +4493,7 @@ SkyAntiDeAMX()
 		"Unarmed (Fist)",
 		"Brass K"
 	};
-	#pragma unused AMXXXX
 
+	#pragma unused AMXXXX
 }
+*/

@@ -1,8 +1,8 @@
 site: ""
 user: naphteine
 repo: trinity-xtreme
-entry: txmode.pwn
-output: gamemodes/txmode.amx
+entry: elysium.pwn
+output: gamemodes/elysium.amx
 dependencies:
     - pawn-lang/samp-stdlib
     - samp-incognito/samp-streamer-plugin:v2.9.5

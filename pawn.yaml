@@ -5,6 +5,7 @@ entry: elysium.pwn
 output: gamemodes/elysium.amx
 dependencies:
     - pawn-lang/samp-stdlib
+    - samp-incognito/samp-streamer-plugin:v2.9.6
 local: true
 runtime:
     version: 0.3.7

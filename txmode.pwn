@@ -31,16 +31,6 @@ new Text:textdraw_ping[MAX_PLAYERS];
 new Text:textdraw_key1[MAX_PLAYERS];
 new Text:textdraw_key2[MAX_PLAYERS];
 new Text:textdraw_key3[MAX_PLAYERS];
-new Text:Textdraw0;
-new Text:Textdraw1;
-new Text:Textdraw2;
-new Text:Textdraw3;
-new Text:Textdraw4;
-new Text:Textdraw5;
-new Text:Textdraw6;
-new Text:Textdraw7;
-new Text:Textdraw8;
-new Text:Textdraw9;
 
 // Player settings:
 new playerTimer[MAX_PLAYERS];
@@ -396,99 +386,6 @@ public OnGameModeInit()
 	printf("  ** LOADED: general settings.");
 
 	// Textdraws
-	Textdraw0 = TextDrawCreate(310.000000, 435.000000, "~r~~h~~h~ /yardim ~w~~h~~h~/teles /silahlar /stuntlar /dmler /shop /animlist /v1..18 /m1..12 ~r~~h~~h~/kurallar");
-	TextDrawAlignment(Textdraw0, 2);
-	TextDrawBackgroundColor(Textdraw0, 255);
-	TextDrawFont(Textdraw0, 1);
-	TextDrawLetterSize(Textdraw0, 0.369998, 1.000000);
-	TextDrawColor(Textdraw0, -1);
-	TextDrawSetOutline(Textdraw0, 1);
-	TextDrawSetProportional(Textdraw0, 1);
-
-	Textdraw1 = TextDrawCreate(650.000000, 435.000000, " ~n~ ~n~");
-	TextDrawBackgroundColor(Textdraw1, 255);
-	TextDrawFont(Textdraw1, 1);
-	TextDrawLetterSize(Textdraw1, 0.500000, 1.000000);
-	TextDrawColor(Textdraw1, -1);
-	TextDrawSetOutline(Textdraw1, 0);
-	TextDrawSetProportional(Textdraw1, 1);
-	TextDrawSetShadow(Textdraw1, 1);
-	TextDrawUseBox(Textdraw1, 1);
-	TextDrawBoxColor(Textdraw1, 70);
-	TextDrawTextSize(Textdraw1, -10.000000, 0.000000);
-
-	Textdraw2 = TextDrawCreate(638.000000, 405.000000, "xtreme");
-	TextDrawAlignment(Textdraw2, 3);
-	TextDrawBackgroundColor(Textdraw2, 255);
-	TextDrawFont(Textdraw2, 3);
-	TextDrawLetterSize(Textdraw2, 0.639998, 2.599998);
-	TextDrawColor(Textdraw2, 0x006AFFAA);
-	TextDrawSetOutline(Textdraw2, 1);
-	TextDrawSetProportional(Textdraw2, 1);
-
-	Textdraw3 = TextDrawCreate(610.000000, 387.000000, "trinity");
-	TextDrawAlignment(Textdraw3, 3);
-	TextDrawBackgroundColor(Textdraw3, 255);
-	TextDrawFont(Textdraw3, 3);
-	TextDrawLetterSize(Textdraw3, 0.639998, 2.599998);
-	TextDrawColor(Textdraw3, -6749953);
-	TextDrawSetOutline(Textdraw3, 1);
-	TextDrawSetProportional(Textdraw3, 1);
-
-	Textdraw4 = TextDrawCreate(656.000000, 390.000000, "[]-");
-	TextDrawBackgroundColor(Textdraw4, 255);
-	TextDrawFont(Textdraw4, 2);
-	TextDrawLetterSize(Textdraw4, -0.610000, 2.000000);
-	TextDrawColor(Textdraw4, -2096897);
-	TextDrawSetOutline(Textdraw4, 0);
-	TextDrawSetProportional(Textdraw4, 1);
-	TextDrawSetShadow(Textdraw4, 1);
-
-	Textdraw5 = TextDrawCreate(507.000000, 408.000000, "[]-");
-	TextDrawBackgroundColor(Textdraw5, 255);
-	TextDrawFont(Textdraw5, 2);
-	TextDrawLetterSize(Textdraw5, 0.600000, 2.000000);
-	TextDrawColor(Textdraw5, -2096897);
-	TextDrawSetOutline(Textdraw5, 0);
-	TextDrawSetProportional(Textdraw5, 1);
-	TextDrawSetShadow(Textdraw5, 1);
-
-	Textdraw6 = TextDrawCreate(84.000000, 286.000000, "-");
-	TextDrawBackgroundColor(Textdraw6, 255);
-	TextDrawFont(Textdraw6, 1);
-	TextDrawLetterSize(Textdraw6, 0.499999, 9.799999);
-	TextDrawColor(Textdraw6, 255);
-	TextDrawSetOutline(Textdraw6, 0);
-	TextDrawSetProportional(Textdraw6, 1);
-	TextDrawSetShadow(Textdraw6, 1);
-
-	Textdraw7 = TextDrawCreate(83.000000, 362.000000, "-");
-	TextDrawBackgroundColor(Textdraw7, 255);
-	TextDrawFont(Textdraw7, 1);
-	TextDrawLetterSize(Textdraw7, 0.499999, 9.799999);
-	TextDrawColor(Textdraw7, 255);
-	TextDrawSetOutline(Textdraw7, 0);
-	TextDrawSetProportional(Textdraw7, 1);
-	TextDrawSetShadow(Textdraw7, 1);
-
-	Textdraw8 = TextDrawCreate(28.000000, 362.000000, "-");
-	TextDrawBackgroundColor(Textdraw8, 255);
-	TextDrawFont(Textdraw8, 1);
-	TextDrawLetterSize(Textdraw8, 1.329999, 3.299993);
-	TextDrawColor(Textdraw8, 255);
-	TextDrawSetOutline(Textdraw8, 0);
-	TextDrawSetProportional(Textdraw8, 1);
-	TextDrawSetShadow(Textdraw8, 1);
-
-	Textdraw9 = TextDrawCreate(126.000000, 362.000000, "-");
-	TextDrawBackgroundColor(Textdraw9, 255);
-	TextDrawFont(Textdraw9, 1);
-	TextDrawLetterSize(Textdraw9, 1.329999, 3.299993);
-	TextDrawColor(Textdraw9, 255);
-	TextDrawSetOutline(Textdraw9, 0);
-	TextDrawSetProportional(Textdraw9, 1);
-	TextDrawSetShadow(Textdraw9, 1);
-
 	textdraw_server = TextDrawCreate(5.000000, 435.000000, "Supervivencia Server ~b~~h~~h~v1.0.0");
 	TextDrawBackgroundColor(textdraw_server, 255);
 	TextDrawFont(textdraw_server, 2);

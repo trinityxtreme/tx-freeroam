@@ -68,6 +68,12 @@ public OnGameModeInit()
 	return 1;
 }
 
+public OnGameModeExit()
+{
+	// Destroy the bottom textdraw
+	TextDrawDestroy(textdraw);
+}
+
 public OnPlayerCommandText(playerid, cmdtext[])
 {
 	new playerVehicle;
@@ -89,11 +95,24 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	return 0;
 }
 
+public OnPlayerConnect(playerid)
+{
+	// Display bottom textdraw when player connects
+	TextDrawShowForPlayer(playerid, textdraw);
+	return 1;
+}
+
 public OnPlayerDisconnect(playerid, reason)
 {
-	// Destroy the bottom textdraw when a player disconnects
-	TextDrawDestroy(textdraw);
 	return 1;
+}
+
+public OnPlayerSpawn(playerid)
+{
+	SetPlayerInterior(playerid, 0);
+	SetPlayerVirtualWorld(playerid, 0);
+	SetPlayerPos(playerid, -18.9876, -197.5336, 1.6676);
+	SetPlayerFacingAngle(playerid, 255.9960);
 }
 
 // Sky Anti-DeAMX

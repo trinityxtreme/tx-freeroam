@@ -143,23 +143,6 @@ public OnGameModeExit()
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-	new playerVehicle;
-	if (strcmp(cmdtext, "/teleport", true) == 0)
-	{
-		// Teleport the player to a predefined location
-		SetPlayerPos(playerid, 100.0, 200.0, 10.0);
-		SendClientMessage(playerid, -1, "You have been teleported to a predefined location.");
-		return 1;
-	}
-	else if (strcmp(cmdtext, "/getcar", true) == 0)
-	{
-		// Create a vehicle for the player
-		playerVehicle = CreateVehicle(411, 100.0, 200.0, 10.0, 0.0, -1, -1, 30);
-		PutPlayerInVehicle(playerid, playerVehicle, 0);
-		SendClientMessage(playerid, -1, "You have been given a car.");
-		return 1;
-	}
-
 	// Teleport commands
 	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
 		Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", true, false);

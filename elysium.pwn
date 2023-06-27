@@ -152,6 +152,83 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		SendClientMessage(playerid, -1, "You have been given a car.");
 		return 1;
 	}
+
+	// Teleport commands
+	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
+		Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/mountain", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0) {
+		Teleport(playerid, -2353.0940, -1633.6820, 483.6954, 0, 0, "Chilliad Mountain", "/mountain", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/beach", true) == 0) {
+		Teleport(playerid, 369.8283, -1787.7871, 5.3585, 0, 0, "Santa Maria Beach", "/beach", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/area51", true) == 0) {
+		Teleport(playerid, 231.5036, 1914.3851, 17.6406, 0, 0, "Area 51", "/area51", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/china", true) == 0) {
+		Teleport(playerid, -2276.2874, 718.5117, 49.4453, 0, 0, "China Town", "/china", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/flores", true) == 0) {
+		Teleport(playerid, 2786.9534, -1319.9723, 34.7975, 0, 0, "Los Flores", "/flores", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/mod1", true) == 0) {
+		Teleport(playerid, -1917.2754, 287.0215, 41.0469, 0, 0, "Modification 1", "/mod1", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/mod2", true) == 0) {
+		Teleport(playerid, -2705.5503, 206.1621, 4.1797, 0, 0, "Modification 2", "/mod2", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/mod3", true) == 0) {
+		Teleport(playerid, 2387.4126, 1022.6620, 10.8203, 0, 0, "Modification 3", "/mod3", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/mod4", true) == 0) {
+		Teleport(playerid, 2644.7686, -2019.1096, 13.5507, 0, 0, "Modification 4", "/mod4", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/mod5", true) == 0) {
+		Teleport(playerid, 1042.0564, -1045.5176, 31.8108, 0, 0, "Modification 5", "/mod5", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/ap1", true) == 0) {
+		Teleport(playerid, 1686.7, -2450.2, 13.6, 0, 0, "Airport 1", "/ap1", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/ap2", true) == 0) {
+		Teleport(playerid, -1345.0, -229.8, 14.1, 0, 0, "Airport 2", "/ap2", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/ap3", true) == 0) {
+		Teleport(playerid, 1435.5, 1463.2, 10.8, 0, 0, "Airport 3", "/ap3", true, false);
+		return 1;
+	}
+
+	if (strcmp(cmdtext, "/ap4", true) == 0) {
+		Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4", "/ap4", true, false);
+		return 1;
+	}
+
 	return 0;
 }
 
@@ -191,6 +268,52 @@ public OnPlayerDeath(playerid, killerid, reason)
 	TextDrawHideForPlayer(playerid, logo2Textdraw);
 	TextDrawHideForPlayer(playerid, logo3Textdraw);
 	TextDrawHideForPlayer(playerid, logo4Textdraw);
+}
+
+// General use functions
+stock PlayerName(playerid)
+{
+	new name[MAX_PLAYER_NAME];
+	GetPlayerName(playerid, name, MAX_PLAYER_NAME);
+	return name;
+}
+
+// Teleport functions
+stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const name[], const command[], car, loading)
+{
+	if (loading) LoadObjects(playerid);
+
+	if (car && IsPlayerInAnyVehicle(playerid)) {
+		SetVehiclePos(GetPlayerVehicleID(playerid), tX, tY, tZ);
+		LinkVehicleToInterior(GetPlayerVehicleID(playerid), Int);
+	} else {
+		SetPlayerPos(playerid, tX, tY, tZ);
+	}
+
+	SetPlayerInterior(playerid, Int);
+	SetPlayerVirtualWorld(playerid, World);
+
+	new tmp[512];
+	format(tmp, sizeof(tmp), "{FFFFFF}Player {ACDA00}%s {FFFFFF}teleported to {ACDA00}%s {FFFFFF}area. {ACDA00}(%s)", PlayerName(playerid), name, command);
+	SendClientMessageToAll(1, tmp);
+
+	format(tmp, sizeof(tmp), "{FFFFFF}You teleported to {ACDA00}%s{FFFFFF}.", name);
+	SendClientMessage(playerid, 1, tmp);
+}
+
+forward LoadObjects(playerid);
+public LoadObjects(playerid)
+{
+	TogglePlayerControllable(playerid, 0);
+	GameTextForPlayer(playerid, "~b~Loading objects...", 3000, 5);
+	SetTimerEx("LoadObjectsDone", 4000, false, "i", playerid);
+}
+
+forward LoadObjectsDone(playerid);
+public LoadObjectsDone(playerid)
+{
+	TogglePlayerControllable(playerid, 1);
+	GameTextForPlayer(playerid, "~y~] ~b~Objects loaded! ~y~]", 5000, 5);
 }
 
 // Sky Anti-DeAMX

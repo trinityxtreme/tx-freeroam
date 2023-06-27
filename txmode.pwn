@@ -6,23 +6,6 @@
 #include <streamer>		// Obje streamer kütüphanesi
 //#include <progress2>	// Progressbar kütüphanesi
 
-
-#define mysql_hostname  "localhost"
-#define mysql_username  "root"
-#define mysql_password  ""
-#define mysql_database  "supervivencia"
-
-#undef MAX_PLAYERS
-#define MAX_PLAYERS     (50)
-
-// Standard message formats
-#define showMessage(%0,%1) SendClientMessage(%0, -1, "{BBBBBB}** {00B3FF}" %1)
-#define showDialog(%0,%1) ShowPlayerDialog(playerid, 0, DIALOG_STYLE_MSGBOX, "{BBBBBB}** {00B3FF}" %0 " {BBBBBB}**", "{BBBBBB}" %1, "Tamam", "")
-#define SendError(%0,%1) SendClientMessage(%0, 0xF63845AA, "[!] HATA: {FFFFFF}" %1)
-#define SendInfo(%0,%1) SendClientMessage(%0, 0x00A2F6AA, "[*] BİLGİ: {FFFFFF}" %1)
-#define SendUse(%0,%1) SendClientMessage(%0, 0x8C50FFAA, "[?] KULLANIM: {FFFFFF}" %1)
-#define SendInfoToAll(%0,%1) SendClientMessageToAll(%0, "{BBBBBB}** {FFFFFF}" %1)
-
 // Textdraws
 new Text:textdraw_server;
 new Text:textdraw_hungry[MAX_PLAYERS];
@@ -1361,82 +1344,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// Işınlanma komutları
-	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
-		Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/dag", true) == 0 || strcmp(cmdtext, "/chilliad", true) == 0) {
-		Teleport(playerid, -2353.0940, -1633.6820, 483.6954, 0, 0, "Chilliad Mountain", "/dag", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/sahil", true) == 0) {
-		Teleport(playerid, 369.8283, -1787.7871, 5.3585, 0, 0, "Santa Maria Beach", "/sahil", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/area51", true) == 0) {
-		Teleport(playerid, 231.5036, 1914.3851, 17.6406, 0, 0, "Area51", "/area51", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/china", true) == 0) {
-		Teleport(playerid, -2276.2874, 718.5117, 49.4453, 0, 0, "China Town", "/china", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/flores", true) == 0) {
-		Teleport(playerid, 2786.9534, -1319.9723, 34.7975, 0, 0, "Los Flores", "/flores", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/mod1", true) == 0) {
-		Teleport(playerid, -1917.2754, 287.0215, 41.0469, 0, 0, "Modifiye Yeri 1", "/mod1", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/mod2", true) == 0) {
-		Teleport(playerid, -2705.5503, 206.1621, 4.1797, 0, 0, "Modifiye Yeri 2", "/mod2", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/mod3", true) == 0) {
-		Teleport(playerid, 2387.4126, 1022.6620, 10.8203, 0, 0, "Modifiye Yeri 3", "/mod3", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/mod4", true) == 0) {
-		Teleport(playerid, 2644.7686, -2019.1096, 13.5507, 0, 0, "Modifiye Yeri 4", "/mod4", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/mod5", true) == 0) {
-		Teleport(playerid, 1042.0564, -1045.5176, 31.8108, 0, 0, "Modifiye Yeri 5", "/mod5", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/ap1", true) == 0) {
-		Teleport(playerid, 1686.7, -2450.2, 13.6, 0, 0, "Airport 1", "/ap1", 1, 0);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/ap2", true) == 0) {
-		Teleport(playerid, -1345.0, -229.8, 14.1, 0, 0, "Airport 2", "/ap2", true, false);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/ap3", true) == 0) {
-		Teleport(playerid, 1435.5, 1463.2, 10.8, 0, 0, "Airport 3", "/ap3", true, false);
-		return 1;
-	}
-
-	if (strcmp(cmdtext, "/ap4", true) == 0) {
-		Teleport(playerid, 350.7, 2539.2, 16.8, 0, 0, "Airport 4", "/ap4", true, false);
-		return 1;
-	}
-
 	// Can & zırh komutları
 	if (strcmp(cmdtext, "/can", true) == 0 || strcmp(cmdtext, "/health", true) == 0) {
 		if (GetPVarInt(playerid, "SpamKorumaCan") > GetTickCount()) return SendInfo(playerid, "Komutu tekrar kullanmak için 30 saniye bekleyiniz.");
@@ -2771,44 +2678,6 @@ stock SilahSat(playerid, silahid, silahammo, const silahisim[], ucret)
 	return 1;
 }
 
-// Teleport sistemi
-stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const isim[], const command[], arabali, objeyukle)
-{
-	if (objeyukle == 1) ObjeYukle(playerid);
-
-	if (arabali == 1 && IsPlayerInAnyVehicle(playerid)) {
-		SetVehiclePos(GetPlayerVehicleID(playerid), tX, tY, tZ);
-		LinkVehicleToInterior(GetPlayerVehicleID(playerid), Int);
-	} else {
-		SetPlayerPos(playerid, tX, tY, tZ);
-	}
-
-	SetPlayerInterior(playerid, Int);
-	SetPlayerVirtualWorld(playerid, World);
-
-	new string[512];
-	format(string, 512, "{ACDA00}%s {FFFFFF}rumuzlu oyuncu {ACDA00}%s {FFFFFF}bölgesine ışınlandı. {ACDA00}(%s)", PlayerName(playerid), isim, command);
-	SendInfoToAll(string);
-
-	format(string, 512, "{ACDA00}%s {FFFFFF}alanına ışınlandınız.", isim);
-	SendInfo(playerid, string);
-}
-
-forward ObjeYukle(playerid);
-public ObjeYukle(playerid)
-{
-	TogglePlayerControllable(playerid, 0);
-	GameTextForPlayer(playerid, "~b~Objeler Yukleniyor...", 3000, 5);
-	SetTimerEx("ObjeYukleTamam", 4000, false, "i", playerid);
-}
-
-forward ObjeYukleTamam(playerid);
-public ObjeYukleTamam(playerid)
-{
-	TogglePlayerControllable(playerid, 1);
-	GameTextForPlayer(playerid, "~y~] ~b~Objeler Yuklendi. ~y~]", 5000, 5);
-}
-
 // EXP sistemi
 stock BilgiYenile(playerid)
 {
@@ -3425,14 +3294,6 @@ GetPlayerID(const PlayerName[])
 	return -1;
 }
 *//*
-
-// Oyuncu adç fonksiyonu
-stock PlayerName(playerid)
-{
-	new pname[MAX_PLAYER_NAME];
-	GetPlayerName(playerid, pname, MAX_PLAYER_NAME);
-	return pname;
-}
 
 // Silah adları
 stock WeaponName(weaponid)

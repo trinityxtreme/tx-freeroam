@@ -5,11 +5,6 @@ entry: elysium.pwn
 output: gamemodes/elysium.amx
 dependencies:
     - pawn-lang/samp-stdlib
-    - samp-incognito/samp-streamer-plugin:v2.9.5
-    - BigETI/Dini
-    - Y-Less/sscanf:v2.13.2
-    - maddinat0r/sscanf:v2.13.2
-    - Southclaws/progress2:v2.3.0
 local: true
 runtime:
     version: 0.3.7

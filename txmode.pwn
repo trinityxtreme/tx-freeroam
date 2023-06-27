@@ -381,17 +381,6 @@ public OnGameModeInit()
 	printf(" ** %s initializing.", server_modname);
 
 	// General settings
-	SendRconCommand("rcon 0");
-
-	SetGameModeText(server_modname " " server_version);
-	new serverSettings[64];
-
-	format(serverSettings, sizeof(serverSettings), "hostname %s", server_name);
-	SendRconCommand(serverSettings);
-
-	format(serverSettings, sizeof(serverSettings), "mapname %s", server_mapname);
-	SendRconCommand(serverSettings);
-
 	SetWeather(18); // 15 for dark survival sky
 	UsePlayerPedAnims();
 	AllowInteriorWeapons(1);
@@ -4457,28 +4446,5 @@ stock DeleteObjects(playerid)
 	RemoveBuildingForPlayer(playerid, 16087, 358.6797, 1430.4531, 11.6172, 0.25);
 	RemoveBuildingForPlayer(playerid, 16088, 368.4297, 1431.0938, 5.2734, 0.25);
 	RemoveBuildingForPlayer(playerid, 16092, 394.1563, 1431.0938, 5.2734, 0.25);
-}
-
-SkyAntiDeAMX()
-{
-	new AMX;
-	#emit load.pri AMX
-	#emit stor.pri AMX
-
-	new AMXX;
-	#emit load.pri AMXX
-	#emit stor.pri AMXX
-
-	new AMXXX;
-	#emit LOAD.S.alt AMXXX
-	#emit STOR.S.alt AMXXX
-
-	new AMXXXX[][] =
-	{
-		"Unarmed (Fist)",
-		"Brass K"
-	};
-
-	#pragma unused AMXXXX
 }
 */

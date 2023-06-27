@@ -26,12 +26,19 @@ new Text:textdraw;
 // Main
 main()
 {
+	SkyAntiDeAMX();
+	printf("Sky Anti-DeAMX (2) initialized.");
+
 	printf("Gamemode initialized.");
 }
 
 // Callbacks
 public OnGameModeInit()
 {
+	// AntiDeAMX
+	SkyAntiDeAMX();
+	printf("Sky Anti-DeAMX (1) initialized.");
+
 	// Server settings
 	new tmp[64];
 
@@ -47,6 +54,8 @@ public OnGameModeInit()
 
 	format(tmp, sizeof(tmp), "language %s", server_lang);
 	SendRconCommand(tmp);
+
+	printf("Server settings initialized.");
 
 	// Create the bottom textdraw
 	textdraw = TextDrawCreate(320.0, 400.0, "Elysium");
@@ -85,4 +94,28 @@ public OnPlayerDisconnect(playerid, reason)
 	// Destroy the bottom textdraw when a player disconnects
 	TextDrawDestroy(textdraw);
 	return 1;
+}
+
+// Sky Anti-DeAMX
+SkyAntiDeAMX()
+{
+	new AMX;
+	#emit load.pri AMX
+	#emit stor.pri AMX
+
+	new AMXX;
+	#emit load.pri AMXX
+	#emit stor.pri AMXX
+
+	new AMXXX;
+	#emit LOAD.S.alt AMXXX
+	#emit STOR.S.alt AMXXX
+
+	new AMXXXX[][] =
+	{
+		"Unarmed (Fist)",
+		"Brass K"
+	};
+
+	#pragma unused AMXXXX
 }

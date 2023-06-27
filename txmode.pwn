@@ -1,26 +1,11 @@
 
 /*
 
-//																			//
-//							Trinity-Xtreme									//
-//											Freeroam Project				//
-//																			//
-//									Started at 2013-01-27 - 01:52 UTC+2		//
-//									Gamemode by naphteine (aka. ImmortaL)	//
-// 									Map & art by Crosscuk					//
-//																			//
-
 // Library include
-#include <a_samp>		// SA-MP 0.3x kütüphanesi
 #include <sscanf2>		// SSCANF kütüphanesi
 #include <streamer>		// Obje streamer kütüphanesi
 //#include <progress2>	// Progressbar kütüphanesi
 
-// Server settings
-#define server_name     "Trinity-Xtreme Freeroam"
-#define server_version  "1.0.0"
-#define server_modname  "Xtreme"
-#define server_mapname  "San Andreas"
 
 #define mysql_hostname  "localhost"
 #define mysql_username  "root"

@@ -10,6 +10,16 @@
 // Library include
 #include <a_samp>
 
+// Server settings
+#undef MAX_PLAYERS
+
+#define server_name		"Trinity-Xtreme Freeroam"
+#define server_version	"1.0.0"
+#define server_modname	"Elysium"
+#define server_mapname	"San Andreas"
+#define server_lang		"English"
+#define MAX_PLAYERS		(50)
+
 // Global variables
 new Text:textdraw;
 
@@ -22,6 +32,22 @@ main()
 // Callbacks
 public OnGameModeInit()
 {
+	// Server settings
+	new tmp[64];
+
+	SendRconCommand("rcon 0");
+
+	SetGameModeText(server_modname " " server_version);
+
+	format(tmp, sizeof(tmp), "hostname %s", server_name);
+	SendRconCommand(tmp);
+
+	format(tmp, sizeof(tmp), "mapname %s", server_mapname);
+	SendRconCommand(tmp);
+
+	format(tmp, sizeof(tmp), "language %s", server_lang);
+	SendRconCommand(tmp);
+
 	// Create the bottom textdraw
 	textdraw = TextDrawCreate(320.0, 400.0, "Elysium");
 	TextDrawFont(textdraw, 3);

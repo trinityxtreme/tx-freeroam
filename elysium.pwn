@@ -699,8 +699,20 @@ stock SendPlayerInfo(playerid, const text[], {Float, _}:...)
 	new iArgs = numargs();
 
 	while (--iArgs) {
-		format(str, sizeof(str), "{FF4500}** [INFO]: {FFFFFF}%s", text, iArgs);
+		format(str, sizeof(str), "{CCCCCC} — INFO: {FFFFFF}%s", text, iArgs);
 		SendClientMessage(playerid, -1, str);
+	}
+	return -1;
+}
+
+stock SendInfoToAll(const text[], {Float, _}:...)
+{
+	new str[256];
+	new iArgs = numargs();
+
+	while (--iArgs) {
+		format(str, sizeof(str), "{BBBBBB}** {FFFFFF}%s", text, iArgs);
+		SendClientMessageToAll(-1, str);
 	}
 	return -1;
 }
@@ -722,7 +734,7 @@ stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const name[],
 
 	new tmp[512];
 	format(tmp, sizeof(tmp), "{FFFFFF}Player {ACDA00}%s {FFFFFF}teleported to {ACDA00}%s {FFFFFF}area. {ACDA00}(%s)", PlayerName(playerid), name, command);
-	SendClientMessageToAll(1, tmp);
+	SendInfoToAll(tmp);
 
 	format(tmp, sizeof(tmp), "You teleported to {ACDA00}%s{FFFFFF}.", name);
 	SendPlayerInfo(playerid, tmp);

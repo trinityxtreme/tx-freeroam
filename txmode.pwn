@@ -78,16 +78,6 @@ new PlayerColors[200] = {
 // DCMD defineleri
 #define dcmd(%1, %2, %3) if (!strcmp((%3)[1], #%1, true, (%2)) && ((((%3)[(%2) + 1] == '\0') && (dcmd_%1(playerid, ""))) || (((%3)[(%2) + 1] == ' ') && (dcmd_%1(playerid, (%3)[(%2) + 2]))))) return 1
 
-// Girişte dans tanıtımları
-new RandAnims[6][] = {
-	"DAN_LOOP_A",
-	"DNCE_M_A",
-	"DNCE_M_B",
-	"DNCE_M_C",
-	"DNCE_M_D",
-	"DNCE_M_E"
-};
-
 // PM sistemi tanıtımları
 enum PlayerInfo
 {
@@ -269,9 +259,7 @@ public OnGameModeInit()
 	ShowNameTags(1);
 	SetNameTagDrawDistance(25.0);
 
-	for (new i = 0; i<299; i++) {
-		AddPlayerClass(i, 1958.2111, 1343.5758, 15.3746, 274.2440, 24, 100, 27, 80, 32, 500);
-	}
+	
 	
 	printf("  ** LOADED: general settings.");
 
@@ -348,17 +336,6 @@ public OnGameModeInit()
 
 	printf("Yüklendi: \"Hız pickupları.\"");
 
-	// Class settings:
-	new skinCount = 1;
-	for (new i = 0; i <= 299; i++)
-	{
-		 if (AddPlayerClass(i, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0)) {
-			skinCount++;
-		 }
-	}
-
-	printf("  ** %d player class loaded.", skinCount);
-
 	// MySQL settings:
 	//mysql_connect(mysql_hostname, mysql_username, mysql_database, mysql_password);
 	//mysql_query("CREATE TABLE IF NOT EXISTS players(SQLID INT(11), Nickname VARCHAR(24), Password VARCHAR(16), AdminLevel INT(1), Killed INT(11), Death INT(11), Score INT(11), Money INT(11), Radiation INT(3), Hungry INT(3), Comfort INT(3), Last_X FLOAT, Last_Y FLOAT, Last_Z, FLOAT, Last_INT INT(3), LastIP VARCHAR(16), Online TINYINT(1), LastOnline DATE");
@@ -421,15 +398,6 @@ public OnPlayerRequestClass(playerid, classid)
 	SetPlayerCameraLookAt(playerid, 2621.1831, 1824.3500, 12.0234);
 	*/
 /*
-	CreateExplosion(1544.7887, -1675.4630, 13.5591, 12, 20.0);
-	SetPlayerPos(playerid, 1544.7887, -1675.4630, 13.5591);
-	SetPlayerFacingAngle(playerid, 90.0);
-	SetPlayerCameraPos(playerid, 1541.5293, -1675.4012, 13.5527);
-	SetPlayerCameraLookAt(playerid, 1544.7887, -1675.4630, 13.5591);
-
-	new rand = random(sizeof(RandAnims));
-	ApplyAnimation(playerid, "DANCING", RandAnims[rand][0], 4.0, 1, 1, 1, 1, 1);
-
 	return 1;
 }
 

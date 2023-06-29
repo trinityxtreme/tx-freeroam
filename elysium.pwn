@@ -39,6 +39,16 @@ enum ModCar
 
 new MCarPlayerInfo[MAX_PLAYERS][ModCar];
 
+// Random dance at skin selection
+new RandAnims[6][] = {
+	"DAN_LOOP_A",
+	"DNCE_M_A",
+	"DNCE_M_B",
+	"DNCE_M_C",
+	"DNCE_M_D",
+	"DNCE_M_E"
+};
+
 // Main
 main()
 {
@@ -136,6 +146,17 @@ public OnGameModeInit()
 	// Load objects
 	LoadObjects();
 	printf("Objects loaded.");
+
+	// Skin selection
+	new skinCount = 0;
+	for (new i = 0; i <= 299; i++)
+	{
+		 if (AddPlayerClass(i, 1958.3783, 1343.1572, 15.3746, 269.1425, 0, 0, 0, 0, 0, 0)) {
+			skinCount++;
+		 }
+	}
+
+	printf(" ** %d player classes loaded.", skinCount);
 
 	return 1;
 }
@@ -618,6 +639,21 @@ public OnPlayerDisconnect(playerid, reason)
 	return 1;
 }
 
+public OnPlayerRequestClass(playerid, classid)
+{
+	CreateExplosion(1544.7887, -1675.4630, 13.5591, 12, 20.0);
+	SetPlayerPos(playerid, 1544.7887, -1675.4630, 13.5591);
+	SetPlayerFacingAngle(playerid, 90.0);
+	SetPlayerCameraPos(playerid, 1541.5293, -1675.4012, 13.5527);
+	SetPlayerCameraLookAt(playerid, 1544.7887, -1675.4630, 13.5591);
+
+	// Random dance at skin selection
+	new rand = random(sizeof(RandAnims));
+	ApplyAnimation(playerid, "DANCING", RandAnims[rand][0], 4.0, 1, 1, 1, 1, 1);
+	
+	return 1;
+}
+
 public OnPlayerSpawn(playerid)
 {
 	// Set player position, interior etc.
@@ -686,7 +722,8 @@ stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const name[],
 	format(tmp, sizeof(tmp), "{FFFFFF}Player {ACDA00}%s {FFFFFF}teleported to {ACDA00}%s {FFFFFF}area. {ACDA00}(%s)", PlayerName(playerid), name, command);
 	SendClientMessageToAll(1, tmp);
 
-	SendPlayerInfo(playerid, "You teleported to {ACDA00}%s{FFFFFF}.", name);
+	format(tmp, sizeof(tmp), "You teleported to {ACDA00}%s{FFFFFF}.", name);
+	SendPlayerInfo(playerid, tmp);
 }
 
 forward LoadingScene(playerid);

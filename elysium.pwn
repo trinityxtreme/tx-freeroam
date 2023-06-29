@@ -699,21 +699,17 @@ stock SendPlayerInfo(playerid, const text[], {Float, _}:...)
 	new iArgs = numargs();
 
 	while (--iArgs) {
-		format(str, sizeof(str), "{CCCCCC} — INFO: {FFFFFF}%s", text, iArgs);
+		format(str, sizeof(str), "{CCCCCC} *- INFO: {FFFFFF}%s", text, iArgs);
 		SendClientMessage(playerid, -1, str);
 	}
 	return -1;
 }
 
-stock SendInfoToAll(const text[], {Float, _}:...)
+stock SendInfoToAll(const text[])
 {
 	new str[256];
-	new iArgs = numargs();
-
-	while (--iArgs) {
-		format(str, sizeof(str), "{BBBBBB}** {FFFFFF}%s", text, iArgs);
-		SendClientMessageToAll(-1, str);
-	}
+	format(str, sizeof(str), "{BBBBBB}** {FFFFFF}%s", text);
+	SendClientMessageToAll(-1, str);
 	return -1;
 }
 

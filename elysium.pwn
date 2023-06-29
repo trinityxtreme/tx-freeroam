@@ -624,7 +624,7 @@ public OnPlayerSpawn(playerid)
 	SetPlayerInterior(playerid, 0);
 	SetPlayerVirtualWorld(playerid, 0);
 	SetPlayerPos(playerid, -18.9876, -197.5336, 1.6676);
-	SetPlayerFacingAngle(playerid, 255.9960);
+	SetPlayerCameraLookAt(playerid, -7.5003, -200.0645, 1.6222, CAMERA_CUT);
 
 	// Show textdraws
 	TextDrawShowForPlayer(playerid, bottomTextdraw);

@@ -388,19 +388,6 @@ public OnGameModeExit()
 	return 1;
 }
 
-public OnPlayerRequestClass(playerid, classid)
-{
-	/*
-	SetPlayerFacingAngle(playerid, 90.0);
-	PlayerPlaySound(playerid, 1185, 0, 0, 0);
-	SetPlayerPos(playerid, 2621.1831, 1824.3500, 11.0234);
-	SetPlayerCameraPos(playerid, 2616.2153, 1824.3500, 12.8204);
-	SetPlayerCameraLookAt(playerid, 2621.1831, 1824.3500, 12.0234);
-	*/
-/*
-	return 1;
-}
-
 public OnPlayerConnect(playerid)
 {
 	new connectMessage[64 + MAX_PLAYER_NAME];
@@ -495,10 +482,7 @@ public OnPlayerDisconnect(playerid, reason)
 
 public OnPlayerSpawn(playerid)
 {
-	SetPlayerInterior(playerid, 0);
-	SetPlayerVirtualWorld(playerid, 0);
-	SetPlayerRandomSpawn(playerid);
-	PlayerPlaySound(playerid, 1186, 0, 0, 0);
+	
 
 	TextDrawShowForPlayer(playerid, Textdraw0);
 	TextDrawShowForPlayer(playerid, Textdraw1);

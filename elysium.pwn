@@ -63,7 +63,7 @@ public OnGameModeInit()
 {
 	// AntiDeAMX
 	SkyAntiDeAMX();
-	printf("Sky Anti-DeAMX (1) initialized.");
+	printf(" ** Sky Anti-DeAMX (1) initialized.");
 
 	// Server settings
 	new tmp[64];
@@ -81,7 +81,7 @@ public OnGameModeInit()
 	format(tmp, sizeof(tmp), "language %s", server_lang);
 	SendRconCommand(tmp);
 
-	printf("Server settings initialized.");
+	printf(" ** Server settings initialized.");
 
 	// Create textdraws
 	bottomTextdraw = TextDrawCreate(310.000000, 435.000000, "~r~~h~~h~ /help ~w~~h~~h~/tp /gun /stunt /dm /shop /anim /v1..18 /m1..12 ~r~~h~~h~/rules");
@@ -141,11 +141,11 @@ public OnGameModeInit()
 	TextDrawSetProportional(logo4Textdraw, 1);
 	TextDrawSetShadow(logo4Textdraw, 1);
 
-	printf("Textdraws created.");
+	printf(" ** Textdraws created.");
 
 	// Load objects
 	LoadObjects();
-	printf("Objects loaded.");
+	printf(" ** Objects loaded.");
 
 	// Skin selection
 	new skinCount = 0;

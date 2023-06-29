@@ -642,10 +642,11 @@ public OnPlayerDisconnect(playerid, reason)
 public OnPlayerRequestClass(playerid, classid)
 {
 	CreateExplosion(1544.7887, -1675.4630, 13.5591, 12, 20.0);
-	SetPlayerPos(playerid, 1544.7887, -1675.4630, 13.5591);
+	PlayerPlaySound(playerid, 1185, 0, 0, 0);
+	SetPlayerPos(playerid, 2621.1831, 1824.3500, 11.0234);
 	SetPlayerFacingAngle(playerid, 90.0);
-	SetPlayerCameraPos(playerid, 1541.5293, -1675.4012, 13.5527);
-	SetPlayerCameraLookAt(playerid, 1544.7887, -1675.4630, 13.5591);
+	SetPlayerCameraPos(playerid, 2616.2153, 1824.3500, 12.8204);
+	SetPlayerCameraLookAt(playerid, 2621.1831, 1824.3500, 12.0234);
 
 	// Random dance at skin selection
 	new rand = random(sizeof(RandAnims));
@@ -661,6 +662,7 @@ public OnPlayerSpawn(playerid)
 	SetPlayerVirtualWorld(playerid, 0);
 	SetPlayerPos(playerid, -18.9876, -197.5336, 1.6676);
 	SetPlayerFacingAngle(playerid, 120);
+	PlayerPlaySound(playerid, 1186, 0, 0, 0);
 
 	// Show textdraws
 	TextDrawShowForPlayer(playerid, bottomTextdraw);

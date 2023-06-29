@@ -78,28 +78,6 @@ new PlayerColors[200] = {
 // DCMD defineleri
 #define dcmd(%1, %2, %3) if (!strcmp((%3)[1], #%1, true, (%2)) && ((((%3)[(%2) + 1] == '\0') && (dcmd_%1(playerid, ""))) || (((%3)[(%2) + 1] == ' ') && (dcmd_%1(playerid, (%3)[(%2) + 2]))))) return 1
 
-// Ev sistemi defineleri
-#define DIALOG 8000 // Başlangıç dialog id
-#define MAX_HOUSE 100 // Toplam yaratılan ev sayısı.
-#define BASLIK "{FFFFFF}Trinity-Xtreme / {009BFF}Ev Sistemi" // Dialog, mesaj başlıkları
-
-#define ACIKLAMA "Satılık Ev! (/satinal & /ev)" // Default yeni yaratılan evin açıklaması
-#define FIYAT 20000 // Default yeni yaratılan evin fiyatı
-#define KILIT 1 // Default yeni yaratılan evin kilidi ( 0: Açık - 1: Kilitli )
-#define KASA 0 // Default yeni yaratılan evin kasasındaki para
-
-#define MENU DIALOG+15 // Değiştirmeye gerek yok
-#define SATINAL MENU+15 // Değiştirmeye gerek yok
-
-#define BLUEH 1272 // Ellemeyin.
-#define GREENH 1273 // Ellemeyin.
-#define REDMAP 32 // Ellemeyin.
-#define GREENMAP 31 // Ellemeyin.
-#define ARROW 1318 // Ellemeyin.
-
-#define PRESSED(%0) \
-	(((newkeys & (%0)) == (%0)) && ((oldkeys & (%0)) != (%0)))
-
 // Girişte dans tanıtımları
 new RandAnims[6][] = {
 	"DAN_LOOP_A",
@@ -767,30 +745,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		new text[128];
 		format(text, sizeof(text), "* %s %s", pName(playerid), cmdtext[4]);
 		SendClientMessageToAll(0xFFFF00AA, text);
-		return 1;
-	}
-
-	   // Debug commands:
-	  if (!strcmp(cmdtext, "/eat", true))
-	{
-		showMessage(playerid, "You're eated a {006699}burger.");
-		PlayerAccount[playerid][pA_Hungry] = 0;
-		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 3.0, 0, 0, 0, 0, 0);
-		return 1;
-	}
-
-	if (!strcmp(cmdtext, "/addrad", true))
-	{
-		showMessage(playerid, "Radiation coming!");
-		PlayerAccount[playerid][pA_Radiation] + = 15;
-		return 1;
-	}
-
-	if (!strcmp(cmdtext, "/radpills", true))
-	{
-		showMessage(playerid, "You're used a {006699}radiation pill.");
-		PlayerAccount[playerid][pA_Radiation] = 0;
-		ApplyAnimation(playerid, "FOOD", "EAT_Burger", 3.0, 0, 0, 0, 0, 0);
 		return 1;
 	}
 
@@ -1827,18 +1781,6 @@ public PlayerPos(playerid, Float:X, Float:Y, Float:Z, interior, world)
 	SetPlayerInterior(playerid, interior);
 	SetPlayerVirtualWorld(playerid, world);
 	return 1;
-}
-
-stock Mesaj(playerid, const yazi[], {Float, _}:...)
-{
-	new str[256];
-	new iArgs = numargs();
-
-	while (--iArgs) {
-		format(str, sizeof(str), "{FF4500}** EV: {FFFFFF}%s", yazi, iArgs);
-		SendClientMessage(playerid, -1, str);
-	}
-	return -1;
 }
 
 // Oyuncu idi fonksiyonu

@@ -654,6 +654,19 @@ stock PlayerName(playerid)
 	return name;
 }
 
+// Message functions
+stock SendPlayerInfo(playerid, const text[], {Float, _}:...)
+{
+	new str[256];
+	new iArgs = numargs();
+
+	while (--iArgs) {
+		format(str, sizeof(str), "{FF4500}** [INFO]: {FFFFFF}%s", text, iArgs);
+		SendClientMessage(playerid, -1, str);
+	}
+	return -1;
+}
+
 // Teleport functions
 stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const name[], const command[], car, loading)
 {
@@ -673,8 +686,7 @@ stock Teleport(playerid, Float:tX, Float:tY, Float:tZ, Int, World, const name[],
 	format(tmp, sizeof(tmp), "{FFFFFF}Player {ACDA00}%s {FFFFFF}teleported to {ACDA00}%s {FFFFFF}area. {ACDA00}(%s)", PlayerName(playerid), name, command);
 	SendClientMessageToAll(1, tmp);
 
-	format(tmp, sizeof(tmp), "{FFFFFF}You teleported to {ACDA00}%s{FFFFFF}.", name);
-	SendClientMessage(playerid, 1, tmp);
+	SendPlayerInfo(playerid, "You teleported to {ACDA00}%s{FFFFFF}.", name);
 }
 
 forward LoadingScene(playerid);

@@ -547,6 +547,21 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
+	// FPS
+	if (strcmp("/firstperson", cmdtext, true, 10) == 0) {
+		firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		 AttachObjectToPlayer(firstperson[playerid], playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
+		AttachCameraToObject(playerid, firstperson[playerid]);
+		SendInfo(playerid, "To return third person please use command {00FF00}/exitfirstperson{FFFFFF}.");
+		return 1;
+	}
+	
+	if (strcmp("/exitfirstperson", cmdtext, true, 10) == 0) {
+		SetCameraBehindPlayer(playerid);
+		DestroyObject(firstperson[playerid]);
+		return 1;
+	}
+
 	// Teleport commands
 	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
 		Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", true, false);

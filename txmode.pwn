@@ -1148,35 +1148,6 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
-	// FPS komutları
-	if (strcmp("/firstperson", cmdtext, true, 10) == 0)
-	{
-		firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-		 AttachObjectToPlayer(firstperson[playerid], playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
-		AttachCameraToObject(playerid, firstperson[playerid]);
-		SendInfo(playerid, "Kamerayı eski hale döndürmek için {00FF00}/exitfirstperson {FFFFFF}yazınız.");
-		return 1;
-	}
-	if (strcmp("/exitfirstperson", cmdtext, true, 10) == 0)
-	{
-		SetCameraBehindPlayer(playerid);
-		DestroyObject(firstperson[playerid]);
-		return 1;
-	}
-
-	// Araç çevirme komutu
-	if (strcmp(cmdtext, "/cevir", true) == 0) {
-		if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "Arabada {FF0000}değilsiniz!");
-
-		new VehicleID, Float:X, Float:Y, Float:Z;
-		GetPlayerPos(playerid, X, Y, Z);
-		VehicleID = GetPlayerVehicleID(playerid);
-		SetVehiclePos(VehicleID, X, Y, Z);
-		SetVehicleZAngle(VehicleID, 0);
-		SendInfo(playerid, "Arabanız {00FF00}başarıyla {FFFFFF}çevrildi.");
-		return 1;
-	}
-
 	// /v komutu
 	if (!strcmp(cmdtext, "/v", true, 2)) {
 		if (cmdtext[2] == EOS) return 0;

@@ -562,6 +562,19 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		return 1;
 	}
 
+	// Rotate
+	if (strcmp(cmdtext, "/rotate", true) == 0) {
+		if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "You are {FF0000}not {FFFFFF}in a car!");
+
+		new VehicleID, Float:X, Float:Y, Float:Z;
+		GetPlayerPos(playerid, X, Y, Z);
+		VehicleID = GetPlayerVehicleID(playerid);
+		SetVehiclePos(VehicleID, X, Y, Z);
+		SetVehicleZAngle(VehicleID, 0);
+		SendInfo(playerid, "Your car has been {00FF00}successfully {FFFFFF}rotated.");
+		return 1;
+	}
+
 	// Teleport commands
 	if (strcmp(cmdtext, "/4dragon", true) == 0 || strcmp(cmdtext, "/dragon", true) == 0 || strcmp(cmdtext, "/4d", true) == 0) {
 		Teleport(playerid, 2027.8171, 1008.1444, 10.8203, 0, 0, "Four Dragon Casino", "/4d", true, false);

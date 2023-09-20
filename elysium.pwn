@@ -29,7 +29,7 @@ new Text:logo1Textdraw;
 new Text:logo3Textdraw;
 new Text:logo4Textdraw;
 
-
+// # Vehicle
 // Modified vehicle spawner
 enum ModCar
 {
@@ -38,6 +38,9 @@ enum ModCar
 };
 
 new MCarPlayerInfo[MAX_PLAYERS][ModCar];
+
+// FPS
+new firstperson[MAX_PLAYERS];
 
 // Random dance at skin selection
 new RandAnims[6][] = {
@@ -550,9 +553,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 	// FPS
 	if (strcmp("/firstperson", cmdtext, true, 10) == 0) {
 		firstperson[playerid] = CreateObject(19300, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
-		 AttachObjectToPlayer(firstperson[playerid], playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
+		AttachObjectToPlayer(firstperson[playerid], playerid, 0.0, 0.12, 0.7, 0.0, 0.0, 0.0);
 		AttachCameraToObject(playerid, firstperson[playerid]);
-		SendInfo(playerid, "To return third person please use command {00FF00}/exitfirstperson{FFFFFF}.");
+		SendPlayerInfo(playerid, "To return third person please use command {00FF00}/exitfirstperson{FFFFFF}.");
 		return 1;
 	}
 	
@@ -564,14 +567,14 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	// Rotate
 	if (strcmp(cmdtext, "/rotate", true) == 0) {
-		if (!IsPlayerInAnyVehicle(playerid)) return SendError(playerid, "You are {FF0000}not {FFFFFF}in a car!");
+		if (!IsPlayerInAnyVehicle(playerid)) return SendPlayerError(playerid, "You are {FF0000}not {FFFFFF}in a car!");
 
 		new VehicleID, Float:X, Float:Y, Float:Z;
 		GetPlayerPos(playerid, X, Y, Z);
 		VehicleID = GetPlayerVehicleID(playerid);
 		SetVehiclePos(VehicleID, X, Y, Z);
 		SetVehicleZAngle(VehicleID, 0);
-		SendInfo(playerid, "Your car has been {00FF00}successfully {FFFFFF}rotated.");
+		SendPlayerInfo(playerid, "Your car has been {00FF00}successfully {FFFFFF}rotated.");
 		return 1;
 	}
 
@@ -728,6 +731,18 @@ stock SendPlayerInfo(playerid, const text[], {Float, _}:...)
 
 	while (--iArgs) {
 		format(str, sizeof(str), "{CCCCCC} *- INFO: {FFFFFF}%s", text, iArgs);
+		SendClientMessage(playerid, -1, str);
+	}
+	return -1;
+}
+
+stock SendPlayerError(playerid, const text[], {Float, _}:...)
+{
+	new str[256];
+	new iArgs = numargs();
+
+	while (--iArgs) {
+		format(str, sizeof(str), "{FFCCCC} *- ERROR: {FFFFFF}%s", text, iArgs);
 		SendClientMessage(playerid, -1, str);
 	}
 	return -1;

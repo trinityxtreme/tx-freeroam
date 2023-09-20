@@ -153,7 +153,7 @@ new cekiyor[MAX_PLAYERS] = 0;
 
 // FPS sistemi tanıtımları
 new Surus[MAX_PLAYERS];
-new firstperson[MAX_PLAYERS];
+
 
 // Araç spawn sistemi tanıtımları
 #define DIALOG_OFFSET_ID (1024)

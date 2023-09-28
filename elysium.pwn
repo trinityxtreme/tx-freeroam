@@ -1139,125 +1139,126 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 	// Arac yonetim komutlari
 	if (strcmp(cmd, "/motorac", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid)) return SendPlayerError(playerid, "Aracta degilsiniz!");
-	if (GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "Sofor koltugunda degilsiniz!");
+		if (!IsPlayerInAnyVehicle(playerid)) return SendPlayerError(playerid, "Aracta degilsiniz!");
+		if (GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "Sofor koltugunda degilsiniz!");
 
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, VEHICLE_PARAMS_ON, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SendPlayerInfo(playerid, "Motor acildi, kapatmak icin {00FF00}/motorkapat");
-	}
-	return 1;
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, VEHICLE_PARAMS_ON, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SendPlayerInfo(playerid, "Motor acildi, kapatmak icin {00FF00}/motorkapat");
+		}
+
+		return 1;
 	}
 
 	if (strcmp(cmd, "/motorkapat", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, VEHICLE_PARAMS_OFF, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SendPlayerInfo(playerid, "Motor kapatildi, tekrar acmak icin {00FF00}/motorac");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, VEHICLE_PARAMS_OFF, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SendPlayerInfo(playerid, "Motor kapatildi, tekrar acmak icin {00FF00}/motorac");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/farac", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, VEHICLE_PARAMS_ON, alarm, kapilar, kaput, bagaj, objective);
-	SendPlayerInfo(playerid, "Far acildi, kapatmak icin {00FF00}/farkapat");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, VEHICLE_PARAMS_ON, alarm, kapilar, kaput, bagaj, objective);
+			SendPlayerInfo(playerid, "Far acildi, kapatmak icin {00FF00}/farkapat");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/farkapat", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, VEHICLE_PARAMS_OFF, alarm, kapilar, kaput, bagaj, objective);
-	SendPlayerInfo(playerid, "Far kapatildi, tekrar acmak icin {00FF00}/farac");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, VEHICLE_PARAMS_OFF, alarm, kapilar, kaput, bagaj, objective);
+			SendPlayerInfo(playerid, "Far kapatildi, tekrar acmak icin {00FF00}/farac");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/alarmac", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, isiklar, VEHICLE_PARAMS_ON, kapilar, kaput, bagaj, objective);
-	SendPlayerInfo(playerid, "Alarm acildi, kapatmak icin {00FF00}/alarmkapat");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, isiklar, VEHICLE_PARAMS_ON, kapilar, kaput, bagaj, objective);
+			SendPlayerInfo(playerid, "Alarm acildi, kapatmak icin {00FF00}/alarmkapat");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/alarmkapat", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, isiklar, VEHICLE_PARAMS_OFF, kapilar, kaput, bagaj, objective);
-	SendPlayerInfo(playerid, "Alarm kapatildi, tekrar acmak icin {00FF00}/alarmac");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, isiklar, VEHICLE_PARAMS_OFF, kapilar, kaput, bagaj, objective);
+			SendPlayerInfo(playerid, "Alarm kapatildi, tekrar acmak icin {00FF00}/alarmac");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/kaputac", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, VEHICLE_PARAMS_ON, bagaj, objective);
-	SendPlayerInfo(playerid, "Kaput acildi, kapatmak icin {00FF00}/kaputkapat");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, VEHICLE_PARAMS_ON, bagaj, objective);
+			SendPlayerInfo(playerid, "Kaput acildi, kapatmak icin {00FF00}/kaputkapat");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/kaputkapat", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, VEHICLE_PARAMS_OFF, bagaj, objective);
-	SendPlayerInfo(playerid, "Kaput kapatildi, tekrar acmak icin {00FF00}/kaputac");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, VEHICLE_PARAMS_OFF, bagaj, objective);
+			SendPlayerInfo(playerid, "Kaput kapatildi, tekrar acmak icin {00FF00}/kaputac");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/bagajac", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, VEHICLE_PARAMS_ON, objective);
-	SendPlayerInfo(playerid, "Bagaj acildi, kapatmak icin {00FF00}/bagajkapat");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, VEHICLE_PARAMS_ON, objective);
+			SendPlayerInfo(playerid, "Bagaj acildi, kapatmak icin {00FF00}/bagajkapat");
+		}
+		return 1;
 	}
 
 	if (strcmp(cmd, "/bagajkapat", true) == 0) {
-	if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
-	new vid = GetPlayerVehicleID(playerid);
-	if (vid != INVALID_VEHICLE_ID)
-	{
-	GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
-	SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, VEHICLE_PARAMS_OFF, objective);
-	SendPlayerInfo(playerid, "Bagaj kapatildi, tekrar acmak icin {00FF00}/bagajac");
-	}
-	return 1;
+		if (!IsPlayerInAnyVehicle(playerid) || GetPlayerVehicleSeat(playerid) != 0) return SendPlayerError(playerid, "sofor koltucunda decilsiniz!");
+		new vid = GetPlayerVehicleID(playerid);
+		if (vid != INVALID_VEHICLE_ID)
+		{
+			GetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, bagaj, objective);
+			SetVehicleParamsEx(vid, motor, isiklar, alarm, kapilar, kaput, VEHICLE_PARAMS_OFF, objective);
+			SendPlayerInfo(playerid, "Bagaj kapatildi, tekrar acmak icin {00FF00}/bagajac");
+		}
+		return 1;
 	}
 
 	if (!strcmp(cmdtext, "/kilit", true))
@@ -1662,12 +1663,11 @@ public OnPlayerDeath(playerid, killerid, reason)
 	TextDrawHideForPlayer(playerid, logo3Textdraw);
 	TextDrawHideForPlayer(playerid, logo4Textdraw);
 
-	if (GetPlayerScore(playerid) > 0) return SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
-	SetPlayerScore(killerid, GetPlayerScore(killerid) + 1);
-
 	SendDeathMessage(killerid, playerid, reason);
 
-	SetPlayerScore(killerid, GetPlayerScore(killerid)+1);
+	if (GetPlayerScore(playerid) > 0) SetPlayerScore(playerid, GetPlayerScore(playerid) - 1);
+
+	SetPlayerScore(killerid, GetPlayerScore(killerid) + 1);
 
 	PlayerAccount[playerid][pA_Hungry] = 0;
 	PlayerAccount[playerid][pA_Radiation] = 0;

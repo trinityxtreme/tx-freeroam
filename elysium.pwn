@@ -1505,10 +1505,11 @@ public OnPlayerDisconnect(playerid, reason)
 	BilgiYenile(playerid);
 	KillTimer(expguncelle[playerid]);
 
-	// Arac spawn ayarlari
+	// Spawnlanan araçları sil
 	new iVehID = GetPVarInt(playerid, "iVehID");
-	if (iVehID)
-	DestroyVehicle(iVehID);
+	if (iVehID) {
+		DestroyVehicle(iVehID);
+	}
 
 	// Exit mesajları
 	new exitMessage[65 + MAX_PLAYER_NAME];
@@ -1890,13 +1891,10 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				if (GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2])) {
 					new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
 
-					if (IsPlayerInAnyVehicle(playerid))
-					GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
-					else
-					GetPlayerFacingAngle(playerid, fAngle);
+					if (IsPlayerInAnyVehicle(playerid)) GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
+					else GetPlayerFacingAngle(playerid, fAngle);
 
-					if (iVehID)
-					DestroyVehicle(iVehID);
+					if (iVehID) DestroyVehicle(iVehID);
 
 					iVehID = (listitem + (iList * 12) + 400);
 

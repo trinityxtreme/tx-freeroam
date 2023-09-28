@@ -50,16 +50,6 @@ new Text:Textdraw7;
 new Text:Textdraw8;
 new Text:Textdraw9;
 
-// # Vehicle
-// Modified vehicle spawner
-enum ModCar
-{
-	pMCar,
-	pMCarID
-};
-
-new MCarPlayerInfo[MAX_PLAYERS][ModCar];
-
 // FPS
 new Surus[MAX_PLAYERS];
 new firstperson[MAX_PLAYERS];
@@ -83,6 +73,8 @@ new Kilit[MAX_PLAYERS] = 0;
 new Arac[MAX_PLAYERS];
 
 // Arac spawn sistemi tanitimlari
+new spawnedVehicleIDs[MAX_PLAYERS];
+
 #define DIALOG_OFFSET_ID (1024)
 
 new g_VehNames[][] =
@@ -195,7 +187,7 @@ enum pAccount
 	pA_Score,
 	pA_Money,
 	
-	 pA_Radiation,
+	pA_Radiation,
 	pA_Hungry,
 	pA_Comfort,
 
@@ -594,10 +586,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(560, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if (MCarPlayerInfo[playerid][pMCar] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1010);
 		AddVehicleComponent(carID, 1028);
@@ -628,10 +619,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(560, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
+		
+		spawnedVehicleIDs[playerid] = carID;
 
 		AddVehicleComponent(carID, 1010);
 		AddVehicleComponent(carID, 1028);
@@ -662,10 +652,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(559, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if (MCarPlayerInfo[playerid][pMCar] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
+		
+		spawnedVehicleIDs[playerid] = carID;
 
 		AddVehicleComponent(carID, 1065);
 		AddVehicleComponent(carID, 1067);
@@ -689,10 +678,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(565, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if (MCarPlayerInfo[playerid][pMCar] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 
 		AddVehicleComponent(carID, 1046);
 		AddVehicleComponent(carID, 1049);
@@ -717,10 +705,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(558, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 
-		if (MCarPlayerInfo[playerid][pMCar] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
+		
+		spawnedVehicleIDs[playerid] = carID;
 
 		AddVehicleComponent(carID, 1088);
 		AddVehicleComponent(carID, 1092);
@@ -745,10 +732,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(561, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1055);
 		AddVehicleComponent(carID, 1058);
@@ -770,12 +756,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(562, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1034);
 		AddVehicleComponent(carID, 1038);
@@ -797,12 +780,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(567, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1102);
 		AddVehicleComponent(carID, 1129);
@@ -828,12 +808,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(558, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1092);
 		AddVehicleComponent(carID, 1166);
@@ -859,12 +836,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(557, x, y, z, angle, 1, 1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1010);
 		AddVehicleComponent(carID, 1081);
@@ -882,12 +856,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(535, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		ChangeVehiclePaintjob(carID, 1);
 		AddVehicleComponent(carID, 1109);
@@ -914,12 +885,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(562, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		AddVehicleComponent(carID, 1034);
 		AddVehicleComponent(carID, 1038);
@@ -941,12 +909,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 		carID = CreateVehicle(522, x, y, z, angle, 1, -1, -1);
 		PutPlayerInVehicle(playerid, carID, 0);
 		
-		if (MCarPlayerInfo[playerid][pMCar] != 0) {
-			DestroyVehicle(MCarPlayerInfo[playerid][pMCarID]);
-		}
+		if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 		
-		MCarPlayerInfo[playerid][pMCarID] = carID;
-		MCarPlayerInfo[playerid][pMCar] = 1;
+		spawnedVehicleIDs[playerid] = carID;
 		
 		ChangeVehiclePaintjob(carID, 0);
 		SetVehicleVirtualWorld(carID, GetPlayerVirtualWorld(playerid));
@@ -1506,6 +1471,9 @@ public OnPlayerDisconnect(playerid, reason)
 	KillTimer(expguncelle[playerid]);
 
 	// Spawnlanan araçları sil
+	if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
+	spawnedVehicleIDs[playerid] = 0;
+	
 	new iVehID = GetPVarInt(playerid, "iVehID");
 	if (iVehID) {
 		DestroyVehicle(iVehID);

@@ -11,13 +11,13 @@ local: true
 runtime:
   version: 0.3.7
   mode: server
-  rcon_password: password
+  rcon_password: harakiriUZMANDOKTOR92256
   port: 7777
   hostname: SA-MP Server
-  maxplayers: 50
+  maxplayers: 64
   language: ""
   mapname: San Andreas
-  weburl: www.sa-mp.com
+  weburl: trinity.gokay.works
   gamemodetext: Unknown
   announce: true
   lanmode: false

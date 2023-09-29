@@ -21,7 +21,7 @@
 #define server_modname	"TX"
 #define server_mapname	"San Andreas"
 #define server_lang		"English Turkish"
-#define MAX_PLAYERS		(50)
+#define MAX_PLAYERS		(64)
 
 // Global variables
 new Text:bottomTextdraw;
@@ -1473,11 +1473,6 @@ public OnPlayerDisconnect(playerid, reason)
 	// Spawnlanan araçları sil
 	if (spawnedVehicleIDs[playerid] != 0) DestroyVehicle(spawnedVehicleIDs[playerid]);
 	spawnedVehicleIDs[playerid] = 0;
-	
-	new iVehID = GetPVarInt(playerid, "iVehID");
-	if (iVehID) {
-		DestroyVehicle(iVehID);
-	}
 
 	// Exit mesajları
 	new exitMessage[65 + MAX_PLAYER_NAME];
@@ -1857,7 +1852,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 				new Float: fPos[3];
 
 				if (GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2])) {
-					new iVehID = GetPVarInt(playerid, "iVehID"), Float: fAngle;
+					new iVehID = spawnedVehicleIDs[playerid], Float: fAngle;
 
 					if (IsPlayerInAnyVehicle(playerid)) GetVehicleZAngle(GetPlayerVehicleID(playerid), fAngle);
 					else GetPlayerFacingAngle(playerid, fAngle);
@@ -1879,7 +1874,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 					iVehID = CreateVehicle(iVehID, fPos[0], fPos[1], fPos[2], fAngle, -1, -1, 1 << 16);
 					PutPlayerInVehicle(playerid, iVehID, 0);
 
-					SetPVarInt(playerid, "iVehID", iVehID);
+					spawnedVehicleIDs[playerid] = iVehID;
 				}
 			}
 		}

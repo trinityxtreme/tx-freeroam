@@ -17,7 +17,7 @@
 #undef MAX_PLAYERS
 
 #define server_name		"TRINITY.GOKAY.WORKS | SA-MP Freeroam"
-#define server_version	"1.0.1"
+#define server_version	"1.0.2"
 #define server_modname	"TX"
 #define server_mapname	"San Andreas"
 #define server_lang		"English Turkish"
@@ -2288,7 +2288,7 @@ public UpdateServerTime()
 {
 	Minute += 1;
 
-	if (Minute == 60 && Hour < 23) {
+	if (Minute == 60 && Hour < 24) {
 		Hour += 1;
 		Minute = 0;
 		SetWorldTime(Hour);
